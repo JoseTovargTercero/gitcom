@@ -1,0 +1,178 @@
+@charset "UTF-8";
+:root {
+  --bs-blue: #007bff;
+  --bs-indigo: #6610f2;
+  --bs-purple: #696cff;
+  --bs-pink: #e83e8c;
+  --bs-red: #ff3e1d;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #ffab00;
+  --bs-green: #71dd37;
+  --bs-teal: #20c997;
+  --bs-cyan: #03c3ec;
+  --bs-white: #fff;
+  --bs-gray: rgba(67, 89, 113, 0.6);
+  --bs-gray-dark: rgba(67, 89, 113, 0.8);
+  --bs-gray-25: rgba(67, 89, 113, 0.025);
+  --bs-gray-50: rgba(67, 89, 113, 0.05);
+  --bs-primary: #696cff;
+  --bs-secondary: #8592a3;
+  --bs-success: #71dd37;
+  --bs-info: #03c3ec;
+  --bs-warning: #ffab00;
+  --bs-danger: rgb(145, 14, 14);
+  --bs-light: #fcfdfd;
+  --bs-dark: #233446;
+  --bs-gray: rgba(67, 89, 113, 0.1);
+  --bs-primary-rgb: 105, 108, 255;
+  --bs-secondary-rgb: 133, 146, 163;
+  --bs-success-rgb: 113, 221, 55;
+  --bs-info-rgb: 3, 195, 236;
+  --bs-warning-rgb: 255, 171, 0;
+  --bs-danger-rgb: 145, 14, 14;
+  --bs-light-rgb: 252, 253, 253;
+  --bs-dark-rgb: 35, 52, 70;
+  --bs-gray-rgb: 67, 89, 113;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-black-rgb: 67, 89, 113;
+  --bs-body-color-rgb: 105, 122, 141;
+  --bs-body-bg-rgb: 245, 245, 249;
+  --bs-font-sans-serif: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --bs-font-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+  --bs-root-font-size: 16px;
+  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-font-size: 0.9375rem;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.53;
+  --bs-body-color: #697a8d;
+  --bs-body-bg: #f5f5f9;
+}
+
+
+
+
+@-webkit-keyframes progress-bar-stripes {
+  0% {
+    background-position-x: 0.75rem;
+  }
+}
+
+@keyframes progress-bar-stripes {
+  0% {
+    background-position-x: 0.75rem;
+  }
+}
+.progress {
+  display: flex;
+  height: 0.75rem;
+  overflow: hidden;
+  font-size: 0.625rem;
+  background-color: rgba(67, 89, 113, 0.1);
+  border-radius: 10rem;
+}
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  background: linear-gradient(195deg, #ed5264 0%, #d64757 100%);
+  transition: width 0.6s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar {
+    transition: none;
+  }
+}
+
+.progress-bar-striped {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 0.75rem 0.75rem;
+}
+
+.progress-bar-animated {
+  -webkit-animation: 1s linear infinite progress-bar-stripes;
+          animation: 1s linear infinite progress-bar-stripes;
+}
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar-animated {
+    -webkit-animation: none;
+            animation: none;
+  }
+}
+
+
+
+                
+/* ----------------  */
+
+
+.loadersVG {
+  margin-top: 45px;
+display: block;
+width: 12em;
+height: 12em;
+overflow: visible;
+position: absolute;
+}
+
+.loadersVG path.fill {
+fill: #2Af2;
+animation: fill 4s ease-in-out infinite;
+}
+
+.loadersVG .dash path {
+stroke: #d64757;
+stroke-width: 1px;
+stroke-linecap: round;
+animation: dashArray var(--sped, 2s) ease-in-out infinite,
+fill var(--sped, 2s) linear infinite,
+dashOffset var(--sped, 2s) linear infinite;
+}
+
+
+.loadersVG .dash path.big {
+stroke-width: 11px;
+filter: drop-shadow(0 0 2px #d64757);
+}
+
+@keyframes dashArray {
+0% {
+stroke-dasharray: 0 1 359 0;
+}
+
+50% {
+stroke-dasharray: 0 359 1 0;
+}
+
+100% {
+stroke-dasharray: 359 1 0 0;
+}
+}
+
+@keyframes dashOffset {
+0% {
+stroke-dashoffset: -5;
+}
+
+100% {
+stroke-dashoffset: -365;
+}
+}
+
+@keyframes fill {
+0% {
+fill: #d6475831;
+}
+40%, 80% {
+fill: rgba(255, 255, 255, 0);
+}
+
+100% {
+fill: #d6475831;
+}
+}
