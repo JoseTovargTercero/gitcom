@@ -51,10 +51,10 @@
 					</html> '; 
 				
 				
-				 if(sendMails($row['usuario'], $titulo, $mensaje)) {
+				 //if(sendMails($row['usuario'], $titulo, $mensaje)) {
 						$estado = 'true';
 						// correcto
-					}
+					//}
 
 				}else{
 					$estado = 'false-2';

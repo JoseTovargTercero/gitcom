@@ -32,7 +32,6 @@ if ($_SESSION['nivel'] != '') {
       .list-group-item:hover {
         filter: brightness(0.9);
       }
-
     </style>
 
   </head>
@@ -63,7 +62,7 @@ if ($_SESSION['nivel'] != '') {
                     Reportes descargables
                   </h3>
                   <span class="fw-semibold fs-5  mb-4 d-block">
-                    Crea un proyecto con múltiples archivos 
+                    Crea un proyecto con múltiples archivos
                     <br>
                     descargabale en formato xls o pdf.
                   </span>
@@ -144,7 +143,7 @@ if ($_SESSION['nivel'] != '') {
 
                 <div class="table-responsive">
                   <!--begin::Table-->
-                  <table id="kt_profile_overview_table" class="table table-row-bordered table-row-dashed gy-4 align-middle fw-bold">
+                  <table id="kt_profile_overview_table" class="table table-row-bordered table-row-dashed gy-4 fw-bold" style="min-height: 30vh;">
                     <thead class="fs-7 text-gray-400 text-uppercase">
                       <tr>
                         <th class="min-w-150px"></th>

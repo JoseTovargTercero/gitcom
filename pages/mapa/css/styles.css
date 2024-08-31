@@ -1903,3 +1903,102 @@ a{
 
 
 /* DROPDOWN */
+
+
+.controlPersonalizadoMbase {
+    width: 100%;
+    border: 1px solid #e9e9e9;
+}
+
+.controlPersonalizadoMbase>img {
+    width: 100%;
+}
+
+.controlPersonalizadoMbase>p {
+    width: 100%;
+    margin: 0;
+    padding: 1px 5px;
+    font-size: 15px;
+}
+
+.control-baseLayers>h5 {
+    font-weight: bold;
+    margin-bottom: 2px;
+    padding-bottom: 1px;
+}
+
+.control-baseLayers>span {
+    font-size: 12px;
+}
+
+.control-baseLayers {
+    position: absolute;
+    z-index: 9999;
+    background-color: white;
+    width: 293px;
+    margin: 50px 5px;
+    right: 0;
+    padding: 13px;
+    display: none;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 3px;
+}
+
+#control-layer-gitcom {
+    margin-top: -15px;
+}
+
+.tituloAdmCapas {
+    margin: 32px 0 0 !important;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    padding: 13px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bgray {
+    background-color: #313b44;
+}
+
+.menu-general {
+    background-color: #394551;
+    display: flex;
+    place-content: center;
+}
+
+.leyenda-perso,
+.control-baseLayers-la {
+    box-shadow: none !important;
+    width: 100% !important;
+    background-color: transparent;
+    max-height: 80vh !important;
+    overflow: auto !important;
+}
+
+.control-baseLayers-la {
+    margin-top: 5px;
+
+}
+
+.leyenda-perso>.leaflet-control-layers-list>.leaflet-control-layers-base>label,
+.leyenda-perso>.leaflet-control-layers-list>.leaflet-control-layers-overlays>label {
+    padding: 3px 8px;
+    background-color: #394551;
+    margin: 3px 0;
+    color: white !important;
+
+}
+
+.leaflet-control-layers-base>label>div>input {
+    display: none !important;
+}
+
+.leaflet-control-layers-base>label {
+    margin-top: 10px !important;
+    cursor: pointer;
+}
+
+.controlPersonalizadoMbase:hover {
+    filter: opacity(0.5);
+}

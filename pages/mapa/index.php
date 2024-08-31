@@ -34,8 +34,24 @@ if (isset($_GET['codigo'])) {
             $creador_p = $row_p['user'];
             $statusUsuarios = $row_p['confirmar'];
             $raster = $row_p['raster'];
+            $instancia_def = $row_p['instancia_def'];
+            $instancia = $row_p['instancia'];
         }
     }
+    $instancia_def_name = '0x';
+
+
+    if ($instancia == '2') {
+        //saca el nombre de la comuna
+        $query_p = "SELECT * FROM local_comunas WHERE id_Comuna='$instancia_def'";
+        $buscarMa = $conexion->query($query_p);
+        if ($buscarMa->num_rows > 0) {
+            while ($row_p = $buscarMa->fetch_assoc()) {
+                $instancia_def_name = $row_p['nombre_comuna'];
+            }
+        }
+    }
+
 
 
     if ($creador_p != $id_usuario) {
@@ -72,7 +88,7 @@ if (isset($_GET['codigo'])) {
     <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>Cartografía GITCOM</title>
+    <title>Cartograf铆a GITCOM</title>
     <script src="js/leaflets.js"></script>
     <link rel="stylesheet" href="css/leaflet.css">
     <link rel="stylesheet" href="css/leaflet-measure.css">
@@ -96,6 +112,8 @@ if (isset($_GET['codigo'])) {
 
     <link rel="stylesheet" href="js/ui/jquery-ui.min.css">
     <script src="../../assets/js/sweetalert2.all.min.js"></script>
+
+
 
     <script>
         let claves = Object.keys(miArray);
@@ -135,105 +153,6 @@ if (isset($_GET['codigo'])) {
             $("div, p").disableSelection();
         });
     </script>
-    <style>
-        .controlPersonalizadoMbase {
-            width: 100%;
-            border: 1px solid #e9e9e9;
-        }
-
-        .controlPersonalizadoMbase>img {
-            width: 100%;
-        }
-
-        .controlPersonalizadoMbase>p {
-            width: 100%;
-            margin: 0;
-            padding: 1px 5px;
-            font-size: 15px;
-        }
-
-        .control-baseLayers>h5 {
-            font-weight: bold;
-            margin-bottom: 2px;
-            padding-bottom: 1px;
-        }
-
-        .control-baseLayers>span {
-            font-size: 12px;
-        }
-
-        .control-baseLayers {
-            position: absolute;
-            z-index: 9999;
-            background-color: white;
-            width: 293px;
-            margin: 50px 5px;
-            right: 0;
-            padding: 13px;
-            display: none;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-            border-radius: 3px;
-        }
-
-        #control-layer-gitcom {
-            margin-top: -15px;
-        }
-
-        .tituloAdmCapas {
-            margin: 32px 0 0 !important;
-            border-top: 1px solid gray;
-            border-bottom: 1px solid gray;
-            padding: 13px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .bgray {
-            background-color: #313b44;
-        }
-
-        .menu-general {
-            background-color: #394551;
-            display: flex;
-            place-content: center;
-        }
-
-        .leyenda-perso,
-        .control-baseLayers-la {
-            box-shadow: none !important;
-            width: 100% !important;
-            background-color: transparent;
-            max-height: 80vh !important;
-            overflow: auto !important;
-        }
-
-        .control-baseLayers-la {
-            margin-top: 5px;
-
-        }
-
-        .leyenda-perso>.leaflet-control-layers-list>.leaflet-control-layers-base>label,
-        .leyenda-perso>.leaflet-control-layers-list>.leaflet-control-layers-overlays>label {
-            padding: 3px 8px;
-            background-color: #394551;
-            margin: 3px 0;
-            color: white !important;
-
-        }
-
-        .leaflet-control-layers-base>label>div>input {
-            display: none !important;
-        }
-
-        .leaflet-control-layers-base>label {
-            margin-top: 10px !important;
-            cursor: pointer;
-        }
-
-        .controlPersonalizadoMbase:hover {
-            filter: opacity(0.5);
-        }
-    </style>
 
 <body>
 
@@ -251,7 +170,7 @@ if (isset($_GET['codigo'])) {
        </div>
        <br>
        <div class="inf-loader">
-       <span>Se están cargando las capas. <br> Restan </span>
+       <span>Se est谩n cargando las capas. <br> Restan </span>
        <span id="loaderCounterText" class="loaderCounterText">' . $CantidadConsulta . '</span>
        </div>
        </div>
@@ -295,7 +214,7 @@ if (isset($_GET['codigo'])) {
                 <textarea name="" id="" rows="1" cols="95" style="text-align:center; border: none; font-size: 19px;" rows="10">
                 <?php echo $mapa ?>
                 </textarea>
-                <p style="font-size: 19px;">Gestión de Información Territorial Comunal</p>
+                <p style="font-size: 19px;">Gestion de Informacion Territorial Comunal</p>
             </span>
         </div>
 
@@ -308,11 +227,11 @@ if (isset($_GET['codigo'])) {
                     </ul>
                 </div>
                 <img src="../../assets/img/banda.jpg" width="95%">
-                <p style="font-size: 19px; margin-left: 10px">Situación relativa nacional</p>
+                <p style="font-size: 19px; margin-left: 10px">Situacion relativa nacional</p>
                 <img src="../../assets/img/relativa_nac.jpg" width="95%">
 
                 <img src="../../assets/img/banda.jpg" width="95%">
-                <p style="font-size: 19px; margin-left: 10px">Situación relativa regional</p>
+                <p style="font-size: 19px; margin-left: 10px">Situacion relativa regional</p>
                 <img src="../../assets/img/relativa_reg.jpg" width="95%">
                 <br>
                 <img src="../../assets/img/banda.jpg" width="95%">
@@ -376,10 +295,7 @@ if (isset($_GET['codigo'])) {
                                 ?>
 
                             </table>
-
-
                         </div>
-
                         <?php
                         if ($statusUsuarios == '0') {
                         ?>
@@ -390,10 +306,6 @@ if (isset($_GET['codigo'])) {
                         <?php
                         }
                         ?>
-
-
-
-
                         <script>
                             function validarConfigPermisos() {
                                 let p = "<?php echo $codigoProyecto ?>"
@@ -413,28 +325,17 @@ if (isset($_GET['codigo'])) {
                                 }
 
                                 $.get("../../back/mapa_permisos.php", "u=" + id + "&s=" + status + "&p=" + p, function(data) {
-                                    toast("success", "Se actualizo la configuración correctamente" + data.trim());
+                                    toast("success", "Se actualizo la configuracion correctamente" + data.trim());
                                 });
                             }
                         </script>
-
-
-
-
                     </div>
                 </div>
-
         <?php
             }
         }
 
         ?>
-
-
-
-
-
-
         <div class="myModal" id="modal-adminstradorCapasActivas">
             <div class="myContainterModal myContainterModalMin animated fadeInUp">
                 <div class="myheadModal">
@@ -449,21 +350,8 @@ if (isset($_GET['codigo'])) {
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
         <div id="contentMap">
-
             <div class="header-map" style="display: flex;">
-
-
-
-
                 <nav role="navigation" class="primary-navigation">
                     <ul>
                         <li><i class="fa fa-bars"></i></a>
@@ -474,22 +362,6 @@ if (isset($_GET['codigo'])) {
                         </li>
                     </ul>
                 </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <img src="../../assets/img/user-pictures/<?php echo $_SESSION['id'] ?>.png" onerror="this.onerror=null; this.src='../../assets/img/user-pictures/default.jpg'" alt="user-picture" class="cursor-pointer avatar">
             </div>
 
@@ -508,8 +380,6 @@ if (isset($_GET['codigo'])) {
                 </div>
 
                 <div>
-
-
                     <br>
                     <br>
                     <br>
@@ -539,14 +409,8 @@ if (isset($_GET['codigo'])) {
                                     }
                                 }
                                 ?>
-
-
-
                             </ul>
-
                         </div>
-
-
 
                         <div id="control-layer-gitcom">
                             <h6 class="tituloAdmCapas bgray">
@@ -561,22 +425,9 @@ if (isset($_GET['codigo'])) {
                                 ?>
 
                             </h6>
-
                         </div>
-
                     </div>
-
-
-
-
-
-
-
-
-
                     <div class="menu-general">
-
-
                         <div class="herramientas bgray" title="Inicio">
                             <a href="../" class="text-white" style="top: 0"><i class="fa fa-home"></i></a>
                         </div>
@@ -588,15 +439,8 @@ if (isset($_GET['codigo'])) {
                         <div class="herramientas bgray" title="Consulta avanzada">
                             <a href="../registros.php" class="text-white" style="top: 0"><i class="fa fa-code"></i></a>
                         </div>
-
                     </div>
-
-
                 </div>
-
-
-
-
             </div>
 
             <div class="barra-herramientas">
@@ -638,27 +482,14 @@ if (isset($_GET['codigo'])) {
 
 
                 <?php if (@$_SESSION['proyecto']) { ?>
-                    <div class="herramientas" title="Añadir capa vectorial" id="cargarCapas" onclick="mostrarOcultarVentanaModal('#nuevaCapaCampos')">
+                    <div class="herramientas" title="A锟�0锟�9adir capa vectorial" id="cargarCapas" onclick="mostrarOcultarVentanaModal('#nuevaCapaCampos')">
                         <i class="fa fa-file-archive-o"></i>
                     </div>
                 <?php } ?>
 
-
-
-
                 <div class="herramientas" style="bottom: 0;position: absolute;" title="Menu" onclick="vermenulateral()">
                     <i class="fa fa-ellipsis-h"></i>
                 </div>
-
-
-
-                <!--
-                <input type="search" id="search" autocomplete="off" placeholder="Buscar..." />
-
-                -->
-
-
-
 
             </div>
 
@@ -674,23 +505,6 @@ if (isset($_GET['codigo'])) {
         </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <img src="images/norte.png" class="norte hide" style="position: absolute;margin: -95px 0 0 12px;width: 80px;">
 
         <div style="width: 100%; display: flex">
@@ -703,7 +517,7 @@ if (isset($_GET['codigo'])) {
             </p>
 
             <p style="width: 50%; text-align: center; margin-top: 10px">
-                Sistema de Coordenadas Geográficas <br> Datum SIRGAS-REGVEN (WGS84)
+                Sistema de Coordenadas Geograficas <br> Datum SIRGAS-REGVEN (WGS84)
             </p>
         </div>
 
@@ -735,7 +549,7 @@ if (isset($_GET['codigo'])) {
                             </div>
                             <div class="col-lg-12">
 
-                                <label style="margin: 13px 0 0 0; font-weight: 100;" class="control-label">Simbología</label>
+                                <label style="margin: 13px 0 0 0; font-weight: 100;" class="control-label">Simbologia</label>
 
                                 <div class="contenedor row" id="iconosEstandar">
 
@@ -805,9 +619,6 @@ if (isset($_GET['codigo'])) {
                                         </a>
                                     </div>
 
-
-
-
                                     <div class="col-lg-12">
                                         <div class="form-group label-floating is-empty">
                                             <label style="font-weight: 100;" class="control-label" for="colorEspecial">Color de icono </label>
@@ -816,10 +627,6 @@ if (isset($_GET['codigo'])) {
                                     </div>
 
                                 </div>
-
-
-
-
                             </div>
                         </div>
                     </div>
@@ -865,7 +672,7 @@ if (isset($_GET['codigo'])) {
                 <section class="modal-content">
 
                     <div class="form-group label-floating is-empty">
-                        <label class="control-label">¿Está techada? </label>
+                        <label class="control-label">Est谩 techada? </label>
                         <select style="padding-left: 10px;" required class="form-control" id="techo">
 
                             <option value="">-- Seleccione --</option>
@@ -877,7 +684,7 @@ if (isset($_GET['codigo'])) {
 
 
                     <div class="form-group label-floating is-empty">
-                        <label class="control-label">¿Está Iluminada? </label>
+                        <label class="control-label">Est谩 Iluminada? </label>
                         <select style="padding-left: 10px;" required class="form-control" id="iluminada">
 
                             <option value="">-- Seleccione --</option>
@@ -888,7 +695,7 @@ if (isset($_GET['codigo'])) {
                     </div>
 
                     <div class="form-group label-floating is-empty">
-                        <label class="control-label">¿Está apintada? </label>
+                        <label class="control-label">Esta pintada? </label>
                         <select style="padding-left: 10px;" required class="form-control" id="pintura">
 
                             <option value="">-- Seleccione --</option>
@@ -932,7 +739,7 @@ if (isset($_GET['codigo'])) {
 
 
                 <div class="form-group label-floating is-empty">
-                    <label class="control-label">¿Es un edificio/casa? </label>
+                    <label class="control-label">Es un edificio/casa? </label>
                     <select style="padding-left: 10px;" required class="form-control" id="tresDe">
 
                         <option value="">-- Seleccione --</option>
@@ -979,7 +786,7 @@ if (isset($_GET['codigo'])) {
             </div>
             <div id="nuevaCapaCampos" style="display: none; padding-top: 0;">
                 <header class="modal-header headerModal">
-                    Añadir capa vectorial
+                    Agregar capa vectorial
                     <i class="close-modal zmdi zmdi-close cerrarModal" onclick="cerrarModal()"></i>
                 </header>
 
@@ -1027,20 +834,14 @@ if (isset($_GET['codigo'])) {
                             </div>
                         </div>
                     </div>
-
-
                     <footer class="modal-footer">
                         <input type="submit" class="btn btn-danger btn-raised btn-sm" id="guardarCapaVectorial" class="Guardar">
                     </footer>
-
                 </form>
-
-
-
             </div>
             <div id="pointAtPos" style="display: none; padding-top: 0;">
                 <header class="modal-header headerModal">
-                    Posición especifica
+                    Posici贸n especifica
                     <i class="close-modal zmdi zmdi-close cerrarModal" onclick="cerrarModal()"></i>
                 </header>
 
@@ -1051,7 +852,7 @@ if (isset($_GET['codigo'])) {
                         <div class="form-group">
                             <label>
                                 <input type="radio" class="radioProjection" name="projection" id="projectionU" value="utm"> &nbsp;&nbsp;
-                                <label style="font-weight: 100;" for="projectionU" class="control-label">Proyección global (UTM - metros) </label>
+                                <label style="font-weight: 100;" for="projectionU" class="control-label">Proyeccion global (UTM - metros) </label>
 
                             </label>
                         </div>
@@ -1078,7 +879,7 @@ if (isset($_GET['codigo'])) {
                         <div class="form-group">
                             <label>
                                 <input type="radio" class="radioProjection" checked name="projection" id="projectionG" value="latlon"> &nbsp;&nbsp;
-                                <label style="margin-top: 24px; font-weight: 100;" for="projectionG" class="control-label">Coordenadas geográficas (Latitud - Longitud) </label>
+                                <label style="margin-top: 24px; font-weight: 100;" for="projectionG" class="control-label">Coordenadas geograficas (Latitud - Longitud) </label>
                             </label>
                         </div>
                         <div class="col-lg-6">
@@ -1093,15 +894,8 @@ if (isset($_GET['codigo'])) {
                                 <input type="text" class="borde form-control" required name="longitud" id="longitud">
                             </div>
                         </div>
-
                     </div>
-
-
-
-
-
                 </div>
-
 
                 <footer class="modal-footer" style="padding: 19px 20px 0px;">
                     <div class="form-group">
@@ -1149,8 +943,6 @@ if (isset($_GET['codigo'])) {
 
                             <?php if ($_SESSION['nivel'] != 4) { ?>
 
-
-
                                 <div class="col-lg-6">
                                     <div class="form-group label-floating is-empty">
                                         <label style="font-weight: 100;" class="control-label">Municipio</label>
@@ -1162,7 +954,6 @@ if (isset($_GET['codigo'])) {
                                         </select>
                                     </div>
                                 </div>
-
 
                                 <div class="col-lg-6">
                                     <div class="form-group label-floating is-empty">
@@ -1190,12 +981,7 @@ if (isset($_GET['codigo'])) {
                                 </div>
                         </div>
 
-
                     <?php } ?>
-
-
-
-
 
                     </div>
                 </div>
@@ -1240,7 +1026,37 @@ if (isset($_GET['codigo'])) {
                     <?php
 
                     $arrayRealColors = array(
-                        '', '#e03f48', '#ae2c30', '#ff8f7f', '#ff961d', '#00abdf', '#0067a7', '#226675', '#45daff', '#ef50bb', '#63356b', '#45af00', '#99f765', '#ff91ed', '#565656', '#a5a5a5', '#2c2c2c', '#ff371d', '#cb282c', '#0067ab', '#a7a7a7', '#ff92f0', '#51f757', '#00b100', '#70326d', '#ff4fbf', '#00dbff', '#00ade2', '#ff9700', '#ff907f', '#7e59ff'
+                        '',
+                        '#e03f48',
+                        '#ae2c30',
+                        '#ff8f7f',
+                        '#ff961d',
+                        '#00abdf',
+                        '#0067a7',
+                        '#226675',
+                        '#45daff',
+                        '#ef50bb',
+                        '#63356b',
+                        '#45af00',
+                        '#99f765',
+                        '#ff91ed',
+                        '#565656',
+                        '#a5a5a5',
+                        '#2c2c2c',
+                        '#ff371d',
+                        '#cb282c',
+                        '#0067ab',
+                        '#a7a7a7',
+                        '#ff92f0',
+                        '#51f757',
+                        '#00b100',
+                        '#70326d',
+                        '#ff4fbf',
+                        '#00dbff',
+                        '#00ade2',
+                        '#ff9700',
+                        '#ff907f',
+                        '#7e59ff'
                     );
 
                     ?>
@@ -1279,7 +1095,7 @@ if (isset($_GET['codigo'])) {
 
                         <div class="col-lg-12">
                             <div class="form-group label-floating is-empty">
-                                <label style="font-weight: 100;" class="control-label" onchange="">Tamaño </label>
+                                <label style="font-weight: 100;" class="control-label" onchange="">Tama锟�0锟�9o </label>
                                 <input type="number" class="form-control" id="ciTamano" value="4" onchange="iconoPersonalizadoCi()">
                                 <span style="position: absolute;right: 0;margin: -33px 24px 0 0;font-size: 12px;color: #b8b8b8;">px</span>
 
@@ -1327,16 +1143,7 @@ if (isset($_GET['codigo'])) {
                             </div>
                         </div>
 
-
-
                     </div>
-
-
-
-
-
-
-
 
                 </div>
 
@@ -1351,7 +1158,6 @@ if (isset($_GET['codigo'])) {
 
                     ?>
 
-
                     <p style="display: flex; float: left; margin-left: 25px; <?php echo $condition ?>"><input type="checkbox" style="height: 12px !important; width: 12px !important; margin-right: 13px" id="saveConsulta" name="saveConsulta" class="form-control" style="width: 18px; margin-right: 10px; "> <label style="cursor: pointer; margin-top: 5px;" for="saveConsulta"> Almacenar consulta</label></p>
 
                     <input type="submit" value="Siguiente" class="btn btn-danger btn-raised btn-sm  bg-gradient-primary" class="Guardar" id="siguienteForCapaGitcom" onclick="pantallaMarcadores()">
@@ -1362,12 +1168,8 @@ if (isset($_GET['codigo'])) {
 
                 </footer>
 
-
-
-
             </div>
             <div id="icnosPostes" style="padding-top: 0; display: none;">
-
 
                 <header class="modal-header headerModal">
                     Modificar icono
@@ -1472,8 +1274,6 @@ if (isset($_GET['codigo'])) {
     </div>
     <!-- Modal -->
 
-
-
     <div id='tabla_resultado'></div>
     <div id='resultadoEdit'></div>
 
@@ -1492,14 +1292,6 @@ if (isset($_GET['codigo'])) {
             <button style="background-color: #ff000000 !important;height: 28px;margin-top: -13px;font-size: 18px;padding: 15px;outline: none !important;color: #818181; display: none;" onclick="guardarMarker('guardarAreaInteres')" class="btn btn-secondary" id="guardarArea"><i class="fa fa-save"></i></button>
 
         </div>
-
-
-
-
-
-
-
-
 
     </div>
 
@@ -1647,7 +1439,7 @@ if (isset($_GET['codigo'])) {
                 text: 'Mostrar/Ocultar elementos del mapa',
                 callback: mostrarOcultarLeyenda
             }, {
-                text: 'Nueva composición de impresión',
+                text: 'Nueva composicion de impresion',
                 callback: printMap
             }, {
                 text: 'Cambiar mapa base',
@@ -1666,26 +1458,36 @@ if (isset($_GET['codigo'])) {
 
         map.attributionControl.addAttribution('Gitcom');
 
+        const instancia = "<?php echo $instancia ?>"
+        const instancia_def = "<?php echo $instancia_def ?>"
+        const instancia_def_name = "<?php echo $instancia_def_name ?>"
 
 
         var polligono_comunidades = new L.Shapefile('capasCargadas/comunidades.zip', {
             onEachFeature: function(feature, layer) {
                 if (feature.properties) {
                     layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+                        let comprobacion = false;
 
-                        //    if (layer.feature.properties['COMUNA'] == '<?php // echo $nameComuna 
-                                                                            ?>') {
-                        if (layer.feature.properties['COMUNA'] == 'SELVA DEL AMAZONAS') {
+                        if (instancia == 1) {
+                            // comunitario
+                            if (layer.feature.properties['id_comunid'] == instancia_def) {
+                                comprobacion = true
+                            }
+                        } else if (instancia == 2) {
+                            if (layer.feature.properties['COMUNA'] == instancia_def_name) {
+                                comprobacion = true
+                            }
+                        }
 
+                        if (comprobacion) {
                             layer.setStyle({
                                 color: "red",
                                 dashArray: "4",
                                 fillColor: "red",
                                 fillOpacity: 0.1,
                             })
-
                         }
-
 
                         if (k == 'NAME' || k == 'PERIMETER' || k == 'COMUNA') {
                             return k + ": " + feature.properties[k] + '<br>';
@@ -1925,15 +1727,6 @@ if (isset($_GET['codigo'])) {
         }).addTo(map);
 
 
-
-
-
-        /*
-                map.on('baselayerchange', function(e) {
-                    miniMap.changeLayer(baseLayersCopy['CartoDB_DarkMatter']);
-                })*/
-
-        //  var hash = new L.Hash(map);
         map.attributionControl.setPrefix('');
 
         var autolinker = new Autolinker({
@@ -1962,60 +1755,6 @@ if (isset($_GET['codigo'])) {
         function setBounds() {
             map.setMaxBounds(map.getBounds());
         }
-
-
-
-
-        /*
-                function pop_EtiquetaComunidades_3(feature, layer) {
-                    var popupContent = '<table>\
-                            <tr>\
-                                <td colspan="2"><strong>Nombre</strong>: ' + (feature.properties['NAME'] !== null ? autolinker.link(feature.properties['NAME'].toLocaleString()) : '') + '</td>\
-                            </tr>\
-                            <tr>\
-                                <td colspan="2"><strong>Parroquia</strong>: ' + (feature.properties['parroquia'] !== null ? autolinker.link(feature.properties['parroquia'].toLocaleString()) : '') + '</td>\
-                            </tr>\
-                            <tr>\
-                                <td colspan="2"><strong>Comuna</strong>: ' + (feature.properties['COMUNA'] !== null ? autolinker.link(feature.properties['COMUNA'].toLocaleString()) : '') + '</td>\
-                            </tr>\
-                        </table>';
-                    layer.bindPopup(popupContent, {
-                        maxHeight: 400
-                    });
-                }
-
-                function style_EtiquetaComunidades_3_0() {
-                    return {
-                        pane: 'pane_EtiquetaComunidades_3',
-                        stroke: false,
-                        fill: true,
-                        fillOpacity: 1,
-                        fillColor: 'rgba(255,255,255,0.0)',
-                        interactive: true,
-                    }
-                }
-                map.createPane('pane_EtiquetaComunidades_3');
-                map.getPane('pane_EtiquetaComunidades_3').style.zIndex = 3;
-                map.getPane('pane_EtiquetaComunidades_3').style['mix-blend-mode'] = 'normal';*/
-        /*     var layer_EtiquetaComunidades_3 = new L.geoJson(json_EtiquetaComunidades_3, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_EtiquetaComunidades_3',
-            layerName: 'layer_EtiquetaComunidades_3',
-            pane: 'pane_EtiquetaComunidades_3',
-            onEachFeature: pop_EtiquetaComunidades_3,
-            style: style_EtiquetaComunidades_3_0,
-        });
-        bounds_group.addLayer(layer_EtiquetaComunidades_3);
-*/
-
-
-
-        /*===================================================
-                          ICONOS PERSONALIZADOS          
-        ===================================================*/
-
-
 
         var casas = L.layerGroup([]);
         var casasPeople = L.layerGroup([]);
@@ -2066,11 +1805,11 @@ if (isset($_GET['codigo'])) {
             var size = this.getTileSize()
             tile.width = 256
             tile.height = 256
-            // Multiplica el número de corte por la resolución del corte, el valor predeterminado es 256 píxeles, obtén las coordenadas absolutas de píxeles de la esquina superior izquierda del corte
+            // Multiplica el numero de corte por la resolucion del corte, el valor predeterminado es 256 pixeles, obten las coordenadas absolutas de pixeles de la esquina superior izquierda del corte
             var nwPoint = coords.scaleBy(size)
-            // Basado en las coordenadas absolutas de píxeles y el nivel de zoom, proyección hacia atrás para obtener su latitud y longitud
+            // Basado en las coordenadas absolutas de pixeles y el nivel de zoom, proyeccion hacia atros para obtener su latitud y longitud
             var nw = map.unproject(nwPoint, coords.z)
-            // Comience a dibujar desde la esquina superior izquierda del corte, dibuje un rectángulo sin relleno del tamaño de un corte
+            // Comience a dibujar desde la esquina superior izquierda del corte, dibuje un rectangulo sin relleno del tama;o de un corte
             ctx.strokeRect(nwPoint.x, nwPoint.y, size.x, size.y)
 
 
@@ -2082,10 +1821,10 @@ if (isset($_GET['codigo'])) {
             ctx.fillText(nw.lat, 10, 20);
             ctx.fillText(nw.lng, 10, 40);
 
-            // El color de la línea.
+            // El color de la l锟斤拷nea.
             ctx.strokeStyle = 'black';
 
-            // Este es el método de los canvans
+            // Este es el m锟斤拷todo de los canvans
             ctx.beginPath();
             ctx.moveTo(0, 0);
             ctx.lineTo(size.x - 1, 0);
@@ -2264,9 +2003,9 @@ if (isset($_GET['codigo'])) {
                     radius: 4,
                     fillColor: color, // color de relleno
                     fillOpacity: 0.7, // transparencia de relleno
-                    weight: 3, // grosor de línea
-                    opacity: 1.0, // tansparencia de línea
-                    color: 'rgba(' + colorRgb.r + ', ' + colorRgb.g + ', ' + colorRgb.b + ', 1)' // color de línea
+                    weight: 3, // grosor de l锟斤拷nea
+                    opacity: 1.0, // tansparencia de l锟斤拷nea
+                    color: 'rgba(' + colorRgb.r + ', ' + colorRgb.g + ', ' + colorRgb.b + ', 1)' // color de l锟斤拷nea
                 }
             }
             map.createPane('geoJsonAca');
@@ -2280,9 +2019,9 @@ if (isset($_GET['codigo'])) {
                     radius: 4,
                     fillColor: '#00bb20', // color de relleno
                     fillOpacity: 0.9, // transparencia de relleno
-                    weight: 2, // grosor de línea
-                    opacity: 1.0, // tansparencia de línea
-                    color: 'rgba(255, 0, 0, .5)' // color de línea
+                    weight: 2, // grosor de l锟斤拷nea
+                    opacity: 1.0, // tansparencia de l锟斤拷nea
+                    color: 'rgba(255, 0, 0, .5)' // color de l锟斤拷nea
                 }
             }
             map.createPane('geoJsonAcaP');
@@ -2296,9 +2035,9 @@ if (isset($_GET['codigo'])) {
                     radius: 4,
                     fillColor: '#b71515', // color de relleno
                     fillOpacity: 0.9, // transparencia de relleno
-                    weight: 2, // grosor de línea
-                    opacity: 1.0, // tansparencia de línea
-                    color: '#9c0909' // color de línea
+                    weight: 2, // grosor de l锟斤拷nea
+                    opacity: 1.0, // tansparencia de l锟斤拷nea
+                    color: '#9c0909' // color de l锟斤拷nea
                 }
             }
             map.createPane('geoJsonAcaS');
@@ -2635,48 +2374,7 @@ if (isset($_GET['codigo'])) {
 
         ?>
 
-
-
-
-
-
-        //  setBounds();  fijar bordes
         var i = 0;
-        /*      layer_EtiquetaComunidades_3.eachLayer(function(layer) {
-            var context = {
-                feature: layer.feature,
-                variables: {}
-            };
-            var specialCoror = '#000';
-
-            if (layer.feature.properties['COMUNA'] == '<?php echo @$nameComuna ?>') {
-                specialCoror = '#f00';
-            }
-            layer.bindTooltip((layer.feature.properties['NAME'] !== null ?
-
-                String('<div style="text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff; text-align: center; color: #000000; line-height: 14px;"><span style="font-weight: bold; ">' + layer.feature.properties['NAME']) + '</span><small style="font-size: 9px !important; color:  ' + specialCoror + '"><br>' + layer.feature.properties['COMUNA'] + '</small></div>' : ''), {
-
-                permanent: true,
-                offset: [-0, -16],
-                className: 'css_EtiquetaComunidades_3'
-            });
-            labels.push(layer);
-            totalMarkers += 1;
-            layer.added = true;
-            addLabel(layer, i);
-            i++;
-        });
-        L.ImageOverlay.include({
-            getBounds: function() {
-                return this._bounds;
-            }
-        });
-    
-*/
-
-
-
-
 
         $(document).ready(function() {
             $("#mcp").change(function() {
@@ -2697,8 +2395,6 @@ if (isset($_GET['codigo'])) {
                 });
             });
         });
-
-
 
         function showModal(origin) {
             switch (origin) {
@@ -2726,8 +2422,6 @@ if (isset($_GET['codigo'])) {
             $("#areasDe").show(500, "swing");
 
         }
-
-
 
         /*===================================================
                                 AREAS DE INTERES         
@@ -2857,15 +2551,9 @@ if (isset($_GET['codigo'])) {
             ['121', 'TANQUES DE AGUA COMUNAL', 'especial']
         ]
 
-
-
-
-
         function beforRegistroAerasInteres(accion) {
 
-
             var numeroActual = parseInt($("#idArray").val())
-
 
             if (accion == null) {
                 var numero = 0;
@@ -2884,20 +2572,12 @@ if (isset($_GET['codigo'])) {
 
             }
 
-
-
-
             $("#idArray").val(numero)
             $("#codigoAreaInput").val(areasInteres[numero][0])
             $("#nombreAreaInput").val(areasInteres[numero][1])
             $("#nameArea").html(areasInteres[numero][1])
 
-
-
         }
-
-
-
 
 
         function obtener_registros(data, referencia, url, origen) {
@@ -2920,69 +2600,54 @@ if (isset($_GET['codigo'])) {
             }
 
             $.ajax({
-                    url: url,
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        data: data,
-                        referencia: referencia
-                    },
-                })
+                url: url,
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    data: data,
+                    referencia: referencia
+                },
+            }).done(function(resultado) {
+                $("#tabla_resultado").html(resultado);
+
+                var norte = $("#norte").val();
+                var este = $("#este").val();
+
+                if (origen == 'casas') {
+
+                    var codigo = $("#codigo").val();
+                    var cedula = $("#referencia").val()
+                    var id = $("#id").val()
+
+                    var datos = "<strong>Responsable: </strong> " + cedula + " <br><strong>Codigo: </strong>" + codigo + "<br><a class=\"aVerDetallesPopup\" >Ver habitantes</a><br><a class='aMover' onclick='editarDatos(\"" + codigo + "\", \"casas\",\"" + id + "\",\"" + cedula + "\", " + este + ", " + norte + ")'>Convertir en objeto editable</a>";
+
+                    var point = L.marker([norte, este], {
+                        icon: blueMarker,
+                        id: id,
+                        resp: cedula,
+                        este: este,
+                        norte: norte
+                    }).bindPopup(datos);
+
+                    $("#referencia").val('');
+                    $("#convert").hide(500, "swing");
+                    casas.addLayer(point);
+                } else {
+
+                    var datos = referencia.split('/');
+                    var point = L.marker([norte, este], {
+                        icon: iconAreas,
+                        este: este,
+                        norte: norte
+                    }).bindPopup(datos[1]);
 
 
+                    areasDeInteres.addLayer(point);
+                }
 
-                .done(function(resultado) {
-                    $("#tabla_resultado").html(resultado);
-
-                    var norte = $("#norte").val();
-                    var este = $("#este").val();
-
-                    if (origen == 'casas') {
-
-                        var codigo = $("#codigo").val();
-                        var cedula = $("#referencia").val()
-                        var id = $("#id").val()
-
-                        var datos = "<strong>Responsable: </strong> " + cedula + " <br><strong>Codigo: </strong>" + codigo + "<br><a class=\"aVerDetallesPopup\" >Ver habitantes</a><br><a class='aMover' onclick='editarDatos(\"" + codigo + "\", \"casas\",\"" + id + "\",\"" + cedula + "\", " + este + ", " + norte + ")'>Convertir en objeto editable</a>";
-
-                        var point = L.marker([norte, este], {
-                            icon: blueMarker,
-                            id: id,
-                            resp: cedula,
-                            este: este,
-                            norte: norte
-                        }).bindPopup(datos);
-
-
-
-
-                        $("#referencia").val('');
-                        $("#convert").hide(500, "swing");
-                        casas.addLayer(point);
-                    } else {
-
-                        var datos = referencia.split('/');
-                        var point = L.marker([norte, este], {
-                            icon: iconAreas,
-                            este: este,
-                            norte: norte
-                        }).bindPopup(datos[1]);
-
-
-                        areasDeInteres.addLayer(point);
-                    }
-
-
-
-
-                    drawnItems.clearLayers();
-                })
+                drawnItems.clearLayers();
+            })
         }
-
-
-
-
-
 
         function guardarCancha() {
 
@@ -3061,12 +2726,6 @@ if (isset($_GET['codigo'])) {
         }
 
 
-
-
-
-
-
-
         function iconPersonalizadoFunction(colorRelleno, opacidadRelleno, grosorBorde, colorBorde, linea, ciTamano) {
 
             if (linea == 'none') {
@@ -3079,30 +2738,33 @@ if (isset($_GET['codigo'])) {
                 radius: radius,
                 fillColor: colorRelleno, // color de relleno
                 fillOpacity: 1, // transparencia de relleno
-                weight: grosorBorde, // grosor de línea
-                color: colorBorde // color de línea
+                weight: grosorBorde, // grosor de l锟斤拷nea
+                color: colorBorde // color de l锟斤拷nea
 
             }
         }
 
-
-
-
-
         function obtener_puntos(consulta, nombreCapa, tipo, perso) {
+            console.log(perso)
             var resultado = consulta;
             var final = '';
+            var prefijo;
+            if (tipo == 'casas') {
+                prefijo = 'inf_casas'
+            } else {
+                prefijo = 'inf_habitantes'
+            }
 
             if ($("#mcp").val() != '' && $("#paq").val() != '' && $("#cma").val() != '' && $("#cmia").val() != '') {
 
                 if (resultado.indexOf(' OR ') != '-1') {
                     var preEnd = resultado.split(' OR ');
                     preEnd.forEach(element => {
-                        final = final + element + " " + ' AND id_c_comunal="' + $("#cmia").val() + '" OR ';
+                        final = final + element + " " + ' AND ' + prefijo + '.id_c_comunal="' + $("#cmia").val() + '" OR ';
                     });
                     final = final.substring(0, final.length - 4);
                 } else {
-                    final = resultado + ' AND id_c_comunal="' + $("#cmia").val() + '"';
+                    final = resultado + ' AND ' + prefijo + '.id_c_comunal="' + $("#cmia").val() + '"';
                 }
 
             } else if ($("#mcp").val() != '' && $("#paq").val() != '' && $("#cma").val() != '') {
@@ -3110,11 +2772,11 @@ if (isset($_GET['codigo'])) {
                 if (resultado.indexOf(' OR ') != '-1') {
                     var preEnd = resultado.split(' OR ');
                     preEnd.forEach(element => {
-                        final = final + element + " " + ' AND id_comuna="' + $("#cma").val() + '" OR ';
+                        final = final + element + " " + ' AND ' + prefijo + '.id_comuna="' + $("#cma").val() + '" OR ';
                     });
                     final = final.substring(0, final.length - 4);
                 } else {
-                    final = resultado + ' AND id_comuna="' + $("#cma").val() + '"';
+                    final = resultado + ' AND ' + prefijo + '.id_comuna="' + $("#cma").val() + '"';
                 }
 
             } else if ($("#mcp").val() != '' && $("#paq").val()) {
@@ -3122,11 +2784,11 @@ if (isset($_GET['codigo'])) {
                 if (resultado.indexOf(' OR ') != '-1') {
                     var preEnd = resultado.split(' OR ');
                     preEnd.forEach(element => {
-                        final = final + element + " " + ' AND id_parroquia="' + $("#paq").val() + '" OR ';
+                        final = final + element + " " + ' AND ' + prefijo + '.id_parroquia="' + $("#paq").val() + '" OR ';
                     });
                     final = final.substring(0, final.length - 4);
                 } else {
-                    final = resultado + ' AND id_parroquia="' + $("#paq").val() + '"';
+                    final = resultado + ' AND ' + prefijo + '.id_parroquia="' + $("#paq").val() + '"';
                 }
 
             } else if ($("#mcp").val() != '') {
@@ -3134,11 +2796,11 @@ if (isset($_GET['codigo'])) {
                 if (resultado.indexOf(' OR ') != '-1') {
                     var preEnd = resultado.split(' OR ');
                     preEnd.forEach(element => {
-                        final = final + element + " " + ' AND id_municipio="' + $("#mcp").val() + '" OR ';
+                        final = final + element + " " + ' AND ' + prefijo + '.id_municipio="' + $("#mcp").val() + '" OR ';
                     });
                     final = final.substring(0, final.length - 4);
                 } else {
-                    final = resultado + ' AND id_municipio="' + $("#mcp").val() + '"';
+                    final = resultado + ' AND ' + prefijo + '.id_municipio="' + $("#mcp").val() + '"';
                 }
 
             } else {
@@ -3146,6 +2808,7 @@ if (isset($_GET['codigo'])) {
             }
 
             consulta = final;
+            console.log(consulta)
 
 
             var explode = perso.split('/');
@@ -3178,9 +2841,6 @@ if (isset($_GET['codigo'])) {
 
 
                 .done(function(rePolAt) {
-
-
-
                     $("#cargandoConsulta").addClass('oculto')
 
                     var newPoligono = rePolAt.split('/')
@@ -3194,8 +2854,6 @@ if (isset($_GET['codigo'])) {
                         var polygono = newPoligono[0].substring(0, newPoligono[0].length - 2);
 
 
-
-
                         const geoJsonPreEnd = '{"type": "FeatureCollection","name": "example","crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::32619" } },"features": [' + polygono + ']}';
 
 
@@ -3207,7 +2865,7 @@ if (isset($_GET['codigo'])) {
 
                         myLayer = L.geoJSON(geoJSON, {
                             pointToLayer: function(feature, latlng) {
-                                return L.circleMarker(latlng, {}, ).bindPopup("Tipo: " + feature.properties.tipo + "<br>Consulta: " + nombreCapa + "<br>Codigo: " + feature.properties.codigo + "<hr>" + feature.properties.personas + "<br><a class=\"aVerDetallesPopup\" target=\"_blank\" href='../detallesNuevoMapa.php?id=" + feature.properties.codigo + "'><i class='fa fa-home'></i> Ver información de la vivienda<a>");
+                                return L.circleMarker(latlng, {}, ).bindPopup("Tipo: " + feature.properties.tipo + "<br>Consulta: " + nombreCapa + "<br>Codigo: " + feature.properties.codigo + "<hr>" + feature.properties.personas + "<br><a class=\"aVerDetallesPopup\" target=\"_blank\" href='../detallesNuevoMapa.php?id=" + feature.properties.codigo + "'><i class='fa fa-home'></i> Ver informacion de la vivienda<a>");
                             },
                             style: iconPersonalizado,
 
@@ -3227,11 +2885,11 @@ if (isset($_GET['codigo'])) {
 
                         controlP.addOverlay(featureGroup, '<span class="admLayers"><img width="15px" src="../../assets/img/capaGitcom.png"/>  ' + nombreCapa + " </span>(" + newPoligono[1] + ")");
 
-                        toast("success", "Se agregó una nueva capa");
+                        toast("success", "Se agrego una nueva capa");
 
 
                         var htmlExistente = $('#elementosGrafico').html();
-                        var nuevoHtml = '<li><a style="cursor: pointer; color: #d34f57" onclick="addDataChart(\'' + nombreCapa + '\', \'' + newPoligono[1] + '\')">Añadir: ' + nombreCapa + '</a></li>';
+                        var nuevoHtml = '<li><a style="cursor: pointer; color: #d34f57" onclick="addDataChart(\'' + nombreCapa + '\', \'' + newPoligono[1] + '\')">Agregar: ' + nombreCapa + '</a></li>';
 
                         $('#elementosGrafico').html(htmlExistente + nuevoHtml);
 
@@ -3250,26 +2908,7 @@ if (isset($_GET['codigo'])) {
                             newConsulta = newConsulta.replace("'", '*');
                         }
 
-
-
-
                         agregarElemento(nombreCapa + ' - ' + newPoligono[1], perso, 'ondblclick="propiedades(\'' + nombreCapa + '\', \'' + newConsulta + '\', \'' + tipoC + '\')"');
-                        /*
-
-                        if (counterText != 0) {
-                            var counterText = parseInt($('#loaderCounterValue').val());
-                            var newValue = counterText - 1;
-                            $('#loaderCounterValue').val(newValue)
-                            $('#loaderCounterText').html(newValue)
-
-                            if (newValue == 0 || newValue < 0) {
-                                $('#map').removeClass('blur')
-                                $('.classresumen').removeClass('blur')
-                                $('.marcaGitcom').removeClass('blur')
-                                $('#loaderCounter').hide()
-                            }
-                        }
-                        */
                     }
 
                     $("#consultaSearch").val('');
@@ -3296,9 +2935,7 @@ if (isset($_GET['codigo'])) {
             var ciEstiloLinea = explode[3];
             var ciAnchoLinea = explode[4];
 
-
             var iconPersonalizado = iconPersonalizadoFunction(ciRellenoColor, '1', ciAnchoLinea, ciLineaColor, ciEstiloLinea, ciTamano);
-
 
             $.ajax({
                     url: 'consulta.php',
@@ -3309,11 +2946,7 @@ if (isset($_GET['codigo'])) {
                         tipo: tipo,
                     },
                 })
-
-
                 .done(function(rePolAt) {
-
-
 
                     $("#cargandoConsulta").addClass('oculto')
 
@@ -3340,7 +2973,7 @@ if (isset($_GET['codigo'])) {
 
                         myLayer = L.geoJSON(geoJSON, {
                             pointToLayer: function(feature, latlng) {
-                                return L.circleMarker(latlng, {}, ).bindPopup("Tipo: " + feature.properties.tipo + "<br>Consulta: " + nombreCapa + "<br>Codigo: " + feature.properties.codigo + "<hr>" + feature.properties.personas + "<br><a class=\"aVerDetallesPopup\" target=\"_blank\" href='../detallesNuevoMapa.php?id=" + feature.properties.codigo + "'><i class='fa fa-home'></i> Ver información de la vivienda<a>");
+                                return L.circleMarker(latlng, {}, ).bindPopup("Tipo: " + feature.properties.tipo + "<br>Consulta: " + nombreCapa + "<br>Codigo: " + feature.properties.codigo + "<hr>" + feature.properties.personas + "<br><a class=\"aVerDetallesPopup\" target=\"_blank\" href='../detallesNuevoMapa.php?id=" + feature.properties.codigo + "'><i class='fa fa-home'></i> Ver informacion de la vivienda<a>");
                             },
                             style: iconPersonalizado,
 
@@ -3360,11 +2993,11 @@ if (isset($_GET['codigo'])) {
 
                         controlP.addOverlay(featureGroup, '<span class="admLayers"><img width="15px" src="../../assets/img/capaGitcom.png"/>  ' + nombreCapa + " </span>(" + newPoligono[1] + ")");
 
-                        toast("success", "Se agregó una nueva capa");
+                        toast("success", "Se agrego una nueva capa");
 
 
                         var htmlExistente = $('#elementosGrafico').html();
-                        var nuevoHtml = '<li><a style="cursor: pointer; color: #d34f57" onclick="addDataChart(\'' + nombreCapa + '\', \'' + newPoligono[1] + '\')">Añadir: ' + nombreCapa + '</a></li>';
+                        var nuevoHtml = '<li><a style="cursor: pointer; color: #d34f57" onclick="addDataChart(\'' + nombreCapa + '\', \'' + newPoligono[1] + '\')">Agregar: ' + nombreCapa + '</a></li>';
 
                         $('#elementosGrafico').html(htmlExistente + nuevoHtml);
 
@@ -3401,11 +3034,8 @@ if (isset($_GET['codigo'])) {
                             }
                         }
                     }
-
-
                 })
         }
-
 
 
         function printEnd() {
@@ -3413,9 +3043,6 @@ if (isset($_GET['codigo'])) {
             window.print()
 
             printMapEnd()
-
-            /*  setTimeout(function() {
-              }, 1000);*/
         }
 
         function printMapEnd() {
@@ -3452,8 +3079,6 @@ if (isset($_GET['codigo'])) {
         }
 
 
-
-
         function toggleCusmtomMarker() {
             $('#customMarkerLink').toggle(300)
             $('#chevronRight').toggle()
@@ -3463,39 +3088,20 @@ if (isset($_GET['codigo'])) {
         function toggleCusmtomMarkerContent() {
             $('#iconosPredeterminados').toggle(300)
             $('#iconoPersonalizado').toggle(300)
-
         }
-
-
-
-
-        /**
-         * 
-                    var options = {
-                    printModes: 'Landscape'
-                     };
-                     var browserPrint = L.browserPrint(map, options);
-                      browserPrint.print(L.BrowserPrint.Mode.Landscape());
-         */
-
 
 
         function VerDetallesFun() {
             $("#DetalesACA").addClass('DetallesVisible')
             $("#DetalesACA").removeClass('DetallesOculto')
             $("#verDetalesACA").addClass('hide')
-
-
         }
 
         function cerrarDetallesAca() {
             $("#DetalesACA").addClass('DetallesOculto')
             $("#DetalesACA").removeClass('DetallesVisible')
             $("#verDetalesACA").removeClass('hide')
-
-
         }
-
 
         function mostrarIconosPersonalizados() {
             $('#iconosEstandar').toggle(300)
@@ -3508,12 +3114,9 @@ if (isset($_GET['codigo'])) {
             $('#iconosPersonalizados').toggle(300)
         }
 
-
         function iconoPersonalizadoCi(valor1, valor2, valor3) {
 
             var ciTamano, ciRellenoColor, ciLineaColor, ciEstiloLinea, ciAnchoLinea;
-
-
 
             if (valor1 != null && valor2 != null && valor3 != null) {
 
@@ -3525,12 +3128,6 @@ if (isset($_GET['codigo'])) {
 
                 $('.center22').removeClass('center22Cambio')
                 $('#id' + valor3).addClass('center22Cambio')
-
-
-
-                /*      var setColor = document.getElementById('id'+valor3);
-                      var setColor = document.getElementById('id'+valor3);
-                      setColor.style.background = '#dcdcdc';*/
 
                 $("#ciRellenoColor").val(valor1);
                 $("#ciLineaColor").val(valor2);
@@ -3558,14 +3155,7 @@ if (isset($_GET['codigo'])) {
             marcadorContent2.style.border = anchoPequenos + 'px ' + ciEstiloLinea + ' ' + ciLineaColor;
             marcadorContent3.style.border = anchoPequenos + 'px ' + ciEstiloLinea + ' ' + ciLineaColor;
 
-
-
-
         }
-
-
-
-
 
         function pantallaMarcadores(param) {
 
@@ -3597,11 +3187,6 @@ if (isset($_GET['codigo'])) {
 
             }
         }
-
-
-
-
-
 
         function actualizarRegistros(drawJson, id_vivienda, lastOrigen, lastData, lastId) {
             $.ajax({
@@ -3640,7 +3225,6 @@ if (isset($_GET['codigo'])) {
 
                     }
 
-
                     drawnItems.clearLayers();
 
                     var point = L.marker([norte, este], {
@@ -3649,7 +3233,7 @@ if (isset($_GET['codigo'])) {
                         resp: lastData,
                         este: este,
                         norte: norte
-                    }).bindPopup("<strong>Responsable: </strong> " + lastData + "<br><strong>Codigo: </strong> " + id_vivienda + "<hr><a class=\"aVerDetallesPopup\" >Ver habitantes</a><br><small>Nota*:</small>Recargue la pagina para ver<hr>" + registrarDatos + "<a  target=\"_blank\" class='aVerDetallesPopup' href='detallesCasa.php?id=" + lastId + "'><i class='line icon-link'></i> Ver información</a><br><a class='aMover' onclick='editarDatos(\"" + id_vivienda + "\", \"" + lastOrigen + "\",\"" + lastId + "\",\"" + lastData + "\", " + este + ", " + norte + ")'><i class='line icon-note'></i> Convertir en objeto editable</a>");
+                    }).bindPopup("<strong>Responsable: </strong> " + lastData + "<br><strong>Codigo: </strong> " + id_vivienda + "<hr><a class=\"aVerDetallesPopup\" >Ver habitantes</a><br><small>Nota*:</small>Recargue la pagina para ver<hr>" + registrarDatos + "<a  target=\"_blank\" class='aVerDetallesPopup' href='detallesCasa.php?id=" + lastId + "'><i class='line icon-link'></i> Ver informacion</a><br><a class='aMover' onclick='editarDatos(\"" + id_vivienda + "\", \"" + lastOrigen + "\",\"" + lastId + "\",\"" + lastData + "\", " + este + ", " + norte + ")'><i class='line icon-note'></i> Convertir en objeto editable</a>");
 
 
 
@@ -3668,12 +3252,9 @@ if (isset($_GET['codigo'])) {
                 })
         }
     </script>
-
 </body>
 
 </html>
-
-
 <script>
     $(document).ready(function() {
         function actualizarLink() {
@@ -3689,13 +3270,9 @@ if (isset($_GET['codigo'])) {
 
     });
 
-
-
-
     $(document).ready(function() {
 
         function realizarConsultaPersonalizada() {
-
 
             var valor = $("#consultaPersInput").val()
             var ciTamano = $("#ciTamano").val();
@@ -3713,10 +3290,6 @@ if (isset($_GET['codigo'])) {
         }
         $('#btnConsultaPerso').click(realizarConsultaPersonalizada);
     });
-
-
-
-
 
     $(document).ready(function() {
 
@@ -3738,13 +3311,8 @@ if (isset($_GET['codigo'])) {
         $('#colorEspecial').change(cambioColor);
     });
 
-
-
-
-
     /////// Funcion para buscar un numero de cedula /////////
     /////// Funcion para buscar un numero de cedula /////////
-
 
 
     function buscarCedula(cedula) {
@@ -3767,8 +3335,6 @@ if (isset($_GET['codigo'])) {
 
             })
     }
-
-
 
 
     function getParameterByName(name) {
@@ -3794,7 +3360,7 @@ if (isset($_GET['codigo'])) {
         var id = valor.split('*')[4];
 
 
-        var point = L.marker([latitud, longitud]).bindPopup("Resultado encontrado:<br><br>" + nombre + "<br><br><a class='link' target='_blank' href='../datosPersona.php?id=" + id + "'><i class='fa fa-user'></i>&nbsp;&nbsp;Ver&nbsp;información&nbsp;de&nbsp;la&nbsp;persona</a><br><a class='link' target='_blank' href='../detallesNuevoMapa.php?id=" + codigo + "'><i class='fa fa-home'></i>&nbsp;&nbsp;Ver&nbsp;información&nbsp;de&nbsp;la&nbsp;vivienda</a>").addTo(map);
+        var point = L.marker([latitud, longitud]).bindPopup("Resultado encontrado:<br><br>" + nombre + "<br><br><a class='link' target='_blank' href='../datosPersona.php?id=" + id + "'><i class='fa fa-user'></i>&nbsp;&nbsp;Ver&nbsp;informaci锟斤拷n&nbsp;de&nbsp;la&nbsp;persona</a><br><a class='link' target='_blank' href='../detallesNuevoMapa.php?id=" + codigo + "'><i class='fa fa-home'></i>&nbsp;&nbsp;Ver&nbsp;informacion&nbsp;de&nbsp;la&nbsp;vivienda</a>").addTo(map);
 
         point.openPopup();
 
@@ -3803,29 +3369,6 @@ if (isset($_GET['codigo'])) {
         toast("success", "Se encontro un resultado");
 
     }
-
-
-
-
-    /*   function buscar(valor) {
-           map.eachLayer(function(marker) {
-               if (marker.options) {
-                   var markerId = marker.options.codigo;
-                   var este = marker.options.este;
-                   var norte = marker.options.norte;
-
-                   if (valor == markerId) {
-                       marker.openPopup();
-
-                       this.map.setView([norte, este], 19);
-                   }
-               }
-           })
-       }*/
-    /////// Funcion para buscar un numero de cedula /////////
-    /////// Funcion para buscar un numero de cedula /////////
-
-
 
     $(document).ready(function() {
         function displayAvenza() {
@@ -3881,7 +3424,7 @@ if (isset($_GET['codigo'])) {
             resp: lastData,
             este: lastEste,
             norte: lastNorte
-        }).bindPopup("<strong>Responsable: </strong> " + lastData + "<br><strong>Codigo: </strong> " + lastid_vivienda + "<hr><a class=\"aVerDetallesPopup\" >Ver habitantes</a><br><small>Nota*:</small>Recargue la pagina para ver<hr>" + registrarDatos + "<a  target=\"_blank\" class='aVerDetallesPopup' href='detallesCasa.php?id=" + lastId + "'><i class='line icon-link'></i> Ver información</a><br><a class='aMover' onclick='editarDatos(\"" + lastid_vivienda + "\", \"" + lastOrigen + "\",\"" + lastId + "\",\"" + lastData + "\", " + lastEste + ", " + lastNorte + ")'><i class='line icon-note'></i> Convertir en objeto editable</a>");;
+        }).bindPopup("<strong>Responsable: </strong> " + lastData + "<br><strong>Codigo: </strong> " + lastid_vivienda + "<hr><a class=\"aVerDetallesPopup\" >Ver habitantes</a><br><small>Nota*:</small>Recargue la pagina para ver<hr>" + registrarDatos + "<a  target=\"_blank\" class='aVerDetallesPopup' href='detallesCasa.php?id=" + lastId + "'><i class='line icon-link'></i> Ver informacion</a><br><a class='aMover' onclick='editarDatos(\"" + lastid_vivienda + "\", \"" + lastOrigen + "\",\"" + lastId + "\",\"" + lastData + "\", " + lastEste + ", " + lastNorte + ")'><i class='line icon-note'></i> Convertir en objeto editable</a>");;
         drawnItems.clearLayers();
 
 
@@ -3898,10 +3441,6 @@ if (isset($_GET['codigo'])) {
                 break;
         }
     }
-
-
-
-
 
     $(document).ready(function() {
         function deactivarOtraProjection() {
@@ -3930,12 +3469,8 @@ if (isset($_GET['codigo'])) {
     });
 
 
-
-
     $(document).ready(function() {
         function visibilidad() {
-
-
 
             if ($("#tresDe").val() == "Si") {
                 $("#opcionesTresDe").show(500, "swing")
@@ -3947,9 +3482,6 @@ if (isset($_GET['codigo'])) {
 
         $("#tresDe").change(visibilidad);
     });
-
-
-
 
 
     function crearPuntoPorCoordenada() {
@@ -4003,11 +3535,6 @@ if (isset($_GET['codigo'])) {
     }
 
 
-
-
-
-
-
     function hideMenu() {
         $("#contextMenu").hide();
     }
@@ -4047,8 +3574,6 @@ if (isset($_GET['codigo'])) {
                     lastIcon = blueMarker;
                     break;
 
-
-
                 case 'casasPeople':
                     var registrarDatos = "";
                     lastIcon = redMarker;
@@ -4063,7 +3588,7 @@ if (isset($_GET['codigo'])) {
                 id: lastId,
                 este: lastEste,
                 norte: lastNorte
-            }).bindPopup("<strong>Responsable: </strong> " + lastData + "<br><strong>Codigo: </strong> " + lastid_vivienda + "<hr><a class=\"aVerDetallesPopup\" >Ver habitantes</a><br><small>Nota*:</small>Recargue la pagina para ver<hr>" + registrarDatos + "<a  target=\"_blank\" class='aVerDetallesPopup' href='detallesCasa.php?id=" + lastId + "'><i class='line icon-link'></i> Ver información</a><br><a class='aMover' onclick='editarDatos(\"" + lastid_vivienda + "\", \"" + lastOrigen + "\",\"" + lastId + "\",\"" + lastData + "\", " + lastEste + ", " + lastNorte + ")'><i class='line icon-note'></i> Convertir en objeto editable</a>");;
+            }).bindPopup("<strong>Responsable: </strong> " + lastData + "<br><strong>Codigo: </strong> " + lastid_vivienda + "<hr><a class=\"aVerDetallesPopup\" >Ver habitantes</a><br><small>Nota*:</small>Recargue la pagina para ver<hr>" + registrarDatos + "<a  target=\"_blank\" class='aVerDetallesPopup' href='detallesCasa.php?id=" + lastId + "'><i class='line icon-link'></i> Ver informacion</a><br><a class='aMover' onclick='editarDatos(\"" + lastid_vivienda + "\", \"" + lastOrigen + "\",\"" + lastId + "\",\"" + lastData + "\", " + lastEste + ", " + lastNorte + ")'><i class='line icon-note'></i> Convertir en objeto editable</a>");;
 
             drawnItems.clearLayers();
 
@@ -4083,8 +3608,6 @@ if (isset($_GET['codigo'])) {
         }
 
 
-
-
         map.eachLayer(function(marker) {
             if (marker.options) {
                 var markerId = marker.options.id;
@@ -4102,9 +3625,6 @@ if (isset($_GET['codigo'])) {
         })
 
 
-
-
-
         sessionStorage['id'] = id;
         sessionStorage['data'] = data;
         sessionStorage['este'] = este;
@@ -4117,9 +3637,6 @@ if (isset($_GET['codigo'])) {
     function cerrarModal() {
         document.querySelector(".modal.is-visible").classList.remove('is-visible');
     }
-
-
-
 
 
     function delay(callback, ms) {
@@ -4143,9 +3660,6 @@ if (isset($_GET['codigo'])) {
     }, 2000));
 
 
-
-
-
     function realizarBusqueda(valor, icono) {
 
         if (valor != '') {
@@ -4167,9 +3681,9 @@ if (isset($_GET['codigo'])) {
                     res = res.split(',');
                     var rangoEdad = res[0];
 
-                    if (res[1].trim() == 'sexo femenino' || res[1].trim() == 'femenino' || res[1].trim() == 'niñas' || res[1].trim() == 'mujeres') {
+                    if (res[1].trim() == 'sexo femenino' || res[1].trim() == 'femenino' || res[1].trim() == 'ni帽as' || res[1].trim() == 'mujeres') {
                         var newCondition = ' AND sexo="Femenino"';
-                    } else if (res[1].trim() == 'sexo masculino' || res[1].trim() == 'masculino' || res[1].trim() == 'niños' || res[1].trim() == 'hombres') {
+                    } else if (res[1].trim() == 'sexo masculino' || res[1].trim() == 'masculino' || res[1].trim() == 'ni帽os' || res[1].trim() == 'hombres') {
                         var newCondition = ' AND sexo="Masculino"';
                     } else {
                         var newCondition = '';
@@ -4212,7 +3726,7 @@ if (isset($_GET['codigo'])) {
             $("#cargandoConsulta").removeClass('oculto')
         }
     }
- 
+
 
 
     function almacenarConsulta(resultado, nombreCapa, perso, tipo) {
@@ -4230,7 +3744,7 @@ if (isset($_GET['codigo'])) {
                 accion: 'add'
             },
         }).done(function(rePol) {
-            toast("success", "la consulta se almacenó correctamente");
+            toast("success", "la consulta se almaceno correctamente");
 
         })
     }
@@ -4260,13 +3774,11 @@ if (isset($_GET['codigo'])) {
     }
 
 
-    
-
     function deleteCapa(id) {
 
         $('#modal-adminstradorCapasActivas').hide()
         Swal.fire({
-            title: '¿Está seguro?',
+            title: 'Est谩 seguro?',
             html: 'texto',
             icon: 'warning',
             showCancelButton: true,
@@ -4315,24 +3827,6 @@ if (isset($_GET['codigo'])) {
     ?>
 
 
-
-
-    /*const closeEls = document.querySelectorAll("[data-close]");
-    for (const el of closeEls) {
-        el.addEventListener("click", function() {
-            this.parentElement.parentElement.parentElement.classList.remove('is-visible');
-        });
-    }
-*/
-
-
-    /*  document.addEventListener("click", e => {
-          if (e.target == document.querySelector(".modal.is-visible")) {
-              document.querySelector(".modal.is-visible").classList.remove('is-visible');
-          }
-      });
-
-    */
 
     document.addEventListener("keyup", e => {
         if (e.key == "Escape" && document.querySelector(".modal.is-visible")) {
