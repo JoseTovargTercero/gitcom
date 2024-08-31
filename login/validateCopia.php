@@ -1,14 +1,15 @@
 <?php
-	include('../configuracion/conexionMysqli.php');
-	include("../class/clearDates.php");
+include('../configuracion/conexionMysqli.php');
+include("../class/clearDates.php");
+
 
 
 if ($_SESSION['id'] && $_SESSION['rand']) {
 	$id = $_SESSION['id'];
 	$tk = $_SESSION['rand'];
 
-	$stmt = mysqli_prepare($conexion, "SELECT * FROM sist_usuarios WHERE id=? AND u_token=? AND status='0' LIMIT 1");
-	$stmt->bind_param("is", $id, $tk);
+	$stmt = mysqli_prepare($conexion, "SELECT * FROM sist_usuarios WHERE id=? AND status='0' LIMIT 1");
+	$stmt->bind_param("i", $id);
 	$stmt->execute();
 	$result = $stmt->get_result();
 	if ($result->num_rows > 0) {
@@ -16,11 +17,11 @@ if ($_SESSION['id'] && $_SESSION['rand']) {
 
 			$stmt = $conexion->prepare("UPDATE `sist_usuarios` SET `u_token`= '' WHERE id='$id'");
 			$stmt->execute();
-		
-			$_SESSION['nombre']=$row['nombreUser'];
-			$_SESSION['darkMode']=$row['darkMode'];
-			$_SESSION['nivel']=$row['nivel'];
-			$_SESSION['id']=$row['id'];
+
+			$_SESSION['nombre'] = $row['nombreUser'];
+			$_SESSION['darkMode'] = $row['darkMode'];
+			$_SESSION['nivel'] = $row['nivel'];
+			$_SESSION['id'] = $row['id'];
 			$_SESSION["validate"] = "ok";
 			$_SESSION["status"] = $row['status'];
 			$_SESSION["origen"] = $row['origen'];
@@ -34,16 +35,15 @@ if ($_SESSION['id'] && $_SESSION['rand']) {
 				WHERE local_comunidades.id_consejo='$row[dato2]' LIMIT 1";
 				$search2 = $conexion->query($query2);
 				if ($search2->num_rows > 0) {
-				  while ($row2 = $search2->fetch_assoc()) {
-					$_SESSION["entidad_pre"] = $row2['nombre_comuna'];
-					$_SESSION["entidad"] = $row2['nombre_c_comunal'];
-				  }
+					while ($row2 = $search2->fetch_assoc()) {
+						$_SESSION["entidad_pre"] = $row2['nombre_comuna'];
+						$_SESSION["entidad"] = $row2['nombre_c_comunal'];
+					}
 				}
-			  }else{
-					$_SESSION["entidad"] = $row2['dato2'];
-					$_SESSION["entidad_pre"] = $row2['dato1'];
-
-			  }
+			} else {
+				$_SESSION["entidad"] = $row2['dato2'];
+				$_SESSION["entidad_pre"] = $row2['dato1'];
+			}
 
 
 
@@ -53,10 +53,9 @@ if ($_SESSION['id'] && $_SESSION['rand']) {
 			$fecha = time();
 			$nivel = $_SESSION['nivel'];
 
-			$insert = $conexion->query("INSERT INTO log_usuarios (id_user, usuario, fecha) VALUES ('$id','$nombre','$fecha')"); 
+			$insert = $conexion->query("INSERT INTO log_usuarios (id_user, usuario, fecha) VALUES ('$id','$nombre','$fecha')");
 
 			echo '1';
-			
 		}
 	} else {
 		echo 'false';
