@@ -20,7 +20,7 @@ include('../class/count.php');
 if ($_SESSION['nivel'] == 1) {
   unset($_SESSION['proyecto']);
 
-  
+
 
   $id = $_GET['id'];
 
@@ -234,16 +234,12 @@ if ($_SESSION['nivel'] == 1) {
           }
         }
       }
-
-
-
-
-
     }
   }
 
 
-  function comprobarVariable($variable, $pretitulo, $titulo, $diferenteA){
+  function comprobarVariable($variable, $pretitulo, $titulo, $diferenteA)
+  {
     if ($variable != $diferenteA) {
       return '<li class="list-group-item border-0 ps-0 pt-0 text-sm">' . $pretitulo . ': <strong class="text-dark">' . $titulo . '</strong></li>';
     }
@@ -286,14 +282,14 @@ if ($_SESSION['nivel'] == 1) {
       </nav>
       <!-- End Navbar -->
       <div class="container-fluid px-2 px-md-4">
-        <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('../assets/img/Captura22.png');">
+        <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('../assets/img/bg-profile.PNG');">
           <span class="mask  bg-gradient-primary  opacity-6"></span>
         </div>
         <div class="card card-body mx-3 mx-md-4 mt-n6">
           <div class="row gx-4 mb-2">
             <div class="col-auto">
               <div class="avatar avatar-xl position-relative">
-                <img style="opacity: .7;width: 65px !important;" src="../assets/img/icons/<?php echo $imagenPerfil ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                <img style="opacity: .7;width: 65px !important;" src="../assets/img/1-SF-SH.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
               </div>
             </div>
             <div class="col-auto my-auto">
@@ -346,7 +342,11 @@ if ($_SESSION['nivel'] == 1) {
                       <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Pueblo indigena:</strong> <?php echo $pueblo_indigena ?></li>
                       <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Identidad Religiosa: </strong> <?php echo $creencia_reliosa ?></li>
                       <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Dirección:</strong> <?php echo $states[$comunidad] . ' - ' . $calle ?></li>
-                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Tiempo de residencia:</strong> <?php if ($tiempo_reside_sector > 0) { echo $tiempo_reside_sector . ' Años'; } else { echo 'Menos de un año'; } ?></li>
+                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Tiempo de residencia:</strong> <?php if ($tiempo_reside_sector > 0) {
+                                                                                                                                    echo $tiempo_reside_sector . ' Años';
+                                                                                                                                  } else {
+                                                                                                                                    echo 'Menos de un año';
+                                                                                                                                  } ?></li>
                       <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Coordenadas:</strong> W°<?php echo substr($longitud, 0, 8) . '/N°' . substr($latitud, 0, 8) ?></li>
                     </ul>
                   </div>
@@ -541,7 +541,7 @@ if ($_SESSION['nivel'] == 1) {
                 </div>
               </div>
 
-              <div class="col-12 col-xl-8 animated fadeInUp" id="vistaDos"  style="display: none">
+              <div class="col-12 col-xl-8 animated fadeInUp" id="vistaDos" style="display: none">
                 <div class="row">
                   <div class="col-12 col-xl-6">
                     <div class="card card-plain h-100">
@@ -561,24 +561,22 @@ if ($_SESSION['nivel'] == 1) {
                       <div class="p-3">
                         <ul class="list-group">
 
-                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Actividad productiva:</strong> <?php echo $actividad_productiva ?></li>
-                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Actividad agricola:</strong> <?php echo $actividad_agricola ?></li>
+                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Actividad productiva:</strong> <?php echo $actividad_productiva ?></li>
+                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Actividad agricola:</strong> <?php echo $actividad_agricola ?></li>
 
-                        <?php if ($actividad_agricola != 'NO' && $actividad_agricola != 'NO APLICA') {
+                          <?php if ($actividad_agricola != 'NO' && $actividad_agricola != 'NO APLICA') {
 
-                       if ($actividad_agricola != 'Pesca') {
-                        echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Superficie productiva:</strong> '.$superficie_m2_productiva.'</li>';
-                      
-                        echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Infraestructura:</strong> '.$infraestructura_agricola.'</li>';
-                       }
+                            if ($actividad_agricola != 'Pesca') {
+                              echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Superficie productiva:</strong> ' . $superficie_m2_productiva . '</li>';
 
-                        if ($capacidadProductiva != '') {
-                          echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Capacidad productiva:</strong> '.$capacidadProductiva.' kg (por año)</li>';
-                        }
+                              echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Infraestructura:</strong> ' . $infraestructura_agricola . '</li>';
+                            }
 
-
-                        }?>  
-                      </ul>
+                            if ($capacidadProductiva != '') {
+                              echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Capacidad productiva:</strong> ' . $capacidadProductiva . ' kg (por año)</li>';
+                            }
+                          } ?>
+                        </ul>
 
 
                       </div>
@@ -601,24 +599,22 @@ if ($_SESSION['nivel'] == 1) {
                       <div class="p-3">
                         <ul class="list-group">
 
-                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Bombonas pequeñas:</strong> <?php echo $bombona_pequena ?></li>
+                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Bombonas pequeñas:</strong> <?php echo $bombona_pequena ?></li>
 
-                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Bombonas medianas:</strong> <?php echo $bombona_mediana ?></li>
+                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Bombonas medianas:</strong> <?php echo $bombona_mediana ?></li>
 
-                        <?php
+                          <?php
                           if ($bombona_mediana > 0) {
-                            echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Código:</strong> '.$codigo_mediana.'</li>';
-
+                            echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Código:</strong> ' . $codigo_mediana . '</li>';
                           }
-                        ?>
-                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Bombonas grandes:</strong> <?php echo $bombona_grande ?></li>
+                          ?>
+                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Bombonas grandes:</strong> <?php echo $bombona_grande ?></li>
 
-                        <?php
+                          <?php
                           if ($bombona_grande > 0) {
-                            echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Código:</strong> '.$codigo_grande.'</li>';
-
+                            echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Código:</strong> ' . $codigo_grande . '</li>';
                           }
-                        ?>
+                          ?>
                         </ul>
 
 
@@ -637,33 +633,33 @@ if ($_SESSION['nivel'] == 1) {
                       </div>
                       <div class="p-3">
                         <ul class="list-group">
-                        <?php
-                        $organizaciones =
-                          comprobarVariable($promotores_comunitarios, 'Org', 'Promotor comunitario', 'NO') .
-                          comprobarVariable($sala_bnbt, 'Org', 'Sala de Barrio Nuevo Barrio Tricolor', 'NO') .
-                          comprobarVariable($ffm, 'Org', 'Frente Francisco de Miranda', 'NO') .
-                          comprobarVariable($msv, 'Org', 'Brigadista de Somos Venezuela', 'NO') .
-                          comprobarVariable($mesa_tecnica_agua, 'Org', 'Mesa Técnica de agua', 'NO') .
-                          comprobarVariable($mesa_tecnica_telecomunicaciones, 'Org', 'Mesa Técnica de Telecomunicaciones', 'NO') .
-                          comprobarVariable($milicia, 'Org', 'Miliciano', 'NO');
+                          <?php
+                          $organizaciones =
+                            comprobarVariable($promotores_comunitarios, 'Org', 'Promotor comunitario', 'NO') .
+                            comprobarVariable($sala_bnbt, 'Org', 'Sala de Barrio Nuevo Barrio Tricolor', 'NO') .
+                            comprobarVariable($ffm, 'Org', 'Frente Francisco de Miranda', 'NO') .
+                            comprobarVariable($msv, 'Org', 'Brigadista de Somos Venezuela', 'NO') .
+                            comprobarVariable($mesa_tecnica_agua, 'Org', 'Mesa Técnica de agua', 'NO') .
+                            comprobarVariable($mesa_tecnica_telecomunicaciones, 'Org', 'Mesa Técnica de Telecomunicaciones', 'NO') .
+                            comprobarVariable($milicia, 'Org', 'Miliciano', 'NO');
 
                           if ($sexo == 'Femenino') {
                             $organizaciones .=
-                          comprobarVariable($eulalia_buroz, 'Org', 'Eulalia Buroz', 'NO').
-                          comprobarVariable($promotora_parto_humanizado, 'Org', 'Promotora de parto humanizado', 'NO');
+                              comprobarVariable($eulalia_buroz, 'Org', 'Eulalia Buroz', 'NO') .
+                              comprobarVariable($promotora_parto_humanizado, 'Org', 'Promotora de parto humanizado', 'NO');
                           }
 
-                        if ($organizaciones == '') {
-                          echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm">No pertenence a ninguna organizacion de base del poder popular</li>';
-                        } else {
-                          echo $organizaciones;
-                        }
+                          if ($organizaciones == '') {
+                            echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm">No pertenence a ninguna organizacion de base del poder popular</li>';
+                          } else {
+                            echo $organizaciones;
+                          }
 
-                        if (comprobarVariable($milicia, 'Org', 'Miliciano', 'NO') != '') {
-                          echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Grado militar:</strong> '.$grado_militar.'</li>';
-                        }
+                          if (comprobarVariable($milicia, 'Org', 'Miliciano', 'NO') != '') {
+                            echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Grado militar:</strong> ' . $grado_militar . '</li>';
+                          }
 
-                        ?>
+                          ?>
                         </ul>
                       </div>
 
@@ -685,17 +681,15 @@ if ($_SESSION['nivel'] == 1) {
                         <ul class="list-group">
 
 
-                        <?php
+                          <?php
                           if ($edad >= 18) {
-                            echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Tipo de voto:</strong> '.$tipo_voto.'</li>';
+                            echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Tipo de voto:</strong> ' . $tipo_voto . '</li>';
 
-                            echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Otros partidos:</strong> '.$otros_p_polo.'</li>';
-
-                          }else {
+                            echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Otros partidos:</strong> ' . $otros_p_polo . '</li>';
+                          } else {
                             echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm">No hay información para mostrar</li>';
-
                           }
-                        ?>
+                          ?>
                         </ul>
 
 
