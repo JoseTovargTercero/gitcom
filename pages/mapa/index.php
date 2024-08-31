@@ -1096,7 +1096,7 @@ if (isset($_GET['codigo'])) {
 
                         <div class="col-lg-12">
                             <div class="form-group label-floating is-empty">
-                                <label style="font-weight: 100;" class="control-label" onchange="">Tama�0�9o </label>
+                                <label style="font-weight: 100;" class="control-label" onchange="">Tamaño </label>
                                 <input type="number" class="form-control" id="ciTamano" value="4" onchange="iconoPersonalizadoCi()">
                                 <span style="position: absolute;right: 0;margin: -33px 24px 0 0;font-size: 12px;color: #b8b8b8;">px</span>
 
@@ -1337,6 +1337,7 @@ if (isset($_GET['codigo'])) {
     <script src="plugins/leaflet.browser.print-master/dist/leaflet.browser.print.js"></script>
     <script src="plugins/leaflet.browser.print-master/dist/leaflet-geoman.js"></script>
     <?php
+    /*
     //  $instancia_def
 
     if (isset($_GET['codigo'])) {
@@ -1381,7 +1382,7 @@ if (isset($_GET['codigo'])) {
             </script>
     <?php
         }
-    }
+    }*/
     ?>
 
 
