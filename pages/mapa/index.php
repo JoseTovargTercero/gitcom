@@ -1335,6 +1335,54 @@ if (isset($_GET['codigo'])) {
 
     <script src="plugins/leaflet.browser.print-master/dist/leaflet.browser.print.js"></script>
     <script src="plugins/leaflet.browser.print-master/dist/leaflet-geoman.js"></script>
+    <?php
+    //  $instancia_def
+
+    if (isset($_GET['codigo'])) {
+
+
+        if ($instancia == '1') {
+            // comunidad -> 
+            $query_p = "SELECT * FROM local_comunidades WHERE id_consejo='$instancia_def'";
+            $buscarMa = $conexion->query($query_p);
+            if ($buscarMa->num_rows > 0) {
+                while ($row_p = $buscarMa->fetch_assoc()) {
+                    $id_municipio = $row_p['id_municipio'];
+                    $id_parroquia = $row_p['id_parroquia'];
+                    $id_comuna = $row_p['id_Comuna'];
+                }
+            }
+    ?>
+            <script>
+                $("#mcp" + " option[value='<?php echo $id_municipio ?>']").attr("selected", true);
+                $("#paq" + " option[value='<?php echo $id_parroquia ?>']").attr("selected", true);
+                $("#cma" + " option[value='<?php echo $id_comuna ?>']").attr("selected", true);
+                $("#cmia" + " option[value='<?php echo $instancia_def ?>']").attr("selected", true);
+            </script>
+
+        <?php
+        } elseif ($instancia == '2') {
+            // comunidad -> 
+            $query_p = "SELECT * FROM local_comunidades WHERE id_comuna='$instancia_def'";
+            $buscarMa = $conexion->query($query_p);
+            if ($buscarMa->num_rows > 0) {
+                while ($row_p = $buscarMa->fetch_assoc()) {
+                    $id_municipio = $row_p['id_municipio'];
+                    $id_parroquia = $row_p['id_parroquia'];
+                    $id_comuna = $row_p['id_comuna'];
+                }
+            }
+        ?>
+            <script>
+                $("#mcp" + " option[value='<?php echo $id_municipio ?>']").attr("selected", true);
+                $("#paq" + " option[value='<?php echo $id_parroquia ?>']").attr("selected", true);
+                $("#cma" + " option[value='<?php echo $instancia_def ?>']").attr("selected", true);
+            </script>
+    <?php
+        }
+    }
+    ?>
+
 
 
     <script>
@@ -3846,6 +3894,4 @@ if (isset($_GET['codigo'])) {
 
 
     });
-
-    console.clear();
 </script>

@@ -28,17 +28,16 @@
                 break;
         }
     }
-    
 
-    echo contar2('local_comunidades', 'status="1"'.$consultta2); // 0 = 
-    echo '*';
-    echo contar2('inf_habitantes', 'id!=""'.$consulta); // 0 = 
-    echo '*';
-    echo contar2('inf_habitantes', 'rol_familiar!="JEFE DE FAMILIA"'.$consulta); // 0 = 
-    echo '*';
-        //$d = contar2('inf_casas', 'material_construccion!=""'.$add_consulta);
-    echo contar2('inf_casas', 'id!=""'.$consulta); // 0 = 
-    echo '*';
-   
+
+    echo json_encode([
+        contar2('local_comunidades', 'status="1"' . $consultta2),
+        contar2('inf_habitantes', 'id!=""' . $consulta),
+        contar2('inf_habitantes', 'rol_familiar!="JEFE DE FAMILIA"' . $consulta),
+        contar2('inf_casas', 'id!=""' . $consulta)
+    ]);
+
+
+
 
     ?>

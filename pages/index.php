@@ -17,7 +17,7 @@ include('../configuracion/conexionMysqli.php');
 include('../class/count.php');
 include('../class/arrayGraficos.php');
 
-if($_SESSION['nivel'] == ''){
+if ($_SESSION['nivel'] == '') {
   define('PAGINA_INICIO', '../login/salir.php');
   header('Location: ' . PAGINA_INICIO);
 }
@@ -55,7 +55,8 @@ if ($_SESSION['nivel'] != '') {
 
     echo '<script>' . PHP_EOL;
 
-    function addInfoInstancias($tabla, $array, $campo1, $campo2, $campo3)    {
+    function addInfoInstancias($tabla, $array, $campo1, $campo2, $campo3)
+    {
       global $conexion;
       switch ($tabla) {
         case '1':
@@ -231,7 +232,7 @@ if ($_SESSION['nivel'] != '') {
                 </div>
                 <div class="text-end pt-1">
                   <p class="text-sm mb-0 text-capitalize">Viviendas</p>
-                  <h4 class="mb-0" id=""><?php echo number_format(contar('inf_casas', '0', 'extra'), '0', '.', '.') ?></h4>
+                  <h4 class="mb-0" id="c_viviendas"></h4>
 
                 </div>
               </div>
@@ -701,11 +702,12 @@ if ($_SESSION['nivel'] != '') {
               },
             })
             .done(function(rsult) {
-              let arrayResult = rsult.split('*')
+              let arrayResult = JSON.parse(rsult)
+              console.log(arrayResult)
               $('#c_comunidades').html(separadorMiles(arrayResult[0]))
               $('#c_habitantes').html(separadorMiles(arrayResult[1]))
               $('#c_familias').html(separadorMiles(arrayResult[2]))
-             // $('#c_viviendas').html(separadorMiles(arrayResult[3]))
+              $('#c_viviendas').html(separadorMiles(arrayResult[3]))
 
             })
         }
@@ -1051,14 +1053,14 @@ if ($_SESSION['nivel'] != '') {
                   otrosC += cantidad;
                 } else {
                   data.push({
-                    category: val[0] + ' ('+cantidad+'/'+total+')',
+                    category: val[0] + ' (' + cantidad + '/' + total + ')',
                     value: cantidad
                   })
                 }
 
               } else {
                 data.push({
-                  category: val[0] + ' ('+cantidad+'/'+total+')',
+                  category: val[0] + ' (' + cantidad + '/' + total + ')',
                   value: cantidad
                 })
               }
@@ -1070,7 +1072,7 @@ if ($_SESSION['nivel'] != '') {
 
             if (otrosC > 1) {
               data.push({
-                category: 'Otros' + ' ('+cantidad+'/'+total+')',
+                category: 'Otros' + ' (' + cantidad + '/' + total + ')',
                 value: otrosC
               })
             }
@@ -1416,6 +1418,7 @@ if ($_SESSION['nivel'] != '') {
       }
 
       var graficoBase = 0;
+
       function setBase100(index) {
         if (index != 'last') {
           graficoBase = index;
