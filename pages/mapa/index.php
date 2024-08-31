@@ -16,6 +16,9 @@ while ($r = $query->fetch_object()) {
 
 $id_usuario = $_SESSION['id'];
 
+$instancia =  '0x';
+$instancia_def = '0x';
+$instancia_def_name = '0x';
 
 $codigoProyecto = 0;
 /* VALIDAR SI LO QUE SE ESTA ABRIENDO ES UN PROYECTO O UNA CONSULTA RAPIDA */
@@ -38,8 +41,6 @@ if (isset($_GET['codigo'])) {
             $instancia = $row_p['instancia'];
         }
     }
-    $instancia_def_name = '0x';
-
 
     if ($instancia == '2') {
         //saca el nombre de la comuna
