@@ -1,5 +1,6 @@
 <?php
 // Configuración de CORS
+header("Access-Control-Allow-Origin: http://http://localhost/"); // Permitir el dominio de origen
 header("Access-Control-Allow-Origin: https://sigep-amazonas.com"); // Permitir el dominio de origen
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS"); // Métodos permitidos
 header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Encabezados permitidos
@@ -60,6 +61,6 @@ try {
     $stmt->close();
 } catch (Exception $e) {
     // Manejar errores y devolverlos como JSON
-   http_response_code(500);
+    http_response_code(500);
     echo json_encode(['el error es: ' => $e->getMessage()]);
 }
