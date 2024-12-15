@@ -33,7 +33,7 @@ try {
         LEFT JOIN local_parroquia AS PQ ON PQ.id_parroquias = CA.id_parroquia
         LEFT JOIN local_comunas AS CAS ON CAS.id_Comuna = CA.id_comuna
         LEFT JOIN local_comunidades AS COM ON COM.id_consejo = CA.id_c_comunal
-        WHERE identificador = ?");
+        WHERE cedula = ?");
 
     if (!$stmt) {
         throw new Exception("Error al preparar la consulta: " . mysqli_error($conexion));
@@ -60,6 +60,6 @@ try {
     $stmt->close();
 } catch (Exception $e) {
     // Manejar errores y devolverlos como JSON
-    //  http_response_code(500);
+   http_response_code(500);
     echo json_encode(['el error es: ' => $e->getMessage()]);
 }
