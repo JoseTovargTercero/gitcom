@@ -1,20 +1,13 @@
 <?php
 include('../configuracion/conexionMysqli.php');
 
-// Permitir solicitudes desde http://localhost
-header("Access-Control-Allow-Origin: https://sigep-amazonas.com");
-
-// Permitir métodos HTTP específicos
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-
-// Permitir encabezados específicos
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-/*
-// Manejar solicitudes OPTIONS (preflight)
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}*/
+    header("Access-Control-Allow-Origin: https://sigep-amazonas.com");
+    header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization");
+    header("HTTP/1.1 204 No Content");
+    exit(0);
+}
 
 
 header('Content-Type: application/json');
