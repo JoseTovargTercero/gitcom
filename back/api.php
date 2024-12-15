@@ -60,6 +60,6 @@ try {
     $stmt->close();
 } catch (Exception $e) {
     // Manejar errores y devolverlos como JSON
-    http_response_code(500);
-    echo json_encode(['error' => $e->getMessage()]);
+    //  http_response_code(500);
+    echo json_encode(['el error es: ' => $e->getMessage()]);
 }
