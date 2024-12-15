@@ -20,7 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 header('Content-Type: application/json');
 
 try {
-    // Verificar si los datos JSON son válidos
+    echo json_encode(['suc' => 's']);
+    /*  // Verificar si los datos JSON son válidos
     $datos = json_decode(file_get_contents('php://input'), true);
     if (!$datos || !isset($datos['identificador'])) {
         throw new Exception("Datos JSON inválidos o campo 'identificador' faltante.");
@@ -60,7 +61,7 @@ try {
         echo json_encode(['message' => 'No se encontraron resultados']);
     }
 
-    $stmt->close();
+    $stmt->close();*/
 } catch (Exception $e) {
     // Manejar errores y devolverlos como JSON
     http_response_code(500);
