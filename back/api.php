@@ -1,16 +1,20 @@
 <?php
-include('../configuracion/conexionMysqli.php');
+// Configuración de CORS
+header("Access-Control-Allow-Origin: https://sigep-amazonas.com"); // Permitir el dominio de origen
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS"); // Métodos permitidos
+header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Encabezados permitidos
+header("Access-Control-Allow-Credentials: true"); // Si es necesario enviar cookies u otras credenciales
+header('Content-Type: application/json');
 
+// Manejo de solicitudes preflight (OPTIONS)
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    header("Access-Control-Allow-Origin: https://sigep-amazonas.com");
-    header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-    header("Access-Control-Allow-Headers: Content-Type, Authorization");
-    header("HTTP/1.1 204 No Content");
+    http_response_code(204); // Sin contenido
     exit(0);
 }
 
 
-header('Content-Type: application/json');
+include('../configuracion/conexionMysqli.php');
+
 
 try {
     // Verificar si los datos JSON son válidos
