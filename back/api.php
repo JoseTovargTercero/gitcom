@@ -1,27 +1,11 @@
 <?php
 include('../configuracion/conexionMysqli.php');
 
-// Permitir solicitudes desde http://localhost
-header("Access-Control-Allow-Origin: http://localhost");
-
-// Permitir métodos HTTP específicos
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-
-// Permitir encabezados específicos
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-/*
-// Manejar solicitudes OPTIONS (preflight)
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}*/
-
 
 header('Content-Type: application/json');
 
 try {
-    echo json_encode(['suc' => 's']);
-    /*  // Verificar si los datos JSON son válidos
+    // Verificar si los datos JSON son válidos
     $datos = json_decode(file_get_contents('php://input'), true);
     if (!$datos || !isset($datos['identificador'])) {
         throw new Exception("Datos JSON inválidos o campo 'identificador' faltante.");
@@ -61,7 +45,7 @@ try {
         echo json_encode(['message' => 'No se encontraron resultados']);
     }
 
-    $stmt->close();*/
+    $stmt->close();
 } catch (Exception $e) {
     // Manejar errores y devolverlos como JSON
     http_response_code(500);
