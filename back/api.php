@@ -1,7 +1,7 @@
 <?php
 // Configuración de CORS
 header("Access-Control-Allow-Origin: http://localhost"); // Permitir el dominio de origen
-header("Access-Control-Allow-Origin: https://sigep-amazonas.com"); // Permitir el dominio de origen
+//header("Access-Control-Allow-Origin: https://sigep-amazonas.com"); // Permitir el dominio de origen
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS"); // Métodos permitidos
 header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Encabezados permitidos
 header("Access-Control-Allow-Credentials: true"); // Si es necesario enviar cookies u otras credenciales
