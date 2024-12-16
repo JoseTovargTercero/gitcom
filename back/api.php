@@ -27,7 +27,7 @@ try {
     $identificador = $datos['identificador'];
 
     // Preparar la consulta
-    $stmt = mysqli_prepare($conexion, "SELECT HA.nombre, HA.sexo, CA.*, MCP.nombre_municipio, PQ.nombre_parroquia, CAS.nombre_comuna, COM.nombre_c_comunal
+    $stmt = mysqli_prepare($conexion, "SELECT HA.nombre, HA.rol_familiar, HA.sexo, CA.*, MCP.nombre_municipio, PQ.nombre_parroquia, CAS.nombre_comuna, COM.nombre_c_comunal
         FROM `inf_habitantes` AS HA
         LEFT JOIN inf_casas AS CA ON CA.id_vivienda = HA.id_vivienda
         LEFT JOIN local_municipio AS MCP ON MCP.id_municipio = CA.id_municipio
