@@ -6,7 +6,7 @@ include('../class/count.php');
 
 
 if ($_GET["key"] == 'i') {
-  /*if (number_format(contar2('temp_areasinteres', 'id!=""'), '0', '.', '.') > 0) {
+  if (number_format(contar2('temp_areasinteres', 'id!=""'), '0', '.', '.') > 0) {
     $stmt_aeras = $conexion->prepare("INSERT INTO areasinteres (id_comunidad, id_area_interes, area_interes, piso, pintura, iluminacion, techo, tipoAgro, produccion, instalada, producto, longitud, latitud) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     $query_p = "SELECT * FROM temp_areasinteres ";
@@ -19,7 +19,7 @@ if ($_GET["key"] == 'i') {
       }
     }
     $stmt_aeras->close();
-  }*/
+  }
 
 
   $stmt_casa = $conexion->prepare("INSERT INTO inf_casas (id_municipio, id_parroquia, id_comuna, id_c_comunal, id_vivienda, tipo, coordenada_este, coordenada_norte, jefe_calle, material_construccion, condicion_vivienda, cantidad_habitaciones, vivienda_venezuela, bnbt, tenencia_tierra, agua_potable, almacenamiento_agua, agua_servidas, disposicion_basura, frecuencia_recoleccion, electricidad, medidor_electricidad, telefonia, internet, television, tv_satelital, cod_catastro, cod_ine, responsable, zonaRiesgo, robos, cantidadRobos, ultimoRobo, denucio, tratamientoAgua, tapaPozo, animalesDomesticos, suministro_agua_consumo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -32,7 +32,7 @@ if ($_GET["key"] == 'i') {
       $stmt_casa->execute();
     }
   }
-  /*
+
 
   if (number_format(contar2('temp_inf_jcalles', 'id!=""'), '0', '.', '.') > 0) {
     $stmt_call = $conexion->prepare("INSERT INTO inf_jcalles (id_comunidad, cedula, nombre_j, telefono, sexo, cv, carnet_psuv, calle, toponimiaCalle, tipoVoto) VALUES (?,?,?,?,?,?,?,?,?,?)");
@@ -77,7 +77,7 @@ if ($_GET["key"] == 'i') {
   $conexion->query("TRUNCATE `temp_areasinteres`");
   $conexion->query("TRUNCATE `temp_inf_casas`");
   $conexion->query("TRUNCATE `temp_inf_jcalles`");
-  $conexion->query("TRUNCATE `temp_inf_habitantes`");*/
+  $conexion->query("TRUNCATE `temp_inf_habitantes`");
 } else {
 
   $conexion->query("TRUNCATE `temp_areasinteres`");
@@ -85,8 +85,8 @@ if ($_GET["key"] == 'i') {
   $conexion->query("TRUNCATE `temp_inf_jcalles`");
   $conexion->query("TRUNCATE `temp_inf_habitantes`");
 }
-/*
+
 define('PAGINA_INICIO', '../pages/importar');
 header('Location: ' . PAGINA_INICIO);
-*/
+
 // retornar
