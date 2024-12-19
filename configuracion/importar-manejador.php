@@ -1,7 +1,9 @@
 <?php
 include('conexionMysqli.php');
 include('../class/count.php');
-
+ini_set('display_errors', 1); // Habilitar visualización de errores
+ini_set('display_startup_errors', 1); // Mostrar errores de inicio
+error_reporting(E_ALL); // Reportar todos los errores
 
 
 
