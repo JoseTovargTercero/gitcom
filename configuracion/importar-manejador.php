@@ -85,8 +85,8 @@ if ($_GET["key"] == 'i') {
   $conexion->query("TRUNCATE `temp_inf_jcalles`");
   $conexion->query("TRUNCATE `temp_inf_habitantes`");
 }
-
+/*
 define('PAGINA_INICIO', '../pages/importar');
 header('Location: ' . PAGINA_INICIO);
-
+*/
 // retornar
