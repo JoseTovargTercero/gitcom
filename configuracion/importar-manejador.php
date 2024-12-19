@@ -6,52 +6,130 @@ include('../class/count.php');
 
 
 if ($_GET["key"] == 'i') {
-  if (number_format(contar2('temp_areasinteres', 'id!=""'), '0', '.', '.') > 0) {
-    $stmt_aeras = $conexion->prepare("INSERT INTO areasinteres (id_comunidad, id_area_interes, area_interes, piso, pintura, iluminacion, techo, tipoAgro, produccion, instalada, producto, longitud, latitud) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    $query_p = "SELECT * FROM temp_areasinteres ";
+
+  try {
+    $conexion->begin_transaction();
+
+
+    if (number_format(contar2('temp_areasinteres', 'id!=""'), '0', '.', '.') > 0) {
+      $stmt_aeras = $conexion->prepare("INSERT INTO areasinteres (id_comunidad, id_area_interes, area_interes, piso, pintura, iluminacion, techo, tipoAgro, produccion, instalada, producto, longitud, latitud) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+      $query_p = "SELECT * FROM temp_areasinteres ";
+      $buscarMa = $conexion->query($query_p);
+      if ($buscarMa->num_rows > 0) {
+        while ($row_p = $buscarMa->fetch_assoc()) {
+
+          $stmt_aeras->bind_param("sssssssssssss", $row_p['id_comunidad'], $row_p['id_area_interes'], $row_p['area_interes'], $row_p['piso'], $row_p['pintura'], $row_p['iluminacion'], $row_p['techo'], $row_p['tipoAgro'], $row_p['produccion'], $row_p['instalada'], $row_p['producto'], $row_p['longitud'], $row_p['latitud']);
+          $stmt_aeras->execute();
+        }
+      }
+      $stmt_aeras->close();
+    }
+
+
+
+    // Selecciona los datos de la tabla temporal
+    $query_p = "SELECT * FROM temp_inf_casas";
     $buscarMa = $conexion->query($query_p);
-    if ($buscarMa->num_rows > 0) {
-      while ($row_p = $buscarMa->fetch_assoc()) {
 
-        $stmt_aeras->bind_param("sssssssssssss", $row_p['id_comunidad'], $row_p['id_area_interes'], $row_p['area_interes'], $row_p['piso'], $row_p['pintura'], $row_p['iluminacion'], $row_p['techo'], $row_p['tipoAgro'], $row_p['produccion'], $row_p['instalada'], $row_p['producto'], $row_p['longitud'], $row_p['latitud']);
-        $stmt_aeras->execute();
+    if (!$buscarMa) {
+      throw new Exception("Error al ejecutar la consulta SELECT: " . $conexion->error);
+    }
+
+    if ($buscarMa->num_rows > 0) {
+      // Preparamos la base de la consulta de inserción
+      $baseQuery = "INSERT INTO inf_casas (id_municipio, id_parroquia, id_comuna, id_c_comunal, id_vivienda, tipo, coordenada_este, coordenada_norte, jefe_calle, material_construccion, condicion_vivienda, cantidad_habitaciones, vivienda_venezuela, bnbt, tenencia_tierra, agua_potable, almacenamiento_agua, agua_servidas, disposicion_basura, frecuencia_recoleccion, electricidad, medidor_electricidad, telefonia, internet, television, tv_satelital, cod_catastro, cod_ine, responsable, zonaRiesgo, robos, cantidadRobos, ultimoRobo, denucio, tratamientoAgua, tapaPozo, animalesDomesticos, suministro_agua_consumo) VALUES ";
+
+      $values = [];
+      $params = [];
+      $types = str_repeat("s", 38); // 38 columnas de tipo string
+
+      // Recorremos los resultados y preparamos los valores para la consulta masiva
+      while ($row_p = $buscarMa->fetch_assoc()) {
+        $values[] = "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $params = array_merge($params, [
+          $row_p['id_municipio'],
+          $row_p['id_parroquia'],
+          $row_p['id_comuna'],
+          $row_p['id_c_comunal'],
+          $row_p['id_vivienda'],
+          $row_p['tipo'],
+          $row_p['coordenada_este'],
+          $row_p['coordenada_norte'],
+          $row_p['jefe_calle'],
+          $row_p['material_construccion'],
+          $row_p['condicion_vivienda'],
+          $row_p['cantidad_habitaciones'],
+          $row_p['vivienda_venezuela'],
+          $row_p['bnbt'],
+          $row_p['tenencia_tierra'],
+          $row_p['agua_potable'],
+          $row_p['almacenamiento_agua'],
+          $row_p['agua_servidas'],
+          $row_p['disposicion_basura'],
+          $row_p['frecuencia_recoleccion'],
+          $row_p['electricidad'],
+          $row_p['medidor_electricidad'],
+          $row_p['telefonia'],
+          $row_p['internet'],
+          $row_p['television'],
+          $row_p['tv_satelital'],
+          $row_p['cod_catastro'],
+          $row_p['cod_ine'],
+          $row_p['responsable'],
+          $row_p['zonaRiesgo'],
+          $row_p['robos'],
+          $row_p['cantidadRobos'],
+          $row_p['ultimoRobo'],
+          $row_p['denucio'],
+          $row_p['tratamientoAgua'],
+          $row_p['tapaPozo'],
+          $row_p['animalesDomesticos'],
+          $row_p['suministro_agua_consumo']
+        ]);
+      }
+
+      // Construimos la consulta completa
+      $query = $baseQuery . implode(", ", $values);
+
+      // Preparamos la consulta
+      $stmt_casa = $conexion->prepare($query);
+      if (!$stmt_casa) {
+        throw new Exception("Error al preparar la consulta INSERT: " . $conexion->error);
+      }
+
+      // Vinculamos los parámetros
+      $stmt_casa->bind_param(str_repeat($types, count($values)), ...$params);
+
+      // Ejecutamos la consulta
+      if (!$stmt_casa->execute()) {
+        throw new Exception("Error al ejecutar la consulta INSERT: " . $stmt_casa->error);
+      }
+
+      echo "Datos insertados correctamente.";
+    } else {
+      echo "No se encontraron datos para insertar.";
+    }
+
+
+    if (number_format(contar2('temp_inf_jcalles', 'id!=""'), '0', '.', '.') > 0) {
+      $stmt_call = $conexion->prepare("INSERT INTO inf_jcalles (id_comunidad, cedula, nombre_j, telefono, sexo, cv, carnet_psuv, calle, toponimiaCalle, tipoVoto) VALUES (?,?,?,?,?,?,?,?,?,?)");
+
+      $query_p = "SELECT * FROM temp_inf_jcalles ";
+      $buscarMa = $conexion->query($query_p);
+      if ($buscarMa->num_rows > 0) {
+        while ($row_p = $buscarMa->fetch_assoc()) {
+          $stmt_call->bind_param("ssssssssss", $row_p['id_comunidad'], $row_p['cedula'], $row_p['nombre_j'], $row_p['telefono'], $row_p['sexo'], $row_p['cv'], $row_p['carnet_psuv'], $row_p['calle'], $row_p['toponimiaCalle'], $row_p['tipoVoto']);
+          $stmt_call->execute();
+        }
       }
     }
-    $stmt_aeras->close();
-  }
-
-
-  $stmt_casa = $conexion->prepare("INSERT INTO inf_casas (id_municipio, id_parroquia, id_comuna, id_c_comunal, id_vivienda, tipo, coordenada_este, coordenada_norte, jefe_calle, material_construccion, condicion_vivienda, cantidad_habitaciones, vivienda_venezuela, bnbt, tenencia_tierra, agua_potable, almacenamiento_agua, agua_servidas, disposicion_basura, frecuencia_recoleccion, electricidad, medidor_electricidad, telefonia, internet, television, tv_satelital, cod_catastro, cod_ine, responsable, zonaRiesgo, robos, cantidadRobos, ultimoRobo, denucio, tratamientoAgua, tapaPozo, animalesDomesticos, suministro_agua_consumo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-  $query_p = "SELECT * FROM temp_inf_casas ";
-  $buscarMa = $conexion->query($query_p);
-  if ($buscarMa->num_rows > 0) {
-    while ($row_p = $buscarMa->fetch_assoc()) {
-
-      $stmt_casa->bind_param("ssssssssssssssssssssssssssssssssssssss", $row_p['id_municipio'], $row_p['id_parroquia'], $row_p['id_comuna'], $row_p['id_c_comunal'], $row_p['id_vivienda'], $row_p['tipo'], $row_p['coordenada_este'], $row_p['coordenada_norte'], $row_p['jefe_calle'], $row_p['material_construccion'], $row_p['condicion_vivienda'], $row_p['cantidad_habitaciones'], $row_p['vivienda_venezuela'], $row_p['bnbt'], $row_p['tenencia_tierra'], $row_p['agua_potable'], $row_p['almacenamiento_agua'], $row_p['agua_servidas'], $row_p['disposicion_basura'], $row_p['frecuencia_recoleccion'], $row_p['electricidad'], $row_p['medidor_electricidad'], $row_p['telefonia'], $row_p['internet'], $row_p['television'], $row_p['tv_satelital'], $row_p['cod_catastro'], $row_p['cod_ine'], $row_p['responsable'], $row_p['zonaRiesgo'], $row_p['robos'], $row_p['cantidadRobos'], $row_p['ultimoRobo'], $row_p['denucio'], $row_p['tratamientoAgua'], $row_p['tapaPozo'], $row_p['animalesDomesticos'], $row_p['suministro_agua_consumo']);
-      $stmt_casa->execute();
-    }
-  }
-
-
-  if (number_format(contar2('temp_inf_jcalles', 'id!=""'), '0', '.', '.') > 0) {
-    $stmt_call = $conexion->prepare("INSERT INTO inf_jcalles (id_comunidad, cedula, nombre_j, telefono, sexo, cv, carnet_psuv, calle, toponimiaCalle, tipoVoto) VALUES (?,?,?,?,?,?,?,?,?,?)");
-
-    $query_p = "SELECT * FROM temp_inf_jcalles ";
-    $buscarMa = $conexion->query($query_p);
-    if ($buscarMa->num_rows > 0) {
-      while ($row_p = $buscarMa->fetch_assoc()) {
-        $stmt_call->bind_param("ssssssssss", $row_p['id_comunidad'], $row_p['cedula'], $row_p['nombre_j'], $row_p['telefono'], $row_p['sexo'], $row_p['cv'], $row_p['carnet_psuv'], $row_p['calle'], $row_p['toponimiaCalle'], $row_p['tipoVoto']);
-        $stmt_call->execute();
-      }
-    }
-  }
 
 
 
 
 
-  if (number_format(contar2('temp_inf_habitantes', 'id!=""'), '0', '.', '.') > 0) {
     $stmt_habit = $conexion->prepare("INSERT INTO inf_habitantes (id_municipio, id_parroquia, id_comuna, id_c_comunal, coordenada_este, coordenada_norte, CASA, id_vivienda, id_familia, rol_familiar, cedula, nombre, telefono, fecha_de_nacimiento, sexo, genero, tiempo_reside_sector, parentesco_al_jefe, pueblo_indigena, nacionalidad, procedencia, educacion, profesion, ocupacion, instancia_laboral, conf_ingreso_mensual, pertenece_cuerpo_seguridad_gestion_riesgo, practica_deporte, realiza_actividad_cultural, creencia_reliosa, imaginarios_gustos_etc, diabetico, hipertenso, artritis, asma, enf_renal, cancer, epilepsia, linfoma, paralisis, enf_cardiaca, otra, recibe_tratamiento, dificultad_visual, discapacidad, carnet_discapacidad, requiere_ayuda, recibe_bono_jose_g, embarazada, embarazada_alto_riesgo, concepcion_semana, parto_humanizado, lactancia_materna, madre_lactante, bono_lactancia, planificacion_familiar, deficit_nutricional, combo_inn, carnet_patria, codigo_carnet, serial_carnet, hogares_de_la_patria, combo_alimenticio_clap, cantidadBolsas, pension, actividad_productiva, actividad_agricola, superficie_m2_productiva, infraestructura_agricola, capacidadProductiva, movilizacion, concejo_comunal, raas, clap, promotores_comunitarios, milicia, miliciaActivo, capacitacionAdies, sala_bnbt, ubch, chamba_juvenil, ffm, msv, robert_serra, eulalia_buroz, promotora_parto_humanizado, mesa_tecnica_agua, mesa_tecnica_telecomunicaciones, votante, caracterizacion, congreso_pueblos, bombona_pequena, bombona_mediana, bombona_grande, codigo_mediana, codigo_grande, migracion, muerte, conoceCuandrante, jefeCuadrante, telefonoCuadrante, reportadoCuadrante, atendidoCuadrante, grupoIntercambio, productorIndependiente, lugarProduccionAgricola, lugarProduccion, produccion, registro, consejo, partidos, terreno_productivo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $query_p = "SELECT * FROM temp_inf_habitantes ";
     $buscarMa = $conexion->query($query_p);
@@ -63,30 +141,43 @@ if ($_GET["key"] == 'i') {
         $stmt_habit->execute();
       }
     }
-  }
-  $date = date('Y-m-d');
-  $ultimocambio = date('Y-m-d');
 
-  $stmt_u = $conexion->prepare("UPDATE  `local_comunidades` SET `status`='1',  `fechaCarga`='$date', `ultimocambio`='$ultimocambio' WHERE id_consejo='$comunidad'");
-  $stmt_u->execute();
+    $date = date('Y-m-d');
+    $ultimocambio = date('Y-m-d');
 
-  $stmt_casa->close();
-  $stmt_call->close();
-  $stmt_habit->close();
+    $stmt_u = $conexion->prepare("UPDATE  `local_comunidades` SET `status`='1',  `fechaCarga`='$date', `ultimocambio`='$ultimocambio' WHERE id_consejo='$comunidad'");
+    $stmt_u->execute();
 
+
+    /*
   $conexion->query("TRUNCATE `temp_areasinteres`");
   $conexion->query("TRUNCATE `temp_inf_casas`");
   $conexion->query("TRUNCATE `temp_inf_jcalles`");
-  $conexion->query("TRUNCATE `temp_inf_habitantes`");
+  $conexion->query("TRUNCATE `temp_inf_habitantes`");*/
+
+
+
+    $conexion->commit();
+
+    $stmt_u->close();
+    $stmt_call->close();
+    $stmt_habit->close();
+    $stmt_casa->close();
+    $buscarMa->close();
+  } catch (Exception $e) {
+    $conexion->rollback();
+    echo "Error: " . $e->getMessage();
+  }
 } else {
 
   $conexion->query("TRUNCATE `temp_areasinteres`");
   $conexion->query("TRUNCATE `temp_inf_casas`");
   $conexion->query("TRUNCATE `temp_inf_jcalles`");
   $conexion->query("TRUNCATE `temp_inf_habitantes`");
-}
+}/*
 
 define('PAGINA_INICIO', '../pages/importar');
 header('Location: ' . PAGINA_INICIO);
 
 // retornar
+*/
