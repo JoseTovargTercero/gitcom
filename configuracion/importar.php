@@ -244,7 +244,6 @@ if ($_SESSION["nivel"] == 1) {
     $stmt_habit->close();
   }
 }
-/*
+
 define('PAGINA_INICIO', '../pages/importar');
 header('Location: ' . PAGINA_INICIO);
-*/
