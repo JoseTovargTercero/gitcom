@@ -49,6 +49,8 @@ if ($_GET["key"] == 'i') {
 
       // Recorremos los resultados y preparamos los valores para la consulta masiva
       while ($row_p = $buscarMa->fetch_assoc()) {
+        $comunidad = $row_p['id_c_comunal'];
+
         $values[] = "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $params = array_merge($params, [
           $row_p['id_municipio'],
@@ -129,6 +131,16 @@ if ($_GET["key"] == 'i') {
     }
 
 
+    $date = date('Y-m-d');
+    $ultimocambio = date('Y-m-d');
+
+    $stmt_u = $conexion->prepare("UPDATE  `local_comunidades` SET `status`='1',  `fechaCarga`='$date', `ultimocambio`='$ultimocambio' WHERE id_consejo='$comunidad'");
+    $stmt_u->execute();
+
+
+
+
+
 
 
 
@@ -137,25 +149,19 @@ if ($_GET["key"] == 'i') {
     $buscarMa = $conexion->query($query_p);
     if ($buscarMa->num_rows > 0) {
       while ($row_p = $buscarMa->fetch_assoc()) {
-        $comunidad = $row_p['id_c_comunal'];
 
         $stmt_habit->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss", $row_p['id_municipio'], $row_p['id_parroquia'], $row_p['id_comuna'], $row_p['id_c_comunal'], $row_p['coordenada_este'], $row_p['coordenada_norte'], $row_p['CASA'], $row_p['id_vivienda'], $row_p['id_familia'], $row_p['rol_familiar'], $row_p['cedula'], $row_p['nombre'], $row_p['telefono'], $row_p['fecha_de_nacimiento'], $row_p['sexo'], $row_p['genero'], $row_p['tiempo_reside_sector'], $row_p['parentesco_al_jefe'], $row_p['pueblo_indigena'], $row_p['nacionalidad'], $row_p['procedencia'], $row_p['educacion'], $row_p['profesion'], $row_p['ocupacion'], $row_p['instancia_laboral'], $row_p['conf_ingreso_mensual'], $row_p['pertenece_cuerpo_seguridad_gestion_riesgo'], $row_p['practica_deporte'], $row_p['realiza_actividad_cultural'], $row_p['creencia_reliosa'], $row_p['imaginarios_gustos_etc'], $row_p['diabetico'], $row_p['hipertenso'], $row_p['artritis'], $row_p['asma'], $row_p['enf_renal'], $row_p['cancer'], $row_p['epilepsia'], $row_p['linfoma'], $row_p['paralisis'], $row_p['enf_cardiaca'], $row_p['otra'], $row_p['recibe_tratamiento'], $row_p['dificultad_visual'], $row_p['discapacidad'], $row_p['carnet_discapacidad'], $row_p['requiere_ayuda'], $row_p['recibe_bono_jose_g'], $row_p['embarazada'], $row_p['embarazada_alto_riesgo'], $row_p['concepcion_semana'], $row_p['parto_humanizado'], $row_p['lactancia_materna'], $row_p['madre_lactante'], $row_p['bono_lactancia'], $row_p['planificacion_familiar'], $row_p['deficit_nutricional'], $row_p['combo_inn'], $row_p['carnet_patria'], $row_p['codigo_carnet'], $row_p['serial_carnet'], $row_p['hogares_de_la_patria'], $row_p['combo_alimenticio_clap'], $row_p['cantidadBolsas'], $row_p['pension'], $row_p['actividad_productiva'], $row_p['actividad_agricola'], $row_p['superficie_m2_productiva'], $row_p['infraestructura_agricola'], $row_p['capacidadProductiva'], $row_p['movilizacion'], $row_p['concejo_comunal'], $row_p['raas'], $row_p['clap'], $row_p['promotores_comunitarios'], $row_p['milicia'], $row_p['miliciaActivo'], $row_p['capacitacionAdies'], $row_p['sala_bnbt'], $row_p['ubch'], $row_p['chamba_juvenil'], $row_p['ffm'], $row_p['msv'], $row_p['robert_serra'], $row_p['eulalia_buroz'], $row_p['promotora_parto_humanizado'], $row_p['mesa_tecnica_agua'], $row_p['mesa_tecnica_telecomunicaciones'], $row_p['votante'], $row_p['caracterizacion'], $row_p['congreso_pueblos'], $row_p['bombona_pequena'], $row_p['bombona_mediana'], $row_p['bombona_grande'], $row_p['codigo_mediana'], $row_p['codigo_grande'], $row_p['migracion'], $row_p['muerte'], $row_p['conoceCuandrante'], $row_p['jefeCuadrante'], $row_p['telefonoCuadrante'], $row_p['reportadoCuadrante'], $row_p['atendidoCuadrante'], $row_p['grupoIntercambio'], $row_p['productorIndependiente'], $row_p['lugarProduccionAgricola'], $row_p['lugarProduccion'], $row_p['produccion'], $row_p['registro'], $row_p['consejo'], $row_p['partidos'], $row_p['terreno_productivo']);
         $stmt_habit->execute();
       }
     }
 
-    $date = date('Y-m-d');
-    $ultimocambio = date('Y-m-d');
-
-    $stmt_u = $conexion->prepare("UPDATE  `local_comunidades` SET `status`='1',  `fechaCarga`='$date', `ultimocambio`='$ultimocambio' WHERE id_consejo='$comunidad'");
-    $stmt_u->execute();
 
 
     /*
-  $conexion->query("TRUNCATE `temp_areasinteres`");
-  $conexion->query("TRUNCATE `temp_inf_casas`");
-  $conexion->query("TRUNCATE `temp_inf_jcalles`");
-  $conexion->query("TRUNCATE `temp_inf_habitantes`");*/
+    $conexion->query("TRUNCATE `temp_areasinteres`");
+    $conexion->query("TRUNCATE `temp_inf_casas`");
+    $conexion->query("TRUNCATE `temp_inf_jcalles`");
+    $conexion->query("TRUNCATE `temp_inf_habitantes`");*/
 
 
 
