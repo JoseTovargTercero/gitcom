@@ -2,6 +2,9 @@
 include('../../configuracion/conexionMysqli.php');
 include('../../class/count.php');
 
+
+
+
 if ($_SESSION['validate'] != 'ok') {
     define('PAGINA_INICIO', '../../login/salir.php');
     header('Location: ' . PAGINA_INICIO);
@@ -820,7 +823,6 @@ if (isset($_GET['codigo'])) {
 
                     </div>
 
-
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group label-floating is-empty">
@@ -835,6 +837,9 @@ if (isset($_GET['codigo'])) {
                             </div>
                         </div>
                     </div>
+
+
+
                     <footer class="modal-footer">
                         <input type="submit" class="btn btn-danger btn-raised btn-sm" id="guardarCapaVectorial" class="Guardar">
                     </footer>
@@ -937,52 +942,68 @@ if (isset($_GET['codigo'])) {
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+
+
+                        <?php
+
+
+                        if ($_SESSION['nivel'] == 3) {
+                            $display = "style='display: none'";
+                        } else {
+                            $display = "";
+                        }
+
+                        ?>
+
+
+                        <div class="row" <?php echo $display ?>>
                             <div class="col-lg-12" style="margin: 22px 0;">
                                 <hr>
                             </div>
 
-                            <?php if ($_SESSION['nivel'] != 4) { ?>
 
-                                <div class="col-lg-6">
-                                    <div class="form-group label-floating is-empty">
-                                        <label style="font-weight: 100;" class="control-label">Municipio</label>
-                                        <select style="padding-left: 10px;" class="form-control" id="mcp">
-                                            <option value=""> -- No aplicar ningun filtro --</option>
-                                            <?php foreach ($countries as $c) : ?>
-                                                <option value="<?php echo $c->id_municipio; ?>">&nbsp;<?php echo $c->nombre_municipio; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
 
-                                <div class="col-lg-6">
-                                    <div class="form-group label-floating is-empty">
-                                        <label style="font-weight: 100;" class="control-label">Parroquia </label>
-                                        <select style="padding-left: 10px;" class="form-control" id="paq">
-                                            <option value=""> -- No aplicar ningun filtro --</option>
-                                        </select>
-                                    </div>
+
+
+
+                            <div class="col-lg-6">
+                                <div class="form-group label-floating is-empty">
+                                    <label style="font-weight: 100;" class="control-label">Municipio</label>
+                                    <select style="padding-left: 10px;" class="form-control" id="mcp">
+                                        <option value=""> -- No aplicar ningun filtro --</option>
+                                        <?php foreach ($countries as $c) : ?>
+                                            <option value="<?php echo $c->id_municipio; ?>">&nbsp;<?php echo $c->nombre_municipio; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group label-floating is-empty">
-                                        <label style="font-weight: 100;" class="control-label">Comuna </label>
-                                        <select style="padding-left: 10px;" class="form-control" id="cma">
-                                            <option value=""> -- No aplicar ningun filtro --</option>
-                                        </select>
-                                    </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="form-group label-floating is-empty">
+                                    <label style="font-weight: 100;" class="control-label">Parroquia </label>
+                                    <select style="padding-left: 10px;" class="form-control" id="paq">
+                                        <option value=""> -- No aplicar ningun filtro --</option>
+                                    </select>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group label-floating is-empty">
-                                        <label style="font-weight: 100;" class="control-label">Comunidad </label>
-                                        <select style="padding-left: 10px;" class="form-control" id="cmia">
-                                            <option value=""> -- No aplicar ningun filtro --</option>
-                                        </select>
-                                    </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group label-floating is-empty">
+                                    <label style="font-weight: 100;" class="control-label">Comuna </label>
+                                    <select style="padding-left: 10px;" class="form-control" id="cma">
+                                        <option value=""> -- No aplicar ningun filtro --</option>
+                                    </select>
                                 </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group label-floating is-empty">
+                                    <label style="font-weight: 100;" class="control-label">Comunidad </label>
+                                    <select style="padding-left: 10px;" class="form-control" id="cmia">
+                                        <option value=""> -- No aplicar ningun filtro --</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
-                    <?php } ?>
 
                     </div>
                 </div>
@@ -2892,6 +2913,7 @@ if (isset($_GET['codigo'])) {
 
                 .done(function(rePolAt) {
                     $("#cargandoConsulta").addClass('oculto')
+                    // Ejemplo de uso
 
                     var newPoligono = rePolAt.split('/')
 
@@ -2906,6 +2928,7 @@ if (isset($_GET['codigo'])) {
 
                         const geoJsonPreEnd = '{"type": "FeatureCollection","name": "example","crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::32619" } },"features": [' + polygono + ']}';
 
+                        console.log(polygono)
 
                         const myObjStr1 = JSON.parse(geoJsonPreEnd);
 
@@ -2936,6 +2959,10 @@ if (isset($_GET['codigo'])) {
                         controlP.addOverlay(featureGroup, '<span class="admLayers"><img width="15px" src="../../assets/img/capaGitcom.png"/>  ' + nombreCapa + " </span>(" + newPoligono[1] + ")");
 
                         toast("success", "Se agrego una nueva capa");
+
+
+                        map.fitBounds(featureGroup.getBounds());
+
 
 
                         var htmlExistente = $('#elementosGrafico').html();
@@ -2971,6 +2998,61 @@ if (isset($_GET['codigo'])) {
 
                 })
         }
+
+
+        //  const centro = calcularCentroCoordenadas(coordenadas);
+        /** CENTRAR MAPA */
+
+
+
+
+
+
+        /** CENTRAR MAPA */
+        function calcularCentroCoordenadas(coordenadas) {
+            if (coordenadas.length === 0) {
+                return null; // Retorna null si no hay coordenadas
+            }
+
+            let sumLon = 0,
+                sumLat = 0;
+
+            coordenadas.forEach(coord => {
+                sumLon += coord[0]; // Longitud
+                sumLat += coord[1]; // Latitud
+            });
+
+            let centroLon = sumLon / coordenadas.length;
+            let centroLat = sumLat / coordenadas.length;
+
+            return [centroLat, centroLon]; // Leaflet usa formato [lat, lon]
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         // aquiiii

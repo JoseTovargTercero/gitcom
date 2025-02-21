@@ -8,6 +8,16 @@
     $filterValue = $_POST["filterValue"];
     $consulta = '';
     $consultta2 = '';
+
+
+
+    if ($_SESSION['nivel'] == 3) {
+        $nameInstance = 'comdad';
+        $filterValue = $_SESSION["dato1"];
+    }
+
+
+
     if ($nameInstance != '') {
         switch ($nameInstance) {
             case 'mcp':

@@ -1,4 +1,3 @@
-
 <?php
 
 if ($_SESSION['nivel'] == '1') {
@@ -13,9 +12,9 @@ if ($_SESSION['nivel'] == '1') {
         <div style="margin-left: 10px;margin-top: -1px; display: grid;">
           <span style="margin-left: 10px;" class="ms-1  text-white"><?php echo $_SESSION['nombre'] ?></span>
           <span style="margin-left: 10px;    font-size: 11px;opacity: 0.4;     margin-top: -3px;" class="ms-1  text-white">
-          Administrador
-        
-        </span>
+            Administrador
+
+          </span>
         </div>
       </a>
     </div>
@@ -76,7 +75,7 @@ if ($_SESSION['nivel'] == '1') {
 
 
 
-        
+
         <li class="nav-item">
           <a id="aca" class="nav-link text-white " href="admin-import">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -90,15 +89,15 @@ if ($_SESSION['nivel'] == '1') {
         <li class="nav-item">
           <hr>
         </li>
-        
-                <li class="nav-item">
-                  <a id="herramientas" class="nav-link text-white " href="herramientas" style="background-color: #dbd0d20d">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <span class="nav-link-text ms-1"><?php echo $_SESSION['nombre'] ?></span>
-                  </a>
-                </li>
+
+        <li class="nav-item">
+          <a id="herramientas" class="nav-link text-white " href="herramientas" style="background-color: #dbd0d20d">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-star"></i>
+            </div>
+            <span class="nav-link-text ms-1"><?php echo $_SESSION['nombre'] ?></span>
+          </a>
+        </li>
 
 
 
@@ -107,15 +106,6 @@ if ($_SESSION['nivel'] == '1') {
         <li class="nav-item">
           <hr>
         </li>
-
-
-
-
-
-
-
-
-
         <li class="nav-item">
           <a id="cartografia" class="nav-link text-white " href="cartografia">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -124,8 +114,6 @@ if ($_SESSION['nivel'] == '1') {
             <span class="nav-link-text ms-1">Proyectos Gitcom</span>
           </a>
         </li>
-      
-
 
         <!--
         <li class="nav-item">
@@ -136,9 +124,7 @@ if ($_SESSION['nivel'] == '1') {
             <span class="nav-link-text ms-1">Agenda Concreta</span>
           </a>
         </li>
--->
-
-
+        -->
 
         <li class="nav-item">
           <a id="directorio" class="nav-link text-white " href="directorio">
@@ -153,13 +139,15 @@ if ($_SESSION['nivel'] == '1') {
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3" style="font-size: 11px;padding: 11px;text-align: center;">
-        GITCOM © <script> document.write(new Date().getFullYear()) </script>
+        GITCOM © <script>
+          document.write(new Date().getFullYear())
+        </script>
       </div>
     </div>
   </aside>
 
 
-<?php }elseif ($_SESSION['nivel'] == '4') { ?>
+<?php } elseif ($_SESSION['nivel'] == '4') { ?>
 
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
@@ -170,8 +158,8 @@ if ($_SESSION['nivel'] == '1') {
         <div style="margin-left: 10px;margin-top: -1px; display: grid;">
           <span style="margin-left: 10px;" class="ms-1  text-white"><?php echo $_SESSION['nombre'] ?></span>
           <span style="margin-left: 10px;    font-size: 11px;opacity: 0.4;     margin-top: -3px;" class="ms-1  text-white">
-          <?php echo $_SESSION["entidad"]; ?>
-        </span>
+            <?php echo $_SESSION["entidad"]; ?>
+          </span>
         </div>
       </a>
     </div>
@@ -220,7 +208,7 @@ if ($_SESSION['nivel'] == '1') {
 
 
 
-        
+
 
 
         <li class="nav-item">
@@ -236,13 +224,15 @@ if ($_SESSION['nivel'] == '1') {
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3" style="font-size: 11px;padding: 11px;text-align: center;">
-        GITCOM © <script> document.write(new Date().getFullYear()) </script>
+        GITCOM © <script>
+          document.write(new Date().getFullYear())
+        </script>
       </div>
     </div>
   </aside>
 
 
-<?php }elseif ($_SESSION['nivel'] == '3') { ?>
+<?php } elseif ($_SESSION['nivel'] == '3') { ?>
 
 
 
@@ -257,9 +247,28 @@ if ($_SESSION['nivel'] == '1') {
         <div style="margin-left: 10px;margin-top: -1px; display: grid;">
           <span style="margin-left: 10px;" class="ms-1  text-white"><?php echo $_SESSION['nombre'] ?></span>
           <span style="margin-left: 10px;    font-size: 11px;opacity: 0.4;     margin-top: -3px;" class="ms-1  text-white">
-          Administrador
-        
-        </span>
+
+
+            <?php
+            $comunidad = $_SESSION['dato1'];
+
+            if ($comunidad != '') {
+              $stmt = mysqli_prepare($conexion, "SELECT * FROM `local_comunidades` WHERE id_consejo = ?");
+              $stmt->bind_param('s', $comunidad);
+              $stmt->execute();
+              $result = $stmt->get_result();
+              if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                  echo $row['nombre_c_comunal'];
+                }
+              }
+              $stmt->close();
+            }
+
+
+            ?>
+
+          </span>
         </div>
       </a>
     </div>
@@ -280,30 +289,26 @@ if ($_SESSION['nivel'] == '1') {
         <li class="nav-item">
           <hr>
         </li>
-        
-                <li class="nav-item">
-                  <a id="herramientas" class="nav-link text-white " href="herramientas" style="background-color: #dbd0d20d">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <span class="nav-link-text ms-1"><?php echo $_SESSION['nombre'] ?></span>
-                  </a>
-                </li>
 
-
-
+        <li class="nav-item">
+          <a id="herramientas" class="nav-link text-white " href="herramientas" style="background-color: #dbd0d20d">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-star"></i>
+            </div>
+            <span class="nav-link-text ms-1"><?php echo $_SESSION['nombre'] ?></span>
+          </a>
+        </li>
         <li class="nav-item">
           <hr>
         </li>
-
-
-
-
-
-
-
-
-
+        <li class="nav-item">
+          <a id="cartografia" class="nav-link text-white " href="actualizar_inf">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-pencil"></i>
+            </div>
+            <span class="nav-link-text ms-1">Actualización de datos</span>
+          </a>
+        </li>
         <li class="nav-item">
           <a id="cartografia" class="nav-link text-white " href="cartografia">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -320,10 +325,6 @@ if ($_SESSION['nivel'] == '1') {
             <span class="nav-link-text ms-1">Consulta avanzada</span>
           </a>
         </li>
-
-
-
-
         <li class="nav-item">
           <a id="directorio" class="nav-link text-white " href="directorio">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -332,12 +333,13 @@ if ($_SESSION['nivel'] == '1') {
             <span class="nav-link-text ms-1">Directorio</span>
           </a>
         </li>
-
       </ul>
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3" style="font-size: 11px;padding: 11px;text-align: center;">
-        GITCOM © <script> document.write(new Date().getFullYear()) </script>
+        GITCOM © <script>
+          document.write(new Date().getFullYear())
+        </script>
       </div>
     </div>
   </aside>

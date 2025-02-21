@@ -23,15 +23,10 @@ if ($_SESSION['nivel'] == '') {
 }
 
 
+
 if ($_SESSION['nivel'] != '') {
 
-
-  $habitantes = contar('inf_habitantes', '0', 'extra');
-  $viviendasHabitadas = contar2('inf_casas', 'extra!=""');
-  $viviendas = contar2('inf_casas', "extra!=''");
-
-
-
+  $comunidad = $_SESSION['dato1'];
 
 ?>
 
@@ -180,11 +175,10 @@ if ($_SESSION['nivel'] != '') {
               </div>
               <hr class="dark horizontal my-0">
               <div class="card-footer p-3">
-                <p class="mb-0">Comunidades con información</p>
+                <p class="mb-0">Comunidades</p>
               </div>
             </div>
           </div>
-
 
           <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
@@ -366,24 +360,14 @@ if ($_SESSION['nivel'] != '') {
               <div class="card-header pb-0">
                 <div class="row">
                   <div class="col-lg-12">
-
-
-
                     <h6>Controlador base</h6>
-
-
-
-
-
                   </div>
                 </div>
               </div>
               <div class="card-body">
-
                 <ul style="padding: 0; list-style: none;">
                   <script>
                     var tituloSection = '';
-
                     datosPerspectiva.forEach(function callback(value, index) {
                       if (tituloSection != value['titulo']) {
                         document.write('<li><strong> <i class="fa fa-star"></i> ' + value['titulo'] + '</strong></li>')
@@ -415,35 +399,16 @@ if ($_SESSION['nivel'] != '') {
                   </div>
                 </div>
               </div>
-
-
-
-
               <div class="card-body" style="display: flex;">
-
-
-
-
-
-
-
                 <div class="cardLoaerd" id="loader-perspectiva">
                   <div class="card__skeleton card__title"></div>
                   <div class="card__skeleton card__description"></div>
                   <div style="margin-top: 15px; display: flex;">
                     <div class="card__skeleton card__description" style="width: 49%; margin-right: 2%;"></div>
                     <div class="card__skeleton card__description" style="width: 49%;"></div>
-
                   </div>
                   <div class="card__skeleton card__title" style="margin-top: 15px;"></div>
-
                 </div>
-
-
-
-
-
-
                 <div class="lgP animate__animated animate__fadeIn">
                   <h3>
                     <span id="nombrePers" style="color: #F44335;"></span><br>
@@ -458,118 +423,111 @@ if ($_SESSION['nivel'] != '') {
         </div>
 
 
-
-
-        <div class="row mt-4">
-          <div class="col-lg-9">
-            <div class="card" style="height: 80vh; overflow: auto;">
-              <div class="card-header pb-0">
-                <div class="row">
-                  <div class="col-lg-6 col-7">
-                    <h6 id="tituloMapa">Cargando...</h6>
+        <?php if ($_SESSION['nivel'] != 3) { ?>
+          <div class="row mt-4">
+            <div class="col-lg-9">
+              <div class="card" style="height: 80vh; overflow: auto;">
+                <div class="card-header pb-0">
+                  <div class="row">
+                    <div class="col-lg-6 col-7">
+                      <h6 id="tituloMapa">Cargando...</h6>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="card-body" style="display: flex;">
+                <div class="card-body" style="display: flex;">
+                  <div class="cardLoaerd" id="loaderMapa">
+                    <div class="card__skeleton card__title"></div>
+                    <div class="card__skeleton card__description"></div>
+                    <div style="margin-top: 15px; display: flex;">
+                      <div class="card__skeleton card__description" style="width: 49%; margin-right: 2%;"></div>
+                      <div class="card__skeleton card__description" style="width: 49%;"></div>
 
-
-
-
-
-
-
-
-                <div class="cardLoaerd" id="loaderMapa">
-                  <div class="card__skeleton card__title"></div>
-                  <div class="card__skeleton card__description"></div>
-                  <div style="margin-top: 15px; display: flex;">
-                    <div class="card__skeleton card__description" style="width: 49%; margin-right: 2%;"></div>
-                    <div class="card__skeleton card__description" style="width: 49%;"></div>
+                    </div>
+                    <div class="card__skeleton card__title" style="margin-top: 15px;"></div>
 
                   </div>
-                  <div class="card__skeleton card__title" style="margin-top: 15px;"></div>
+
+
+
+
+
+                  <ul id="mapaCoropletico" class="leyendaMapaCoropletico">
+                    <li>
+                      <div style="background-color: #ccccccf7"></div> Ningún resultado
+                    </li>
+                    <li>
+                      <div style="background-color: #ffa2a2;"></div> &nbsp;&nbsp;&nbsp;1&nbsp; - 10 &nbsp;&nbsp;resultados
+                    </li>
+                    <li>
+                      <div style="background-color: #ff7878;"></div> &nbsp;&nbsp;11 - 20&nbsp;&nbsp; resultados
+                    </li>
+                    <li>
+                      <div style="background-color: #ff4848;"></div> &nbsp;&nbsp;21 - 30&nbsp;&nbsp; resultados
+                    </li>
+                    <li>
+                      <div style="background-color: #ff2525;"></div> &nbsp;&nbsp;31 - 50&nbsp;&nbsp; resultados
+                    </li>
+                    <li>
+                      <div style="background-color: #ff0c0c;"></div> &nbsp;&nbsp;51 - 80&nbsp;&nbsp; resultados
+                    </li>
+                    <li>
+                      <div style="background-color: #ca0000;"></div> &nbsp;&nbsp;81 - 120 resultados
+                    </li>
+                    <li>
+                      <div style="background-color: #a20000;"></div> 121 - 150 resultados
+                    </li>
+                    <li>
+                      <div style="background-color: #7c0000;"></div> 151 - 220 resultados
+                    </li>
+                    <li>
+                      <div style="background-color: #590000;"></div> 221 - 300 resultados
+                    </li>
+                    <li>
+                      <div style="background-color: #3c0000;"></div> Mas de 300 resultados
+                    </li>
+                  </ul>
+
+
+                  <div class="animate__animated animate__fadeIn" id="map" style="margin-left: -80px; z-index: 1;"></div>
+
+
 
                 </div>
-
-
-
-
-
-                <ul id="mapaCoropletico" class="leyendaMapaCoropletico">
-                  <li>
-                    <div style="background-color: #ccccccf7"></div> Ningún resultado
-                  </li>
-                  <li>
-                    <div style="background-color: #ffa2a2;"></div> &nbsp;&nbsp;&nbsp;1&nbsp; - 10 &nbsp;&nbsp;resultados
-                  </li>
-                  <li>
-                    <div style="background-color: #ff7878;"></div> &nbsp;&nbsp;11 - 20&nbsp;&nbsp; resultados
-                  </li>
-                  <li>
-                    <div style="background-color: #ff4848;"></div> &nbsp;&nbsp;21 - 30&nbsp;&nbsp; resultados
-                  </li>
-                  <li>
-                    <div style="background-color: #ff2525;"></div> &nbsp;&nbsp;31 - 50&nbsp;&nbsp; resultados
-                  </li>
-                  <li>
-                    <div style="background-color: #ff0c0c;"></div> &nbsp;&nbsp;51 - 80&nbsp;&nbsp; resultados
-                  </li>
-                  <li>
-                    <div style="background-color: #ca0000;"></div> &nbsp;&nbsp;81 - 120 resultados
-                  </li>
-                  <li>
-                    <div style="background-color: #a20000;"></div> 121 - 150 resultados
-                  </li>
-                  <li>
-                    <div style="background-color: #7c0000;"></div> 151 - 220 resultados
-                  </li>
-                  <li>
-                    <div style="background-color: #590000;"></div> 221 - 300 resultados
-                  </li>
-                  <li>
-                    <div style="background-color: #3c0000;"></div> Mas de 300 resultados
-                  </li>
-                </ul>
-
-
-                <div class="animate__animated animate__fadeIn" id="map" style="margin-left: -80px; z-index: 1;"></div>
-
-
-
               </div>
             </div>
-          </div>
 
-          <div class="col-lg-3">
-            <div class="card" style="height: 80vh; overflow: auto;">
-              <div class="card-header pb-0">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <h6>Controlador Mapa</h6>
+            <div class="col-lg-3">
+              <div class="card" style="height: 80vh; overflow: auto;">
+                <div class="card-header pb-0">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <h6>Controlador Mapa</h6>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="card-body">
+                <div class="card-body">
 
-                <ul style="padding: 0; list-style: none;">
+                  <ul style="padding: 0; list-style: none;">
 
-                  <?php
-                  $titulo = '';
-                  foreach ($arrayConsultas as $i => $item) {
+                    <?php
+                    $titulo = '';
+                    foreach ($arrayConsultas as $i => $item) {
 
-                    if ($titulo != $item[2]) {
-                      $titulo = $item[2];
-                      echo '<li><strong> <i class="fa fa-star"></i> ' . $titulo . '</strong></li>';
+                      if ($titulo != $item[2]) {
+                        $titulo = $item[2];
+                        echo '<li><strong> <i class="fa fa-star"></i> ' . $titulo . '</strong></li>';
+                      }
+                      echo '<li class="perspItemM" id="m_' . $i . '"><a onclick="setMap(\'' . $i . '\')">' . $item[3] . '</a></li>';
                     }
-                    echo '<li class="perspItemM" id="m_' . $i . '"><a onclick="setMap(\'' . $i . '\')">' . $item[3] . '</a></li>';
-                  }
-                  ?>
+                    ?>
 
-                </ul>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <?php } ?>
+
 
         <div class="row mt-4">
           <div class="col-lg-12">
@@ -585,18 +543,10 @@ if ($_SESSION['nivel'] != '') {
 
                       <div style="position: absolute;right: 0;margin-right: 31px; display: flex;">
 
-
-
                         <div class="form-check form-switch" style="    padding: 7px 25px;">
                           <input class="form-check-input" type="checkbox" id="agruparCheck" checked onchange="setComparativo($('#sComparativo').val())">
                           <label class="form-check-label" for="agruparCheck">Modo agrupar</label>
                         </div>
-
-
-
-
-
-
 
                         <select id="sComparativo" class="form-control" onchange="setComparativo(this.value)" style="width: 204px; height: 39px;padding: 0px;">
                           <script>
@@ -728,7 +678,9 @@ if ($_SESSION['nivel'] != '') {
             setComparativo('last')
             setBarras('last')
             setBase100('last')
-            setMap('last')
+            <?php if ($_SESSION['nivel'] != 3) { ?>
+              setMap('last')
+            <?php } ?>
             manejadorCantidades()
           }
           setViewConfig('hide')
@@ -843,10 +795,12 @@ if ($_SESSION['nivel'] != '') {
     </div>
 
 
+    <?php if ($_SESSION['nivel'] != 3) { ?>
 
-    <div class="btnConfig" onclick="setViewConfig('show')">
-      <i class="fa fa-gear gearConfig"></i>
-    </div>
+      <div class="btnConfig" onclick="setViewConfig('show')">
+        <i class="fa fa-gear gearConfig"></i>
+      </div>
+    <?php } ?>
 
 
 
@@ -1192,7 +1146,9 @@ if ($_SESSION['nivel'] != '') {
         setComparativo('last')
         setBarras('last')
         setBase100('last')
-        setMap('last')
+        <?php if ($_SESSION['nivel'] != 3) { ?>
+          setMap('last')
+        <?php } ?>
         manejadorCantidades()
 
 
@@ -1294,15 +1250,20 @@ if ($_SESSION['nivel'] != '') {
             layout: root44.verticalLayout
           }));
 
-          // Add scrollbar
-          var data = [{
-            "year": "Tratamiento",
-            "privada": <?php echo contar2('inf_habitantes', 'recibe_tratamiento="Por la Red Privada"') ?>,
-            "publica": <?php echo contar2('inf_habitantes', 'recibe_tratamiento="Por la Red Publica"') ?>,
-            "propia": <?php echo contar2('inf_habitantes', 'recibe_tratamiento="Por cuenta propia"') ?>,
-            "nr": <?php echo contar2('inf_habitantes', 'recibe_tratamiento="No Recibe Tratamiento"') ?>
-          }]
+          <?php
+          $condicion = ($_SESSION['nivel'] != 3) ? "" : "AND id_c_comunal='$comunidad'";
 
+          $data = [
+            "year" => "Tratamiento",
+            "privada" => contar2('inf_habitantes', "recibe_tratamiento='Por la Red Privada' $condicion"),
+            "publica" => contar2('inf_habitantes', "recibe_tratamiento='Por la Red Publica' $condicion"),
+            "propia" => contar2('inf_habitantes', "recibe_tratamiento='Por cuenta propia' $condicion"),
+            "nr" => contar2('inf_habitantes', "recibe_tratamiento='No Recibe Tratamiento' $condicion"),
+          ];
+
+          ?>
+
+          var data = <?php echo json_encode([$data], JSON_UNESCAPED_UNICODE); ?>;
 
           // Create axes
           // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
@@ -1444,11 +1405,11 @@ if ($_SESSION['nivel'] != '') {
           })
           .done(function(rsult) {
 
+            console.log('resltt ' + rsult)
+
             let resultado = parseInt(rsult)
 
             if (resultado >= 1) {
-
-
 
               if (base == '10') {
                 rowSize = 5;
@@ -1587,8 +1548,9 @@ if ($_SESSION['nivel'] != '') {
       setComparativo(categoriasBarrasR[getRandomInt(categoriasBarrasR.length)])
       setBarras(categoriasBarrasR[getRandomInt(categoriasBarrasR.length)])
       setBase100(graficoBase)
-      setMap(0)
-
+      <?php if ($_SESSION['nivel'] != 3) { ?>
+        setMap(0)
+      <?php } ?>
 
       /* ----------------------------- graficos ---------------------------------*/
 
@@ -1647,75 +1609,73 @@ if ($_SESSION['nivel'] != '') {
             }
           })
       }
+      <?php if ($_SESSION['nivel'] != 3) { ?>
+        var map = L.map('map', {
+          zoomControl: false,
+          maxZoom: 28,
+          minZoom: 1
+        })
 
-      var map = L.map('map', {
-        zoomControl: false,
-        maxZoom: 28,
-        minZoom: 1
-      })
+        map.attributionControl.setPrefix('');
 
-      map.attributionControl.setPrefix('');
+        var bounds_group = new L.featureGroup([]);
 
-      var bounds_group = new L.featureGroup([]);
-
-      function setBounds() {
-        if (bounds_group.getLayers().length) {
-          map.fitBounds(bounds_group.getBounds());
-        }
-      }
-
-
-
-
-      function style_comunidades_0_0(feature) {
-        let color;
-        let cantidad = 0;
-
-        if (valoresMapa[feature.properties['id_comunid']]) {
-          cantidad = valoresMapa[feature.properties['id_comunid']];
+        function setBounds() {
+          if (bounds_group.getLayers().length) {
+            map.fitBounds(bounds_group.getBounds());
+          }
         }
 
-        if (cantidad == 0) {
-          color = '#ccccccf7';
-        } else if (cantidad <= 10) {
-          color = '#ffa2a2';
-        } else if (cantidad <= 20) {
-          color = '#ff7878';
-        } else if (cantidad <= 30) {
-          color = '#ff4848';
-        } else if (cantidad <= 50) {
-          color = '#ff2525';
-        } else if (cantidad <= 80) {
-          color = '#ff0c0c';
-        } else if (cantidad <= 120) {
-          color = '#ca0000';
-        } else if (cantidad <= 150) {
-          color = '#a20000';
-        } else if (cantidad <= 220) {
-          color = '#7c0000';
-        } else if (cantidad <= 300) {
-          color = '#590000';
-        } else if (cantidad >= 301) {
-          color = '#3c0000';
+        function style_comunidades_0_0(feature) {
+          let color;
+          let cantidad = 0;
+
+          if (valoresMapa[feature.properties['id_comunid']]) {
+            cantidad = valoresMapa[feature.properties['id_comunid']];
+          }
+
+          if (cantidad == 0) {
+            color = '#ccccccf7';
+          } else if (cantidad <= 10) {
+            color = '#ffa2a2';
+          } else if (cantidad <= 20) {
+            color = '#ff7878';
+          } else if (cantidad <= 30) {
+            color = '#ff4848';
+          } else if (cantidad <= 50) {
+            color = '#ff2525';
+          } else if (cantidad <= 80) {
+            color = '#ff0c0c';
+          } else if (cantidad <= 120) {
+            color = '#ca0000';
+          } else if (cantidad <= 150) {
+            color = '#a20000';
+          } else if (cantidad <= 220) {
+            color = '#7c0000';
+          } else if (cantidad <= 300) {
+            color = '#590000';
+          } else if (cantidad >= 301) {
+            color = '#3c0000';
+          }
+
+          return {
+            pane: 'pane_comunidades_0',
+            opacity: 1,
+            color: 'rgba(163,163,163,1.0)',
+            dashArray: '',
+            lineCap: 'butt',
+            lineJoin: 'miter',
+            weight: 1.0,
+            fill: true,
+            fillOpacity: 1,
+            fillColor: color,
+            interactive: true,
+          }
+
+
         }
 
-        return {
-          pane: 'pane_comunidades_0',
-          opacity: 1,
-          color: 'rgba(163,163,163,1.0)',
-          dashArray: '',
-          lineCap: 'butt',
-          lineJoin: 'miter',
-          weight: 1.0,
-          fill: true,
-          fillOpacity: 1,
-          fillColor: color,
-          interactive: true,
-        }
-
-
-      }
-
+      <?php } ?>
 
       function cargarMapa(titulo) {
 

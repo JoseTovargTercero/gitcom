@@ -8,6 +8,14 @@
     $nameInstance = $_POST["nameInstance"];
     $filterValue = $_POST["filterValue"];
     $consulta = '';
+
+
+    if ($_SESSION['nivel'] == 3) {
+        $nameInstance = 'comdad';
+        $filterValue = $_SESSION["dato1"];
+    }
+
+
     if ($nameInstance != '') {
         switch ($nameInstance) {
             case 'mcp':
@@ -31,16 +39,16 @@
     $total = 0;
     foreach ($arrayConsultas as $value) {
         if ($value[2] == $t) {
-            $cantidad = contar2($value[0], $value[1].$consulta);
+            $cantidad = contar2($value[0], $value[1] . $consulta);
             if ($cantidad >= 1) {
                 $total += $cantidad;
-                $result .= $value[3].'/'.$cantidad.'*';
+                $result .= $value[3] . '/' . $cantidad . '*';
             }
         }
     }
 
     $result = trim($result, '*');;
-    echo $result.'+'.$total;
+    echo $result . '+' . $total;
 
 
     ?>

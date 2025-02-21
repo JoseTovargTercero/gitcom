@@ -9,12 +9,13 @@ if ($_SESSION['nivel'] == 1) {
 
 
 
-	function calculaedad($fechanacimiento){
+	function calculaedad($fechanacimiento)
+	{
 		list($ano, $mes, $dia) = explode("-", $fechanacimiento);
 		$ano_diferencia  = date("Y") - $ano;
 		$mes_diferencia = date("m") - $mes;
 		$dia_diferencia   = date("d") - $dia;
-		if ($dia_diferencia < 0 || $mes_diferencia < 0){
+		if ($dia_diferencia < 0 || $mes_diferencia < 0) {
 			$ano_diferencia--;
 		}
 		return  $ano_diferencia;
@@ -65,30 +66,29 @@ if ($_SESSION['nivel'] == 1) {
 			}
 
 
-			
-					$tipo = $filaCasas['tipo'];
-					$material_construccion = $filaCasas['material_construccion'];
-					$id_vivienda = $filaCasas['id_vivienda'];
-					$condicion_vivienda = $filaCasas['condicion_vivienda'];
-					$cantidad_habitaciones = $filaCasas['cantidad_habitaciones'];
-					$tenencia_tierra = $filaCasas['tenencia_tierra'];
-					$vivienda_venezuela = $filaCasas['vivienda_venezuela'];
-					$bnbt = $filaCasas['bnbt'];
-					$cod_ine = $filaCasas['cod_ine'];
-					$cod_catastro = $filaCasas['cod_catastro'];
-					$agua_potable = $filaCasas['agua_potable'];
-					$almacenamiento_agua = $filaCasas['almacenamiento_agua'];
-					$agua_servidas = $filaCasas['agua_servidas'];
-					$disposicion_basura = $filaCasas['disposicion_basura'];
-					$electricidad = $filaCasas['electricidad'];
-					$telefonia = $filaCasas['telefonia'];
-					$internet = $filaCasas['internet'];
-					$television = $filaCasas['television'];
-					$jefe_calle = $filaCasas['jefe_calle'];
-					$coordenada_norte = $filaCasas['coordenada_norte'];
-					$coordenada_este = $filaCasas['coordenada_este'];
-					$zonaRiesgo = $filaCasas['zonaRiesgo'];
 
+			$tipo = $filaCasas['tipo'];
+			$material_construccion = $filaCasas['material_construccion'];
+			$id_vivienda = $filaCasas['id_vivienda'];
+			$condicion_vivienda = $filaCasas['condicion_vivienda'];
+			$cantidad_habitaciones = $filaCasas['cantidad_habitaciones'];
+			$tenencia_tierra = $filaCasas['tenencia_tierra'];
+			$vivienda_venezuela = $filaCasas['vivienda_venezuela'];
+			$bnbt = $filaCasas['bnbt'];
+			$cod_ine = $filaCasas['cod_ine'];
+			$cod_catastro = $filaCasas['cod_catastro'];
+			$agua_potable = $filaCasas['agua_potable'];
+			$almacenamiento_agua = $filaCasas['almacenamiento_agua'];
+			$agua_servidas = $filaCasas['agua_servidas'];
+			$disposicion_basura = $filaCasas['disposicion_basura'];
+			$electricidad = $filaCasas['electricidad'];
+			$telefonia = $filaCasas['telefonia'];
+			$internet = $filaCasas['internet'];
+			$television = $filaCasas['television'];
+			$jefe_calle = $filaCasas['jefe_calle'];
+			$coordenada_norte = $filaCasas['coordenada_norte'];
+			$coordenada_este = $filaCasas['coordenada_este'];
+			$zonaRiesgo = $filaCasas['zonaRiesgo'];
 		}
 	}
 
@@ -114,7 +114,7 @@ if ($_SESSION['nivel'] == 1) {
 	}
 
 	//$condicionHacimamiento = number_format(contar('inf_habitantes', '') / $cantidadEnNumero, '2', '.', '.');
-	$condicionHacimamiento = number_format(contar2('inf_habitantes', 'id_vivienda="'.$id.'"') / $cantidadEnNumero, '2', '.', '.');
+	$condicionHacimamiento = number_format(contar2('inf_habitantes', 'id_vivienda="' . $id . '"') / $cantidadEnNumero, '2', '.', '.');
 
 	if ($condicionHacimamiento > 3) {
 		$colorH = 'color: #1A73E8';
@@ -241,20 +241,13 @@ if ($_SESSION['nivel'] == 1) {
 								<div class="row">
 									<div class="col-lg-12 col-10">
 										<h6>Habitantes
-
-										<?php 
-										
-										if ($zonaRiesgo != '' && $zonaRiesgo != 'ninguna') {
-											echo '<span style="float: right; color: #1A73E8">Riesgo: '.$zonaRiesgo.'</span>'; 
-										}
-
-
-										?>
-
+											<?php
+											if ($zonaRiesgo != '' && $zonaRiesgo != 'ninguna') {
+												echo '<span style="float: right; color: #1A73E8">Riesgo: ' . $zonaRiesgo . '</span>';
+											}
+											?>
 										</h6>
 									</div>
-
-
 								</div>
 
 
@@ -264,39 +257,39 @@ if ($_SESSION['nivel'] == 1) {
 
 								<div class="row vistas animated fadeInUp">
 									<div class="col-lg-12">
-									<div class="card-box table-responsive">
+										<div class="card-box table-responsive">
 
-<table id="datatable-responsive" class="table table-striped table-bordered" class="table table-striped table-bordered" style="width:100%">
-	<thead>
-		<tr class="headings">
-			<th style="padding: 0.6rem;"></th>
-			<th style="padding: 0.6rem;"></th>
-			<th style="padding: 0.6rem;">Nombre </th>
-			<th style="padding: 0.6rem;">Parentesco</th>
-			<th style="padding: 0.6rem;">Cedula</th>
-			<th style="padding: 0.6rem;">Telefono</th>
-			<th style="padding: 0.6rem;">Ver</th>
-		</tr>
-	</thead>
-
-
-
-
-	<tbody>
-
-
-		<?php
-		$var = 1;
-		$queryJefeDeFamilia = "SELECT * FROM inf_habitantes WHERE rol_familiar='JEFE DE FAMILIA'  AND muerte='0' AND id_vivienda='$id'";
-		$buscarHabitantes = $conexion->query($queryJefeDeFamilia);
-		if ($buscarHabitantes->num_rows > 0) {
-			while ($filaJefeFamilia = $buscarHabitantes->fetch_assoc()) {
+											<table id="datatable-responsive" class="table table-striped table-bordered" class="table table-striped table-bordered" style="width:100%">
+												<thead>
+													<tr class="headings">
+														<th style="padding: 0.6rem;"></th>
+														<th style="padding: 0.6rem;"></th>
+														<th style="padding: 0.6rem;">Nombre </th>
+														<th style="padding: 0.6rem;">Parentesco</th>
+														<th style="padding: 0.6rem;">Cedula</th>
+														<th style="padding: 0.6rem;">Telefono</th>
+														<th style="padding: 0.6rem;">Ver</th>
+													</tr>
+												</thead>
 
 
 
-				$idFamilia = $filaJefeFamilia['id_familia'];
 
-				echo '<tr class="even pointer" >
+												<tbody>
+
+
+													<?php
+													$var = 1;
+													$queryJefeDeFamilia = "SELECT * FROM inf_habitantes WHERE rol_familiar='JEFE DE FAMILIA'  AND muerte='0' AND id_vivienda='$id'";
+													$buscarHabitantes = $conexion->query($queryJefeDeFamilia);
+													if ($buscarHabitantes->num_rows > 0) {
+														while ($filaJefeFamilia = $buscarHabitantes->fetch_assoc()) {
+
+
+
+															$idFamilia = $filaJefeFamilia['id_familia'];
+
+															echo '<tr class="even pointer" >
 						<td style="font-size: 13px">' . $var++ . '</td>
 						<td style="font-size: 13px">JF</td>
 						<td style="font-size: 13px">' . $filaJefeFamilia['nombre'] . '</td>
@@ -314,13 +307,13 @@ if ($_SESSION['nivel'] == 1) {
 						';
 
 
-				$queryCarga = "SELECT * FROM inf_habitantes WHERE id_familia='$idFamilia' AND rol_familiar='CARGA FAMILIAR' AND muerte='0'";
+															$queryCarga = "SELECT * FROM inf_habitantes WHERE id_familia='$idFamilia' AND rol_familiar='CARGA FAMILIAR' AND muerte='0'";
 
-				$buscarCarga = $conexion->query($queryCarga);
-				if ($buscarCarga->num_rows > 0) {
-					while ($filaCarga = $buscarCarga->fetch_assoc()) {
+															$buscarCarga = $conexion->query($queryCarga);
+															if ($buscarCarga->num_rows > 0) {
+																while ($filaCarga = $buscarCarga->fetch_assoc()) {
 
-						echo '<tr class="even pointer">
+																	echo '<tr class="even pointer">
 								<td style="font-size: 13px">' . $var++ . '</td>
 								<td style="font-size: 13px"></td>
 								<td style="font-size: 13px">' . $filaCarga['nombre'] . '</td>
@@ -333,19 +326,19 @@ if ($_SESSION['nivel'] == 1) {
 									</a>
 								</td>
 								</tr>';
-					}
-				}
-			}
-		}
+																}
+															}
+														}
+													}
 
-		?>
-
-
+													?>
 
 
-	</tbody>
-</table>
-</div>
+
+
+												</tbody>
+											</table>
+										</div>
 
 									</div>
 								</div>
@@ -362,34 +355,34 @@ if ($_SESSION['nivel'] == 1) {
 								<h6 class="h6Card">Información de la vivienda</h6>
 								<div class="row">
 									<div class="col-lg-12" style="padding: 0 30px">
-									<hr style="margin: 7px; opacity: 0;">
-								<?php 
-								
-								echo 'Tipo: ' . $tipo . '<br>';
-								echo 'Material de construcción:  ' . $material_construccion . '<br>';
-								echo 'Código: ' . $id_vivienda . '<br>';
-								echo 'Condición: ' . $condicion_vivienda . '<br>';
-								echo 'Tenencia de la tierra: ' . $tenencia_tierra . '<br>';
-								echo 'GMVV: ' . $vivienda_venezuela . '<br>';
-								echo 'BNBT: ' . $bnbt . '<br>';
-								echo 'Código INE: ' . $cod_ine . '<br>';
-								echo 'Código catastral: ' . $cod_catastro . '<br>';
-								echo 'Agua potable: ' . $agua_potable . '<br>';
-								echo 'Almacenamiento del agua: ' . $almacenamiento_agua . '<br>';
-								echo 'Aguas residuales: ' . $agua_servidas . '<br>';
-								echo 'Disposicion del basura: ' . $disposicion_basura . '<br>';
-								echo 'SEN: ' . $electricidad . '<br>';
-								echo 'Telefonia: ' . $telefonia . '<br>';
-								echo 'Interne: t' . $internet . '<br>';
-								echo 'Televisión: ' . $television . '<br>';
-								echo 'Calle: ' . $jefe_calle . '<br>';
-								echo 'Latitud: ' . $coordenada_norte . '<br>';
-								echo 'Longitud: ' . $coordenada_este . '<br>';
+										<hr style="margin: 7px; opacity: 0;">
+										<?php
 
-								?>
-									<hr style="margin: 17px; opacity: 0;">
-								
-								</div>
+										echo 'Tipo: ' . $tipo . '<br>';
+										echo 'Material de construcción:  ' . $material_construccion . '<br>';
+										echo 'Código: ' . $id_vivienda . '<br>';
+										echo 'Condición: ' . $condicion_vivienda . '<br>';
+										echo 'Tenencia de la tierra: ' . $tenencia_tierra . '<br>';
+										echo 'GMVV: ' . $vivienda_venezuela . '<br>';
+										echo 'BNBT: ' . $bnbt . '<br>';
+										echo 'Código INE: ' . $cod_ine . '<br>';
+										echo 'Código catastral: ' . $cod_catastro . '<br>';
+										echo 'Agua potable: ' . $agua_potable . '<br>';
+										echo 'Almacenamiento del agua: ' . $almacenamiento_agua . '<br>';
+										echo 'Aguas residuales: ' . $agua_servidas . '<br>';
+										echo 'Disposicion del basura: ' . $disposicion_basura . '<br>';
+										echo 'SEN: ' . $electricidad . '<br>';
+										echo 'Telefonia: ' . $telefonia . '<br>';
+										echo 'Interne: t' . $internet . '<br>';
+										echo 'Televisión: ' . $television . '<br>';
+										echo 'Calle: ' . $jefe_calle . '<br>';
+										echo 'Latitud: ' . $coordenada_norte . '<br>';
+										echo 'Longitud: ' . $coordenada_este . '<br>';
+
+										?>
+										<hr style="margin: 17px; opacity: 0;">
+
+									</div>
 								</div>
 
 							</div>
@@ -410,6 +403,7 @@ if ($_SESSION['nivel'] == 1) {
 		<script src="mapa/glosario.js"></script>
 		<script src="../assets/js/material-dashboard.min.js?v=3.0.2"></script>
 	</body>
+
 	</html>
 
 <?php

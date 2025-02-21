@@ -4,9 +4,15 @@
     $endValue = '';
     if (@$_POST['tipo'] == 'casas') {
 
+        $filtro_com = '';
+        if ($_SESSION['nivel'] == 3) {
+            $com = $_SESSION["dato1"];
+            $filtro_com =  " AND id_c_comunal='$com'";
+        }
+
         $consulta = str_replace('"', "'", $_POST['consulta']);
         $cantidad = 0;
-        $query = "SELECT * FROM inf_casas WHERE $consulta";
+        $query = "SELECT * FROM inf_casas WHERE $consulta $filtro_com";
         $search = $conexion->query($query);
         if ($search->num_rows > 0) {
             while ($row = $search->fetch_assoc()) {
@@ -32,11 +38,17 @@
             $campoContar = $explode[1];
         }
 
+        $filtro_com = '';
+        if ($_SESSION['nivel'] == 3) {
+            $com = $_SESSION["dato1"];
+            $filtro_com =  " AND id_c_comunal='$com'";
+        }
+
 
         $cantidad = 0;
         $query = "SELECT inf_casas.coordenada_este, inf_casas.coordenada_norte, inf_habitantes.cedula, inf_habitantes.nombre, inf_habitantes.id_vivienda, inf_habitantes.id FROM inf_habitantes 
         LEFT JOIN inf_casas ON inf_casas.id_vivienda = inf_habitantes.id_vivienda
-        WHERE $consulta";
+        WHERE $consulta $filtro_com";
         $search = $conexion->query($query);
         if ($search->num_rows > 0) {
             while ($row = $search->fetch_assoc()) {
