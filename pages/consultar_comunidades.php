@@ -175,7 +175,7 @@ if ($_SESSION['nivel'] != '3') {
 
       #chartdiv {
         width: 100%;
-        height: 500px;
+        height: 300px;
       }
     </style>
   </head>
@@ -216,20 +216,6 @@ if ($_SESSION['nivel'] != '3') {
                 </div>
               </div>
             </div>
-
-
-            <div class="card mb-3" style="min-height: 338px;">
-              <div class="card-body d-flex justify-content-center flex-wrap ps-xl-15 pe-0">
-                <div class="flex-grow-1 me-9 me-md-0">
-                  <h4 class="position-relative fw-bold mb-2 text-center">
-                    Buscar por cédula
-                    </h3>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, quidem voluptatum? Numquam, adipisci magni. Iure, temporibus expedita. Perspiciatis laborum, sint repudiandae quos dignissimos, excepturi eum ad similique iusto iste nihil?
-
-                </div>
-              </div>
-            </div>
-
 
 
           </div>
