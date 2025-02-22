@@ -181,6 +181,25 @@ if ($_SESSION['nivel'] != '3') {
   </head>
 
   <body class="g-sidenav-show  bg-gray-200" id="table-container">
+
+
+
+    <div class="fondo-loader">
+      <div class='container'>
+        <svg viewBox="0 0 396.45 396.45" stroke-width='10' fill="none" xmlns="http://www.w3.org/2000/svg" class="loadersVG">
+          <g class="dash">
+            <path style="--sped: 4s;" pathLength="360" d="M181.66,317.82s-48.11-90.72-59.23-114.38c-3.34-7.1-8-17.23-9.07-31.28-3.19-41.66,28.51-72.6,32-76,31.22-29.57,69.74-28.56,75.07-28.34,44.07,1.87,70,31.64,74,36.51,5.12,5.75,26.58,31.08,24,66.64a85.26,85.26,0,0,1-10.73,35.35L251.11,316.8c18.94,3.27,67.17,12.12,67.17,12.12a12.13,12.13,0,0,1,8.57,4.36,11.74,11.74,0,0,1,.88,13,12,12,0,0,1-6.12,5.07,379.7,379.7,0,0,0-52.12-11c-11.62-1.61-22.63-2.59-32.9-3.11a15.44,15.44,0,0,1-5.05-2.19,9.42,9.42,0,0,1-2.65-2.23c-3.33-4.45-3.12-11.26.35-17.42l61.3-121.42c10.48-20.75,7.71-33.44,1.93-41-6.37-8.36-18.05-9.84-24.77-10.08l-52.34.77A17.51,17.51,0,0,0,197.68,160c-.39,9.59,7.77,18.07,17.94,17.88H247a13.16,13.16,0,0,1,.89,25.78L215,204c-24.36.89-44.79-18.88-44.81-42.89,0-24.21,20.71-44.1,45.25-42.95l16.28-.2c.83-.06,7.63-.6,11.49-6.45,3.56-5.4,2.45-12-.19-16.09-2.95-4.54-7.91-6.05-10.15-6.7-10-2.89-45.15-6.35-72.31,19-2.73,2.56-24.51,23.57-25.54,56.6a79.53,79.53,0,0,0,3.77,26.62c21.78,41.44,66,127.53,66,127.53.19.33,3.82,6.79.35,13a13.13,13.13,0,0,1-7.66,6,344.43,344.43,0,0,0-42,4.09c-15.35,2.44-41.23,9.19-41.23,9.19-5.06-2.23-8-7.22-7.31-12,.7-5,5-7.61,5.65-7.95,7.44-2.35,15.49-4.5,24.08-6.49A270.26,270.26,0,0,1,181.66,317.82Z" transform="translate(-200.7 -200)" class="big"></path>
+          </g>
+        </svg>
+        <P style="margin: 165px 0 0 -41px;text-transform: uppercase;color: #bbbbbb;font-family: sans-serif;">
+          Cargando...
+        </P>
+      </div>
+    </div>
+
+
+
+
     <?php include('includes/menu.php'); ?>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
       <!-- Navbar -->
@@ -349,6 +368,13 @@ if ($_SESSION['nivel'] != '3') {
 
                 <div class="card-title  d-flex justify-content-between">
                   <h5 class="fw-bold mb-1" id="nombre_comunidad_info" style="font-size: 17.5px;">Habitantes de la comunidad</h5>
+
+                  <span class="badge bg-danger pointer" id="close_vista" style="height: max-content;">
+                    <i class="fa fa-close me-2"></i>
+
+                    Cerrar</span>
+
+
                   <input type="text" style="max-width: 30%;" class="form-control" id="buscador" placeholder="Buscar en la tabla...">
                 </div>
 
@@ -392,9 +418,15 @@ if ($_SESSION['nivel'] != '3') {
     <script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 
-
-
     <script>
+      function activar() {
+        $('.fondo-loader').hide();
+      }
+      $(window).on("load", activar);
+
+
+
+
       // ===========================================================
       // Data
       // ===========================================================
@@ -607,6 +639,8 @@ if ($_SESSION['nivel'] != '3') {
       var lista
 
       function buscar(cedula = null, comunidad = null) {
+        $('.fondo-loader').show();
+
         $.ajax({
           url: 'consultasAjax/actualizar_inf_manejador.php',
           type: 'POST',
@@ -637,8 +671,8 @@ if ($_SESSION['nivel'] != '3') {
                 $('#table').append(`<tr ${(habitante.rol_familiar == 'JEFE DE FAMILIA' ? 'style="background: #fff0f0;"' : '')}>
                 <td>${contador++}</td>
                 <td><a class="hover-danger" onclick='showInfo("${index}", "${habitante.id_vivienda}")'>${habitante.nombre}</a></td>
-                <td><span class="${(cedula != null && cedula == habitante.cedula ? 'text-bold text-danger' : '')}">${ habitante.cedula}</span></td>
-                <td>${(habitante.rol_familiar == 'JEFE DE FAMILIA' ? habitante.rol_familiar : '')}</td>
+              <td><span class="${(cedula != null && cedula == habitante.cedula ? 'text-bold text-danger' : '')}">${ habitante.cedula}</span></td>
+              <td>${(habitante.rol_familiar == 'JEFE DE FAMILIA' ? habitante.rol_familiar : '')}</td>
                 <td>${habitante.id_c_comunal}</td>
                 <td><a href="datosPersona.php?id=${habitante.id}" target="_blank" data-vivienda='${habitante.id_vivienda}' data-habitante='${index}' class="btn btn-sm btn-danger btn-edit"> Ver</a></td>
             </tr>`)
@@ -660,8 +694,16 @@ if ($_SESSION['nivel'] != '3') {
             }
 
           }
+          $('.fondo-loader').hide();
+
         })
       }
+
+
+      document.getElementById('close_vista').addEventListener('click', function() {
+        $('#vista_1').show(300)
+        $('#vista_2').hide(300)
+      })
 
       document.addEventListener('click', function(event) {
 
