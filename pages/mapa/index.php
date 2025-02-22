@@ -2961,7 +2961,9 @@ if (isset($_GET['codigo'])) {
                         toast("success", "Se agrego una nueva capa");
 
 
-                        map.fitBounds(featureGroup.getBounds());
+                        if ("<?php echo $_SESSION['nivel'] ?>" == 3) {
+                            map.fitBounds(featureGroup.getBounds());
+                        }
 
 
 

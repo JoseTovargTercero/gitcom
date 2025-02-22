@@ -27,6 +27,42 @@ if ($_SESSION['nivel'] == '') {
 if ($_SESSION['nivel'] != '') {
 
   $comunidad = $_SESSION['dato1'];
+  $id = $_SESSION['id'];
+
+
+
+
+
+  /*
+  $stmt = mysqli_prepare($conexion, "SELECT * FROM `sist_usuarios` WHERE id = ?");
+  $stmt->bind_param('s', $id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+      $usuario = $row['usuario'];
+      if ($row['nivel'] == 3 && strpos($usuario, '@') === false) {
+        $datos = false;
+      } else {
+        $datos = true;
+      }
+    }
+  }
+  $stmt->close();*/
+
+
+  $stmt = $conexion->prepare("SELECT usuario, nivel FROM sist_usuarios WHERE id = ?");
+  $stmt->bind_param('s', $id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $datos = false;
+
+  if ($row = $result->fetch_assoc()) {
+    $datos = !($row['nivel'] == 3 && strpos($row['usuario'], '@') === false);
+  }
+
+  $stmt->close();
+
 
 ?>
 
@@ -35,15 +71,16 @@ if ($_SESSION['nivel'] != '') {
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title class="index" id="title">Incio</title>
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
-    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="mapa/css/leaflet.css">
     <script src="../assets/js/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="../assets/css/animate.min.css" />
+
 
 
     <?php
@@ -876,14 +913,31 @@ if ($_SESSION['nivel'] != '') {
     </style>
 
 
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     <!--   Core JS Files   -->
-    <script src="../assets/js/material-dashboard.min.js?v=3.0.2"></script>
     <!--   Core JS Files   -->
     <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-
     <!-- AMCHART -->
     <script src="../assets/amcharts5/index.js"></script>
     <script src="../assets/amcharts5/percent.js"></script>
@@ -898,6 +952,27 @@ if ($_SESSION['nivel'] != '') {
 
 
     <script>
+      /*    var datos = <?php // echo json_encode($datos); 
+                        ?>;
+
+
+
+      if (!datos) {
+        $('#staticBackdrop').modal('toggle')
+      }
+*/
+
+
+
+
+
+
+
+
+
+
+
+
       // Create root element
       var root = am5.Root.new("chartdiv5");
 
@@ -949,7 +1024,7 @@ if ($_SESSION['nivel'] != '') {
       });
 
 
-      // Play  initial se ries animation
+      // Play initial se ries animation
       chart.appear(1000, 100);
 
 
@@ -1411,7 +1486,7 @@ if ($_SESSION['nivel'] != '') {
 
             if (resultado >= 1) {
 
-              if (base == '10') {
+              if (base == ' 10') {
                 rowSize = 5;
                 colSize = 2;
               } else {

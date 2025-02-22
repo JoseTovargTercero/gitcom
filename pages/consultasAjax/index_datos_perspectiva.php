@@ -42,17 +42,19 @@
 
     if ($_POST["t"] == '2') {
         $tabla = 'inf_habitantes';
-        $d = contar2('inf_habitantes', "1 " . $add_consulta);
+        $d = contar2('inf_habitantes', "1" . $add_consulta);
     } else {
         $tabla = 'inf_casas';
         $d = contar2('inf_casas', '1 ' . $add_consulta);
     }
 
+
     $cantidad = contar2($tabla, $consulta);
+
     if ($cantidad >= 1) {
         $cantidad = ($cantidad / $d) * $b;
         if ($cantidad >= 1) {
-            $cantidad = round($cantidad, 0, PHP_ROUND_HALF_UP);
+            $cantidad = $cantidad;
             echo $cantidad;
         } else {
             echo "0";
@@ -60,8 +62,6 @@
     } else {
         echo "0";
     }
-
-
 
 
     ?>

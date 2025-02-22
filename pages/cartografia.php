@@ -114,11 +114,16 @@ if ($_SESSION['nivel'] != '') {
 
         <div class="row py-4 ">
 
-          <div class="col-lg-9">
+          <div class="col-lg-7">
             <hr>
           </div>
-          <div class="col-lg-3 text-end">
-            <button class="btn btn-default"> <i class="fa fa-filter"></i> Filtro</button>
+          <div class="col-lg-5 text-end">
+            <?php
+            if ($_SESSION['nivel'] != '3') {
+              echo '<a href="consultar_comunidades" class="btn btn-default">Consultar comunidades</a>';
+            } else
+            ?>
+
             <a href="cartografia_nuevo_proyecto" class="btn btn-primary"> Crear </a>
           </div>
         </div>

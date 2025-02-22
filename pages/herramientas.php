@@ -1,4 +1,3 @@
-
 <?php
 include('../configuracion/conexionMysqli.php');
 include('../class/count.php');
@@ -25,14 +24,15 @@ if ($_SESSION['nivel'] != '') {
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
     <script src="../assets/js/sweetalert2.all.min.js"></script>
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
-  <style>
-    .list-group-item{
-      cursor: pointer;
-    }
-    .list-group-item:hover{
-      filter: brightness(0.9);
-    }
-  </style>
+    <style>
+      .list-group-item {
+        cursor: pointer;
+      }
+
+      .list-group-item:hover {
+        filter: brightness(0.9);
+      }
+    </style>
 
   </head>
 
@@ -55,16 +55,16 @@ if ($_SESSION['nivel'] != '') {
       <div class="container-fluid py-4">
 
 
-           
-              <div class="row">
-                  <?php
-                  $user = $_SESSION['id'];
-                    $tabla = '';
-                      $queryyy = "SELECT * FROM herramientas_gitcom WHERE user='$user'";
-                    $buscarM = $conexion->query($queryyy);
-                    if ($buscarM->num_rows > 0) {
-                      while ($row = $buscarM->fetch_assoc()) {
-                        $tabla .= '
+
+        <div class="row">
+          <?php
+          $user = $_SESSION['id'];
+          $tabla = '';
+          $queryyy = "SELECT * FROM herramientas_gitcom WHERE user='$user'";
+          $buscarM = $conexion->query($queryyy);
+          if ($buscarM->num_rows > 0) {
+            while ($row = $buscarM->fetch_assoc()) {
+              $tabla .= '
                         <div class="col-md-6 col-xl-3 ">
                         <div class="card h-100 ">
                           <div class="card-body d-flex justify-content-center text-center flex-column p-4">
@@ -80,16 +80,21 @@ if ($_SESSION['nivel'] != '') {
                           </div>
                         </div>
                       </div>
-                        
-                        
-                        
-                        
                         ';
-                      }
-                    }
-                    echo $tabla;
+            }
+          } else {
+            $tabla = '
+            <div class="card w-100 d-flex p-3">
+            <div class="m-auto">
+              <img src="../assets/img/work.jpg" alt="sin herramientas" width="400px" class="mb-3">
+            <h4 class="text-center text-muted">No tiene herramientas asignadas!</h4>
+            </div>
+          </div>
+            ';
+          }
+          echo $tabla;
 
-                  ?>
+          ?>
 
 
 
@@ -97,7 +102,8 @@ if ($_SESSION['nivel'] != '') {
 
 
 
-   
+
+
 
 
         </div>
@@ -111,9 +117,6 @@ if ($_SESSION['nivel'] != '') {
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
-
-
-
       var win = navigator.platform.indexOf('Win') > -1;
       if (win && document.querySelector('#sidenav-scrollbar')) {
         var options = {

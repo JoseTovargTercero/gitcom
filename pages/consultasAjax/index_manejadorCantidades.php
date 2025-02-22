@@ -42,9 +42,9 @@
 
     echo json_encode([
         contar2('local_comunidades', 'status="1"' . $consultta2),
-        contar2('inf_habitantes', 'id!=""' . $consulta),
-        contar2('inf_habitantes', 'rol_familiar!="JEFE DE FAMILIA"' . $consulta),
-        contar2('inf_casas', 'id!=""' . $consulta)
+        contar2('inf_habitantes', '1' . $consulta),
+        contar2('inf_habitantes', 'rol_familiar="JEFE DE FAMILIA"' . $consulta),
+        contar2('inf_casas', '1' . $consulta)
     ]);
 
 

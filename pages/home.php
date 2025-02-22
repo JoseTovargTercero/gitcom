@@ -25,14 +25,13 @@ if ($_SESSION['nivel'] == 1) {
 
       if ($row2E['status'] == '1') {
         echo '<script>
-        comunidadesCensadas.push("'.$com.'");
+        comunidadesCensadas.push("' . $com . '");
         </script>';
-      }else {
+      } else {
         echo '<script>
-        comunidadesFase1.push("'.$com.'");
+        comunidadesFase1.push("' . $com . '");
         </script>';
       }
-    
     }
   }
 
@@ -46,7 +45,7 @@ if ($_SESSION['nivel'] == 1) {
   $search2E = $conexion->query($query2E);
   if ($search2E->num_rows > 0) {
     while ($row2E = $search2E->fetch_assoc()) {
-      
+
       $comuna_consulta = $row2E['id_Comuna'];
       $cantidadComunas++;
       if (contar2('local_comunidades', "id_comuna='$comuna_consulta'") == contar2('local_comunidades', "id_comuna='$comuna_consulta' AND status='1'")) {
@@ -55,7 +54,6 @@ if ($_SESSION['nivel'] == 1) {
           $cantidadComunas_terminadas++;
         }
       }
-    
     }
   }
 
@@ -76,22 +74,24 @@ if ($_SESSION['nivel'] == 1) {
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
- 
+
     <link rel="stylesheet" href="mapa/css/leaflet.css">
-        <link rel="stylesheet" href="mapa/css/qgis2web.css">
-        <style>
-        #map {
-            width: 100%;
-            height: 100%;
-        }
-        .leaflet-bar {
-            box-shadow: none !important
-        }
-        td{
-          font-size: 12px  !important;
-        }
-        </style>
- 
+    <link rel="stylesheet" href="mapa/css/qgis2web.css">
+    <style>
+      #map {
+        width: 100%;
+        height: 100%;
+      }
+
+      .leaflet-bar {
+        box-shadow: none !important
+      }
+
+      td {
+        font-size: 12px !important;
+      }
+    </style>
+
     <!-- AMCHART -->
     <link rel="stylesheet" href="../assets/amcharts5/uso/pie-chart/index.css" />
 
@@ -117,7 +117,7 @@ if ($_SESSION['nivel'] == 1) {
       <!-- End Navbar -->
       <div class="container-fluid py-4">
         <div class="row">
-        <div class="col-xl-3 col-sm-6">
+          <div class="col-xl-3 col-sm-6">
             <div class="card">
               <div class="card-header p-3 pt-2">
                 <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
@@ -127,11 +127,19 @@ if ($_SESSION['nivel'] == 1) {
                 <div class="text-end pt-1">
                   <p class="text-sm mb-0 text-capitalize">Comunidades</p>
                   <h4 class="mb-0">
-                    <?php echo contar('local_comunidades', '1', 'status') ?>/
-                           <?php echo contar2('local_comunidades', 'status!=0') ?>/
-                  
-                  <?php echo contar2('local_comunidades', 'id_parroquia="020301" OR id_parroquia="020302"') ?>
-                  
+                    <span class="hover-danger" style="cursor: help;" title="Fase 2 (Todos los datos recolectados)">
+                      <?php echo contar('local_comunidades', '1', 'status') ?>
+                    </span>
+                    /
+                    <span class="hover-danger" style="cursor: help;" title="Fase 1 (Solo servicios)">
+                      <?php echo contar2('local_comunidades', 'status!=0') ?>
+                    </span>
+                    /
+
+                    <span class="hover-danger" style="cursor: help;" title="FGT y LAG">
+                      <?php echo contar2('local_comunidades', 'id_parroquia="020301" OR id_parroquia="020302"') ?>
+                    </span>
+
                   </h4>
                 </div>
               </div>
@@ -189,7 +197,9 @@ if ($_SESSION['nivel'] == 1) {
                 </div>
                 <div class="text-end pt-1">
                   <p class="text-sm mb-0 text-capitalize">Viviendas</p>
-                  <h4 class="mb-0"><?php echo number_format(contar('inf_casas', '0', 'extra'), '0', '.', '.') ?>/<?php echo number_format(contar2('inf_casas', 'id!=""'), '0', '.', '.') ?></h4>
+                  <h4 class="mb-0">
+                    <?php echo number_format(contar2('inf_casas', '1'), '0', '.', '.') ?>
+                  </h4>
 
                 </div>
               </div>
@@ -199,7 +209,7 @@ if ($_SESSION['nivel'] == 1) {
               </div>
             </div>
           </div>
-          
+
         </div>
         <div class="row mt-4">
 
@@ -213,7 +223,7 @@ if ($_SESSION['nivel'] == 1) {
                 <h6>Comunidades censadas </h6>
               </div>
               <div class="card-body">
-              <div id="map" style="height: 60vh"></div>
+                <div id="map" style="height: 60vh"></div>
 
               </div>
             </div>
@@ -241,7 +251,8 @@ if ($_SESSION['nivel'] == 1) {
                     <tbody>
                       <?php
 
-                      function avanceXcomuna1($comuna){
+                      function avanceXcomuna1($comuna)
+                      {
 
 
                         $total = contar2('local_comunidades', "id_comuna='$comuna'");
@@ -254,10 +265,10 @@ if ($_SESSION['nivel'] == 1) {
                           if ($avance1 != 100) {
                             $avance1 = number_format($avance1, '1', '.', '.');
                           }
-                        }else {
+                        } else {
                           $avance1 = 0;
                         }
-                       
+
 
                         return '
                     <div class="progress-wrapper w-75 mx-auto">
@@ -269,8 +280,9 @@ if ($_SESSION['nivel'] == 1) {
                     </div>';
                       }
 
-                      
-                      function avanceXcomuna($comuna){
+
+                      function avanceXcomuna($comuna)
+                      {
 
 
                         $total = contar2('local_comunidades', "id_comuna='$comuna'");
@@ -278,7 +290,7 @@ if ($_SESSION['nivel'] == 1) {
 
                         $censadas =  contar2('local_comunidades', "id_comuna='$comuna' AND status='1'");
 
-                        
+
                         if ($censadas != 0) {
                           $avance = $censadas * 100 / $total;
                           if ($avance != 100) {
@@ -326,7 +338,7 @@ if ($_SESSION['nivel'] == 1) {
             </div>
           </div>
         </div>
-          <div class="row mt-4">
+        <div class="row mt-4">
           <div class="col-lg-4">
             <div class="card h-100">
               <div class="card-header pb-0">
@@ -344,8 +356,8 @@ if ($_SESSION['nivel'] == 1) {
 
 
                       echo '
-                      <div class="timeline-block mb-3">
-                  <span class="timeline-step">
+                      <div class="timeline-block mb-3 d-flex">
+                  <span class="timeline-step me-2">
                  
                   <img style="border: 2px solid #ffd4d9 !important;" class="avatar avatar-profile" src="../assets/img/user-pictures/' . $row['id_user'] . '.png" alt="photo-user"  onerror="this.onerror=null; this.src=\'../assets/img/user-pictures/default.jpg\'">
 
@@ -431,93 +443,93 @@ if ($_SESSION['nivel'] == 1) {
     <script src="mapa/data/comunidades_0.js"></script>
 
     <script>
+      var map = L.map('map', {
+        zoomControl: false,
+        maxZoom: 28,
+        minZoom: 1
+      })
 
+      map.attributionControl.setPrefix('');
 
-        var map = L.map('map', {
-            zoomControl:false, maxZoom:28, minZoom:1
-        })
-        
-        map.attributionControl.setPrefix('');
-        
-        var bounds_group = new L.featureGroup([]);
-        function setBounds() {
-            if (bounds_group.getLayers().length) {
-                map.fitBounds(bounds_group.getBounds());
-            }
+      var bounds_group = new L.featureGroup([]);
+
+      function setBounds() {
+        if (bounds_group.getLayers().length) {
+          map.fitBounds(bounds_group.getBounds());
         }
-        function pop_comunidades_0(feature, layer) {
-            var popupContent = (feature.properties['NAME'] !== null ? feature.properties['NAME'].toLocaleString() : '') + '<br>' + (feature.properties['COMUNA'] !== null ? feature.properties['COMUNA'].toLocaleString() : '') + '<br>' + (feature.properties['id_comunid'] !== null ? feature.properties['id_comunid'].toLocaleString() : '');
+      }
 
-            layer.bindPopup(popupContent, {maxHeight: 400});
-        }
+      function pop_comunidades_0(feature, layer) {
+        var popupContent = (feature.properties['NAME'] !== null ? feature.properties['NAME'].toLocaleString() : '') + '<br>' + (feature.properties['COMUNA'] !== null ? feature.properties['COMUNA'].toLocaleString() : '') + '<br>' + (feature.properties['id_comunid'] !== null ? feature.properties['id_comunid'].toLocaleString() : '');
 
-        function style_comunidades_0_0(feature) {
-         // alert(feature.properties['NAME'])
-          let color = 'rgba(234,234,234,1.0)';
-        
-
-
-          if (comunidadesCensadas.indexOf(feature.properties['id_comunid']) != -1) {
-            color = '#d64757';
-          }else if(comunidadesFase1.indexOf(feature.properties['id_comunid']) != -1){
-            color = '#ffd400';
-          }
-
-
-
-
-          /*
-          if (feature.properties['id_comunid'] == '' || feature.properties['id_comunid'] == undefined) {
-            color = '#000';
-          }
-          */
-
-
-
-            return {
-                pane: 'pane_comunidades_0',
-                opacity: 1,
-                color: 'rgba(163,163,163,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: color,
-                interactive: true,
-            }
-        }
-        map.createPane('pane_comunidades_0');
-        map.getPane('pane_comunidades_0').style.zIndex = 400;
-        map.getPane('pane_comunidades_0').style['mix-blend-mode'] = 'normal';
-        var layer_comunidades_0 = new L.geoJson(json_comunidades_0, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_comunidades_0',
-            layerName: 'layer_comunidades_0',
-            pane: 'pane_comunidades_0',
-            onEachFeature: pop_comunidades_0,
-            style: style_comunidades_0_0,
+        layer.bindPopup(popupContent, {
+          maxHeight: 400
         });
-        bounds_group.addLayer(layer_comunidades_0);
-        map.addLayer(layer_comunidades_0);
-        setBounds();
-        var i = 0;
-        layer_comunidades_0.eachLayer(function(layer) {
-            var context = {
-                feature: layer.feature,
-                variables: {}
-            };
-            totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
-        });
-     
+      }
+
+      function style_comunidades_0_0(feature) {
+        // alert(feature.properties['NAME'])
+        let color = 'rgba(234,234,234,1.0)';
 
 
 
+        if (comunidadesCensadas.indexOf(feature.properties['id_comunid']) != -1) {
+          color = '#d64757';
+        } else if (comunidadesFase1.indexOf(feature.properties['id_comunid']) != -1) {
+          color = '#ffd400';
+        }
+
+
+
+
+        /*
+        if (feature.properties['id_comunid'] == '' || feature.properties['id_comunid'] == undefined) {
+          color = '#000';
+        }
+        */
+
+
+
+        return {
+          pane: 'pane_comunidades_0',
+          opacity: 1,
+          color: 'rgba(163,163,163,1.0)',
+          dashArray: '',
+          lineCap: 'butt',
+          lineJoin: 'miter',
+          weight: 1.0,
+          fill: true,
+          fillOpacity: 1,
+          fillColor: color,
+          interactive: true,
+        }
+      }
+      map.createPane('pane_comunidades_0');
+      map.getPane('pane_comunidades_0').style.zIndex = 400;
+      map.getPane('pane_comunidades_0').style['mix-blend-mode'] = 'normal';
+      var layer_comunidades_0 = new L.geoJson(json_comunidades_0, {
+        attribution: '',
+        interactive: true,
+        dataVar: 'json_comunidades_0',
+        layerName: 'layer_comunidades_0',
+        pane: 'pane_comunidades_0',
+        onEachFeature: pop_comunidades_0,
+        style: style_comunidades_0_0,
+      });
+      bounds_group.addLayer(layer_comunidades_0);
+      map.addLayer(layer_comunidades_0);
+      setBounds();
+      var i = 0;
+      layer_comunidades_0.eachLayer(function(layer) {
+        var context = {
+          feature: layer.feature,
+          variables: {}
+        };
+        totalMarkers += 1;
+        layer.added = true;
+        addLabel(layer, i);
+        i++;
+      });
     </script>
 
     <script>
@@ -638,7 +650,7 @@ if ($_SESSION['nivel'] == 1) {
             close: <?php echo $cantidadComunas ?>,
             average: <?php echo $cantidadComunas_terminadas ?>
           }];
-          
+
 
 
           // Create axes

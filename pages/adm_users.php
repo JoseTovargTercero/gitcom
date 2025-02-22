@@ -88,7 +88,7 @@ if ($_SESSION['nivel'] == 1) {
                 </div>
                 <div class="text-end pt-1">
                   <p class="text-sm mb-0 text-capitalize">Instituciones</p>
-                  <h4 class="mb-0"><?php echo number_format(contar2('sist_usuarios', 'nivel="3"'), '0', '.', '.') ?></h4>
+                  <h4 class="mb-0"><?php echo number_format(contar2('sist_usuarios', 'nivel="4"'), '0', '.', '.') ?></h4>
 
                 </div>
               </div>
@@ -107,7 +107,7 @@ if ($_SESSION['nivel'] == 1) {
                 </div>
                 <div class="text-end pt-1">
                   <p class="text-sm mb-0 text-capitalize">Comunidades</p>
-                  <h4 class="mb-0"><?php echo number_format(contar2('sist_usuarios', 'nivel="4"'), '0', '.', '.') ?></h4>
+                  <h4 class="mb-0"><?php echo number_format(contar2('sist_usuarios', 'nivel="3"'), '0', '.', '.') ?></h4>
 
                 </div>
               </div>
@@ -124,7 +124,7 @@ if ($_SESSION['nivel'] == 1) {
 
         <div class="row mt-4">
 
-          <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+          <div class="col-lg-12 mb-md-0 mb-4">
             <div class="card" style="min-height: 550px;">
               <div class="card-header pb-0">
 
@@ -150,7 +150,7 @@ if ($_SESSION['nivel'] == 1) {
                     </thead>
                     <tbody id="tablaUsers">
 
-                     
+
 
 
 
@@ -170,7 +170,7 @@ if ($_SESSION['nivel'] == 1) {
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-4 mb-md-0 mb-4">
+          <div class="col-lg-4 col-md-4 mb-md-0 mb-4" style="display: none;">
             <div class="card" style="min-height: 550px;">
               <div class="card-header pb-0">
 
@@ -204,9 +204,9 @@ if ($_SESSION['nivel'] == 1) {
     <script src="../assets/js/material-dashboard.min.js?v=3.0.2"></script>
     <script>
       function actualizarTablaUser() {
-          $.get("consultasAjax/users/users_tabla.php", "", function(data) {
-            $("#tablaUsers").html(data);
-          });
+        $.get("consultasAjax/users/users_tabla.php", "", function(data) {
+          $("#tablaUsers").html(data);
+        });
       }
 
       actualizarTablaUser()

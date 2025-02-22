@@ -13,8 +13,16 @@
       */
       $data = [];
 
-      $stmt = mysqli_prepare($conexion, "SELECT * FROM `inf_habitantes` WHERE cedula = ? AND id_c_comunal = ?");
-      $stmt->bind_param('ss', $cedula, $comunidad);
+      if ($_SESSION['nivel'] == 3) {
+        $stmt = mysqli_prepare($conexion, "SELECT * FROM `inf_habitantes` WHERE cedula = ? AND id_c_comunal = ?");
+        $stmt->bind_param('ss', $cedula, $comunidad);
+      } else {
+        $stmt = mysqli_prepare($conexion, "SELECT * FROM `inf_habitantes` WHERE cedula = ?");
+        $stmt->bind_param('s', $cedula);
+      }
+
+
+
       $stmt->execute();
       $result = $stmt->get_result();
       if ($result->num_rows > 0) {
@@ -72,6 +80,10 @@
 
       $data = [];
 
+      if ($_SESSION['nivel'] != 3) {
+        $comunidad = $_POST["comunidad"];
+      }
+
       $stmt = mysqli_prepare($conexion, "SELECT * FROM `inf_casas` WHERE id_c_comunal = ?  ");
       $stmt->bind_param('s', $comunidad);
       $stmt->execute();
@@ -84,6 +96,10 @@
           ];
         }
       }
+
+
+
+
       $stmt->close();
       $stmt = mysqli_prepare($conexion, "SELECT * FROM `inf_habitantes` WHERE
       id_c_comunal = ? ORDER BY id_familia, id");

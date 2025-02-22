@@ -80,3 +80,4 @@ function contar($condicion)
 
 
 contar("SELECT count(*) FROM go_planes WHERE tipo='2' AND cerrado='1' AND ano='$ano' AND trimestre='1'")
+
