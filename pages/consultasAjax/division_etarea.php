@@ -39,12 +39,15 @@ if ($_SESSION["nivel"] != '') {
     $stmt = mysqli_prepare($conexion, "SELECT 
     CASE 
         WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 0 AND 2 THEN '0-2'
-        WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 3 AND 10 THEN '3-10'
-        WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 11 AND 14 THEN '11-14'
-        WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 15 AND 18 THEN '15-18'
-        WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 19 AND 35 THEN '19-35'
-        WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 36 AND 64 THEN '36-64'
-        ELSE '65-+100'
+        WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 3 AND 5 THEN '3-5'
+        WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 6 AND 11 THEN '6-11'
+        WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 12 AND 14 THEN '12-14'
+        WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 15 AND 17 THEN '15-17'
+        WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 18 AND 35 THEN '18-35'
+        WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 36 AND 45 THEN '36-45'
+        WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 46 AND 54 THEN '46-54'
+        WHEN TIMESTAMPDIFF(YEAR, fecha_de_nacimiento, CURDATE()) BETWEEN 55 AND 79 THEN '55-79'
+        ELSE '80-+100'
     END AS rango_edad,
     sexo,
     COUNT(*) AS cantidad

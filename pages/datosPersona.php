@@ -240,7 +240,7 @@ if ($_SESSION['nivel'] == 1) {
 
   function comprobarVariable($variable, $pretitulo, $titulo, $diferenteA)
   {
-    if ($variable != $diferenteA) {
+    if ($variable != $diferenteA && $variable != '') {
       return '<li class="list-group-item border-0 ps-0 pt-0 text-sm">' . $pretitulo . ': <strong class="text-dark">' . $titulo . '</strong></li>';
     }
   }
@@ -484,8 +484,8 @@ if ($_SESSION['nivel'] == 1) {
 
                           echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Discapacidad:</strong> ' . $discapacidad . '</li>';
 
-                          if (comprobarVariable($discapacidad, 'Discapacidad', $discapacidad, 'NO') != '') {
-                            echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Carnet CONAPDIS:</strong> ' . $carnet_discapacidad . '</li>';
+                          if (trim(comprobarVariable($discapacidad, 'Discapacidad', $discapacidad, 'NO')) != '') {
+                            echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Carnet CONAPDIS:</strong> ' .  $carnet_discapacidad . '</li>';
 
                             echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Ayuda técnica:</strong> ' . $requiere_ayuda . '</li>';
 

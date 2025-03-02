@@ -71,12 +71,13 @@ if ($_SESSION['nivel'] != '') {
 
   <head>
     <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title class="index" id="title">Incio</title>
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+
     <link rel="stylesheet" href="mapa/css/leaflet.css">
     <script src="../assets/js/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="../assets/css/animate.min.css" />

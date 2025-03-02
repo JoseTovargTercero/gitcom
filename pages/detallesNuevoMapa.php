@@ -53,7 +53,7 @@ if ($_SESSION['nivel'] == 1) {
 			return 0;
 		}
 	}
-
+	$cantidadEnNumero = 1;
 	$queryCasa = "SELECT * FROM inf_casas WHERE id_vivienda='$id'";
 	$buscarCasas = $conexion->query($queryCasa);
 	if ($buscarCasas->num_rows > 0) {
