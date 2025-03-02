@@ -311,7 +311,10 @@
 		ocupacion
 		combo alimenticio
 		*/
-
+		miArray['jefes de familia'] = ['rol_familiar="JEFE DE FAMILIA"', 'personas']
+		miArray['jefes de familia mujeres'] = ['sexo="Femenino" AND rol_familiar="JEFE DE FAMILIA"', 'personas']
+		miArray['jefes de familia hombres'] = ['sexo="Masculino" AND rol_familiar="JEFE DE FAMILIA"', 'personas']
+		
 		/** ojo */
 		miArray['personas con discapacidad'] = ['discapacidad="Fisica" OR discapacidad="Auditiva" OR discapacidad="Visual" OR discapacidad="Vohabla" OR discapacidad="Intelectual" OR discapacidad="Mental" OR discapacidad="Autismo o Asperger" OR ', 'personas']
 		
