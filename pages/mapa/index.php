@@ -118,6 +118,14 @@ if (isset($_GET['codigo'])) {
     <script src="../../assets/js/sweetalert2.all.min.js"></script>
 
 
+    <style>
+        .css_COMUNAS_AYACUCHOcopiar_1 {
+            background-color: transparent;
+            text-shadow: #000 2px 2px;
+            border: none;
+
+        }
+    </style>
 
     <script>
         let claves = Object.keys(miArray);
@@ -1345,6 +1353,8 @@ if (isset($_GET['codigo'])) {
     <script src="js/rbush.min.js"></script>
     <script src="js/labelgun.min.js"></script>
     <script src="js/labels.js"></script>
+    <script src="js/Autolinker.min.js"></script>
+
     <script src="js/leaflet-measure.js"></script>
     <script src="js/proj4.js"></script>
     <script src="js/proj4leaflet.js"></script>
@@ -1353,6 +1363,7 @@ if (isset($_GET['codigo'])) {
     <script src="dist/leaflet.awesome-markers.js"></script>
     <script src="catiline.js"></script>
     <script src="leaflet.shpfile.js"></script>
+    <script src="data/COMUNAS_AYACUCHOcopiar_1.js"></script>
 
 
     <script src="plugins/leaflet.browser.print-master/dist/leaflet.browser.print.js"></script>
@@ -1649,9 +1660,131 @@ if (isset($_GET['codigo'])) {
 
 
         }
-
-
         //   L.control.coordinates().addTo(map);
+
+
+
+
+
+        var autolinker = new Autolinker({
+            truncate: {
+                length: 30,
+                location: 'smart'
+            }
+        });
+
+
+
+
+
+
+
+        // remove popup's row if "visible-with-data"
+        function removeEmptyRowsFromPopupContent(content, feature) {
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = content;
+            var rows = tempDiv.querySelectorAll('tr');
+            for (var i = 0; i < rows.length; i++) {
+                var td = rows[i].querySelector('td.visible-with-data');
+                var key = td ? td.id : '';
+                if (td && td.classList.contains('visible-with-data') && feature.properties[key] == null) {
+                    rows[i].parentNode.removeChild(rows[i]);
+                }
+            }
+            return tempDiv.innerHTML;
+        }
+        // add class to format popup if it contains media
+        function addClassToPopupIfMedia(content, popup) {
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = content;
+            if (tempDiv.querySelector('td img')) {
+                popup._contentNode.classList.add('media');
+                // Delay to force the redraw
+                setTimeout(function() {
+                    popup.update();
+                }, 10);
+            } else {
+                popup._contentNode.classList.remove('media');
+            }
+        }
+
+
+        function pop_COMUNAS_AYACUCHOcopiar_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><b>Comunidad</b>: ' + (feature.properties['NAME'] !== null ? autolinker.link(String(feature.properties['NAME']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><b>Comuna</b>:' + (feature.properties['COMUNA'] !== null ? autolinker.link(String(feature.properties['COMUNA']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+            layer.on('popupopen', function(e) {
+                addClassToPopupIfMedia(content, e.popup);
+            });
+            layer.bindPopup(content, {
+                maxHeight: 400
+            });
+        }
+
+        function style_COMUNAS_AYACUCHOcopiar_1_0() {
+            return {
+                pane: 'pane_COMUNAS_AYACUCHOcopiar_1',
+                opacity: 1,
+                color: 'rgba(229,229,229,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_COMUNAS_AYACUCHOcopiar_1');
+        map.getPane('pane_COMUNAS_AYACUCHOcopiar_1').style.zIndex = 200;
+        map.getPane('pane_COMUNAS_AYACUCHOcopiar_1').style['mix-blend-mode'] = 'normal';
+        var layer_COMUNAS_AYACUCHOcopiar_1 = new L.geoJson(json_COMUNAS_AYACUCHOcopiar_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_COMUNAS_AYACUCHOcopiar_1',
+            layerName: 'layer_COMUNAS_AYACUCHOcopiar_1',
+            pane: 'pane_COMUNAS_AYACUCHOcopiar_1',
+            onEachFeature: pop_COMUNAS_AYACUCHOcopiar_1,
+            style: style_COMUNAS_AYACUCHOcopiar_1_0,
+        });
+        map.addLayer(layer_COMUNAS_AYACUCHOcopiar_1);
+        var i = 0;
+        layer_COMUNAS_AYACUCHOcopiar_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['NAME'] !== null ? String('<div style="color: #fff;  font-weight: bold; font-size: 12pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['NAME']) + '</div>' : ''), {
+                permanent: false,
+                offset: [-0, -16],
+                className: 'css_COMUNAS_AYACUCHOcopiar_1'
+            });
+            labels.push(layer);
+            totalMarkers += 1;
+            layer.added = true;
+            addLabel(layer, i);
+            i++;
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
