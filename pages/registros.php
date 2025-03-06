@@ -1,4 +1,3 @@
-
 <?php
 include('../configuracion/conexionMysqli.php');
 include('../class/count.php');
@@ -10,8 +9,8 @@ if ($_SESSION['nivel'] == 1) {
   $hab = contar2('inf_habitantes', 'id!=""');
   $fam = contar2('inf_habitantes', 'rol_familiar="JEFE DE FAMILIA"');
   $viv = contar2('inf_casas', 'id!=""');
-  
-  
+
+
 ?>
 
   <!DOCTYPE html>
@@ -20,10 +19,10 @@ if ($_SESSION['nivel'] == 1) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="registros" id="title">Registros</title>
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/animate.css">

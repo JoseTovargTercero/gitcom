@@ -35,12 +35,12 @@ if ($result->num_rows > 0) {
 					<h1>Hola ' . $row['nombreUser'] . '!</h1> 
 					<p> 
 					<b>
-						Haga click en el siguiente enlace para validar su inicio de sesion. 
+						Haga click en el siguiente enlace para validar su inicio de sesión. 
 						<strong>
-						En caso de no haber realizado ningun inicio, actualice sus credenciales.
+						En caso de no haber realizado ningún inicio, actualice sus credenciales.
 						</strong>
 				
-						<a href="https://gitcom-ve.com/ini?tk=' . $rand . '&u=' . $row['id'] . '">Validacio de usuario</a>
+						<a href="https://gitcom-ve.com/ini?tk=' . $rand . '&u=' . $row['id'] . '">Validación de usuario</a>
 					<br>
 					<br>
 					<h2></h2>

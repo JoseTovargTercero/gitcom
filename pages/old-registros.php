@@ -1,41 +1,41 @@
-
 <?php
 include('../configuracion/conexionMysqli.php');
 
 if ($_SESSION['nivel'] == 1) {
-	unset($_SESSION['proyecto']);
-  function contar($tabla, $condicion){
+  unset($_SESSION['proyecto']);
+  function contar($tabla, $condicion)
+  {
     $condicionEnd = str_replace('"', "'", $condicion);
     $condicionExtra = "";
 
     if (isset($_GET['modo'])) {
-      
+
       $value = $_GET['value'];
-      
+
       switch ($_GET['modo']) {
 
         case 'mcp':
-          $condicionExtra = " AND id_municipio = '".$value."'";
+          $condicionExtra = " AND id_municipio = '" . $value . "'";
           break;
         case 'paq':
-          $condicionExtra = " AND id_parroquia = '".$value."'";
+          $condicionExtra = " AND id_parroquia = '" . $value . "'";
           break;
         case 'com':
-          $condicionExtra = " AND id_comuna = '".$value."'";
+          $condicionExtra = " AND id_comuna = '" . $value . "'";
           break;
         case 'cod':
-          $condicionExtra = " AND id_c_comunal = '".$value."'";
+          $condicionExtra = " AND id_c_comunal = '" . $value . "'";
           break;
       }
-      
-      $condicionEnd = $condicionEnd.$condicionExtra;
+
+      $condicionEnd = $condicionEnd . $condicionExtra;
     }
 
-    
+
 
     global $conexion;
 
-    
+
     $conteoH78 = mysqli_query($conexion, "SELECT * FROM $tabla WHERE $condicionEnd");
     if (mysqli_num_rows($conteoH78) >= 0) {
       return  mysqli_num_rows($conteoH78);
@@ -49,36 +49,36 @@ if ($_SESSION['nivel'] == 1) {
   $hab = contar('inf_habitantes', 'id!=""');
   $fam = contar('inf_habitantes', 'rol_familiar="JEFE DE FAMILIA"');
   $viv = contar('inf_casas', 'id!=""');
-  function countDistinc($distinc, $tabla){
+  function countDistinc($distinc, $tabla)
+  {
     $condicionExtra = "";
 
     if (isset($_GET['modo'])) {
-      
+
       $value = $_GET['value'];
-      
+
       switch ($_GET['modo']) {
 
         case 'mcp':
-          $condicionExtra = " WHERE id_municipio = '".$value."'";
+          $condicionExtra = " WHERE id_municipio = '" . $value . "'";
           break;
         case 'paq':
-          $condicionExtra = " WHERE id_parroquia = '".$value."'";
+          $condicionExtra = " WHERE id_parroquia = '" . $value . "'";
           break;
         case 'com':
-          $condicionExtra = " WHERE id_comuna = '".$value."'";
+          $condicionExtra = " WHERE id_comuna = '" . $value . "'";
           break;
         case 'cod':
-          $condicionExtra = " WHERE id_c_comunal = '".$value."'";
+          $condicionExtra = " WHERE id_c_comunal = '" . $value . "'";
           break;
       }
-      
     }
 
 
 
     global $conexion;
 
-    
+
     $sql = "SELECT count(distinct $distinc) FROM $tabla $condicionExtra";
     $result = mysqli_query($conexion, $sql);
     $fila = mysqli_fetch_assoc($result);
@@ -98,10 +98,10 @@ if ($_SESSION['nivel'] == 1) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="registros" id="title">Registros</title>
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/animate.css">
@@ -661,13 +661,13 @@ if ($_SESSION['nivel'] == 1) {
 
       }
 
-     
+
 
 
 
       // crear funcion setFilter que me oculte el div graficoContent y muestre el div filterConctent
       function setFilter() {
-        document.getElementById('graficoContent').style.display = 'none'; 
+        document.getElementById('graficoContent').style.display = 'none';
         document.getElementById('filterConctent').style.display = 'block';
       }
 

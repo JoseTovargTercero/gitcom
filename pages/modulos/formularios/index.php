@@ -15,7 +15,7 @@ if ($_SESSION['nivel'] != '') {
       $h_nombre = $row['nombre'];
     }
   } else {
-/*
+    /*
     define('PAGINA_INICIO', '../../../index.php');
     header('Location: ' . PAGINA_INICIO);*/
   }
@@ -39,7 +39,8 @@ if ($_SESSION['nivel'] != '') {
     $nombreMes = str_replace($meses_EN, $meses_ES, $mes);
     return $nombredia . " " . $numeroDia . " de " . $nombreMes . " del " . $anio;
   }
-  function nameMonth($mes){
+  function nameMonth($mes)
+  {
 
     $meses_ES = array("", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
     return $meses_ES[$mes];
@@ -58,7 +59,7 @@ if ($_SESSION['nivel'] != '') {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../../../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../../../assets/img/SLS.png">
     <title class="herramientas" id="title">
       Herramientas GITCOM
     </title>
@@ -74,8 +75,7 @@ if ($_SESSION['nivel'] != '') {
       #chartdiv,
       #chartdiv2,
       #chartdiv3,
-      #chartdiv4
-      {
+      #chartdiv4 {
         width: 100%;
         height: 280px;
       }
@@ -288,7 +288,7 @@ if ($_SESSION['nivel'] != '') {
                     <h6>Registros<small><br></small><small class="text-gray-400">Caracterización de empresas.</small></h6>
                   </div>
                 </div>
-             
+
 
                 <div class="card-body p-2">
 
@@ -342,9 +342,9 @@ if ($_SESSION['nivel'] != '') {
 
                       <td width="40%">
 
-                      <span class="text-gray-800 fw-800">' . fechaCastellano($row['fecha']) . ' - '.date('H:i a', strtotime($row['fecha'])).'</span>
+                      <span class="text-gray-800 fw-800">' . fechaCastellano($row['fecha']) . ' - ' . date('H:i a', strtotime($row['fecha'])) . '</span>
                       <br>
-                      <span class="text-gray-400">'.$row['fecha'].'</span>
+                      <span class="text-gray-400">' . $row['fecha'] . '</span>
                       </td>
 
                   
@@ -366,12 +366,10 @@ if ($_SESSION['nivel'] != '') {
             </div>
           </div>
 
-     
+
 
 
           <script>
-    
-
             function nuevoRegistro(registro) {
 
               $.ajax({
@@ -395,7 +393,7 @@ if ($_SESSION['nivel'] != '') {
 
 
           <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered" >
+            <div class="modal-dialog modal-lg modal-dialog-centered">
               <div class="modal-content">
 
                 <div class="modal-header">
@@ -430,10 +428,10 @@ if ($_SESSION['nivel'] != '') {
 
 
     <script>
-        /*  END CHARTS */
+      /*  END CHARTS */
 
 
-    
+
 
       function eliminarProyecto(id) {
 

@@ -60,10 +60,10 @@ if ($_SESSION['nivel'] == 1) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="aca" id="title">Importar marcadores</title>
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
@@ -224,7 +224,7 @@ if ($_SESSION['nivel'] == 1) {
         </div>
 
         <div class="row my-3">
-          <div class="col-lg-12 animated fadeInUp" id="mapa" >
+          <div class="col-lg-12 animated fadeInUp" id="mapa">
             <div class="card">
               <div class="card-header pb-0">
                 <div class="row">
@@ -266,7 +266,7 @@ if ($_SESSION['nivel'] == 1) {
 
 
       <style>
-        .floating{
+        .floating {
           position: fixed;
           bottom: 10px;
           right: 10px;
@@ -362,7 +362,7 @@ if ($_SESSION['nivel'] == 1) {
         }).then((result) => {
           if (result.isConfirmed) {
             location.reload();
-          } 
+          }
         })
 
       }
@@ -432,19 +432,19 @@ if ($_SESSION['nivel'] == 1) {
 
             if (msg.trim() == '1') {
               casas.addTo(map)
-            drawnItems.clearLayers();
-            $("#editando").hide(500, "swing");
+              drawnItems.clearLayers();
+              $("#editando").hide(500, "swing");
 
-            /*  ojo  */
+              /*  ojo  */
 
-            var pointx = L.marker([alatitude, alongitude], {
-              id: sessionStorage['id'],
-              este: alongitude,
-              norte: alatitude
-            }).bindPopup("<strong>Responsable: </strong> " + sessionStorage['nombre'] + "<br>CI: <strong>" + sessionStorage['cedula'] + "</strong><br><a class=\"aMover\" onclick=\'editarDatos(\"" + sessionStorage['id'] + "\", \"" + alatitude + "\", \"" + alongitude + "\", \"" + sessionStorage['nombre'] + "\", \"" + sessionStorage['cedula'] + "\")\'><i class=\'line icon-note\'></i> Convertir en objeto editable</a>");
-            casas.addLayer(pointx);
+              var pointx = L.marker([alatitude, alongitude], {
+                id: sessionStorage['id'],
+                este: alongitude,
+                norte: alatitude
+              }).bindPopup("<strong>Responsable: </strong> " + sessionStorage['nombre'] + "<br>CI: <strong>" + sessionStorage['cedula'] + "</strong><br><a class=\"aMover\" onclick=\'editarDatos(\"" + sessionStorage['id'] + "\", \"" + alatitude + "\", \"" + alongitude + "\", \"" + sessionStorage['nombre'] + "\", \"" + sessionStorage['cedula'] + "\")\'><i class=\'line icon-note\'></i> Convertir en objeto editable</a>");
+              casas.addLayer(pointx);
 
-            toast('success', 'Actualizado correctamente')
+              toast('success', 'Actualizado correctamente')
 
 
             }
@@ -547,8 +547,8 @@ if ($_SESSION['nivel'] == 1) {
         /* ** LIMPIAR DATOS ** */
 
 
-    
-    
+
+
         if (desc == '' && cedula != '0') {
           return '<span style="color: red">Sin Respuesta</span>';
         } else if (desc.length == 1 || desc.length == 2) {
@@ -575,22 +575,22 @@ if ($_SESSION['nivel'] == 1) {
         }
 
 
-  if (cedula != '0') {
-        if (numeros[0] != '1' && numeros[0] != '2' && numeros[0] != '3' && numeros[0] != '4' && numeros[0] != '5') {
-          return '<span style="color: red">Respuesta incorrecta</span>';
-        }
-        if (numeros[1] != '1' && numeros[1] != '2' && numeros[1] != '3' && numeros[1] != '4') {
-          return '<span style="color: red">Respuesta incorrecta</span>';
-        }
-        if (numeros[1] == '1') {
-          if (numeros[2] == '' || numeros[2] == undefined) {
-            return '<span style="color: red">Faltan Datos</span>';
-          }
-          if (numeros[2] != '1' && numeros[2] != '2' && numeros[2] != '3' && numeros[2] != '4') {
+        if (cedula != '0') {
+          if (numeros[0] != '1' && numeros[0] != '2' && numeros[0] != '3' && numeros[0] != '4' && numeros[0] != '5') {
             return '<span style="color: red">Respuesta incorrecta</span>';
           }
+          if (numeros[1] != '1' && numeros[1] != '2' && numeros[1] != '3' && numeros[1] != '4') {
+            return '<span style="color: red">Respuesta incorrecta</span>';
+          }
+          if (numeros[1] == '1') {
+            if (numeros[2] == '' || numeros[2] == undefined) {
+              return '<span style="color: red">Faltan Datos</span>';
+            }
+            if (numeros[2] != '1' && numeros[2] != '2' && numeros[2] != '3' && numeros[2] != '4') {
+              return '<span style="color: red">Respuesta incorrecta</span>';
+            }
+          }
         }
-     }
 
         return 'ok';
       }
@@ -633,7 +633,7 @@ if ($_SESSION['nivel'] == 1) {
 
 
 
-        
+
 
       }
 
@@ -669,7 +669,7 @@ if ($_SESSION['nivel'] == 1) {
 
 
             valoresResultado.forEach(element => {
-              
+
 
               let pasos = element[4]
               let longitude = element[2]
@@ -678,11 +678,11 @@ if ($_SESSION['nivel'] == 1) {
               let cedula = element[0]
 
               var point = L.marker([latitude, longitude], {
-                    id: pasos,
-                    este: longitude,
-                    norte: latitude
-                  }).bindPopup("<strong>Responsable: </strong> " + nombre + "<br>CI: <strong>" + cedula + "</strong><br><a class=\"aMover\" onclick=\'editarDatos(\"" + pasos + "\", \"" + latitude + "\", \"" + longitude + "\", \"" + nombre + "\", \"" + cedula + "\")\'><i class=\'line icon-note\'></i> Convertir en objeto editable</a>");
-                  casas.addLayer(point);
+                id: pasos,
+                este: longitude,
+                norte: latitude
+              }).bindPopup("<strong>Responsable: </strong> " + nombre + "<br>CI: <strong>" + cedula + "</strong><br><a class=\"aMover\" onclick=\'editarDatos(\"" + pasos + "\", \"" + latitude + "\", \"" + longitude + "\", \"" + nombre + "\", \"" + cedula + "\")\'><i class=\'line icon-note\'></i> Convertir en objeto editable</a>");
+              casas.addLayer(point);
             });
 
             $('#formulario').hide(300);
@@ -698,7 +698,7 @@ if ($_SESSION['nivel'] == 1) {
       function deleteI(id) {
 
 
-        
+
         Swal.fire({
           title: '¿Esta seguro?',
           confirmButtonText: 'Eliminar marcador',
@@ -711,18 +711,18 @@ if ($_SESSION['nivel'] == 1) {
             delete(valoresResultado[id])
             $('#c-' + id).remove()
             console.log('Se elimino ' + id);
-            
-          let errores = parseInt($('#erroresE').html()) - 1;
-          $('#erroresE').html(errores)
-            
-          let total = parseInt($('#cantidadMarcadores').html()) - 1;
-          $('#cantidadMarcadores').html(total)
 
-          if (errores == 0) {
-            saveDef()
+            let errores = parseInt($('#erroresE').html()) - 1;
+            $('#erroresE').html(errores)
+
+            let total = parseInt($('#cantidadMarcadores').html()) - 1;
+            $('#cantidadMarcadores').html(total)
+
+            if (errores == 0) {
+              saveDef()
+            }
+
           }
-
-          } 
         })
 
 
@@ -736,11 +736,11 @@ if ($_SESSION['nivel'] == 1) {
 
           e.preventDefault();
           let formData = new FormData(this);
-          
-                if ($('#comdad').val() == '') {
-                   toast('error', 'Rellene todos los campos');
-                   return;
-                  }
+
+          if ($('#comdad').val() == '') {
+            toast('error', 'Rellene todos los campos');
+            return;
+          }
 
           console.log('Se incia el preceso de guardado')
 
@@ -787,7 +787,7 @@ if ($_SESSION['nivel'] == 1) {
 
                   valoresResultado[pasos] = [cedula, latitude, longitude, desc, pasos]
 
-                 
+
 
                   let validacion = validarRespuestas(desc, cedula, pasos);
 
@@ -816,11 +816,11 @@ if ($_SESSION['nivel'] == 1) {
               });
 
               $('#erroresE').html(errores)
-                if (errores == '0') {
-                  saveDef()
-                } else {
-                  $('#statusE').html('<span style="color: red">Errores encontrados</span>')
-                }
+              if (errores == '0') {
+                saveDef()
+              } else {
+                $('#statusE').html('<span style="color: red">Errores encontrados</span>')
+              }
             }
           }).fail(function(jqXHR, textStatus, errorThrown) {
             if (jqXHR.status === 0) {

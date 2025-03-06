@@ -17,9 +17,9 @@ include('../configuracion/conexionMysqli.php');
 include('../class/count.php');
 
 if ($_SESSION['nivel'] == 1) {
-	unset($_SESSION['proyecto']);
+  unset($_SESSION['proyecto']);
 
- 
+
 
   $query = $conexion->query("select * from local_municipio");
   $countries = array();
@@ -34,10 +34,10 @@ if ($_SESSION['nivel'] == 1) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="directorio" id="title">Directorio</title>
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/animate.css">
@@ -149,20 +149,20 @@ if ($_SESSION['nivel'] == 1) {
                   </div>
 
                   <div class="col-lg-4 col-4">
-                  <div class="input-group input-group-outline my-3">
+                    <div class="input-group input-group-outline my-3">
 
-                      <select  class="form-control" id="organizacion"  name="organizacion" style="padding: 10px !important;margin-top: -20px;">
-                      <option value="concejo_comunal"> Consejo Comunal</option>
-											<option value="raas"> RAAS</option>
-											<option value="clap"> CLAP</option>
-											<option value="ubch"> UBCH</option>
-											<option value="milicia">Milicianos</option>
-											<option value="promotores_comunitarios">Promotores Comunitarios</option>
-											<option value="ffm"> FFM</option>
-											<option value="msv">Brig. Somos Venezuela</option>
-											<option value="mesa_tecnica_telecomunicaciones"> MT. de Telecomunicaciones</option>
-											<option value="mesa_tecnica_agua"> MT. de Agua</option>
-											<option value="sala_bnbt"> Sala BNBT</option>
+                      <select class="form-control" id="organizacion" name="organizacion" style="padding: 10px !important;margin-top: -20px;">
+                        <option value="concejo_comunal"> Consejo Comunal</option>
+                        <option value="raas"> RAAS</option>
+                        <option value="clap"> CLAP</option>
+                        <option value="ubch"> UBCH</option>
+                        <option value="milicia">Milicianos</option>
+                        <option value="promotores_comunitarios">Promotores Comunitarios</option>
+                        <option value="ffm"> FFM</option>
+                        <option value="msv">Brig. Somos Venezuela</option>
+                        <option value="mesa_tecnica_telecomunicaciones"> MT. de Telecomunicaciones</option>
+                        <option value="mesa_tecnica_agua"> MT. de Agua</option>
+                        <option value="sala_bnbt"> Sala BNBT</option>
                       </select>
                     </div>
                   </div>
@@ -173,7 +173,7 @@ if ($_SESSION['nivel'] == 1) {
               <div class="card-body px-0 pb-2" style="margin: -50px 15px 15px">
                 <div class="row vistas">
                   <div class="card-body px-0 pb-2">
-	                    <section  style="height: 70vh; overflow: auto" id="resultadoDirectorio"></section>
+                    <section style="height: 70vh; overflow: auto" id="resultadoDirectorio"></section>
                   </div>
                 </div>
 
@@ -218,15 +218,15 @@ if ($_SESSION['nivel'] == 1) {
                 </div>
 
 
-                     
-          
+
+
 
               </div>
             </div>
           </div>
         </div>
-<?php include('notificacion.php'); ?>
-</div>
+        <?php include('notificacion.php'); ?>
+      </div>
     </main>
 
     <!--   Core JS Files   -->
@@ -244,92 +244,90 @@ if ($_SESSION['nivel'] == 1) {
     <script src="../assets/amcharts5/percent.js"></script>
     <script src="../assets/amcharts5/examples/misc-40-charts/index.js"></script>
     <script>
+      var get = {
+        'concejo_comunal': 'concejo_comunal/inf_habitantes.concejo_comunal!=*NO* AND inf_habitantes.concejo_comunal!=*NO APLICA*',
+        'raas': 'raas/inf_habitantes.raas!=*NO* AND inf_habitantes.raas!=*NO APLICA*',
+        'clap': 'clap/inf_habitantes.clap!=*NO* AND inf_habitantes.clap!=*NO APLICA*',
+        'ubch': 'ubch/inf_habitantes.ubch!=*NO* AND inf_habitantes.ubch!=*NO APLICA*',
+        'milicia': 'milicia/inf_habitantes.milicia!=*NO*',
+        'promotores_comunitarios': 'promotores_comunitarios/inf_habitantes.promotores_comunitarios=*SI*',
+        'ffm': 'ffm/inf_habitantes.ffm=*SI*',
+        'msv': 'msv/inf_habitantes.msv=*SI*',
+        'robert_serra': 'robert_serra/inf_habitantes.robert_serra=*SI*',
+        'mesa_tecnica_telecomunicaciones': 'mesa_tecnica_telecomunicaciones/inf_habitantes.mesa_tecnica_telecomunicaciones=*SI*',
+        'mesa_tecnica_agua': 'mesa_tecnica_agua/inf_habitantes.mesa_tecnica_agua=*SI*',
+        'sala_bnbt': 'sala_bnbt/inf_habitantes.sala_bnbt=*SI*'
+      };
+
+      function obeternDirectorio(consulta, mcp, pq, cmu, cc) {
+        $.ajax({
+            url: 'consultasAjax/directorio_mostrarDirectorio.php',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+              consulta: consulta,
+              mcp: mcp,
+              pq: pq,
+              cmu: cmu,
+              cc: cc
+            },
+          })
+
+          .done(function(resultado) {
+            $("#resultadoDirectorio").html(resultado);
+          })
+      }
+
+      $(document).on('change', '#organizacion', function() {
+        var valorConsulta = $('#organizacion').val();
+        obeternDirectorio(get[valorConsulta], $("#municipio_id").val(), $("#continente_id").val(), $("#pais_id").val(), $("#ciudad_id").val());
+
+      });
 
 
-var get = {
-				'concejo_comunal': 'concejo_comunal/inf_habitantes.concejo_comunal!=*NO* AND inf_habitantes.concejo_comunal!=*NO APLICA*',
-				'raas': 'raas/inf_habitantes.raas!=*NO* AND inf_habitantes.raas!=*NO APLICA*',
-				'clap': 'clap/inf_habitantes.clap!=*NO* AND inf_habitantes.clap!=*NO APLICA*',
-				'ubch': 'ubch/inf_habitantes.ubch!=*NO* AND inf_habitantes.ubch!=*NO APLICA*',
-				'milicia': 'milicia/inf_habitantes.milicia!=*NO*',
-				'promotores_comunitarios': 'promotores_comunitarios/inf_habitantes.promotores_comunitarios=*SI*',
-				'ffm': 'ffm/inf_habitantes.ffm=*SI*',
-				'msv': 'msv/inf_habitantes.msv=*SI*',
-				'robert_serra': 'robert_serra/inf_habitantes.robert_serra=*SI*',
-				'mesa_tecnica_telecomunicaciones': 'mesa_tecnica_telecomunicaciones/inf_habitantes.mesa_tecnica_telecomunicaciones=*SI*',
-				'mesa_tecnica_agua': 'mesa_tecnica_agua/inf_habitantes.mesa_tecnica_agua=*SI*',
-				'sala_bnbt': 'sala_bnbt/inf_habitantes.sala_bnbt=*SI*'
-			};
-
-function obeternDirectorio(consulta, mcp, pq, cmu, cc) {
-				$.ajax({
-          url: 'consultasAjax/directorio_mostrarDirectorio.php',
-						type: 'POST',
-						dataType: 'html',
-						data: {
-							consulta: consulta,
-							mcp: mcp,
-							pq: pq,
-							cmu: cmu,
-							cc: cc
-						},
-					})
-
-					.done(function(resultado) {
-						$("#resultadoDirectorio").html(resultado);
-					})
-			}
-
-			$(document).on('change', '#organizacion', function() {
-			var valorConsulta = $('#organizacion').val();
-				obeternDirectorio(get[valorConsulta], $("#municipio_id").val(),  $("#continente_id").val(), $("#pais_id").val(), $("#ciudad_id").val());	
-
-			});
-
-
-      obeternDirectorio(get[$('#organizacion').val()], $("#municipio_id").val(),  $("#continente_id").val(), $("#pais_id").val(), $("#ciudad_id").val());	
+      obeternDirectorio(get[$('#organizacion').val()], $("#municipio_id").val(), $("#continente_id").val(), $("#pais_id").val(), $("#ciudad_id").val());
       $(document).ready(function() {
-				$("#municipio_id").change(function() {
-					$.get("consultasAjax/selec_continente.php", "municipio_id=" + $("#municipio_id").val(), function(data) {
-						$("#continente_id").html(data);
-						var valorConsulta = $('#organizacion').val();
-						
-						
-						$("#pais_id").html("<option value=''>Seleccione...</option>")
-						$("#ciudad_id").html("<option value=''>Seleccione...</option>")
-						
-						obeternDirectorio(get[valorConsulta], $("#municipio_id").val(), '', '', '');
-					});
-				});
-
-				$("#continente_id").change(function() {
-					$.get("consultasAjax/selec_paises.php", "continente_id=" + $("#continente_id").val(), function(data) {
-						$("#pais_id").html(data);
-						var valorConsulta = $('#organizacion').val();
-
-						$("#ciudad_id").html("<option value=''>Seleccione...</option>")
-						
-						obeternDirectorio(get[valorConsulta], $("#municipio_id").val(),  $("#continente_id").val(), '', '');
-					});
-				});
-
-				$("#pais_id").change(function() {
-					$.get("consultasAjax/selec_ciudades.php", "pais_id=" + $("#pais_id").val(), function(data) {
-						$("#ciudad_id").html(data);
-						var valorConsulta = $('#organizacion').val();
-
-						obeternDirectorio(get[valorConsulta], $("#municipio_id").val(),  $("#continente_id").val(), $("#pais_id").val(), '');
-					});
-				});
+        $("#municipio_id").change(function() {
+          $.get("consultasAjax/selec_continente.php", "municipio_id=" + $("#municipio_id").val(), function(data) {
+            $("#continente_id").html(data);
+            var valorConsulta = $('#organizacion').val();
 
 
-				$("#ciudad_id").change(function() {
-						var valorConsulta = $('#organizacion').val();
+            $("#pais_id").html("<option value=''>Seleccione...</option>")
+            $("#ciudad_id").html("<option value=''>Seleccione...</option>")
 
-						obeternDirectorio(get[valorConsulta], $("#municipio_id").val(),  $("#continente_id").val(), $("#pais_id").val(), $("#ciudad_id").val());
-				});
+            obeternDirectorio(get[valorConsulta], $("#municipio_id").val(), '', '', '');
+          });
+        });
 
-			});
+        $("#continente_id").change(function() {
+          $.get("consultasAjax/selec_paises.php", "continente_id=" + $("#continente_id").val(), function(data) {
+            $("#pais_id").html(data);
+            var valorConsulta = $('#organizacion').val();
+
+            $("#ciudad_id").html("<option value=''>Seleccione...</option>")
+
+            obeternDirectorio(get[valorConsulta], $("#municipio_id").val(), $("#continente_id").val(), '', '');
+          });
+        });
+
+        $("#pais_id").change(function() {
+          $.get("consultasAjax/selec_ciudades.php", "pais_id=" + $("#pais_id").val(), function(data) {
+            $("#ciudad_id").html(data);
+            var valorConsulta = $('#organizacion').val();
+
+            obeternDirectorio(get[valorConsulta], $("#municipio_id").val(), $("#continente_id").val(), $("#pais_id").val(), '');
+          });
+        });
+
+
+        $("#ciudad_id").change(function() {
+          var valorConsulta = $('#organizacion').val();
+
+          obeternDirectorio(get[valorConsulta], $("#municipio_id").val(), $("#continente_id").val(), $("#pais_id").val(), $("#ciudad_id").val());
+        });
+
+      });
 
 
 

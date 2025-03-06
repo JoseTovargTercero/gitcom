@@ -14,7 +14,7 @@ if ($_SESSION['nivel'] != '') {
       $h_nombre = 'Venezuela Toda';
     }
   } else {
-/*
+    /*
     define('PAGINA_INICIO', '../../../index.php');
     header('Location: ' . PAGINA_INICIO);*/
   }
@@ -22,7 +22,8 @@ if ($_SESSION['nivel'] != '') {
 
 
 
-  function fechaCastellano($fecha){
+  function fechaCastellano($fecha)
+  {
     $fecha = substr($fecha, 0, 10);
     $numeroDia = date('d', strtotime($fecha));
     $dia = date('l', strtotime($fecha));
@@ -37,7 +38,8 @@ if ($_SESSION['nivel'] != '') {
     $nombreMes = str_replace($meses_EN, $meses_ES, $mes);
     return $nombredia . " " . $numeroDia . " de " . $nombreMes . " del " . $anio;
   }
-  function nameMonth($mes){
+  function nameMonth($mes)
+  {
 
     $meses_ES = array("", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
     return $meses_ES[$mes];
@@ -56,7 +58,7 @@ if ($_SESSION['nivel'] != '') {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../../../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../../../assets/img/SLS.png">
     <title class="herramientas" id="title">
       Herramientas GITCOM
     </title>
@@ -72,8 +74,7 @@ if ($_SESSION['nivel'] != '') {
       #chartdiv,
       #chartdiv2,
       #chartdiv3,
-      #chartdiv4
-      {
+      #chartdiv4 {
         width: 100%;
         height: 280px;
       }
@@ -286,7 +287,7 @@ if ($_SESSION['nivel'] != '') {
                     <h6>Registros<small><br></small><small class="text-gray-400">Registros realizados <strong><?php echo contar2('he_venezuela_toda', "id!=''"); ?></strong> .</small></h6>
                   </div>
                 </div>
-             
+
 
                 <div class="card-body p-2">
 
@@ -313,50 +314,48 @@ if ($_SESSION['nivel'] != '') {
 
 
 
-                $stmt = mysqli_prepare($conexion, "SELECT he_venezuela_toda.tipoRegistro, he_venezuela_toda.tipoPersona, he_venezuela_toda.nombre, he_venezuela_toda.cedula, he_venezuela_toda.telefono, he_venezuela_toda.centro, local_municipio.nombre_municipio,local_parroquia.nombre_parroquia,local_comunas.nombre_comuna,local_comunidades.nombre_c_comunal FROM `he_venezuela_toda`
+                      $stmt = mysqli_prepare($conexion, "SELECT he_venezuela_toda.tipoRegistro, he_venezuela_toda.tipoPersona, he_venezuela_toda.nombre, he_venezuela_toda.cedula, he_venezuela_toda.telefono, he_venezuela_toda.centro, local_municipio.nombre_municipio,local_parroquia.nombre_parroquia,local_comunas.nombre_comuna,local_comunidades.nombre_c_comunal FROM `he_venezuela_toda`
                 LEFT JOIN local_municipio ON local_municipio.id_municipio = he_venezuela_toda.mcp
                 LEFT JOIN local_parroquia ON local_parroquia.id_parroquias = he_venezuela_toda.pq
                 LEFT JOIN local_comunas ON local_comunas.id_Comuna = he_venezuela_toda.comuna
                 LEFT JOIN local_comunidades ON local_comunidades.id_consejo = he_venezuela_toda.comunidad
                  ORDER BY registro, tipoPersona, comunidad, calle, comunidad ASC");
 
-                $stmt->execute();
-                $result = $stmt->get_result();
-                if ($result->num_rows > 0) {
-                  while ($row = $result->fetch_assoc()) {
+                      $stmt->execute();
+                      $result = $stmt->get_result();
+                      if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
 
-                    if ($row['tipoPersona'] == '1') {
-                      $tipo = '<i class="fa fa-user"></i>';
-                      if ($row['tipoRegistro'] == 'Institucional') {
-                        $color = 'background-color: #ffe9e9;';
-                      }else {
-                        $color = 'background-color: #f6e9ff;';
-                      }
-                    }else {
-                      $tipo = '';
-                      $color = '';
-
-                      
-                    }
+                          if ($row['tipoPersona'] == '1') {
+                            $tipo = '<i class="fa fa-user"></i>';
+                            if ($row['tipoRegistro'] == 'Institucional') {
+                              $color = 'background-color: #ffe9e9;';
+                            } else {
+                              $color = 'background-color: #f6e9ff;';
+                            }
+                          } else {
+                            $tipo = '';
+                            $color = '';
+                          }
 
 
 
-                    echo '
-                      <tr style="'.$color.'">
-                        <td>'.$tipo.'</td>
-                        <td>'.$row['nombre'].'</td>
-                        <td>'.$row['cedula'].'</td>
-                        <td>'.$row['telefono'].'</td>
-                        <td>'.$row['centro'].'</td>
-                        <td>'.$row['nombre_municipio'].'</td>
-                        <td>'.$row['nombre_parroquia'].'</td>
-                        <td>'.$row['nombre_comuna'].'</td>
-                        <td>'.$row['nombre_c_comunal'].'</td>
+                          echo '
+                      <tr style="' . $color . '">
+                        <td>' . $tipo . '</td>
+                        <td>' . $row['nombre'] . '</td>
+                        <td>' . $row['cedula'] . '</td>
+                        <td>' . $row['telefono'] . '</td>
+                        <td>' . $row['centro'] . '</td>
+                        <td>' . $row['nombre_municipio'] . '</td>
+                        <td>' . $row['nombre_parroquia'] . '</td>
+                        <td>' . $row['nombre_comuna'] . '</td>
+                        <td>' . $row['nombre_c_comunal'] . '</td>
                       </tr>';
-                       // <td> <a onclick="borrar('.$row['id'].')"><i style="font-size: 18px;" class="fa fa-trash"></i><a/> </td>
-                  }
-                } 
-                $stmt->close();
+                          // <td> <a onclick="borrar('.$row['id'].')"><i style="font-size: 18px;" class="fa fa-trash"></i><a/> </td>
+                        }
+                      }
+                      $stmt->close();
 
                       ?>
                     </tbody>
@@ -366,12 +365,10 @@ if ($_SESSION['nivel'] != '') {
             </div>
           </div>
 
-     
+
 
 
           <script>
-    
-
             function nuevoRegistro(registro) {
 
               $.ajax({
@@ -395,7 +392,7 @@ if ($_SESSION['nivel'] != '') {
 
 
           <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered" >
+            <div class="modal-dialog modal-lg modal-dialog-centered">
               <div class="modal-content">
 
                 <div class="modal-header">
@@ -430,10 +427,10 @@ if ($_SESSION['nivel'] != '') {
 
 
     <script>
-        /*  END CHARTS */
+      /*  END CHARTS */
 
 
-    
+
 
       function eliminarProyecto(id) {
 

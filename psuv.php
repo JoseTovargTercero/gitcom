@@ -9,11 +9,11 @@ include('configuracion/conexionMysqli.php');
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../assets/img/SLS.png">
   <title id="title">Caracterización PSUV</title>
 
-  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
   <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="../assets/css/animate.css">
@@ -25,7 +25,8 @@ include('configuracion/conexionMysqli.php');
     .cintaBottomPerfil {
       height: 100%;
     }
-    .outline-danger{
+
+    .outline-danger {
       border: 1px solid red;
     }
   </style>
@@ -178,17 +179,17 @@ include('configuracion/conexionMysqli.php');
                       <label for="foto" class="form-label">Subir foto</label>
                       <input class="form-control" type="file" id="foto" accept=".png, .jpg, .jpeg" name="foto[]">
                     </div>
-                    
-                    
-                    
-                     <div class="mb-3">
+
+
+
+                    <div class="mb-3">
                       <label for="correo" class="form-label">Partido político en el que milita</label>
                       <input class="form-control" type="text" name="partido" id="partido">
                     </div>
-                    
-                    
-                    
-                    
+
+
+
+
 
 
 
@@ -206,30 +207,30 @@ include('configuracion/conexionMysqli.php');
                       <div class="col-lg-6">
                         <div class="mb-3">
                           <label for="grado" class="form-label">Grado de instrucción</label>
-                           
-                          
-                          
-                           <select name="grado" id="grado" class="form-control">
-                                <option value="">Seleccione</option>
-                                <option value="Basico">Basico</option>
-                                <option value="Bachiller">Bachiller</option>
-                                <option value="TSU">TSU</option>
-                                      <option value="Universitario">Universitario</option>
-                                <option value="Pos-grado">Pos-grado</option>
-                                <option value="Magister">Magister</option>
-                                <option value="Doctorado">Doctorado</option>
-                                <option value="Otros">Otros</option>
-                            
-                              </select>
-                              
-                             
-                              
-                              
-                          
-                          
-                          
-                          
-                          
+
+
+
+                          <select name="grado" id="grado" class="form-control">
+                            <option value="">Seleccione</option>
+                            <option value="Basico">Basico</option>
+                            <option value="Bachiller">Bachiller</option>
+                            <option value="TSU">TSU</option>
+                            <option value="Universitario">Universitario</option>
+                            <option value="Pos-grado">Pos-grado</option>
+                            <option value="Magister">Magister</option>
+                            <option value="Doctorado">Doctorado</option>
+                            <option value="Otros">Otros</option>
+
+                          </select>
+
+
+
+
+
+
+
+
+
                         </div>
                       </div>
                       <div class="col-lg-6">
@@ -331,19 +332,19 @@ include('configuracion/conexionMysqli.php');
 
 
 
-        <div class="mb-3">
-                      <label for="correo" class="form-label">Responsabilidades politicas o social </label>
-                    
-                      <input class="form-control mb-2" placeholder="1era experiencia" type="text" name="cargo1" id="cargo1">
-                      <input class="form-control mb-2" placeholder="2da experiencia" type="text" name="cargo2" id="cargo2">
-                      <input class="form-control mb-2" placeholder="3era experiencia" type="text" name="cargo3" id="cargo3">
-                      <input class="form-control mb-2" placeholder="4ta experiencia" type="text" name="cargo4" id="cargo4">
-                      <input class="form-control mb-2" placeholder="5ta experiencia" type="text" name="cargo5" id="cargo5">
-                      
-                      
-                    </div>
-                    
-                    
+                      <div class="mb-3">
+                        <label for="correo" class="form-label">Responsabilidades politicas o social </label>
+
+                        <input class="form-control mb-2" placeholder="1era experiencia" type="text" name="cargo1" id="cargo1">
+                        <input class="form-control mb-2" placeholder="2da experiencia" type="text" name="cargo2" id="cargo2">
+                        <input class="form-control mb-2" placeholder="3era experiencia" type="text" name="cargo3" id="cargo3">
+                        <input class="form-control mb-2" placeholder="4ta experiencia" type="text" name="cargo4" id="cargo4">
+                        <input class="form-control mb-2" placeholder="5ta experiencia" type="text" name="cargo5" id="cargo5">
+
+
+                      </div>
+
+
                     </div>
 
 
@@ -386,7 +387,7 @@ include('configuracion/conexionMysqli.php');
                         <option value="">Seleccione</option>
                       </select>
                     </div>
-               
+
 
 
 
@@ -486,32 +487,32 @@ include('configuracion/conexionMysqli.php');
                       </div>
 
                     </div>
-                    
-                
-                
-                
-            
-                 
+
+
+
+
+
+
                     <div class="mb-3">
                       <label for="correo" class="form-label">Responsabilidad institucional desempeñada</label>
-                    
+
                       <input class="form-control mb-2" placeholder="1era responsabilidad" type="text" name="responsabilidad1" id="responsabilidad1">
                       <input class="form-control mb-2" placeholder="2da responsabilidad" type="text" name="responsabilidad2" id="responsabilidad2">
                       <input class="form-control mb-2" placeholder="3era responsabilidad" type="text" name="responsabilidad3" id="responsabilidad3">
                       <input class="form-control mb-2" placeholder="4ta responsabilidad" type="text" name="responsabilidad4" id="responsabilidad4">
                       <input class="form-control mb-2" placeholder="5ta responsabilidad" type="text" name="responsabilidad5" id="responsabilidad5">
-                      
-                      
+
+
                     </div>
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-        
+
+
+
+
+
+
+
+
+
 
                     <div style="text-align: right; width: 100%" class="mt-3">
                       <button class="btn btn-primary" id="guardarButton">Guardar</button>
@@ -521,7 +522,7 @@ include('configuracion/conexionMysqli.php');
 
 
                   <!-- Modal -->
-              
+
                 </div>
               </div>
           </form>
@@ -557,7 +558,7 @@ include('configuracion/conexionMysqli.php');
       }
 
 
-      
+
       function emtyInputs(campo) {
         if ($("#" + campo).val() == "") {
           $("#" + campo).addClass('outline-danger');
@@ -593,36 +594,36 @@ include('configuracion/conexionMysqli.php');
 
           let formData = new FormData(this);
 
-  
 
-        let error = 0;
-        error += emtyInputs('cedula');
-        error += emtyInputs('nombre');
-        error += emtyInputs('fecha');
-        error += emtyInputs('telefono');
-        error += emtyInputs('edad');
-        error += emtyInputs('sexo');
-        error += emtyInputs('instancia');
-        error += emtyInputs('grado');
-        error += emtyInputs('profesion');
-        error += emtyInputs('institucion');
-        error += emtyInputs('cargo');
-        error += emtyInputs('tiempo');
-        error += emtyInputs('edoCivil');
-        error += emtyInputs('militar');
-        error += emtyInputs('correo');
-        if ($('#militar').val() == 'Si') {
-          error += emtyInputs('activo');
+
+          let error = 0;
+          error += emtyInputs('cedula');
+          error += emtyInputs('nombre');
+          error += emtyInputs('fecha');
+          error += emtyInputs('telefono');
+          error += emtyInputs('edad');
+          error += emtyInputs('sexo');
+          error += emtyInputs('instancia');
           error += emtyInputs('grado');
-        }
-        error += emtyInputs('direccion');
-        error += emtyInputs('mcp');
-        error += emtyInputs('pq');
-        
-        
-        
+          error += emtyInputs('profesion');
+          error += emtyInputs('institucion');
+          error += emtyInputs('cargo');
+          error += emtyInputs('tiempo');
+          error += emtyInputs('edoCivil');
+          error += emtyInputs('militar');
+          error += emtyInputs('correo');
+          if ($('#militar').val() == 'Si') {
+            error += emtyInputs('activo');
+            error += emtyInputs('grado');
+          }
+          error += emtyInputs('direccion');
+          error += emtyInputs('mcp');
+          error += emtyInputs('pq');
 
-          
+
+
+
+
 
 
           let estructura = $('input[name=estructura]:checked', '#formElem').val();
@@ -636,19 +637,19 @@ include('configuracion/conexionMysqli.php');
           formData.append('estado', 'AMAZONAS');
 
           if (error != 0) {
-          Toast.fire({
-            icon: 'warning',
-            title: 'Rellene todos los campos (' + error + ')'
-          })
-          
-          $('#guardarButton').attr('disabled', false);
-          return;
+            Toast.fire({
+              icon: 'warning',
+              title: 'Rellene todos los campos (' + error + ')'
+            })
 
-        }
+            $('#guardarButton').attr('disabled', false);
+            return;
 
-        if ($("#foto").val().length < 1) {
+          }
+
+          if ($("#foto").val().length < 1) {
             toast('error', 'Seleccione una imagen');
-          $('#guardarButton').attr('disabled', false);
+            $('#guardarButton').attr('disabled', false);
             return false;
           }
 
@@ -665,49 +666,49 @@ include('configuracion/conexionMysqli.php');
             processData: false,
             success: function(msg) {
 
-             $('#guardarButton').attr('disabled', false);
-             $('.form-control').val('');
+              $('#guardarButton').attr('disabled', false);
+              $('.form-control').val('');
               if (msg.trim() == 'ok') {
-            
+
 
                 Swal.fire({
-                    title: 'Exito',
-                    html: 'La informacion se guardo correctamente.',
-                    icon: 'success',
-                    showCancelButton: false,
-                    confirmButtonText: 'Ok'
+                  title: 'Exito',
+                  html: 'La informacion se guardo correctamente.',
+                  icon: 'success',
+                  showCancelButton: false,
+                  confirmButtonText: 'Ok'
                 }).then((result) => {
-                 
+
                 })
-              }else if(msg.trim() == 'Y'){
-                
+              } else if (msg.trim() == 'Y') {
+
 
                 Swal.fire({
-                    title: 'Denegado',
-                    html: 'Registro duplicado.',
-                    icon: 'info',
-                    showCancelButton: false,
-                    confirmButtonText: 'Ok'
+                  title: 'Denegado',
+                  html: 'Registro duplicado.',
+                  icon: 'info',
+                  showCancelButton: false,
+                  confirmButtonText: 'Ok'
                 }).then((result) => {
-             
+
                 })
 
 
 
               }
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
+
+
+
+
+
+
+
+
+
+
             }
           }).fail(function(jqXHR, textStatus, errorThrown) {
-  $('#guardarButton').attr('disabled', false);
+            $('#guardarButton').attr('disabled', false);
             if (jqXHR.status === 0) {
 
               alert('Not connect: Verify Network.');

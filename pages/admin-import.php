@@ -13,10 +13,10 @@ if ($_SESSION['nivel'] == 1) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="aca" id="title">Importar</title>
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
@@ -56,9 +56,9 @@ if ($_SESSION['nivel'] == 1) {
 
 
 
-      <div class="row my-3">
+        <div class="row my-3">
 
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style='display: none'>
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style='display: none'>
             <div class="card">
               <div class="card-header p-3 pt-2">
                 <div class="icon icon-lg icon-shape bg-gradient-danger shadow-danger text-center border-radius-xl mt-n4 position-absolute">
@@ -77,7 +77,7 @@ if ($_SESSION['nivel'] == 1) {
             </div>
           </div>
 
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
               <div class="card-header p-3 pt-2">
                 <div class="icon icon-lg icon-shape bg-gradient-danger shadow-danger text-center border-radius-xl mt-n4 position-absolute">
@@ -100,7 +100,7 @@ if ($_SESSION['nivel'] == 1) {
 
 
 
-      </div>
+        </div>
 
 
 

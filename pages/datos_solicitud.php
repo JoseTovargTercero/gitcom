@@ -26,10 +26,10 @@ if ($_SESSION['nivel'] == 1) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="solicitud" id="title">Datos de solicitud</title>
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/animate.css">
@@ -44,16 +44,17 @@ if ($_SESSION['nivel'] == 1) {
   </head>
 
   <style>
-    #map{
+    #map {
       height: 200px;
       border-radius: 5px;
       border: 1px solid #d5d5d5;
     }
 
-    .col-lg-6>p{
+    .col-lg-6>p {
       margin-bottom: 12px;
     }
   </style>
+
   <body class="g-sidenav-show  bg-gray-200">
 
     <?php include('includes/menu.php'); ?>
@@ -100,7 +101,7 @@ if ($_SESSION['nivel'] == 1) {
                         echo '
                           <p>Cedula: <strong>' . $row['cedula'] . '</strong></p>
                           <p>Nombre: <strong>' . $row['responsable'] . '</strong></p>
-                          <p>Tipo: <strong>' . ( $row['tipo'] == 4 ? 'Comunitario' : 'Institución/Empresa') . '</strong></p>
+                          <p>Tipo: <strong>' . ($row['tipo'] == 4 ? 'Comunitario' : 'Institución/Empresa') . '</strong></p>
                           <p>origen: <strong>' . $row['lugar'] . '</strong></p>
                           <p>Telefono: <strong>' . $row['telefono'] . '</strong></p>
                           <p>Correo: <strong>' . $row['usuario'] . '</strong></p>
@@ -111,103 +112,103 @@ if ($_SESSION['nivel'] == 1) {
 
 
 
-                      <div id="map">
+                    <div id="map">
 
-                      </div>
+                    </div>
 
                   </div>
                   <div class="col-lg-6">
 
-                    <?php 
-                    
+                    <?php
+
                     if ($tipo == 4) {
 
                     ?>
 
                       <h6> Información del consejo comunal:</h6>
 
-                        
-                    <label style="margin-bottom: 0;" for="municipio_id" style="white-space: nowrap;" class="label-control">Municipio</label>
-                    <div class="input-group input-group-outline mb-3">
-                      <select class="form-control" name="municipio_id" id="municipio_id">
-                        <option value="">Seleccione...</option>
 
-                        <?php foreach ($countries55 as $c) : ?>
-                          <option value="<?php echo $c->id_municipio; ?>">&nbsp;<?php echo $c->nombre_municipio; ?></option>
-                        <?php endforeach; ?>
-                      </select>
-                    </div>
+                      <label style="margin-bottom: 0;" for="municipio_id" style="white-space: nowrap;" class="label-control">Municipio</label>
+                      <div class="input-group input-group-outline mb-3">
+                        <select class="form-control" name="municipio_id" id="municipio_id">
+                          <option value="">Seleccione...</option>
 
-                    <label style="margin-bottom: 0;" for="continente_id" style="white-space: nowrap;" class="label-control">Parroquia</label>
-                    <div class="input-group input-group-outline mb-3">
-                      <select class="form-control" name="continente_id" id="continente_id">
-                        <option value="">Seleccione...</option>
-                      </select>
-                    </div>
+                          <?php foreach ($countries55 as $c) : ?>
+                            <option value="<?php echo $c->id_municipio; ?>">&nbsp;<?php echo $c->nombre_municipio; ?></option>
+                          <?php endforeach; ?>
+                        </select>
+                      </div>
 
-
-                    <label style="margin-bottom: 0;" for="pais_id" style="white-space: nowrap;" class="label-control">Comuna</label>
-                    <div class="input-group input-group-outline mb-3">
-                      <select class="form-control" name="pais_id" id="pais_id">
-                        <option value="">Seleccione...</option>
-                      </select>
-                    </div>
+                      <label style="margin-bottom: 0;" for="continente_id" style="white-space: nowrap;" class="label-control">Parroquia</label>
+                      <div class="input-group input-group-outline mb-3">
+                        <select class="form-control" name="continente_id" id="continente_id">
+                          <option value="">Seleccione...</option>
+                        </select>
+                      </div>
 
 
-
-                    <label style="margin-bottom: 0;" for="ciudad_id" style="white-space: nowrap;" class="label-control">Consejo comunal</label>
-                    <div class="input-group input-group-outline mb-3">
-                      <select class="form-control" name="ciudad_id" id="ciudad_id">
-                        <option value="">Seleccione...</option>
-                      </select>
-                    </div>
-
-
-                    <label style="margin-bottom: 0;" for="responsabilidad_comunidad" style="white-space: nowrap;" class="label-control">Responsabilidad dentro de la comunidad</label>
-                    <div class="input-group input-group-outline mb-3">
-                      <select class="form-control" name="responsabilidad_comunidad" id="responsabilidad_comunidad">
-                        <option value="">Seleccione...</option>
-                        <option value="Lider del consejo comunal">Lider del consejo comunal</option>
-                        <option value="Promotor comunitario">Promotor comunitario</option>
-                        <option value="Jefe de Calle">Jefe de Calle</option>
-                        <option value="Lider del clap">Lider del clap</option>
-                        <option value="Jefe de comunidad">Jefe de comunidad</option>
-                      </select>
-                    </div>
-
-
-                    <button class="btn btn-primary" onclick="aprobar()">Aprobar</button>
-                    <button class="btn btn-info" style="float: right;" onclick="rechazar()">Rechazar</button>
-
-
-                  <?php }else { ?>
-
-                    <h6> Información del usuario y empresa:</h6>
-
-                        
-                    <label style="margin-bottom: 0;" for="nombre_empresa" style="white-space: nowrap;" class="label-control">Empresa/institución</label>
-                    <div class="input-group input-group-outline mb-3">
-                      <input type="text" class="form-control" id="nombre_empresa">
-                    </div>
-
-                    <label style="margin-bottom: 0;" for="rif_empresa" style="white-space: nowrap;" class="label-control">Rif la empresa/institución</label>
-                    <div class="input-group input-group-outline mb-3">
-                      <input type="text" class="form-control" id="rif_empresa">
-                    </div>
-
-                    <label style="margin-bottom: 0;" for="responsabilidad" style="white-space: nowrap;" class="label-control">Responsabilidad dentro de la empresa/institución</label>
-                    <div class="input-group input-group-outline mb-3">
-                      <input type="text" class="form-control" id="responsabilidad">
-                    </div>  
-
-          
-
-                    <button class="btn btn-primary" onclick="aprobar()">Aprobar</button>
-                    <button class="btn btn-info" style="float: right;" onclick="rechazar()">Rechazar</button>
+                      <label style="margin-bottom: 0;" for="pais_id" style="white-space: nowrap;" class="label-control">Comuna</label>
+                      <div class="input-group input-group-outline mb-3">
+                        <select class="form-control" name="pais_id" id="pais_id">
+                          <option value="">Seleccione...</option>
+                        </select>
+                      </div>
 
 
 
-                  <?php } ?>
+                      <label style="margin-bottom: 0;" for="ciudad_id" style="white-space: nowrap;" class="label-control">Consejo comunal</label>
+                      <div class="input-group input-group-outline mb-3">
+                        <select class="form-control" name="ciudad_id" id="ciudad_id">
+                          <option value="">Seleccione...</option>
+                        </select>
+                      </div>
+
+
+                      <label style="margin-bottom: 0;" for="responsabilidad_comunidad" style="white-space: nowrap;" class="label-control">Responsabilidad dentro de la comunidad</label>
+                      <div class="input-group input-group-outline mb-3">
+                        <select class="form-control" name="responsabilidad_comunidad" id="responsabilidad_comunidad">
+                          <option value="">Seleccione...</option>
+                          <option value="Lider del consejo comunal">Lider del consejo comunal</option>
+                          <option value="Promotor comunitario">Promotor comunitario</option>
+                          <option value="Jefe de Calle">Jefe de Calle</option>
+                          <option value="Lider del clap">Lider del clap</option>
+                          <option value="Jefe de comunidad">Jefe de comunidad</option>
+                        </select>
+                      </div>
+
+
+                      <button class="btn btn-primary" onclick="aprobar()">Aprobar</button>
+                      <button class="btn btn-info" style="float: right;" onclick="rechazar()">Rechazar</button>
+
+
+                    <?php } else { ?>
+
+                      <h6> Información del usuario y empresa:</h6>
+
+
+                      <label style="margin-bottom: 0;" for="nombre_empresa" style="white-space: nowrap;" class="label-control">Empresa/institución</label>
+                      <div class="input-group input-group-outline mb-3">
+                        <input type="text" class="form-control" id="nombre_empresa">
+                      </div>
+
+                      <label style="margin-bottom: 0;" for="rif_empresa" style="white-space: nowrap;" class="label-control">Rif la empresa/institución</label>
+                      <div class="input-group input-group-outline mb-3">
+                        <input type="text" class="form-control" id="rif_empresa">
+                      </div>
+
+                      <label style="margin-bottom: 0;" for="responsabilidad" style="white-space: nowrap;" class="label-control">Responsabilidad dentro de la empresa/institución</label>
+                      <div class="input-group input-group-outline mb-3">
+                        <input type="text" class="form-control" id="responsabilidad">
+                      </div>
+
+
+
+                      <button class="btn btn-primary" onclick="aprobar()">Aprobar</button>
+                      <button class="btn btn-info" style="float: right;" onclick="rechazar()">Rechazar</button>
+
+
+
+                    <?php } ?>
 
 
                   </div>
@@ -233,34 +234,33 @@ if ($_SESSION['nivel'] == 1) {
     <script src="../class/alertas.js"></script>
 
     <script>
-
       var map = new L.Map('map', {
-            minZoom: 1, // se establece un rango de zoom
-            maxZoom: 28 // se establece un rango de zoom
-        }).setView([<?php echo $lat ?>, <?php echo $lng ?>], 13, false);
-        
-        
+        minZoom: 1, // se establece un rango de zoom
+        maxZoom: 28 // se establece un rango de zoom
+      }).setView([<?php echo $lat ?>, <?php echo $lng ?>], 13, false);
 
-        map.attributionControl.addAttribution('Gitcom');
 
-        L.marker([<?php echo $lat ?>, <?php echo $lng ?>]).addTo(map)
+
+      map.attributionControl.addAttribution('Gitcom');
+
+      L.marker([<?php echo $lat ?>, <?php echo $lng ?>]).addTo(map)
         .bindPopup('Ubicación del usuario al momento de la solicitud.')
         .openPopup();
 
 
 
 
-        var baseLayers = {
-         
-            Google_maps: L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-                minZoom: 2,
-                maxZoom: 28,
-                attribution: '',
-                subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
-            }),
+      var baseLayers = {
 
-        };
-        map.addLayer(baseLayers.Google_maps);
+        Google_maps: L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+          minZoom: 2,
+          maxZoom: 28,
+          attribution: '',
+          subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+        }),
+
+      };
+      map.addLayer(baseLayers.Google_maps);
 
 
       $(document).ready(function() {
@@ -287,7 +287,7 @@ if ($_SESSION['nivel'] == 1) {
         });
 
       });
- 
+
 
 
       function aprobar() {
@@ -299,15 +299,15 @@ if ($_SESSION['nivel'] == 1) {
 
         if (tipo == 4) {
           if ($('#ciudad_id').val() == '') {
-              toast('error', 'Faltan datos')
+            toast('error', 'Faltan datos')
             return;
           }
           dato0 = $('#responsabilidad_comunidad').val();
           dato1 = $('#pais_id').val();
           dato2 = $('#ciudad_id').val();
-        }else{
+        } else {
           if ($('#rif_empresa').val() == '' || $('#responsabilidad').val() == '') {
-              toast('error', 'Faltan datos')
+            toast('error', 'Faltan datos')
             return;
           }
           dato0 = $('#responsabilidad').val();
@@ -330,38 +330,38 @@ if ($_SESSION['nivel'] == 1) {
                 type: 'POST',
                 dataType: 'html',
                 data: {
-                    id: id,
-                    tipo: tipo,
-                    dato0: dato0,
-                    dato1: dato1,
-                    dato2: dato2
+                  id: id,
+                  tipo: tipo,
+                  dato0: dato0,
+                  dato1: dato1,
+                  dato2: dato2
                 },
-            })
-            .done(function(rePol) {
-              window.location.href = "adm_solicitud.php";
-            })
+              })
+              .done(function(rePol) {
+                window.location.href = "adm_solicitud.php";
+              })
           }
         })
       }
 
       function rechazar() {
         let id = <?php echo $id ?>
-        
+
         Swal.fire({
-            title: '¿Esta seguro?',
-            html: 'Se eliminara la solicitud de acceso.',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#ed5264',
-            confirmButtonText: 'Eliminar',
-            cancelButtonText: 'Cancelar'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                $.get("consultasAjax/users/users_tabla_eliminar_sol.php", "id="+id, function(data) {
-                  window.location.href = "adm_solicitud.php";
-                });
-              }
-            })
+          title: '¿Esta seguro?',
+          html: 'Se eliminara la solicitud de acceso.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#ed5264',
+          confirmButtonText: 'Eliminar',
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            $.get("consultasAjax/users/users_tabla_eliminar_sol.php", "id=" + id, function(data) {
+              window.location.href = "adm_solicitud.php";
+            });
+          }
+        })
 
 
       }

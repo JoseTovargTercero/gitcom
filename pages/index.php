@@ -30,27 +30,6 @@ if ($_SESSION['nivel'] != '') {
   $id = $_SESSION['id'];
 
 
-
-
-
-  /*
-  $stmt = mysqli_prepare($conexion, "SELECT * FROM `sist_usuarios` WHERE id = ?");
-  $stmt->bind_param('s', $id);
-  $stmt->execute();
-  $result = $stmt->get_result();
-  if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-      $usuario = $row['usuario'];
-      if ($row['nivel'] == 3 && strpos($usuario, '@') === false) {
-        $datos = false;
-      } else {
-        $datos = true;
-      }
-    }
-  }
-  $stmt->close();*/
-
-
   $stmt = $conexion->prepare("SELECT usuario, nivel FROM sist_usuarios WHERE id = ?");
   $stmt->bind_param('s', $id);
   $stmt->execute();
@@ -72,17 +51,14 @@ if ($_SESSION['nivel'] != '') {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="index" id="title">Incio</title>
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
-
     <link rel="stylesheet" href="mapa/css/leaflet.css">
     <script src="../assets/js/sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="../assets/css/animate.min.css" />
-
-
 
     <?php
 
@@ -691,7 +667,6 @@ if ($_SESSION['nivel'] != '') {
             })
             .done(function(rsult) {
               let arrayResult = JSON.parse(rsult)
-              console.log(arrayResult)
               $('#c_comunidades').html(separadorMiles(arrayResult[0]))
               $('#c_habitantes').html(separadorMiles(arrayResult[1]))
               $('#c_familias').html(separadorMiles(arrayResult[2]))
@@ -915,28 +890,14 @@ if ($_SESSION['nivel'] != '') {
 
 
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Understood</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
 
-    <!--   Core JS Files   -->
     <!--   Core JS Files   -->
     <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../assets/vendor/strength/strength.css" />
+    <script src="../assets/vendor/strength/strength.min.js"></script>
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <!-- AMCHART -->
@@ -953,27 +914,6 @@ if ($_SESSION['nivel'] != '') {
 
 
     <script>
-      /*    var datos = <?php // echo json_encode($datos); 
-                        ?>;
-
-
-
-      if (!datos) {
-        $('#staticBackdrop').modal('toggle')
-      }
-*/
-
-
-
-
-
-
-
-
-
-
-
-
       // Create root element
       var root = am5.Root.new("chartdiv5");
 
@@ -1056,6 +996,7 @@ if ($_SESSION['nivel'] != '') {
           })
           .done(function(rsult) {
             // se value
+            var cantidad = 0
 
             $("#sComparativo option[value='" + filtroComparativo + "']").attr("selected", true);
 
@@ -1074,7 +1015,7 @@ if ($_SESSION['nivel'] != '') {
             legend.data.setAll([]);
             resultado.forEach(element => {
               let val = element.split('/')
-              let cantidad = parseInt(val[1])
+              cantidad = parseInt(val[1])
 
 
               if (document.getElementById("agruparCheck").checked) {
@@ -1113,17 +1054,9 @@ if ($_SESSION['nivel'] != '') {
               return b['value'] - a['value']
             })
 
-
-
-
-
             xAxis.data.setAll(data);
             series2.data.setAll(data);
             legend.data.setAll(series2.dataItems);
-
-
-
-
           })
       }
 
@@ -1481,7 +1414,6 @@ if ($_SESSION['nivel'] != '') {
           })
           .done(function(rsult) {
 
-            console.log('resltt ' + rsult)
 
             let resultado = parseInt(rsult)
 

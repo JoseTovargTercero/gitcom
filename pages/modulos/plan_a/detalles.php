@@ -36,7 +36,7 @@ if ($_SESSION['nivel'] != '') {
       $coms = $row['coms'];
 
 
-      
+
       switch ($row['trimestre']) {
         case '1':
           $nombreTrimestre = 'Primer trimestre';
@@ -85,7 +85,7 @@ if ($_SESSION['nivel'] != '') {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../../../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../../../assets/img/SLS.png">
     <title class="herramientas" id="title">
       Herramientas GITCOM
     </title>
@@ -138,144 +138,145 @@ if ($_SESSION['nivel'] != '') {
 
 
 
-                  .hover-scroll-overlay-x,
-                  .hover-scroll-x,
-                  .scroll-x {
-                    overflow-x: scroll;
-                    position: relative;
-                  }
+      .hover-scroll-overlay-x,
+      .hover-scroll-x,
+      .scroll-x {
+        overflow-x: scroll;
+        position: relative;
+      }
 
-                  .py-2 {
-                    padding-top: 0.5rem !important;
-                    padding-bottom: 0.5rem !important;
-                  }
+      .py-2 {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+      }
 
-                  .flex-nowrap {
-                    flex-wrap: nowrap !important;
-                  }
+      .flex-nowrap {
+        flex-wrap: nowrap !important;
+      }
 
-                  .d-flex {
-                    display: flex !important;
-                  }
+      .d-flex {
+        display: flex !important;
+      }
 
-                  .nav-pills {
-                    --bs-nav-pills-border-radius: var(--bs-border-radius);
-                    --bs-nav-pills-link-active-color: #FFFFFF;
-                    --bs-nav-pills-link-active-bg: #3E97FF;
-                  }
+      .nav-pills {
+        --bs-nav-pills-border-radius: var(--bs-border-radius);
+        --bs-nav-pills-link-active-color: #FFFFFF;
+        --bs-nav-pills-link-active-bg: #3E97FF;
+      }
 
-                  .nav {
-                    --bs-nav-link-padding-x: 1rem;
-                    --bs-nav-link-padding-y: 0.5rem;
-                    --bs-nav-link-color: var(--bs-link-color);
-                    --bs-nav-link-hover-color: var(--bs-link-hover-color);
-                    --bs-nav-link-disabled-color: var(--bs-secondary-color);
-                    display: flex;
-                    flex-wrap: wrap;
-                    padding-left: 0;
-                    margin-bottom: 0;
-                    list-style: none;
-                  }
+      .nav {
+        --bs-nav-link-padding-x: 1rem;
+        --bs-nav-link-padding-y: 0.5rem;
+        --bs-nav-link-color: var(--bs-link-color);
+        --bs-nav-link-hover-color: var(--bs-link-hover-color);
+        --bs-nav-link-disabled-color: var(--bs-secondary-color);
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+      }
 
-                  @media (min-width: 992px) {
+      @media (min-width: 992px) {
 
-                    div,
-                    main,
-                    ol,
-                    pre,
-                    span,
-                    ul {
-                      scrollbar-width: thin;
-                      scrollbar-color: var(--bs-scrollbar-color) transparent;
-                    }
-                  }
+        div,
+        main,
+        ol,
+        pre,
+        span,
+        ul {
+          scrollbar-width: thin;
+          scrollbar-color: var(--bs-scrollbar-color) transparent;
+        }
+      }
 
-                  dl,
-                  ol,
-                  ul {
-                    margin-top: 0;
-                    margin-bottom: 1rem;
-                  }
+      dl,
+      ol,
+      ul {
+        margin-top: 0;
+        margin-bottom: 1rem;
+      }
 
-                  ol,
-                  ul {
-                    padding-left: 2rem;
-                  }
+      ol,
+      ul {
+        padding-left: 2rem;
+      }
 
-                  *,
-                  ::after,
-                  ::before {
-                    box-sizing: border-box;
-                  }
+      *,
+      ::after,
+      ::before {
+        box-sizing: border-box;
+      }
 
-                  user agent stylesheet ul {
-                    display: block;
-                    list-style-type: disc;
-                    margin-block-start: 1em;
-                    margin-block-end: 1em;
-                    margin-inline-start: 0px;
-                    margin-inline-end: 0px;
-                    padding-inline-start: 40px;
-                  }
-             
-                  .bg-secondary {
-                    background-color: #DBDFE9 !important;
-                  }
+      user agent stylesheet ul {
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        padding-inline-start: 40px;
+      }
 
-                  .bg-secondary {
-                    opacity: 0.3;
-                    background-color: gray !important;
-                  }
+      .bg-secondary {
+        background-color: #DBDFE9 !important;
+      }
 
-                  .w-4px {
-                    width: 4px !important;
-                  }
+      .bg-secondary {
+        opacity: 0.3;
+        background-color: gray !important;
+      }
 
-                  .start-0 {
-                    left: 0 !important;
-                  }
+      .w-4px {
+        width: 4px !important;
+      }
 
-                  .btn.btn-active-primary.active {
-                    color: white !important;
-                    border-color: var(--bs-primary);
-                    background-color: var(--bs-primary) !important;
-                    /*   padding: 19px 19px !important;
+      .start-0 {
+        left: 0 !important;
+      }
+
+      .btn.btn-active-primary.active {
+        color: white !important;
+        border-color: var(--bs-primary);
+        background-color: var(--bs-primary) !important;
+        /*   padding: 19px 19px !important;
                     margin-top: 5px;
                     margin-bottom: 0;
 */
-                  }
+      }
 
-                  .thisTime,
-                  .thisTimeInvert {
-                    border: 1px dashed var(--bs-primary) !important;
-                    /*  padding: 19px 19px !important;
+      .thisTime,
+      .thisTimeInvert {
+        border: 1px dashed var(--bs-primary) !important;
+        /*  padding: 19px 19px !important;
                     margin-top: 5px;
                     margin-bottom: 0;*/
-                  }
+      }
 
-                  .thisTimeInvert {
-                    border: 1px dashed white !important;
-                  }
+      .thisTimeInvert {
+        border: 1px dashed white !important;
+      }
 
-                  .fw-bold {
-                    font-weight: 600 !important;
-                  }
+      .fw-bold {
+        font-weight: 600 !important;
+      }
 
-                  .fs-6 {
-                    font-size: 1.075rem !important;
-                  }
+      .fs-6 {
+        font-size: 1.075rem !important;
+      }
 
-                  .nav.nav-pills .nav-link.active {
-                    animation: 0.2s ease;
-                  }
+      .nav.nav-pills .nav-link.active {
+        animation: 0.2s ease;
+      }
 
-                  .nav.nav-pills .nav-link {
-                    height: 72px;
-                  }
-                  .bg-light-danger{
-                    background-color: #ffdfdd;
-                  }
-                </style>
+      .nav.nav-pills .nav-link {
+        height: 72px;
+      }
+
+      .bg-light-danger {
+        background-color: #ffdfdd;
+      }
+    </style>
   </head>
 
   <body class="g-sidenav-show  bg-gray-200">
@@ -402,14 +403,14 @@ if ($_SESSION['nivel'] != '') {
                         </div>
                         <!--end::Stat-->
 
-                        </div>
-                        </div>
-                        </div>
-                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
 
-                   
-                       <hr class="my-1 mb-0">
+
+                <hr class="my-1 mb-0">
 
 
 
@@ -484,132 +485,133 @@ if ($_SESSION['nivel'] != '') {
                 <br>
 
 
-                  <script>
-                    var actividades = []
+                <script>
+                  var actividades = []
 
-                    <?php
+                  <?php
 
-                    $fecha_incial = '';
-                    $fecha_final = '';
-                    $actividades = array();
+                  $fecha_incial = '';
+                  $fecha_final = '';
+                  $actividades = array();
 
-                    $queryTareas = mysqli_prepare($conexion, "SELECT he_pa_sub_acciones.fecha_ac, he_pa_sub_acciones.id_sc, he_pa_sub_acciones.status, he_pa_sub_acciones.id_tarea, local_comunidades.nombre_c_comunal, he_pa_acciones_inner.nombre FROM he_pa_sub_acciones 
+                  $queryTareas = mysqli_prepare($conexion, "SELECT he_pa_sub_acciones.fecha_ac, he_pa_sub_acciones.id_sc, he_pa_sub_acciones.status, he_pa_sub_acciones.id_tarea, local_comunidades.nombre_c_comunal, he_pa_acciones_inner.nombre FROM he_pa_sub_acciones 
                   LEFT JOIN he_pa_acciones_inner ON he_pa_acciones_inner.accion = he_pa_sub_acciones.id_accion
                   LEFT JOIN local_comunidades ON local_comunidades.id_consejo = he_pa_sub_acciones.com
                    WHERE id_p= ? ORDER BY fecha_ac");
-                    $queryTareas->bind_param("s", $plan);
-                    $queryTareas->execute();
-                    $buscarTareas = $queryTareas->get_result();
-                    if ($buscarTareas->num_rows > 0) {
-                      while ($r = $buscarTareas->fetch_assoc()) {
+                  $queryTareas->bind_param("s", $plan);
+                  $queryTareas->execute();
+                  $buscarTareas = $queryTareas->get_result();
+                  if ($buscarTareas->num_rows > 0) {
+                    while ($r = $buscarTareas->fetch_assoc()) {
 
-                        echo 'actividades.push(["' . $r['fecha_ac'] . '", "' . $r['id_sc'] . '", "' . $r['status'] . '", "' . $r['nombre_c_comunal'] . '", "' . $r['nombre'] . '", "' . $r['id_tarea'] . '", "' . fechaCastellano($r['fecha_ac']) . '"]);' . PHP_EOL;
+                      echo 'actividades.push(["' . $r['fecha_ac'] . '", "' . $r['id_sc'] . '", "' . $r['status'] . '", "' . $r['nombre_c_comunal'] . '", "' . $r['nombre'] . '", "' . $r['id_tarea'] . '", "' . fechaCastellano($r['fecha_ac']) . '"]);' . PHP_EOL;
 
-                        if (@$actividades[$r['fecha_ac']]) {
-                          if ($actividades[$r['fecha_ac']] != 3) {
-                            $actividades[$r['fecha_ac']] =  $actividades[$r['fecha_ac']] + 1;
-                          }
-                        } else {
-                          $actividades[$r['fecha_ac']] = 1;
+                      if (@$actividades[$r['fecha_ac']]) {
+                        if ($actividades[$r['fecha_ac']] != 3) {
+                          $actividades[$r['fecha_ac']] =  $actividades[$r['fecha_ac']] + 1;
                         }
-
-                        if ($fecha_incial == '') {
-                          $fecha_incial = $r['fecha_ac'];
-                        }
-                        $fecha_final = $r['fecha_ac'];
-                      }
-                    }
-
-                    $queryTareas->close();
-
-                    
-                    
-    
-                    $fecha1 = $fecha_incial;
-                    $fecha2 = $fecha_final;
-
-                    function dia_semana($fecha){
-                      
-                      global $actividades;
-                      $dia = date("d", strtotime($fecha));
-
-                      $dias = array('', 'LU', 'MA', 'MI', 'JU', 'VI', 'SA', 'DO');
-                      $dia_semana = $dias[date('N', strtotime($fecha))];
-
-                      if (@$actividades[$fecha]) {
-                        if ($fecha == date('Y-m-d')) {
-                          $class = 'active thisTimeInvert';
-                        } else {
-                          $class = 'active';
-                        }
-                      } elseif ($fecha == date('Y-m-d')) {
-                        $class = 'thisTime';
                       } else {
-                        $class = '';
+                        $actividades[$r['fecha_ac']] = 1;
                       }
 
-                      return [$dia_semana, $dia, $class, $fecha];
+                      if ($fecha_incial == '') {
+                        $fecha_incial = $r['fecha_ac'];
+                      }
+                      $fecha_final = $r['fecha_ac'];
                     }
-                    ?>
-                  </script>
+                  }
 
-
-
-                    <?php 
-                    if ($fecha_incial != '') {
-                    ?>
-
-                <h6>Cronograma de actividades<small><br></small>
-                  <small class="text-gray-400">Próximas acciones</small>
-                </h6 <div class="card-body p-9 pt-4">
+                  $queryTareas->close();
 
 
 
 
-                <div class="tab-content">
+                  $fecha1 = $fecha_incial;
+                  $fecha2 = $fecha_final;
 
-                  <ul class="nav nav-pills d-flex flex-nowrap hover-scroll-x pt-2" role="tablist">
+                  function dia_semana($fecha)
+                  {
 
-                    <?php
+                    global $actividades;
+                    $dia = date("d", strtotime($fecha));
+
+                    $dias = array('', 'LU', 'MA', 'MI', 'JU', 'VI', 'SA', 'DO');
+                    $dia_semana = $dias[date('N', strtotime($fecha))];
+
+                    if (@$actividades[$fecha]) {
+                      if ($fecha == date('Y-m-d')) {
+                        $class = 'active thisTimeInvert';
+                      } else {
+                        $class = 'active';
+                      }
+                    } elseif ($fecha == date('Y-m-d')) {
+                      $class = 'thisTime';
+                    } else {
+                      $class = '';
+                    }
+
+                    return [$dia_semana, $dia, $class, $fecha];
+                  }
+                  ?>
+                </script>
 
 
-                    for ($i = $fecha1; $i <= $fecha2; $i = date("Y-m-d", strtotime($i . "+ 1 days"))) {
 
-                      $result = dia_semana($i);
-                      $day = $result[1];
-                      $number = $result[0];
-                      $class = $result[2];
-                      $date = $result[3];
+                <?php
+                if ($fecha_incial != '') {
+                ?>
 
-                      echo '<li class="nav-item me-1" role="presentation">
+                  <h6>Cronograma de actividades<small><br></small>
+                    <small class="text-gray-400">Próximas acciones</small>
+                  </h6 <div class="card-body p-9 pt-4">
+
+
+
+
+                  <div class="tab-content">
+
+                    <ul class="nav nav-pills d-flex flex-nowrap hover-scroll-x pt-2" role="tablist">
+
+                      <?php
+
+
+                      for ($i = $fecha1; $i <= $fecha2; $i = date("Y-m-d", strtotime($i . "+ 1 days"))) {
+
+                        $result = dia_semana($i);
+                        $day = $result[1];
+                        $number = $result[0];
+                        $class = $result[2];
+                        $date = $result[3];
+
+                        echo '<li class="nav-item me-1" role="presentation">
                             <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px me-2 py-4 px-3 btn-active-primary ' . $class . '" onclick="viewTaskList(\'' . $date . '\')">
                               <span class="opacity-50 fs-7 fw-semibold">' . $number . '</span>
                               <span class="fs-6 fw-bold">' . $day . '</span>
                             </a>
                           </li>';
-                    }
+                      }
 
 
-                    ?>
+                      ?>
 
-                  </ul>
-
-
+                    </ul>
 
 
-                  <div id="tareasCronograma" class="tab-pane fade show active" role="tabpanel">
+
+
+                    <div id="tareasCronograma" class="tab-pane fade show active" role="tabpanel">
+
+                    </div>
+
 
                   </div>
 
 
-                </div>
+                <?php
+                }
+                ?>
 
-
-              <?php 
-                    }
-              ?>
-
-</div>
+              </div>
 
 
 
@@ -703,65 +705,64 @@ if ($_SESSION['nivel'] != '') {
 
 
 
-               
+
 
                 <br>
                 <br>
 
 
-                <?php 
-                  $queryTareas = mysqli_prepare($conexion, "SELECT * FROM he_pa_acciones WHERE id_plan= ? ORDER BY fecha_ac");
-                    $queryTareas->bind_param("s", $plan);
-                    $queryTareas->execute();
-                    $buscarTareas = $queryTareas->get_result();
-                    if ($buscarTareas->num_rows > 0) {
-                      echo '
+                <?php
+                $queryTareas = mysqli_prepare($conexion, "SELECT * FROM he_pa_acciones WHERE id_plan= ? ORDER BY fecha_ac");
+                $queryTareas->bind_param("s", $plan);
+                $queryTareas->execute();
+                $buscarTareas = $queryTareas->get_result();
+                if ($buscarTareas->num_rows > 0) {
+                  echo '
                       <h6>Entes involucrados
                         <small><br></small>
                         <small class="text-gray-400">Acciones por entes</small>
                       </h6 <div class="card-body p-9 pt-4">
                       <div class="card-body d-flex flex-column p-3 pt-3">';
-                      while ($r = $buscarTareas->fetch_assoc()) {
+                  while ($r = $buscarTareas->fetch_assoc()) {
 
 
-                        if (@$tareas_list[$r['ente']]) {
-                          if ($tareas_list[$r['ente']] != 3) {
-                            $tareas_list[$r['ente']] =  $tareas_list[$r['ente']] + 1;
-                          }
-                        } else {
-                          $tareas_list[$r['ente']] = 1;
-                        }
-
+                    if (@$tareas_list[$r['ente']]) {
+                      if ($tareas_list[$r['ente']] != 3) {
+                        $tareas_list[$r['ente']] =  $tareas_list[$r['ente']] + 1;
                       }
+                    } else {
+                      $tareas_list[$r['ente']] = 1;
                     }
+                  }
+                }
 
-                    $queryTareas->close();
+                $queryTareas->close();
 
 
-                    if (@$tareas_list) {
+                if (@$tareas_list) {
 
-                      foreach ($tareas_list as $key => $item) {
-                        echo '<div class="d-flex align-items-center mb-3">
+                  foreach ($tareas_list as $key => $item) {
+                    echo '<div class="d-flex align-items-center mb-3">
                         <div class="me-4 position-relative">
                           <div class="symbol symbol-35px">
-                            <span class="symbol-label bg-light-danger text-danger fw-semibold symbol-circle">'.substr($key, 0, 1).'</span>
+                            <span class="symbol-label bg-light-danger text-danger fw-semibold symbol-circle">' . substr($key, 0, 1) . '</span>
                           </div>
                         </div>
                         <div class="fw-semibold">
-                          <span class="fs-5 fw-bold text-gray-800 text-hover-primary">'.$key.'</span>
-                          <div class="text-gray-400">Total de acciones: '.$item.'</div>
+                          <span class="fs-5 fw-bold text-gray-800 text-hover-primary">' . $key . '</span>
+                          <div class="text-gray-400">Total de acciones: ' . $item . '</div>
                         </div>
                       </div>';
-                      }
+                  }
 
-                      echo '</div>';
-                    }
+                  echo '</div>';
+                }
                 ?>
-          
-                  
 
 
-      
+
+
+
 
 
               </div>
@@ -828,7 +829,7 @@ if ($_SESSION['nivel'] != '') {
           </div>
         </div>
 
-      
+
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
@@ -879,7 +880,7 @@ if ($_SESSION['nivel'] != '') {
 
             <div class="modal-body" style="max-height: 500px; overflow: auto;">
               <section id="tabla"></section>
-            
+
               <div class="mb-3">
                 <label for="n_fecha" class="form-label">Fecha</label>
                 <input type="date" id="n_fecha" class="form-control">
@@ -897,7 +898,7 @@ if ($_SESSION['nivel'] != '') {
         </div>
       </div>
     </main>
-    
+
 
     <!--   Core JS Files   -->
     <script src="../../../assets/js/core/popper.min.js"></script>
@@ -1039,7 +1040,7 @@ if ($_SESSION['nivel'] != '') {
         }
         $('#exampleModal').modal('toggle')
       }
-//ajax/agregarComunidad
+      //ajax/agregarComunidad
       function actualizarTabla() {
         $.ajax({
             url: 'ajax/manejador.php',
@@ -1063,30 +1064,30 @@ if ($_SESSION['nivel'] != '') {
         let n_comunidad = $('#n_comunidad').val()
         let n_fecha = $('#n_fecha').val()
         $('#crearComunida').attr('disabled', true)
-        
+
         if (n_comunidad == '' || n_fecha == '') {
           toast('error', 'Rellene todos los campos')
           return
         }
-        
+
         $.ajax({
-          url: 'ajax/agregarComunidad.php',
-          type: 'POST',
-          dataType: 'html',
-          data: {
-            comunidad: n_comunidad,
-            p: "<?php echo $plan ?>",
-            n_fecha: n_fecha
-          },
-        })
-        .done(function(rePol) {
-          if (rePol.trim() != 'error') {
-            // redirigir a la comunidad
-            $('#crearComunida').attr('disabled', false)
-            location.href = 'agregarTareas?c=' +n_comunidad +'&p=' + '<?php echo $plan ?>&ir='+ rePol.trim();
-          }else{
-            alert(rePol)
-          }
+            url: 'ajax/agregarComunidad.php',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+              comunidad: n_comunidad,
+              p: "<?php echo $plan ?>",
+              n_fecha: n_fecha
+            },
+          })
+          .done(function(rePol) {
+            if (rePol.trim() != 'error') {
+              // redirigir a la comunidad
+              $('#crearComunida').attr('disabled', false)
+              location.href = 'agregarTareas?c=' + n_comunidad + '&p=' + '<?php echo $plan ?>&ir=' + rePol.trim();
+            } else {
+              alert(rePol)
+            }
           })
 
       }

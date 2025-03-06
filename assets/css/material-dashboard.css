@@ -19887,7 +19887,7 @@ fieldset:disabled .btn {
 }
 
 .alert-danger {
-  background-image: linear-gradient(195deg, #EF5350 0%, #E53935 100%);
+  background-image: linear-gradient(195deg, #ffc4c3 0%, #ffc4c3 100%);
 }
 
 .alert-light {

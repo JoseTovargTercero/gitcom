@@ -39,7 +39,8 @@ if ($_SESSION['nivel'] != '') {
     $nombreMes = str_replace($meses_EN, $meses_ES, $mes);
     return $nombredia . " " . $numeroDia . " de " . $nombreMes . " del " . $anio;
   }
-  function nameMonth($mes){
+  function nameMonth($mes)
+  {
 
     $meses_ES = array("", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
     return $meses_ES[$mes];
@@ -58,7 +59,7 @@ if ($_SESSION['nivel'] != '') {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../../../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../../../assets/img/SLS.png">
     <title class="herramientas" id="title">
       Herramientas GITCOM
     </title>
@@ -74,8 +75,7 @@ if ($_SESSION['nivel'] != '') {
       #chartdiv,
       #chartdiv2,
       #chartdiv3,
-      #chartdiv4
-      {
+      #chartdiv4 {
         width: 100%;
         height: 280px;
       }
@@ -339,7 +339,7 @@ if ($_SESSION['nivel'] != '') {
 
                       $vertices = array();
                       $status = array();
-                      $meses = array('1' => 0,'2' => 0,'3' => 0,'4' => 0,'5' => 0,'6' => 0,'7' => 0,'8' => 0,'9' => 0,'10' => 0,'11' => 0,'10' => 0);
+                      $meses = array('1' => 0, '2' => 0, '3' => 0, '4' => 0, '5' => 0, '6' => 0, '7' => 0, '8' => 0, '9' => 0, '10' => 0, '11' => 0, '10' => 0);
                       $entes = array();
 
                       $stmt = mysqli_prepare($conexion, "SELECT * FROM he_pa_acciones WHERE id_plan= ?");
@@ -373,7 +373,6 @@ if ($_SESSION['nivel'] != '') {
                               } else {
                                 $entes[$r['ente']] = 1;
                               }
-
                             }
                           }
 
@@ -390,15 +389,12 @@ if ($_SESSION['nivel'] != '') {
                                 $status[$r2['status']] = array(1, $row['trimestre']);
                               }
 
-                       
-                                $meses[$r2['accion_mes']] = $meses[$r2['accion_mes']] + $r2['impacto_ac'];
 
-
-
+                              $meses[$r2['accion_mes']] = $meses[$r2['accion_mes']] + $r2['impacto_ac'];
                             }
                           }
 
-                          
+
                           //herea
 
 
@@ -423,32 +419,32 @@ if ($_SESSION['nivel'] != '') {
 
 
 
-                      $idd = $row['id'];
+                          $idd = $row['id'];
 
-                      $ttl = contar2('he_pa_sub_acciones', "id_p='$row[id]'");
-                      $pend = contar2('he_pa_sub_acciones', "id_p='$row[id]' AND status='1'");
-                      $ejecs = contar2('he_pa_sub_acciones', "id_p='$row[id]' AND status='2'");
-                      //herea
-                      echo '
+                          $ttl = contar2('he_pa_sub_acciones', "id_p='$row[id]'");
+                          $pend = contar2('he_pa_sub_acciones', "id_p='$row[id]' AND status='1'");
+                          $ejecs = contar2('he_pa_sub_acciones', "id_p='$row[id]' AND status='2'");
+                          //herea
+                          echo '
                       <script>
-                      actividades.push(["' . $row['fecha'] . '", "' . $row['com_nom'] . '", "'.$ttl.'", "'.$pend.'", "'.$ejecs.'", "' . fechaCastellano($row['fecha']) . '", "' .$idd. '"]);
+                      actividades.push(["' . $row['fecha'] . '", "' . $row['com_nom'] . '", "' . $ttl . '", "' . $pend . '", "' . $ejecs . '", "' . fechaCastellano($row['fecha']) . '", "' . $idd . '"]);
                       </script>
                       ' . PHP_EOL;
 
-                      if (@$actividades[$row['fecha']]) {
-                      if ($actividades[$row['fecha']] != 3) {
-                      $actividades[$row['fecha']] =  $actividades[$row['fecha']] + 1;
-                      }
-                      } else {
-                      $actividades[$row['fecha']] = 1;
-                      }
+                          if (@$actividades[$row['fecha']]) {
+                            if ($actividades[$row['fecha']] != 3) {
+                              $actividades[$row['fecha']] =  $actividades[$row['fecha']] + 1;
+                            }
+                          } else {
+                            $actividades[$row['fecha']] = 1;
+                          }
 
 
 
-                      if ($fecha_incial == '') {
-                      $fecha_incial = $row['fecha'];
-                      }
-                      $fecha_final = $row['fecha'];
+                          if ($fecha_incial == '') {
+                            $fecha_incial = $row['fecha'];
+                          }
+                          $fecha_final = $row['fecha'];
 
 
 
@@ -494,20 +490,20 @@ if ($_SESSION['nivel'] != '') {
                       echo "<script>" . PHP_EOL;
 
 
-                      
-                    foreach ($entes as $key => $item) {
-                      echo 'data_entes["' . $key . '"] = '.$item . PHP_EOL;
-                    }
+
+                      foreach ($entes as $key => $item) {
+                        echo 'data_entes["' . $key . '"] = ' . $item . PHP_EOL;
+                      }
 
 
 
                       foreach ($meses as $key => $item) {
-                        echo 'data_atencionMes[' . $key . '] = '.$item . PHP_EOL;
+                        echo 'data_atencionMes[' . $key . '] = ' . $item . PHP_EOL;
                       }
 
 
-                      
-                      
+
+
                       foreach ($vertices as $key => $item) {
                         echo 'data_vertices[' . $i . '] = {nombre: "' . $key . '", cant:  ' . $item[0] . ', trim: ' . $item[1] . '}' . PHP_EOL;
                         $i++;
@@ -558,7 +554,8 @@ if ($_SESSION['nivel'] != '') {
                     $fecha1 = $fecha_incial;
                     $fecha2 = $fecha_final;
 
-                    function dia_semana($fecha){
+                    function dia_semana($fecha)
+                    {
 
                       global $actividades;
                       $dia = date("d", strtotime($fecha));
@@ -604,17 +601,17 @@ if ($_SESSION['nivel'] != '') {
 
 
                   <script>
-//herea                  
-                      function viewTaskList(date) {
+                    //herea                  
+                    function viewTaskList(date) {
 
-                        $('#tareasCronograma').html('')
+                      $('#tareasCronograma').html('')
 
-                        actividades.forEach(element => {
+                      actividades.forEach(element => {
 
 
-                          if (element[0] == date) {
+                        if (element[0] == date) {
 
-                            $('#tareasCronograma').append(`<div class="d-flex flex-stack position-relative mt-4">
+                          $('#tareasCronograma').append(`<div class="d-flex flex-stack position-relative mt-4">
                               <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
                               <div class="fw-semibold ms-5 text-gray-600" style="max-width: 80%;">
                                 <div class="fs-5">` + element[5] + `</div>
@@ -629,11 +626,10 @@ if ($_SESSION['nivel'] != '') {
                             </div>`)
 
 
-                          }
-
-                        });
                         }
 
+                      });
+                    }
                   </script>
 
 
@@ -999,185 +995,149 @@ if ($_SESSION['nivel'] != '') {
       }
 
       grafico2()
-    
+
 
       /* PieChart CON STATUS DE LAS ACCIONES */
-      
-      
+
+
       /* barChart CON STATUS DE LAS ACCIONES */
       var root3 = am5.Root.new("chartdiv3");
 
-// Set themes
-// https://www.amcharts.com/docs/v5/concepts/themes/
-root3.setThemes([
-  am5themes_Animated.new(root3),
-  am5themes_Material.new(root3)
+      // Set themes
+      // https://www.amcharts.com/docs/v5/concepts/themes/
+      root3.setThemes([
+        am5themes_Animated.new(root3),
+        am5themes_Material.new(root3)
 
-]);
-
-
-// Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
-var chart = root3.container.children.push(am5xy.XYChart.new(root3, {
-  panX: true,
-  panY: true,
-  wheelX: "panX",
-  wheelY: "zoomX",
-  pinchZoomX: true
-}));
-
-// Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-var cursor = chart.set("cursor", am5xy.XYCursor.new(root3, {}));
-cursor.lineY.set("visible", false);
+      ]);
 
 
-// Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-var xRenderer = am5xy.AxisRendererX.new(root3, { minGridDistance: 30 });
-xRenderer.labels.template.setAll({
-  rotation: -90,
-  centerY: am5.p50,
-  centerX: am5.p100,
-  paddingRight: 15
-});
+      // Create chart
+      // https://www.amcharts.com/docs/v5/charts/xy-chart/
+      var chart = root3.container.children.push(am5xy.XYChart.new(root3, {
+        panX: true,
+        panY: true,
+        wheelX: "panX",
+        wheelY: "zoomX",
+        pinchZoomX: true
+      }));
 
-xRenderer.grid.template.setAll({
-  location: 1
-})
-
-var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root3, {
-  maxDeviation: 0.3,
-  categoryField: "month",
-  renderer: xRenderer,
-  tooltip: am5.Tooltip.new(root3, {})
-}));
-
-var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root3, {
-  maxDeviation: 0.3,
-  renderer: am5xy.AxisRendererY.new(root3, {
-    strokeOpacity: 0.1
-  })
-}));
+      // Add cursor
+      // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+      var cursor = chart.set("cursor", am5xy.XYCursor.new(root3, {}));
+      cursor.lineY.set("visible", false);
 
 
-// Create series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-var series = chart.series.push(am5xy.ColumnSeries.new(root3, {
-  name: "Series 1",
-  xAxis: xAxis,
-  yAxis: yAxis,
-  valueYField: "value",
-  sequencedInterpolation: true,
-  categoryXField: "month",
-  tooltip: am5.Tooltip.new(root3, {
-    labelText: "{valueY}"
-  })
-}));
+      // Create axes
+      // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+      var xRenderer = am5xy.AxisRendererX.new(root3, {
+        minGridDistance: 30
+      });
+      xRenderer.labels.template.setAll({
+        rotation: -90,
+        centerY: am5.p50,
+        centerX: am5.p100,
+        paddingRight: 15
+      });
 
-series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5, strokeOpacity: 0 });
-series.columns.template.adapters.add("fill", function(fill, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
+      xRenderer.grid.template.setAll({
+        location: 1
+      })
 
-series.columns.template.adapters.add("stroke", function(stroke, target) {
-  return chart.get("colors").getIndex(series.columns.indexOf(target));
-});
+      var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root3, {
+        maxDeviation: 0.3,
+        categoryField: "month",
+        renderer: xRenderer,
+        tooltip: am5.Tooltip.new(root3, {})
+      }));
 
-
-
-function grafico3() {
-  
-var data = [{
-    month: "Ene",
-    value: data_atencionMes[1]
-  }, {
-    month: "Feb",
-    value: data_atencionMes[2]
-  }, {
-    month: "Mar",
-    value: data_atencionMes[3]
-  }, {
-    month: "Abr",
-    value: data_atencionMes[4]
-  }, {
-    month: "May",
-    value: data_atencionMes[5]
-  }, {
-    month: "Jun",
-    value: data_atencionMes[6]
-  },{
-    month: "Jul",
-    value: data_atencionMes[7]
-  },{
-    month: "Ago",
-    value: data_atencionMes[8]
-  },{
-    month: "Sep",
-    value: data_atencionMes[9]
-  },{
-    month: "Oct",
-    value: data_atencionMes[10]
-  },{
-    month: "Nov",
-    value: data_atencionMes[11]
-  },{
-    month: "Dic",
-    value: data_atencionMes[12]
-  }];
-  
-xAxis.data.setAll(data);
-series.data.setAll(data);
+      var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root3, {
+        maxDeviation: 0.3,
+        renderer: am5xy.AxisRendererY.new(root3, {
+          strokeOpacity: 0.1
+        })
+      }));
 
 
-series.appear(1000);
-chart.appear(1000, 100);
-}
+      // Create series
+      // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+      var series = chart.series.push(am5xy.ColumnSeries.new(root3, {
+        name: "Series 1",
+        xAxis: xAxis,
+        yAxis: yAxis,
+        valueYField: "value",
+        sequencedInterpolation: true,
+        categoryXField: "month",
+        tooltip: am5.Tooltip.new(root3, {
+          labelText: "{valueY}"
+        })
+      }));
 
+      series.columns.template.setAll({
+        cornerRadiusTL: 5,
+        cornerRadiusTR: 5,
+        strokeOpacity: 0
+      });
+      series.columns.template.adapters.add("fill", function(fill, target) {
+        return chart.get("colors").getIndex(series.columns.indexOf(target));
+      });
 
-grafico3()
+      series.columns.template.adapters.add("stroke", function(stroke, target) {
+        return chart.get("colors").getIndex(series.columns.indexOf(target));
+      });
 
 
 
+      function grafico3() {
+
+        var data = [{
+          month: "Ene",
+          value: data_atencionMes[1]
+        }, {
+          month: "Feb",
+          value: data_atencionMes[2]
+        }, {
+          month: "Mar",
+          value: data_atencionMes[3]
+        }, {
+          month: "Abr",
+          value: data_atencionMes[4]
+        }, {
+          month: "May",
+          value: data_atencionMes[5]
+        }, {
+          month: "Jun",
+          value: data_atencionMes[6]
+        }, {
+          month: "Jul",
+          value: data_atencionMes[7]
+        }, {
+          month: "Ago",
+          value: data_atencionMes[8]
+        }, {
+          month: "Sep",
+          value: data_atencionMes[9]
+        }, {
+          month: "Oct",
+          value: data_atencionMes[10]
+        }, {
+          month: "Nov",
+          value: data_atencionMes[11]
+        }, {
+          month: "Dic",
+          value: data_atencionMes[12]
+        }];
+
+        xAxis.data.setAll(data);
+        series.data.setAll(data);
 
 
+        series.appear(1000);
+        chart.appear(1000, 100);
+      }
 
 
-
-var root4 = am5.Root.new("chartdiv4");
-
-root4.setThemes([
-  am5themes_Animated.new(root4),
-  am5themes_Material.new(root4)
-]);
-
-var chart2 = root4.container.children.push(am5percent.PieChart.new(root4, {
-  startAngle: 180,
-  endAngle: 360,
-  layout: root4.verticalLayout,
-  innerRadius: am5.percent(50)
-}));
-
-var series2 = chart2.series.push(am5percent.PieSeries.new(root4, {
-  startAngle: 180,
-  endAngle: 360,
-  valueField: "value",
-  categoryField: "category",
-  alignLabels: false
-}));
-
-series2.states.create("hidden", {
-  startAngle: 180,
-  endAngle: 180
-});
-
-series2.slices.template.setAll({
-  cornerRadius: 5
-});
-
-series2.ticks.template.setAll({
-  forceHidden: true
-});
+      grafico3()
 
 
 
@@ -1186,34 +1146,79 @@ series2.ticks.template.setAll({
 
 
 
+      var root4 = am5.Root.new("chartdiv4");
 
-function grafico4(){
-  
-  var data_entes_vals = [];
+      root4.setThemes([
+        am5themes_Animated.new(root4),
+        am5themes_Material.new(root4)
+      ]);
+
+      var chart2 = root4.container.children.push(am5percent.PieChart.new(root4, {
+        startAngle: 180,
+        endAngle: 360,
+        layout: root4.verticalLayout,
+        innerRadius: am5.percent(50)
+      }));
+
+      var series2 = chart2.series.push(am5percent.PieSeries.new(root4, {
+        startAngle: 180,
+        endAngle: 360,
+        valueField: "value",
+        categoryField: "category",
+        alignLabels: false
+      }));
+
+      series2.states.create("hidden", {
+        startAngle: 180,
+        endAngle: 180
+      });
+
+      series2.slices.template.setAll({
+        cornerRadius: 5
+      });
+
+      series2.ticks.template.setAll({
+        forceHidden: true
+      });
 
 
-  let claves = Object.keys(data_entes)
-
-
-  claves.forEach(element => {
-    data_entes_vals.push({ value: data_entes[element], category: element })
-  });
-
-  series2.data.setAll(data_entes_vals);
-
-
-series2.appear(1000, 100);
-
-
-
-}
 
 
 
 
 
 
-grafico4()
+
+      function grafico4() {
+
+        var data_entes_vals = [];
+
+
+        let claves = Object.keys(data_entes)
+
+
+        claves.forEach(element => {
+          data_entes_vals.push({
+            value: data_entes[element],
+            category: element
+          })
+        });
+
+        series2.data.setAll(data_entes_vals);
+
+
+        series2.appear(1000, 100);
+
+
+
+      }
+
+
+
+
+
+
+      grafico4()
 
 
 
@@ -1245,7 +1250,7 @@ grafico4()
       /*  END CHARTS */
 
 
-    
+
 
       function eliminarProyecto(id) {
 

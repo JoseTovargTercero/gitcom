@@ -30,10 +30,10 @@ if ($_SESSION['nivel'] == 1) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="aca" id="title">Incio</title>
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
@@ -68,6 +68,7 @@ if ($_SESSION['nivel'] == 1) {
       }
     </style>
   </head>
+
   <body class="g-sidenav-show  bg-gray-200">
     <?php include('includes/menu.php'); ?>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
@@ -95,11 +96,11 @@ if ($_SESSION['nivel'] == 1) {
                     <h6>Agendas registradas
 
 
-                    <a href="nuevoAca.php" class="btn" style="float: right; text-decoration: none; padding: 0;"> <i class="fa fa-plus"></i> Nuevo aca</a>
+                      <a href="nuevoAca.php" class="btn" style="float: right; text-decoration: none; padding: 0;"> <i class="fa fa-plus"></i> Nuevo aca</a>
                     </h6>
 
                   </div>
-<hr>
+                  <hr>
                 </div>
               </div>
               <div class="card-body px-0 pb-2" style="margin-top: -20px;">
@@ -109,8 +110,10 @@ if ($_SESSION['nivel'] == 1) {
                   <?php
                   $menu = 1;
 
-                  class MiBD extends SQLite3{
-                    function __construct(){
+                  class MiBD extends SQLite3
+                  {
+                    function __construct()
+                    {
                       $this->open('../db/bd_concejos.db');
                     }
                   }
@@ -173,11 +176,11 @@ if ($_SESSION['nivel'] == 1) {
                         while ($row4455 = $buscarM4455->fetch_assoc()) {
 
                           if ($row4455['tipo'] == 'n') {
-                            $nudos .=  $row4455['detalle'].'. ';
-                          }else{
-                            $potencialidades .= $row4455['detalle'].'. ';
+                            $nudos .=  $row4455['detalle'] . '. ';
+                          } else {
+                            $potencialidades .= $row4455['detalle'] . '. ';
                           }
-                          }
+                        }
                       }
 
 
@@ -198,7 +201,7 @@ if ($_SESSION['nivel'] == 1) {
                       }
 
                       $modificar = '';
-                    //  $modificar = '<a style=\'float: left\' href=\'mapa/modificarAca.php?proceso=aca&comunidad=' . $row4['comunidad'] . '&idProblema=' . $row4['id'] . '\'><i class=\'fa fa-pencil text-sm me-2\'></i>Editar</a>';
+                      //  $modificar = '<a style=\'float: left\' href=\'mapa/modificarAca.php?proceso=aca&comunidad=' . $row4['comunidad'] . '&idProblema=' . $row4['id'] . '\'><i class=\'fa fa-pencil text-sm me-2\'></i>Editar</a>';
 
 
 
@@ -209,26 +212,25 @@ if ($_SESSION['nivel'] == 1) {
 
                         <script>
              
-                        array.push("<div style=\'font-size: .8rem !important;\' class=\'data menu' . $menu . '\'><span class=\'mb-2\'><br><span class=\'font-weight-bold\'>' . $localidad . '</span><br><span class=\'mb-2\'><br><span class=\'font-weight-bold\'> Problema:</span> <span class=\'ms-sm-2\'>' . $problema . '</span><span class=\'mb-2\'><br><span class=\'font-weight-bold\'> Nudos criticos:</span> <span class=\'ms-sm-2\'>' . $nudos . '</span></span><br><span class=\'mb-2\'><span  class=\'font-weight-bold\'> Potencialidades:</span> <span class=\'ms-sm-2\'>' . $potencialidades . '</span></span><br><span class=\'mb-2\'><span class=\'font-weight-bold\'> Soluciones:</span> <span class=\'ms-sm-2\'>' . $soluciones . '</span></span><br><span class=\'mb-2\'><span class=\'font-weight-bold\'> Responsable:</span> <span class=\'ms-sm-2\'>' . $ejecutor . '</span></span><br><br>'. $modificar . $link . '</div>");
+                        array.push("<div style=\'font-size: .8rem !important;\' class=\'data menu' . $menu . '\'><span class=\'mb-2\'><br><span class=\'font-weight-bold\'>' . $localidad . '</span><br><span class=\'mb-2\'><br><span class=\'font-weight-bold\'> Problema:</span> <span class=\'ms-sm-2\'>' . $problema . '</span><span class=\'mb-2\'><br><span class=\'font-weight-bold\'> Nudos criticos:</span> <span class=\'ms-sm-2\'>' . $nudos . '</span></span><br><span class=\'mb-2\'><span  class=\'font-weight-bold\'> Potencialidades:</span> <span class=\'ms-sm-2\'>' . $potencialidades . '</span></span><br><span class=\'mb-2\'><span class=\'font-weight-bold\'> Soluciones:</span> <span class=\'ms-sm-2\'>' . $soluciones . '</span></span><br><span class=\'mb-2\'><span class=\'font-weight-bold\'> Responsable:</span> <span class=\'ms-sm-2\'>' . $ejecutor . '</span></span><br><br>' . $modificar . $link . '</div>");
 
 
                       </script>';
 
                       $menu++;
-
-                      }
-                    }else {
-                      echo 'No hay información para mostrar';
                     }
-                 
+                  } else {
+                    echo 'No hay información para mostrar';
+                  }
+
                   ?>
                 </div>
               </div>
             </div>
           </div>
 
-       
-        <!-- 
+
+          <!-- 
           
             Some folks are born made to wave the flag
             Ooh, they're red, white and blue
@@ -261,23 +263,23 @@ if ($_SESSION['nivel'] == 1) {
             It ain't me, it ain't me...
 
          -->
-<div class="col-lg-6">
+          <div class="col-lg-6">
 
-          <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
-            <div class="card" style="min-height: 20vh; overflow: auto;">
-              <div class="card-header pb-0" >
-                <div class="row">
-                  <div class="col-lg-12 col-7">
-                    <h6>Detalles</h6>
-                  </div>
+            <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
+              <div class="card" style="min-height: 20vh; overflow: auto;">
+                <div class="card-header pb-0">
+                  <div class="row">
+                    <div class="col-lg-12 col-7">
+                      <h6>Detalles</h6>
+                    </div>
                     <hr>
+                  </div>
+                </div>
+                <div class="card-body px-0 pb-2" style="margin-top: -20px;">
+                  <div style="margin: 0 15px !important;" id="sectionDetails"> </div>
                 </div>
               </div>
-              <div class="card-body px-0 pb-2" style="margin-top: -20px;">
-                <div style="margin: 0 15px !important;" id="sectionDetails"> </div>
-              </div>
             </div>
-          </div>
 
 
           </div>
@@ -290,8 +292,9 @@ if ($_SESSION['nivel'] == 1) {
     </main>
     <script>
       array.forEach(element => {
-         $("#sectionDetails").html($("#sectionDetails").html() + element);
+        $("#sectionDetails").html($("#sectionDetails").html() + element);
       });
+
       function verAca(id) {
         $(".data").hide();
         $("." + id).show();
@@ -299,7 +302,7 @@ if ($_SESSION['nivel'] == 1) {
     </script>
 
     <style>
-      .data{
+      .data {
         display: none;
       }
     </style>
@@ -311,11 +314,6 @@ if ($_SESSION['nivel'] == 1) {
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
     <script>
-
-
-
-
-
       var ctx = document.getElementById("chart-bars").getContext("2d");
 
       new Chart(ctx, {

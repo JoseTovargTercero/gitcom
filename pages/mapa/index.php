@@ -201,8 +201,8 @@ if (isset($_GET['codigo'])) {
     <div class="loader oculto" id="cargandoConsulta">
         <div class="box ">
             <div class="container-2 containerCsv ">
-                <div class="card5 ">
-                    <span class=" spinIcon " style="background-color: #ffffff00; margin-top: 9.5px; margin-left: 1px !important;"><i class="fa fa-spinner fa-spin"></i></span>
+                <div class="card5 " style="align-items: center; align-content: center;">
+                    <span class=" spinIcon " style="background-color: #ffffff00; "><i class="fa fa-spinner fa-spin"></i></span>
                 </div>
             </div>
         </div>
@@ -463,7 +463,7 @@ if (isset($_GET['codigo'])) {
 
                 <hr class="herramientas-divisor">
 
-                <div class="herramientas" title="Busqueda">
+                <div class="herramientas oculto" title="Busqueda">
                     <i class="fa fa-search"></i>
                 </div>
 
@@ -471,13 +471,13 @@ if (isset($_GET['codigo'])) {
                     <i class="fa fa-search-plus"></i>
                 </div>
 
-                <hr class="herramientas-divisor">
+                <hr class="herramientas-divisor oculto">
 
-                <div class="herramientas" title="Atajos" onclick="mostrarOcultarVentanaModal('#consultaPersonalDiv')">
+                <div class="herramientas oculto" title="Atajos" onclick="mostrarOcultarVentanaModal('#consultaPersonalDiv')">
                     <i class="fa fa-keyboard-o"></i>
                 </div>
 
-                <div class="herramientas" title="Proyectos" onclick="mostrarOcultarVentanaModal('#proyectos')">
+                <div class="herramientas oculto" title="Proyectos" onclick="mostrarOcultarVentanaModal('#proyectos')">
                     <i class="fa fa-folder-o"></i>
                 </div>
 

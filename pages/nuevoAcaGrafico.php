@@ -13,18 +13,17 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <script>
-var arrayResultado = []
-var arrayNudos = [];
-var arrayComparaciones = [];
-var arrayMaximos = []
-
+  var arrayResultado = []
+  var arrayNudos = [];
+  var arrayComparaciones = [];
+  var arrayMaximos = []
 </script>
 <?php
 include('../configuracion/conexionMysqli.php');
 
 if ($_SESSION['nivel'] == 1) {
 
- 
+
 
   $aca = $_GET['aca'];
 
@@ -49,20 +48,21 @@ if ($_SESSION['nivel'] == 1) {
 
 
 
-  function validarExistencia(){
+  function validarExistencia()
+  {
     global $conexion;
     global $aca;
     $queryyy = "select * from aca_graficos WHERE problema = '$aca'";
     $buscarM = $conexion->query($queryyy);
     if ($buscarM->num_rows > 0) {
       return 1;
-    }else {
+    } else {
       return 0;
     }
   }
 
   if (validarExistencia() == 1) {
-  /*  define('PAGINA_INICIO', 'nuevoAca.php');
+    /*  define('PAGINA_INICIO', 'nuevoAca.php');
     header('Location: ' . PAGINA_INICIO);*/
   }
 ?>
@@ -73,10 +73,10 @@ if ($_SESSION['nivel'] == 1) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="home" id="title">Registro del aca</title>
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
@@ -137,17 +137,17 @@ if ($_SESSION['nivel'] == 1) {
               </div>
               <div class="card-body px-0 pb-2" style="margin-top: -20px;">
                 <div class="row" style="padding: 5px 28px 0px 28px; height: 70vh;">
-                     <input type="text" id="nodos" hidden>
-                     <input type="text" id="vinculosI" hidden>
+                  <input type="text" id="nodos" hidden>
+                  <input type="text" id="vinculosI" hidden>
 
                   <div id="mynetwork"></div>
                 </div>
                 <div style="padding: 0 20px 10px;" id="2">
 
-                <span id="tablaVinculos"></span>
+                  <span id="tablaVinculos"></span>
                 </div>
-              
-                       
+
+
               </div>
             </div>
           </div>
@@ -202,95 +202,92 @@ if ($_SESSION['nivel'] == 1) {
 
 
 
-          <div class="col-lg-12" id="problemaYente" style="display: none;">
-            <div class="card">
-              <div class="card-header pb-0">
-                <div class="row">
-                  <div class="col-lg-12 col-7">
-                    <h6>Solución</h6>
+            <div class="col-lg-12" id="problemaYente" style="display: none;">
+              <div class="card">
+                <div class="card-header pb-0">
+                  <div class="row">
+                    <div class="col-lg-12 col-7">
+                      <h6>Solución</h6>
+                    </div>
+                    <hr>
                   </div>
-                  <hr>
+                </div>
+                <div class="card-body px-0 pb-2" style="margin-top: -20px;  overflow-x: hidden;">
+                  <div class="row">
+                    <div class="col-lg-12" style="padding: 0 35px;">
+
+                      <label style="margin-bottom: 0;" for="solucion" style="white-space: nowrap;" class="label-control">Solucion</label>
+                      <div class="input-group input-group-outline my-3">
+                        <textarea class="form-control" rows="15" id="solucion"></textarea>
+                      </div>
+
+
+
+                      <label style="margin-bottom: 0;" for="adquirir" style="white-space: nowrap;" class="label-control">Insumos necesarios</label>
+                      <div class="input-group input-group-outline my-3">
+                        <textarea class="form-control" rows="2" id="adquirir"></textarea>
+                      </div>
+
+
+
+
+
+                      <label style="margin-bottom: 0;" for="financiero" style="white-space: nowrap;" class="label-control">Ente financiero</label>
+                      <div class="input-group input-group-outline my-3">
+                        <input class="form-control" id="financiero">
+                      </div>
+
+                      <label style="margin-bottom: 0;" for="acompanante" style="white-space: nowrap;" class="label-control">Ente acompañante</label>
+                      <div class="input-group input-group-outline my-3">
+                        <input class="form-control" id="acompanante">
+                      </div>
+
+                      <div>
+                      </div>
+                      <button style="float: right;" class="btn btn-danger" onclick="finalizar()">Guardar</button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="card-body px-0 pb-2" style="margin-top: -20px;  overflow-x: hidden;">
-                <div class="row">
-                  <div class="col-lg-12" style="padding: 0 35px;">
-                 
-                  <label style="margin-bottom: 0;" for="solucion" style="white-space: nowrap;" class="label-control">Solucion</label>
-                  <div class="input-group input-group-outline my-3">
-                  <textarea class="form-control" rows="15" id="solucion"></textarea>
-                  </div>
-
-
-
-                  <label style="margin-bottom: 0;" for="adquirir" style="white-space: nowrap;" class="label-control">Insumos necesarios</label>
-                  <div class="input-group input-group-outline my-3">
-                  <textarea class="form-control" rows="2" id="adquirir"></textarea>
-                  </div>
 
 
 
 
-                 
-                  <label style="margin-bottom: 0;" for="financiero" style="white-space: nowrap;" class="label-control">Ente financiero</label>
-                  <div class="input-group input-group-outline my-3">
-                    <input class="form-control" id="financiero">
-                  </div>
-
-                  <label style="margin-bottom: 0;" for="acompanante" style="white-space: nowrap;" class="label-control">Ente acompañante</label>
-                  <div class="input-group input-group-outline my-3">
-                    <input class="form-control" id="acompanante">
-                  </div>
-
-                  <div>
-                  </div>
-                  <button style="float: right;" class="btn btn-danger" onclick="finalizar()">Guardar</button>
-                </div>
-              </div>
             </div>
+            <script>
+
+            </script>
+            <script>
+              function comparar(key) {
+                let start = key - 1;
+                for (let index = start; index >= 0; index--) {
+                  arrayComparaciones.push([arrayNudos[key], arrayNudos[index]])
+                }
+              }
+
+              for (let i = 0; i <= arrayNudos.length - 1; i++) {
+                comparar(i)
+              }
+            </script>
+
           </div>
-
-
-
+          <?php include('notificacion.php'); ?>
 
         </div>
-        <script>
-
-        </script>
-        <script>
-       
-
-          function comparar(key) {
-            let start = key - 1;
-            for (let index = start; index >= 0; index--) {
-              arrayComparaciones.push([arrayNudos[key], arrayNudos[index]])
-            }
-          }
-
-          for (let i = 0; i <= arrayNudos.length - 1; i++) {
-            comparar(i)
-          }
-        </script>
-
-      </div>
-      <?php include('notificacion.php'); ?>
-
-      </div>
     </main>
 
     <script>
-      
-const Toast = Swal.mixin({
-  toast: true,
-  position: 'top-end',
-  showConfirmButton: false,
-  timer: 3000,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.addEventListener('mouseenter', Swal.stopTimer)
-    toast.addEventListener('mouseleave', Swal.resumeTimer)
-  }
-})
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
 
 
 
@@ -443,36 +440,36 @@ const Toast = Swal.mixin({
         // verificar que ningun campo este vacio
         if (financiero == '' || acompanante == '' || solucion == '' || adquirir == '') {
           Toast.fire({
-                    icon: 'error',
-                    title: 'Información imcompleta'
-                  })
+            icon: 'error',
+            title: 'Información imcompleta'
+          })
           return;
         }
 
 
         $.ajax({
-                    url: 'consultasAjax/guardarResponsableYsolucion.php',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        financiero: financiero,
-                        acompanante: acompanante,
-                        solucion: solucion,
-                        adquirir: adquirir,
-                        id : id
-                    },
-                })
-                .done(function(rePol) {
-                  
-        Swal.fire({
-          title: 'Buen trabajo',
-          html: 'La agenda concreta de accion de su consejo comunal fue registrada con exito',
-          icon: 'success',
-          confirmButtonText: 'ok'
-        }).then((result) => {
-          window.location.href = "nuevoAca.php";
-        })
-                })
+            url: 'consultasAjax/guardarResponsableYsolucion.php',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+              financiero: financiero,
+              acompanante: acompanante,
+              solucion: solucion,
+              adquirir: adquirir,
+              id: id
+            },
+          })
+          .done(function(rePol) {
+
+            Swal.fire({
+              title: 'Buen trabajo',
+              html: 'La agenda concreta de accion de su consejo comunal fue registrada con exito',
+              icon: 'success',
+              confirmButtonText: 'ok'
+            }).then((result) => {
+              window.location.href = "nuevoAca.php";
+            })
+          })
 
       }
 
@@ -484,24 +481,24 @@ const Toast = Swal.mixin({
       //incio
       //incio
 
-function end() {
-  $('#divGra').removeClass('col-lg-7')
-          $('#divGra').addClass('col-lg-8')
+      function end() {
+        $('#divGra').removeClass('col-lg-7')
+        $('#divGra').addClass('col-lg-8')
 
-          $('#divVin').removeClass('col-lg-5')
-          $('#divVin').addClass('col-lg-4')
-          $('#1').hide()
-          $('#2').show()
+        $('#divVin').removeClass('col-lg-5')
+        $('#divVin').addClass('col-lg-4')
+        $('#1').hide()
+        $('#2').show()
 
-          
-      
-          econtrarFoco()
-          $('#problemaYente').show(300)
 
-          let progress = $('#progress').LineProgressbar({
-            percentage: 100
-          });
-}
+
+        econtrarFoco()
+        $('#problemaYente').show(300)
+
+        let progress = $('#progress').LineProgressbar({
+          percentage: 100
+        });
+      }
 
       function procesarPregunta(index, tipo) {
         if (tipo == 2) {
@@ -512,7 +509,7 @@ function end() {
         var valueInput = $('#indexVinculados').val();
 
 
-        if (arrayComparaciones[valueInput] == undefined){
+        if (arrayComparaciones[valueInput] == undefined) {
           end()
 
           return
@@ -524,7 +521,7 @@ function end() {
         var vinc = 0;
         var dudo = 0;
 
-        
+
         if (index != 0) {
 
           if (tipo != 0) {
@@ -532,14 +529,14 @@ function end() {
 
             if (dash == true) {
               dudo = 1;
-            }else{
+            } else {
               vinc = 1;
             }
-            
+
             if (!arrayResultado[nudo1]) {
-              
+
               arrayResultado[nudo1] = [nudo1, dudo, vinc]
-            }else{
+            } else {
               var preDud = dudo + arrayResultado[nudo1][1];
               var preVic = vinc + arrayResultado[nudo1][2];
 
@@ -548,12 +545,12 @@ function end() {
 
             if (!arrayResultado[nudo2]) {
               arrayResultado[nudo2] = [nudo2, dudo, vinc]
-            }else{
+            } else {
               var preDud = dudo + arrayResultado[nudo2][1];
               var preVic = vinc + arrayResultado[nudo2][2];
               arrayResultado[nudo2] = [nudo2, preDud, preVic]
             }
-           // updateTable()
+            // updateTable()
           }
 
           var nextVinculo = parseInt(valueInput) + 1;
@@ -565,7 +562,7 @@ function end() {
             $('#question').html('<div class="swal2-icon-content">?</div>')
             $('#nudo1').html(arrayComparaciones[nextVinculo][0])
             $('#nudo2').html(arrayComparaciones[nextVinculo][1])
-            
+
           }
 
         } else {
@@ -574,21 +571,21 @@ function end() {
           $('#nudo2').html(nudo2)
         }
 
-        
-      
 
-       if (nextVinculo != undefined) {
-        let porcentaje = nextVinculo * 100 / arrayComparaciones.length
-        if (porcentaje == 100) {
-          end()
+
+
+        if (nextVinculo != undefined) {
+          let porcentaje = nextVinculo * 100 / arrayComparaciones.length
+          if (porcentaje == 100) {
+            end()
+          }
+          if (porcentaje != 'NaN') {
+
+            let progress = $('#progress').LineProgressbar({
+              percentage: porcentaje
+            });
+          }
         }
-        if (porcentaje != 'NaN') {
-
-          let progress = $('#progress').LineProgressbar({
-            percentage: porcentaje
-          });
-        }
-      }
 
       }
       // fin
@@ -602,15 +599,15 @@ function end() {
 
 
 
-      function updateTable(){
+      function updateTable() {
         $('#tablaVinculos').html('')
-  
-        let claves = Object.keys(arrayResultado); 
-      
+
+        let claves = Object.keys(arrayResultado);
+
         claves.forEach(element => {
           let clave = arrayResultado[element];
 
-          $('#tablaVinculos').html($('#tablaVinculos').html() + '<tr id="'+clave[0]+'"><td>'+clave[0]+'</td><td>'+clave[1]+'</td><td>'+clave[2]+'</td></tr>')
+          $('#tablaVinculos').html($('#tablaVinculos').html() + '<tr id="' + clave[0] + '"><td>' + clave[0] + '</td><td>' + clave[1] + '</td><td>' + clave[2] + '</td></tr>')
         });
       }
       procesarPregunta(0, 0)
@@ -619,7 +616,7 @@ function end() {
 
       function econtrarFoco() {
         // encontrar los valor mas alto en un array
-    
+
         let claves = Object.keys(arrayResultado);
         var max = 0;
 
@@ -627,10 +624,10 @@ function end() {
           let clave = arrayResultado[element];
 
           if (clave[2] > max) {
-              max = clave[2]
-              arrayMaximos = []
-              arrayMaximos.push(clave[0])
-          }else if(clave[2] == max){
+            max = clave[2]
+            arrayMaximos = []
+            arrayMaximos.push(clave[0])
+          } else if (clave[2] == max) {
             arrayMaximos.push(clave[0])
           }
         });
@@ -638,19 +635,21 @@ function end() {
 
         if (arrayMaximos.length > 1) {
           $('#tablaVinculos').html('<hr><strong>Focos encontrados:</strong> ');
-        }else if (arrayMaximos.length == 1) {
+        } else if (arrayMaximos.length == 1) {
           $('#tablaVinculos').html('<hr><strong>Foco encontrado:</strong> ');
         }
 
 
         arrayMaximos.forEach(value => {
 
-          $('#tablaVinculos').html( $('#tablaVinculos').html() + value + ', ');
+          $('#tablaVinculos').html($('#tablaVinculos').html() + value + ', ');
           nodes.update({
             id: value,
             label: value,
             color: 'rgb(230 79 96)',
-            font: { color: "white"}
+            font: {
+              color: "white"
+            }
           });
 
         });
@@ -663,7 +662,7 @@ function end() {
 
 
         guardarDatos()
-      
+
       }
 
 
@@ -673,25 +672,25 @@ function end() {
         let id = "<?php echo $_GET['aca'] ?>"
 
         $.ajax({
-                    url: 'consultasAjax/guardarNodos.php',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        nodos: nodos,
-                        vinculosI: vinculosI,
-                        id: id
-                    },
-                })
-                .done(function(rePol) {
-                  Toast.fire({
-                    icon: 'success',
-                    title: 'Informacion guardada, es hora de proponer una solución'
-                  })
-                })
+            url: 'consultasAjax/guardarNodos.php',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+              nodos: nodos,
+              vinculosI: vinculosI,
+              id: id
+            },
+          })
+          .done(function(rePol) {
+            Toast.fire({
+              icon: 'success',
+              title: 'Informacion guardada, es hora de proponer una solución'
+            })
+          })
       }
     </script>
 
-    
+
     <!--   Core JS Files   -->
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>

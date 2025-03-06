@@ -37,7 +37,7 @@ if ($_SESSION['nivel'] == 1) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="aca" id="title">Incio</title>
     <link id="pagestyle" href="../assets/css/animate.css" rel="stylesheet" />
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
@@ -135,7 +135,7 @@ if ($_SESSION['nivel'] == 1) {
 
                         <?php
 
-                     
+
                         $menu = 1;
 
                         class MiBD extends SQLite3
@@ -161,7 +161,7 @@ if ($_SESSION['nivel'] == 1) {
                           $comunaConsultar = $_GET['comuna'];
                           $idAcaComunal = $_GET['id'];
                           $queryyy4 = "SELECT * FROM aca_resultado WHERE activo='0' AND comuna='$comunaConsultar' AND comunidad!='0'";
-                        } 
+                        }
 
                         $buscarM4 = $conexion->query($queryyy4);
                         if ($buscarM4->num_rows > 0) {
@@ -191,7 +191,7 @@ if ($_SESSION['nivel'] == 1) {
                             }
                             $idProblema = $row4['id'];
                             $var++;
-                            echo '<tr id="problema'.$idProblema.'">
+                            echo '<tr id="problema' . $idProblema . '">
                               <td><span style="font-size: .8rem !important;">' . $var . '</span></td>
                               <td><span style="font-size: .8rem !important;">' . $problema . '</span></td>
                               <td><small style="font-size: .7rem !important;" class="font-weight-bold">' . $localidad . '</small></td>
@@ -210,7 +210,7 @@ if ($_SESSION['nivel'] == 1) {
               </div>
             </div>
           </div>
-        <?php include('notificacion.php'); ?>
+          <?php include('notificacion.php'); ?>
 
         </div>
     </main>
@@ -240,24 +240,24 @@ if ($_SESSION['nivel'] == 1) {
     <script>
       function asociar(acaComunal, idProblema) {
         $.ajax({
-          url: 'moduloAca/ajaxC_asociar_aca.php',
-								type: 'POST',
-								dataType: 'html',
-								data: {
-									acaComunal: acaComunal,
-									idNuevo: idProblema
-								},
-						})
-						.done(function(resultado5) {
-              $('#problema'+idProblema).addClass('animated fadeOutUp')
+            url: 'moduloAca/ajaxC_asociar_aca.php',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+              acaComunal: acaComunal,
+              idNuevo: idProblema
+            },
+          })
+          .done(function(resultado5) {
+            $('#problema' + idProblema).addClass('animated fadeOutUp')
 
 
-          			setTimeout(function() {
-                  $('#problema'+idProblema).hide()
-                }, 1000);
-                    
-						})
-				}
+            setTimeout(function() {
+              $('#problema' + idProblema).hide()
+            }, 1000);
+
+          })
+      }
     </script>
     <script>
       var win = navigator.platform.indexOf('Win') > -1;

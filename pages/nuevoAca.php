@@ -47,10 +47,10 @@ if ($_SESSION['nivel'] == 1) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="aca" id="title">Registro del aca</title>
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
@@ -66,7 +66,8 @@ if ($_SESSION['nivel'] == 1) {
         border-bottom: 1px solid #e1e1e1;
         color: #344767;
       }
-      .btnAdd{
+
+      .btnAdd {
         position: absolute !important;
         background-color: #ebebeb !important;
         right: 0 !important;
@@ -78,33 +79,37 @@ if ($_SESSION['nivel'] == 1) {
         font-size: 20px !important;
         z-index: 9999 !important;
       }
-      #nudos{
+
+      #nudos {
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
-      }
-      #potencialidades{
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-      }
-      .ulTags{
-            list-style: none;
-            padding: 0;
-            margin-top: 49px;
-        }
-        .ulTags > li{
-          background-color: #f7f7f7;
-          box-shadow: 1px 1px 2px #e1e1e1;
-          color: #a3a3a3;
-          border-radius: 4px;
-          width: 100%;
-          padding: 2px 11px;
-          margin: 10px 0;
-          border: 1px solid #ebebeb !important;
-        }
-      a{
-        cursor: pointer;
       }
 
+      #potencialidades {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+
+      .ulTags {
+        list-style: none;
+        padding: 0;
+        margin-top: 49px;
+      }
+
+      .ulTags>li {
+        background-color: #f7f7f7;
+        box-shadow: 1px 1px 2px #e1e1e1;
+        color: #a3a3a3;
+        border-radius: 4px;
+        width: 100%;
+        padding: 2px 11px;
+        margin: 10px 0;
+        border: 1px solid #ebebeb !important;
+      }
+
+      a {
+        cursor: pointer;
+      }
     </style>
 
     <script src="../assets/js/vis-network.min.js"></script>
@@ -296,21 +301,21 @@ if ($_SESSION['nivel'] == 1) {
 
 
                   <div class="col-lg-6">
-                  <label class="control-label2">Nudos Críticos</label>
-                  <div class="input-group input-group-outline my-3">
-                    <input type="text" class="form-control" name="nudos" id="nudos">
+                    <label class="control-label2">Nudos Críticos</label>
+                    <div class="input-group input-group-outline my-3">
+                      <input type="text" class="form-control" name="nudos" id="nudos">
 
-                    <button type="submit" onclick="addElementoN()" class="btn btnAdd"><i class="fa fa-plus"></i></button>
+                      <button type="submit" onclick="addElementoN()" class="btn btnAdd"><i class="fa fa-plus"></i></button>
 
-                  </div>
-                  </div>
-
-                    <div class="col-lg-6">
-                      <ul class='ulTags' id="nudosAgregados"></ul>
                     </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <ul class='ulTags' id="nudosAgregados"></ul>
+                  </div>
 
 
-               
+
 
 
 
@@ -339,20 +344,20 @@ if ($_SESSION['nivel'] == 1) {
 
                   <div class="col-lg-6">
 
-                  <input type="text" class="form-control" name="potencialidades" id="resultPotecialidades" hidden>
-                  <label class="control-label2">Potencialidades</label>
-                  <div class="input-group input-group-outline my-3">
-                    <input type="text" class="form-control" name="potencialidades" id="potencialidades">
-                    <button type="submit" onclick="addElementoP()" class="btn btnAdd"><i class="fa fa-plus"></i></button>
+                    <input type="text" class="form-control" name="potencialidades" id="resultPotecialidades" hidden>
+                    <label class="control-label2">Potencialidades</label>
+                    <div class="input-group input-group-outline my-3">
+                      <input type="text" class="form-control" name="potencialidades" id="potencialidades">
+                      <button type="submit" onclick="addElementoP()" class="btn btnAdd"><i class="fa fa-plus"></i></button>
+
+                    </div>
 
                   </div>
 
-                  </div>
 
 
-
-                    <div class="col-lg-6">
-                      <ul class='ulTags' id="potencialidadesAgregados"></ul>
+                  <div class="col-lg-6">
+                    <ul class='ulTags' id="potencialidadesAgregados"></ul>
                   </div>
 
 
@@ -368,25 +373,25 @@ if ($_SESSION['nivel'] == 1) {
 
 
 
-    
 
-                          <div class="col-lg-6">
-                            
-                  <label style="margin-bottom: 0;" for="solucion" style="white-space: nowrap;" class="label-control">Solución</label>
-                  <div class="input-group input-group-outline my-3">
-                  <textarea class="form-control" rows="1" id="solucion"></textarea>
+
+                  <div class="col-lg-6">
+
+                    <label style="margin-bottom: 0;" for="solucion" style="white-space: nowrap;" class="label-control">Solución</label>
+                    <div class="input-group input-group-outline my-3">
+                      <textarea class="form-control" rows="1" id="solucion"></textarea>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-6">
+
+                    <label style="margin-bottom: 0;" for="acompanante" style="white-space: nowrap;" class="label-control">Ente acompañante</label>
+                    <div class="input-group input-group-outline my-3">
+                      <input class="form-control" id="acompanante">
+                    </div>
                   </div>
 
-                          </div>
-                          <div class="col-lg-6">
-                            
-                  <label style="margin-bottom: 0;" for="acompanante" style="white-space: nowrap;" class="label-control">Ente acompañante</label>
-                  <div class="input-group input-group-outline my-3">
-                    <input class="form-control" id="acompanante">
-                  </div>
-                          </div>
-
-                          <button style="width: 10%;margin: 33px auto;" class="btn btn-danger" onclick="guardar()">Guardar</button>
+                  <button style="width: 10%;margin: 33px auto;" class="btn btn-danger" onclick="guardar()">Guardar</button>
 
                 </div>
 
@@ -430,36 +435,36 @@ if ($_SESSION['nivel'] == 1) {
               </div>
             </div>
           </div>
-          </div>
+        </div>
 
 
 
-      <div class="row" id="listAcas">
+        <div class="row" id="listAcas">
 
-        <div class="col-lg-12 animated fadeInUp">
-          <div class="card" style="min-height: 75vh; overflow: auto;">
-            <div class="card-header pb-0">
-              <div class="row">
-                <div class="col-lg-12 col-7">
-                  <h6>Agendas registradas
+          <div class="col-lg-12 animated fadeInUp">
+            <div class="card" style="min-height: 75vh; overflow: auto;">
+              <div class="card-header pb-0">
+                <div class="row">
+                  <div class="col-lg-12 col-7">
+                    <h6>Agendas registradas
 
 
-                    <span>
-                      <a onclick=" $('#nuevoVista').show(); $('#listAcas').hide() " style="cursor: pointer; color: gray; float: right;">
-                      <i class="fa fa-plus"></i>     Nuevo 
-                      </a>
+                      <span>
+                        <a onclick=" $('#nuevoVista').show(); $('#listAcas').hide() " style="cursor: pointer; color: gray; float: right;">
+                          <i class="fa fa-plus"></i> Nuevo
+                        </a>
 
-                    </span>
-                  </h6>
+                      </span>
+                    </h6>
 
+                  </div>
+                  <hr>
                 </div>
-                <hr>
               </div>
-            </div>
-            <div class="card-body px-0 pb-2" style="margin: -30px 25px 25px; ">
+              <div class="card-body px-0 pb-2" style="margin: -30px 25px 25px; ">
 
-              <table class="table">
-              
+                <table class="table">
+
 
 
                   <?php
@@ -519,7 +524,7 @@ if ($_SESSION['nivel'] == 1) {
                         $queryyy44 = "SELECT * FROM local_comunas WHERE id_Comuna='$comuna' LIMIT 1";
                         $buscarM44 = $conexion->query($queryyy44);
                         if ($buscarM44->num_rows > 0) {
-                          
+
                           while ($row44 = $buscarM44->fetch_assoc()) {
                             $localidad = $row44['nombre_comuna'];
                             $problema = $row4['problema'];
@@ -538,7 +543,7 @@ if ($_SESSION['nivel'] == 1) {
                       $queryyy445 = "SELECT * FROM aca_mapa WHERE problema='$idP'";
                       $buscarM4455 = $conexion->query($queryyy445);
                       if ($buscarM4455->num_rows > 0) {
-                     
+
                         while ($row4455 = $buscarM4455->fetch_assoc()) {
 
                           if ($row4455['tipo'] == 'n') {
@@ -586,14 +591,14 @@ if ($_SESSION['nivel'] == 1) {
 
 
 
-              </table>
+                </table>
 
 
 
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
 
       </div>
@@ -646,8 +651,8 @@ if ($_SESSION['nivel'] == 1) {
       }
 
 
-      function deleteThisElement(element, type){
-        $('#'+element).remove()
+      function deleteThisElement(element, type) {
+        $('#' + element).remove()
 
         var idElements = element
         idElements = idElements.replace(/_/g, ' ')
@@ -655,11 +660,11 @@ if ($_SESSION['nivel'] == 1) {
         var newValue;
         if (type == 'n') {
           newValue = $('#resultNudos').val()
-          newValue = newValue.replace('~'+idElements+'/', '')
+          newValue = newValue.replace('~' + idElements + '/', '')
           $('#resultNudos').val(newValue)
-        }else{
+        } else {
           newValue = $('#resultPotecialidades').val()
-          newValue = newValue.replace('~'+idElements+'/', '')
+          newValue = newValue.replace('~' + idElements + '/', '')
           $('#resultPotecialidades').val(newValue)
         }
       }
@@ -681,15 +686,15 @@ if ($_SESSION['nivel'] == 1) {
 
 
         let value = $('#resultNudos').val()
-        
+
         if (value.indexOf(nudos) != '-1') {
-            
+
           Toast.fire({
-          icon: 'error',
-          title: 'El nudo crítico ya existe'
-        })
-        return
-  
+            icon: 'error',
+            title: 'El nudo crítico ya existe'
+          })
+          return
+
         }
 
 
@@ -709,12 +714,12 @@ if ($_SESSION['nivel'] == 1) {
 
 
         let idElement = nudos.trim()
-          idElement = idElement.replace(/ /g, '_')
+        idElement = idElement.replace(/ /g, '_')
 
-        
-        let sctructura = '<li class="animated fadeInLeft " id="'+idElement+'">'+nudos.trim()+' <a onclick="deleteThisElement(\''+idElement+'\', \'n\')"> <i style="color: #e64f60; float: right; margin: 4px;" class="fa fa-close"></i> </a></li>'
 
-          $('#nudosAgregados').html($('#nudosAgregados').html() + sctructura)
+        let sctructura = '<li class="animated fadeInLeft " id="' + idElement + '">' + nudos.trim() + ' <a onclick="deleteThisElement(\'' + idElement + '\', \'n\')"> <i style="color: #e64f60; float: right; margin: 4px;" class="fa fa-close"></i> </a></li>'
+
+        $('#nudosAgregados').html($('#nudosAgregados').html() + sctructura)
       }
 
       function addElementoP() {
@@ -731,13 +736,13 @@ if ($_SESSION['nivel'] == 1) {
 
         let value = $('#resultPotecialidades').val()
         if (value.indexOf(potencialidad) != '-1') {
-            
+
           Toast.fire({
-          icon: 'error',
-          title: 'La potencialidad ya existe'
-        })
-        return
-  
+            icon: 'error',
+            title: 'La potencialidad ya existe'
+          })
+          return
+
         }
 
         $('#potencialidades').val('')
@@ -756,9 +761,9 @@ if ($_SESSION['nivel'] == 1) {
 
 
 
-        let sctructura = '<li class="animated fadeInLeft " id="'+idElementDos+'">'+potencialidad.trim()+' <a onclick="deleteThisElement(\''+idElementDos+'\', \'p\')"> <i style="color: #e64f60; float: right; margin: 4px;" class="fa fa-close"></i> </a></li>'
+        let sctructura = '<li class="animated fadeInLeft " id="' + idElementDos + '">' + potencialidad.trim() + ' <a onclick="deleteThisElement(\'' + idElementDos + '\', \'p\')"> <i style="color: #e64f60; float: right; margin: 4px;" class="fa fa-close"></i> </a></li>'
 
-          $('#potencialidadesAgregados').html($('#potencialidadesAgregados').html() + sctructura)
+        $('#potencialidadesAgregados').html($('#potencialidadesAgregados').html() + sctructura)
       }
 
 
@@ -800,7 +805,7 @@ if ($_SESSION['nivel'] == 1) {
         var problemas = $("#problemas").val()
         var resultNudos = $("#resultNudos").val()
         var resultPotecialidades = $("#resultPotecialidades").val()
-        
+
         var solucion = $("#solucion").val()
         var acompanante = $("#acompanante").val()
 

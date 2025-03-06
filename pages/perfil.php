@@ -3,38 +3,30 @@ include('../configuracion/conexionMysqli.php');
 include('../class/count.php');
 
 if ($_SESSION['nivel'] != '') {
-
-
   $query = "SELECT * FROM sist_usuarios WHERE id='$_SESSION[id]' LIMIT 1";
   $search = $conexion->query($query);
   if ($search->num_rows > 0) {
     while ($row = $search->fetch_assoc()) {
-
-
-
 ?>
 
 
 
 
       <!DOCTYPE html>
-      <html lang="en">
+      <html lang="es">
 
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+        <link rel="icon" type="image/png" href="../assets/img/SLS.png">
         <title id="title">Perfil</title>
-
-        <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-        <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
         <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
         <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="../assets/css/animate.css">
         <script src="../assets/js/jquery-3.6.0.min.js"></script>
-
         <script src="../assets/js/sweetalert2.all.min.js"></script>
         <link rel="stylesheet" href="../assets/css/core.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 
@@ -57,8 +49,6 @@ if ($_SESSION['nivel'] != '') {
           </nav>
           <!-- End Navbar -->
           <div class="container-fluid py-4">
-
-
             <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('../assets/img/bg-profile.png');">
               <span class="mask  bg-gradient-primary  opacity-6"></span>
             </div>
@@ -68,7 +58,7 @@ if ($_SESSION['nivel'] != '') {
                   <div class="avatar avatar-xl position-relative">
                     <img style="aspect-ratio: 1/1;" src="../assets/img/user-pictures/<?php echo $row['id'] ?>.png" alt="profile_image" onerror="this.onerror=null; this.src='../assets/img/user-pictures/default.jpg'" class="w-100 border-radius-lg shadow-sm">
                     <div class="cintaBottomPerfil">
-                      <i class="fa fa-edit" onclick="actualizarPerfilModal()" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                      <i class="fa fa-edit" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                     </div>
 
                   </div>
@@ -79,13 +69,13 @@ if ($_SESSION['nivel'] != '') {
                       <?php echo $row['nombreUser'] ?>
                     </h5>
                     <p class="mb-0 font-weight-normal text-sm">
-               
-                    
+
+
                       <?php echo $row['responsabilidad'] ?>
 
-                      <strong> - 
-                        <?php 
-                          echo $_SESSION["entidad"];
+                      <strong> -
+                        <?php
+                        echo $_SESSION["entidad"];
                         ?>
                       </strong>
 
@@ -124,23 +114,19 @@ if ($_SESSION['nivel'] != '') {
                             <div class="form-check form-switch ps-0">
 
 
-                              <input class="form-check-input ms-auto" type="checkbox" onchange="setChechStatus('p_1')" id="p_1" <?php echo ($row['disponible_p'] == '0' ? 'checked' : '') ?> >
+                              <input class="form-check-input ms-auto" type="checkbox" onchange="setChechStatus('p_1')" id="p_1" <?php echo ($row['disponible_p'] == '0' ? 'checked' : '') ?>>
                               <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="p_1">Disponible para proyectos</label>
                             </div>
-
-
-
-
                           </li>
                           <li class="list-group-item border-0 px-0">
                             <div class="form-check form-switch ps-0">
-                            <input class="form-check-input ms-auto" type="checkbox" onchange="setChechStatus('p_2')" id="p_2" <?php echo ($row['notificacion_c'] == '0' ? 'checked' : '') ?>>
+                              <input class="form-check-input ms-auto" type="checkbox" onchange="setChechStatus('p_2')" id="p_2" <?php echo ($row['notificacion_c'] == '0' ? 'checked' : '') ?>>
 
                               <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="p_2">Enviar notificaciones al correo</label>
                             </div>
                           </li>
-                       
-                          
+
+
                         </ul>
 
                       </div>
@@ -187,7 +173,7 @@ if ($_SESSION['nivel'] != '') {
                       <div class="card-header pb-0 p-3">
                         <h6 class="mb-0">Conversaciones</h6>
                       </div>
-                      <div class="card-body p-3">
+                      <div class="card-body p-3 hide">
                         <ul class="list-group">
                           <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2 pt-0">
                             <div class="avatar me-3">
@@ -270,9 +256,7 @@ if ($_SESSION['nivel'] != '') {
                         </div>
                       </div>
                     </div>
-
                   </div>
-
                 </div>
               </div>
             </div>
@@ -280,32 +264,117 @@ if ($_SESSION['nivel'] != '') {
 
           </div>
 
-          <!--   Core JS Files   -->
-          <script src="../assets/js/core/popper.min.js"></script>
-          <script src="../assets/js/core/bootstrap.min.js"></script>
+
+
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="alert alert-danger w-100" role="alert">Es necesario que actualice sus datos, también se recomienda actualizar su contraseña. </div>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" placeholder="Nombre y apellido" class="form-control" id="nombre">
+                  </div>
+                  <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="text" placeholder="Teléfono" class="form-control" id="telefono">
+                  </div>
+                  <div class="mb-3">
+                    <label for="responsabilidad" class="form-label">Responsabilidad en la comunidad</label>
+                    <input type="text" placeholder="Responsabilidad dentro de la comunidad" class="form-control" id="responsabilidad">
+                  </div>
+                  <div class="mb-3">
+                    <label for="correo" class="form-label">Nuevo usuario (correo electrónico)</label>
+                    <input type="mail" placeholder="Ingrese su correo electrónico." class="form-control" id="correo">
+                  </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="btn-update">Actualizar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
           <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
           <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-          <script src="../class/alertas.js"></script>
           <link rel="stylesheet" href="../assets/vendor/strength/strength.css" />
           <script src="../assets/vendor/strength/strength.min.js"></script>
           <script>
+            // alert cuando la pagina se termine de cargar
+            $(document).ready(function() {
+              if (window.location.search.includes('actualizar')) {
+                $('#staticBackdrop').modal('toggle')
+              }
+            })
+
+
+            function validarCorreo(email) {
+              const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              return regex.test(email);
+            }
+
+
+            function actualizar() {
+              const nombre = document.getElementById('nombre').value
+              const telefono = document.getElementById('telefono').value
+              const responsabilidad = document.getElementById('responsabilidad').value
+              const correo = document.getElementById('correo').value
+
+              // verifica el contenido de los campos
+              if (nombre == '' || telefono == '' || responsabilidad == '' || correo == '') {
+                toast('error', 'Todos los campos son obligatorios')
+              }
+
+              // verifica si 'correo' es un correo valido
+              if (!validarCorreo(correo)) {
+                toast('error', 'Correo electrónico no válido')
+              }
+
+              $.ajax({
+                type: 'POST',
+                url: '../back/update_perfil.php',
+                data: {
+                  nombre: nombre,
+                  telefono: telefono,
+                  responsabilidad: responsabilidad,
+                  correo: correo
+                },
+                dataType: 'html',
+                success: function(result) {
+                  console.log(result)
+                  const response = JSON.parse(result)
+                  if (response.status == true) {
+                    window.location.href = "index";
+                  } else {
+                    toast('error', 'No se pudo completar la tarea')
+                  }
+                }
+              }).fail(function(jqXHR, textStatus, errorThrown) {
+                console.log('error en la conexion al servidor')
+              });
+
+            }
+            document.getElementById('btn-update').addEventListener('click', actualizar)
+
             function setChechStatus(check) {
-              
+
               let status = document.getElementById(check).checked
 
               if (status) {
                 status = 0;
-              }else{
+              } else {
                 status = 1;
               }
 
               $.get("../back/perfil_setcheck.php", "c=" + check + "&s=" + status, function(data) {
-                  toast("success", "Se actualizo la configuración correctamente" + data.trim());
+                toast("success", "Se actualizo la configuración correctamente" + data.trim());
               });
 
             }
-
-            //'disponible_p'
 
             $(document).ready(function(e) {
 
@@ -321,7 +390,6 @@ if ($_SESSION['nivel'] != '') {
                 }
               });
 
-
               $("#formElem").on('submit', function(e) {
 
                 $('#guardarButton').attr('disabled', true);
@@ -333,8 +401,6 @@ if ($_SESSION['nivel'] != '') {
                   toast('error', 'Seleccione una imagen');
                   return false;
                 }
-
-
 
                 $.ajax({
                   type: 'POST',
@@ -349,37 +415,7 @@ if ($_SESSION['nivel'] != '') {
                     }
                   }
                 }).fail(function(jqXHR, textStatus, errorThrown) {
-
-                  if (jqXHR.status === 0) {
-
-                    alert('Not connect: Verify Network.');
-
-                  } else if (jqXHR.status == 404) {
-
-                    alert('Requested page not found [404]');
-
-                  } else if (jqXHR.status == 500) {
-
-                    alert('Internal Server Error [500].');
-
-                  } else if (textStatus === 'parsererror') {
-
-                    alert('Requested JSON parse failed.');
-
-                  } else if (textStatus === 'timeout') {
-
-                    alert('Time out error.');
-
-                  } else if (textStatus === 'abort') {
-
-                    alert('Ajax request aborted.');
-
-                  } else {
-
-                    alert('Uncaught Error: ' + jqXHR.responseText);
-
-                  }
-
+                  console.log('error en la respuesta')
                 });
               });
             });
@@ -389,7 +425,6 @@ if ($_SESSION['nivel'] != '') {
                 fuerza(this.value)
               });
             });
-
 
             function fuerza(value) {
 
@@ -415,8 +450,6 @@ if ($_SESSION['nivel'] != '') {
                 pass = '25';
               }
             }
-
-
 
             function uptpass() {
               let pass_a = $('#pass_a').val()
@@ -450,19 +483,13 @@ if ($_SESSION['nivel'] != '') {
                     $('#passstrength').width('0%');
                     toast('success', 'Actualizado correctamente')
                   }
-
                 })
-
-
             }
-
-
 
             function setVista() {
               $('#conversations').toggle(300)
               $('#security').toggle(300)
             }
-
 
             var win = navigator.platform.indexOf('Win') > -1;
             if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -476,16 +503,10 @@ if ($_SESSION['nivel'] != '') {
       </body>
 
       </html>
-
 <?php
-
     }
   }
 } else {
-
-
-
-
   define('PAGINA_INICIO', '../index.php');
   header('Location: ' . PAGINA_INICIO);
 }

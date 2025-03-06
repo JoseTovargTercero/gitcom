@@ -20,8 +20,8 @@ include('../class/count.php');
 
 if ($_SESSION['nivel'] == 1 || $_SESSION['nivel'] == 2) {
 
-  
-  
+
+
 ?>
   <!DOCTYPE html>
   <html lang="es">
@@ -29,33 +29,30 @@ if ($_SESSION['nivel'] == 1 || $_SESSION['nivel'] == 2) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="tablas" id="title">
       Proyectos GITCOM
     </title>
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
-    
+
 
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
-    
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
-  
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
-      
-      
-    
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+
+
     <script>
-        
-  
-       $(document).ready( function () {
+      $(document).ready(function() {
         $('#myTable').DataTable();
-    } );
-   
-     </script>
-    
+      });
+    </script>
+
   </head>
 
   <body class="g-sidenav-show  bg-gray-200">
@@ -83,8 +80,8 @@ if ($_SESSION['nivel'] == 1 || $_SESSION['nivel'] == 2) {
                 <div class="row">
                   <div class="col-md-12">
                     <h6 class="mb-0">Registros
-                    <a href="reportes/psuv.php"  style="max-width: 30%; float: right; font-size: 12px;"> PDF </a>
-                    <a href="reportes/psuv-e.php"  style="max-width: 30%; float: right; font-size: 12px;"> EXCEL - </a>
+                      <a href="reportes/psuv.php" style="max-width: 30%; float: right; font-size: 12px;"> PDF </a>
+                      <a href="reportes/psuv-e.php" style="max-width: 30%; float: right; font-size: 12px;"> EXCEL - </a>
                     </h6>
 
                   </div>
@@ -92,57 +89,57 @@ if ($_SESSION['nivel'] == 1 || $_SESSION['nivel'] == 2) {
                 </div>
               </div>
               <div class="card-body pt-4 p-3">
-          
-              
-              <div class="table-responsive" >
+
+
+                <div class="table-responsive">
                   <table style="font-size: 13px !important;" id="myTable" class="table align-items-center mb-0" style="width:100%">
 
-  <thead>
-      
+                    <thead>
 
 
 
-              <tr>
-                <th>N#</th>
-                <th>Nombres y apellidos</th>
-                <th>Cedula</th>
-                <th>Telefono</th>
-                <th>Mcp</th>
-                <th>Instancia</th>
-                <th>Cargo</th>
-                <th>Ficha</th>
-              </tr>
 
-    </thead>
-                 <tbody>
-                 <?php
-                 
-                 $count = 1;
-                  $query2E = "SELECT psuv.id, psuv.nombre, psuv.cedula, psuv.telefono, psuv.instancia, psuv.cargo, local_municipio.nombre_municipio FROM psuv
+                      <tr>
+                        <th>N#</th>
+                        <th>Nombres y apellidos</th>
+                        <th>Cedula</th>
+                        <th>Telefono</th>
+                        <th>Mcp</th>
+                        <th>Instancia</th>
+                        <th>Cargo</th>
+                        <th>Ficha</th>
+                      </tr>
+
+                    </thead>
+                    <tbody>
+                      <?php
+
+                      $count = 1;
+                      $query2E = "SELECT psuv.id, psuv.nombre, psuv.cedula, psuv.telefono, psuv.instancia, psuv.cargo, local_municipio.nombre_municipio FROM psuv
                   LEFT JOIN local_municipio ON local_municipio.id_municipio = psuv.mcp
                  ";
-                  $search2E = $conexion->query($query2E);
-                  if ($search2E->num_rows > 0) {
-                    while ($row2E = $search2E->fetch_assoc()) {
-                  
-                        echo '
+                      $search2E = $conexion->query($query2E);
+                      if ($search2E->num_rows > 0) {
+                        while ($row2E = $search2E->fetch_assoc()) {
+
+                          echo '
                         <tr>
-                        <td >'.$count++.'</td>
-                        <td style=" color: black !important; font-weight: 600 !important;">'.$row2E['nombre'].'</td>
-                        <td style=" color: black !important; font-weight: 600 !important;">'.$row2E['cedula'].'</td>
-                        <td style=" color: black !important; font-weight: 600 !important;">'.$row2E['telefono'].'</td>
-                        <td style=" color: black !important; font-weight: 600 !important;">'.$row2E['nombre_municipio'].'</td>
-                        <td style=" color: black !important; font-weight: 600 !important;">'.$row2E['instancia'].'</td>
-                        <td style=" color: black !important; font-weight: 600 !important;">'.$row2E['cargo'].'</td>
-                        <td style=" color: black !important; font-weight: 600 !important;"><a href="reportes/psuv-ficha.php?i='.$row2E['id'].'"><i class="fa fa-download"></i></a></td>
+                        <td >' . $count++ . '</td>
+                        <td style=" color: black !important; font-weight: 600 !important;">' . $row2E['nombre'] . '</td>
+                        <td style=" color: black !important; font-weight: 600 !important;">' . $row2E['cedula'] . '</td>
+                        <td style=" color: black !important; font-weight: 600 !important;">' . $row2E['telefono'] . '</td>
+                        <td style=" color: black !important; font-weight: 600 !important;">' . $row2E['nombre_municipio'] . '</td>
+                        <td style=" color: black !important; font-weight: 600 !important;">' . $row2E['instancia'] . '</td>
+                        <td style=" color: black !important; font-weight: 600 !important;">' . $row2E['cargo'] . '</td>
+                        <td style=" color: black !important; font-weight: 600 !important;"><a href="reportes/psuv-ficha.php?i=' . $row2E['id'] . '"><i class="fa fa-download"></i></a></td>
                     </tr>
                   ';
-                }
-              }
-                 ?>
+                        }
+                      }
+                      ?>
 
-              </tbody>
-            </table>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -153,10 +150,12 @@ if ($_SESSION['nivel'] == 1 || $_SESSION['nivel'] == 2) {
     </main>
 
 
-    <script type="text/javascript">// < ![CDATA[
+    <script type="text/javascript">
+      // < ![CDATA[
 
-    
-// ]]></script>
+
+      // ]]>
+    </script>
 
 
 
@@ -165,10 +164,6 @@ if ($_SESSION['nivel'] == 1 || $_SESSION['nivel'] == 2) {
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
     <script>
-    
- 
-
-
       var win = navigator.platform.indexOf('Win') > -1;
       if (win && document.querySelector('#sidenav-scrollbar')) {
         var options = {

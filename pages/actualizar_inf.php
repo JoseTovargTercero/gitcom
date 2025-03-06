@@ -14,7 +14,7 @@ if ($_SESSION['nivel'] == '3') {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="cartografia" id="title">
       Proyectos GITCOM
     </title>

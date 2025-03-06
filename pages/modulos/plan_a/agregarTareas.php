@@ -47,7 +47,7 @@ if ($_SESSION['nivel'] != '') {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../../../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../../../assets/img/SLS.png">
     <title class="herramientas" id="title">
       Herramientas GITCOM
     </title>
@@ -591,10 +591,10 @@ if ($_SESSION['nivel'] != '') {
                 .done(function(rePol) {
                   alert(rePol)
                   if (rePol.trim() == 'success') {
-                  $('.fondo-loader').hide();
-                  actualizarAtenciones()
-                 $('#modalAtenciones').modal('toggle')
-                }
+                    $('.fondo-loader').hide();
+                    actualizarAtenciones()
+                    $('#modalAtenciones').modal('toggle')
+                  }
 
                 })
             }
@@ -967,7 +967,7 @@ if ($_SESSION['nivel'] != '') {
                     <div class="col-lg-12">
 
 
-                    <div class="mb-3">
+                      <div class="mb-3">
                         <label for="ente" class="form-label">CONSULTAS MEDICINA GENERAL</label>
                         <div class="row">
                           <div class="col-lg-6"><input type="number" class="form-control" id="cons_medicas" placeholder="Cantidad"></div>
@@ -1052,7 +1052,7 @@ if ($_SESSION['nivel'] != '') {
                           <div class="col-lg-6"><input type="text" class="form-control" id="asesoria_a_myo_i" placeholder="Institución/Misión"></div>
                         </div>
                       </div>
-                     
+
                       <div class="mb-3">
                         <label for="ente" class="form-label">DONACION DE PLANTAS</label>
                         <div class="row">
@@ -1081,7 +1081,7 @@ if ($_SESSION['nivel'] != '') {
                           <div class="col-lg-6"><input type="text" class="form-control" id="capac_universitaria_i" placeholder="Institución/Misión"></div>
                         </div>
                       </div>
-                  
+
                       <div class="mb-3">
                         <label for="ente" class="form-label">REPARACIÓN DE BOMBILLOS</label>
                         <div class="row">
@@ -1167,7 +1167,7 @@ if ($_SESSION['nivel'] != '') {
                           <div class="col-lg-6"><input type="text" class="form-control" id="cedula_indi_i" placeholder="Institución/Misión"></div>
                         </div>
                       </div>
-                      
+
                       <div class="mb-3">
                         <label for="ente" class="form-label">ASESORIAS REHABILITACION DE INFRAESTRUCTURAS</label>
                         <div class="row">
@@ -1240,82 +1240,82 @@ if ($_SESSION['nivel'] != '') {
 
                   <div class="mb-2">
                     <label for="ente" class="form-label">Ente responsable</label>
-                    
+
                     <select id="ente" class="form-control">
 
-                    <option value="">Seleccione</option>
-                    <option value="MOVIMIENTO SOMOS VENEZUELA ">MOVIMIENTO SOMOS VENEZUELA </option>
-                    <option value="MISIÓN RIBAS">MISIÓN RIBAS</option>
-                    <option value="MISIÓN ROBINSON">MISIÓN ROBINSON</option>
-                    <option value="MISIÓN SUCRE">MISIÓN SUCRE</option>
-                    <option value="MISIÓN CULTURA">MISIÓN CULTURA</option>
-                    <option value="MISIÓN BARRIO ADENTRO VENEZUELA">MISIÓN BARRIO ADENTRO VENEZUELA</option>
-                    <option value="MISIÓN BARRIO ADENTRO CUBANO">MISIÓN BARRIO ADENTRO CUBANO</option>
-                    <option value="MISIÓN SONRISA">MISIÓN SONRISA</option>
-                    <option value="MISIÓN NEGRA HIPOLITA">MISIÓN NEGRA HIPOLITA</option>
-                    <option value="MISIÓN ÁRBOL">MISIÓN ÁRBOL</option>
-                    <option value="HOGARES DE LA PATRIA">HOGARES DE LA PATRIA</option>
-                    <option value="MISIÓN JOSÉ GREGORIO HERNÁNDEZ">MISIÓN JOSÉ GREGORIO HERNÁNDEZ</option>
-                    <option value="MISIÓN GUAICAIPURO">MISIÓN GUAICAIPURO</option>
-                    <option value=" IDENNA"> IDENNA</option>
-                    <option value="MISIÓN MERCAL">MISIÓN MERCAL</option>
-                    <option value="FRENTE FRANCISCO DE MIRANDA (F.F.M)">FRENTE FRANCISCO DE MIRANDA (F.F.M)</option>
-                    <option value="MISIÓN NIÑO SIMÓN">MISIÓN NIÑO SIMÓN</option>
-                    <option value="INSTITUTO NACIONAL DE NUTRICIÓN (I.N.N)">INSTITUTO NACIONAL DE NUTRICIÓN (I.N.N)</option>
-                    <option value="GRAN MISIÓN SABER Y TRABAJO">GRAN MISIÓN SABER Y TRABAJO</option>
-                    <option value="MOVIMIENTO POR LA PAZ Y LA VIDA">MOVIMIENTO POR LA PAZ Y LA VIDA</option>
-                    <option value="MISIÓN BARRIO ADENTRO DEPORTE CUBANO">MISIÓN BARRIO ADENTRO DEPORTE CUBANO</option>
-                    <option value="MISIÓN NEVADO">MISIÓN NEVADO</option>
-                    <option value="FUNDAPROAL">FUNDAPROAL</option>
-                    <option value="MISIÓN BARRIO NUEVO, BARRIO TRICOLOR (BNBT)">MISIÓN BARRIO NUEVO, BARRIO TRICOLOR (BNBT)</option>
-                    <option value="GRAN MISIÓN VIVIENDA VENEZUELA (GMVV)">GRAN MISIÓN VIVIENDA VENEZUELA (GMVV)</option>
-                    <option value="MISIÓN ROBERT SERRA">MISIÓN ROBERT SERRA</option>
-                    <option value="MISIÓN JÓVENES DEL BARRIO">MISIÓN JÓVENES DEL BARRIO</option>
-                    <option value="MISIÓN MILAGRO">MISIÓN MILAGRO</option>
-                    <option value="MISION ZAMORA">MISION ZAMORA</option>
-                    <option value="MISION VENEZUELA BELLA">MISION VENEZUELA BELLA</option>
-                    <option value="INCES">INCES</option>
-                    <option value="PDVAL">PDVAL</option>
-                    <option value="FRENTE PREVENTIVO">FRENTE PREVENTIVO</option>
-                    <option value="GRAN MISION CHAMBA JUVENIL">GRAN MISION CHAMBA JUVENIL</option>
-                    <option value="JPSUV MISIONES">JPSUV MISIONES</option>
-                    <option value="PSUV MISIONES">PSUV MISIONES</option>
-                    <option value="ALIMENTACIÓN">ALIMENTACIÓN</option>
-                    <option value="EDUCACIÓN">EDUCACIÓN</option>
-                    <option value="COMUNAS Y MOVIMIENTOS SOCIALES">COMUNAS Y MOVIMIENTOS SOCIALES</option>
-                    <option value="MUJER E IGUALDAD DE GÉNERO">MUJER E IGUALDAD DE GÉNERO</option>
-                    <option value="HABITAD Y VIVIENDA">HABITAD Y VIVIENDA</option>
-                    <option value="OBRAS PÚBLICAS">OBRAS PÚBLICAS</option>
-                    <option value="JUVENTUD Y DEPORTE">JUVENTUD Y DEPORTE</option>
-                    <option value="PUEBLOS INDÍGENAS">PUEBLOS INDÍGENAS</option>
-                    <option value="SALUD">SALUD</option>
-                    <option value="EDUCACIÓN">EDUCACIÓN</option>
-                    <option value="EDUCACIÓN UNIVERSITARIA">EDUCACIÓN UNIVERSITARIA</option>
-                    <option value="INASS">INASS</option>
-                    <option value="IVSS">IVSS</option>
-                    <option value="INTTT">INTTT</option>
-                    <option value="CONAPDIS">CONAPDIS</option>
-                    <option value="SUNAD">SUNAD</option>
-                    <option value="PARTO HUMANIZADO">PARTO HUMANIZADO</option>
-                    <option value="CORPOELEC">CORPOELEC</option>
-                    <option value="FAMES">FAMES</option>
-                    <option value="FAIMA">FAIMA</option>
-                    <option value="SAIPDIS">SAIPDIS</option>
-                    <option value="SIDEA">SIDEA</option>
-                    <option value="INVIOBRAS">INVIOBRAS</option>
-                    <option value="HIDROAMAZONAS">HIDROAMAZONAS</option>
-                    <option value="SEJEU">SEJEU</option>
-                    <option value="FUNDAIHIRUS">FUNDAIHIRUS</option>
-                    <option value="SECRETARIA EJECUTIVA DE PROTECCION SOCIAL GOBERNACIÓN">SECRETARIA EJECUTIVA DE PROTECCION SOCIAL GOBERNACIÓN</option>
-                    <option value="DESARROLLO SOCIAL ALCALDÍA">DESARROLLO SOCIAL ALCALDÍA</option>
-                    <option value="GUARDIA NACIONAL BOLIVARIANA">GUARDIA NACIONAL BOLIVARIANA</option>
-                    <option value="CONAS">CONAS</option>
-                    <option value="FUNDACITE">FUNDACITE</option>
-                    <option value="GUARDIA DEL PUEBLO">GUARDIA DEL PUEBLO</option>
-                    <option value="TRANSAMAZONAS">TRANSAMAZONAS</option>
-                    <option value="MOVIMIENTO DE RECREADORES">MOVIMIENTO DE RECREADORES</option>
-                    <option value="GRAN MISION CUADRANTES DE PAZ">GRAN MISION CUADRANTES DE PAZ</option>
-                    <option value="DIRECCIÓN DE PREVENCIÓN DEL DELITO">DIRECCIÓN DE PREVENCIÓN DEL DELITO</option>
+                      <option value="">Seleccione</option>
+                      <option value="MOVIMIENTO SOMOS VENEZUELA ">MOVIMIENTO SOMOS VENEZUELA </option>
+                      <option value="MISIÓN RIBAS">MISIÓN RIBAS</option>
+                      <option value="MISIÓN ROBINSON">MISIÓN ROBINSON</option>
+                      <option value="MISIÓN SUCRE">MISIÓN SUCRE</option>
+                      <option value="MISIÓN CULTURA">MISIÓN CULTURA</option>
+                      <option value="MISIÓN BARRIO ADENTRO VENEZUELA">MISIÓN BARRIO ADENTRO VENEZUELA</option>
+                      <option value="MISIÓN BARRIO ADENTRO CUBANO">MISIÓN BARRIO ADENTRO CUBANO</option>
+                      <option value="MISIÓN SONRISA">MISIÓN SONRISA</option>
+                      <option value="MISIÓN NEGRA HIPOLITA">MISIÓN NEGRA HIPOLITA</option>
+                      <option value="MISIÓN ÁRBOL">MISIÓN ÁRBOL</option>
+                      <option value="HOGARES DE LA PATRIA">HOGARES DE LA PATRIA</option>
+                      <option value="MISIÓN JOSÉ GREGORIO HERNÁNDEZ">MISIÓN JOSÉ GREGORIO HERNÁNDEZ</option>
+                      <option value="MISIÓN GUAICAIPURO">MISIÓN GUAICAIPURO</option>
+                      <option value=" IDENNA"> IDENNA</option>
+                      <option value="MISIÓN MERCAL">MISIÓN MERCAL</option>
+                      <option value="FRENTE FRANCISCO DE MIRANDA (F.F.M)">FRENTE FRANCISCO DE MIRANDA (F.F.M)</option>
+                      <option value="MISIÓN NIÑO SIMÓN">MISIÓN NIÑO SIMÓN</option>
+                      <option value="INSTITUTO NACIONAL DE NUTRICIÓN (I.N.N)">INSTITUTO NACIONAL DE NUTRICIÓN (I.N.N)</option>
+                      <option value="GRAN MISIÓN SABER Y TRABAJO">GRAN MISIÓN SABER Y TRABAJO</option>
+                      <option value="MOVIMIENTO POR LA PAZ Y LA VIDA">MOVIMIENTO POR LA PAZ Y LA VIDA</option>
+                      <option value="MISIÓN BARRIO ADENTRO DEPORTE CUBANO">MISIÓN BARRIO ADENTRO DEPORTE CUBANO</option>
+                      <option value="MISIÓN NEVADO">MISIÓN NEVADO</option>
+                      <option value="FUNDAPROAL">FUNDAPROAL</option>
+                      <option value="MISIÓN BARRIO NUEVO, BARRIO TRICOLOR (BNBT)">MISIÓN BARRIO NUEVO, BARRIO TRICOLOR (BNBT)</option>
+                      <option value="GRAN MISIÓN VIVIENDA VENEZUELA (GMVV)">GRAN MISIÓN VIVIENDA VENEZUELA (GMVV)</option>
+                      <option value="MISIÓN ROBERT SERRA">MISIÓN ROBERT SERRA</option>
+                      <option value="MISIÓN JÓVENES DEL BARRIO">MISIÓN JÓVENES DEL BARRIO</option>
+                      <option value="MISIÓN MILAGRO">MISIÓN MILAGRO</option>
+                      <option value="MISION ZAMORA">MISION ZAMORA</option>
+                      <option value="MISION VENEZUELA BELLA">MISION VENEZUELA BELLA</option>
+                      <option value="INCES">INCES</option>
+                      <option value="PDVAL">PDVAL</option>
+                      <option value="FRENTE PREVENTIVO">FRENTE PREVENTIVO</option>
+                      <option value="GRAN MISION CHAMBA JUVENIL">GRAN MISION CHAMBA JUVENIL</option>
+                      <option value="JPSUV MISIONES">JPSUV MISIONES</option>
+                      <option value="PSUV MISIONES">PSUV MISIONES</option>
+                      <option value="ALIMENTACIÓN">ALIMENTACIÓN</option>
+                      <option value="EDUCACIÓN">EDUCACIÓN</option>
+                      <option value="COMUNAS Y MOVIMIENTOS SOCIALES">COMUNAS Y MOVIMIENTOS SOCIALES</option>
+                      <option value="MUJER E IGUALDAD DE GÉNERO">MUJER E IGUALDAD DE GÉNERO</option>
+                      <option value="HABITAD Y VIVIENDA">HABITAD Y VIVIENDA</option>
+                      <option value="OBRAS PÚBLICAS">OBRAS PÚBLICAS</option>
+                      <option value="JUVENTUD Y DEPORTE">JUVENTUD Y DEPORTE</option>
+                      <option value="PUEBLOS INDÍGENAS">PUEBLOS INDÍGENAS</option>
+                      <option value="SALUD">SALUD</option>
+                      <option value="EDUCACIÓN">EDUCACIÓN</option>
+                      <option value="EDUCACIÓN UNIVERSITARIA">EDUCACIÓN UNIVERSITARIA</option>
+                      <option value="INASS">INASS</option>
+                      <option value="IVSS">IVSS</option>
+                      <option value="INTTT">INTTT</option>
+                      <option value="CONAPDIS">CONAPDIS</option>
+                      <option value="SUNAD">SUNAD</option>
+                      <option value="PARTO HUMANIZADO">PARTO HUMANIZADO</option>
+                      <option value="CORPOELEC">CORPOELEC</option>
+                      <option value="FAMES">FAMES</option>
+                      <option value="FAIMA">FAIMA</option>
+                      <option value="SAIPDIS">SAIPDIS</option>
+                      <option value="SIDEA">SIDEA</option>
+                      <option value="INVIOBRAS">INVIOBRAS</option>
+                      <option value="HIDROAMAZONAS">HIDROAMAZONAS</option>
+                      <option value="SEJEU">SEJEU</option>
+                      <option value="FUNDAIHIRUS">FUNDAIHIRUS</option>
+                      <option value="SECRETARIA EJECUTIVA DE PROTECCION SOCIAL GOBERNACIÓN">SECRETARIA EJECUTIVA DE PROTECCION SOCIAL GOBERNACIÓN</option>
+                      <option value="DESARROLLO SOCIAL ALCALDÍA">DESARROLLO SOCIAL ALCALDÍA</option>
+                      <option value="GUARDIA NACIONAL BOLIVARIANA">GUARDIA NACIONAL BOLIVARIANA</option>
+                      <option value="CONAS">CONAS</option>
+                      <option value="FUNDACITE">FUNDACITE</option>
+                      <option value="GUARDIA DEL PUEBLO">GUARDIA DEL PUEBLO</option>
+                      <option value="TRANSAMAZONAS">TRANSAMAZONAS</option>
+                      <option value="MOVIMIENTO DE RECREADORES">MOVIMIENTO DE RECREADORES</option>
+                      <option value="GRAN MISION CUADRANTES DE PAZ">GRAN MISION CUADRANTES DE PAZ</option>
+                      <option value="DIRECCIÓN DE PREVENCIÓN DEL DELITO">DIRECCIÓN DE PREVENCIÓN DEL DELITO</option>
                     </select>
 
 

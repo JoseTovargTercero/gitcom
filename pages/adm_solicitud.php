@@ -13,10 +13,10 @@ if ($_SESSION['nivel'] == 1) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="../assets/img/SLS.png">
     <title class="solicitud" id="title">Usuarios</title>
-    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+
+
     <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.2" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/webfonts/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/animate.css">
@@ -44,20 +44,20 @@ if ($_SESSION['nivel'] == 1) {
       </nav>
       <!-- End Navbar -->
       <div class="container-fluid py-4">
-      
 
 
-      <div class="row">
-        <div class="col-12">
-          <div class="card my-4">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Solicitudes de acceso</h6>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card my-4">
+              <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                  <h6 class="text-white text-capitalize ps-3">Solicitudes de acceso</h6>
+                </div>
               </div>
-            </div>
-            <div class="card-body px-0 pb-2">
-              <div class="table-responsive p-0" style="min-height: 400px; overflow: visible;">
-              <table class="table align-items-center mb-0">
+              <div class="card-body px-0 pb-2">
+                <div class="table-responsive p-0" style="min-height: 400px; overflow: visible;">
+                  <table class="table align-items-center mb-0">
                     <thead>
                       <tr>
                         <th class="text-uppercase text-secondary text-xxs">Usuario</th>
@@ -70,11 +70,11 @@ if ($_SESSION['nivel'] == 1) {
                     </thead>
                     <tbody id="tablaUsers"></tbody>
                   </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
 
 
@@ -92,19 +92,19 @@ if ($_SESSION['nivel'] == 1) {
 
     <script>
       function actualizarTablaUser() {
-          $.get("consultasAjax/users/users_tabla_solicitudes.php", "", function(data) {
-            if (data.trim() != '1') {
-              $("#tablaUsers").html(data);
-            }
-          });
+        $.get("consultasAjax/users/users_tabla_solicitudes.php", "", function(data) {
+          if (data.trim() != '1') {
+            $("#tablaUsers").html(data);
+          }
+        });
       }
 
       actualizarTablaUser()
 
       function userAccion(tipo, user, tipoUser) {
         if (tipo == 2) {
-          window.location.href = "datos_solicitud.php?id="+user;
-        }else{
+          window.location.href = "datos_solicitud.php?id=" + user;
+        } else {
 
 
           Swal.fire({
@@ -115,14 +115,14 @@ if ($_SESSION['nivel'] == 1) {
             confirmButtonColor: '#ed5264',
             confirmButtonText: 'Dar acceso',
             cancelButtonText: 'Cancelar'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                $.get("consultasAjax/users/users_tabla_eliminar_sol.php", "id="+user, function(data) {
-                  $("#tablaUsers").html(data);
-                });
-                actualizarTablaUser()
-              }
-            })
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.get("consultasAjax/users/users_tabla_eliminar_sol.php", "id=" + user, function(data) {
+                $("#tablaUsers").html(data);
+              });
+              actualizarTablaUser()
+            }
+          })
 
 
 

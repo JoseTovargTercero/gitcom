@@ -28,25 +28,7 @@ if ($_SESSION['id'] && $_SESSION['rand']) {
 			$_SESSION["dato1"] = $row['dato1'];
 			$_SESSION["dato2"] = $row['dato2'];
 
-
-			if ($row['nivel'] == 4) {
-				$query2 = "SELECT local_comunidades.nombre_c_comunal, local_comunas.nombre_comuna  FROM local_comunidades 
-				LEFT JOIN local_comunas ON local_comunas.id_Comuna = local_comunidades.id_comuna
-				WHERE local_comunidades.id_consejo='$row[dato2]' LIMIT 1";
-				$search2 = $conexion->query($query2);
-				if ($search2->num_rows > 0) {
-					while ($row2 = $search2->fetch_assoc()) {
-						$_SESSION["entidad_pre"] = $row2['nombre_comuna'];
-						$_SESSION["entidad"] = $row2['nombre_c_comunal'];
-					}
-				}
-			} else {
-				$_SESSION["entidad"] = $row2['dato2'];
-				$_SESSION["entidad_pre"] = $row2['dato1'];
-			}
-
-
-
+			$usuario = $row['usuario'];
 
 			$id = $_SESSION['id'];
 			$nombre = $_SESSION['nombre'];
@@ -55,12 +37,19 @@ if ($_SESSION['id'] && $_SESSION['rand']) {
 
 			$insert = $conexion->query("INSERT INTO log_usuarios (id_user, usuario, fecha) VALUES ('$id','$nombre','$fecha')");
 
-			echo '1';
+			// verifica si $usuario es un correo
+			if (strpos($usuario, '@') === false) {
+				$accion = 'perfil.php?actualizar=true';
+			} else {
+				$accion = 'index.php';
+			}
+
+			echo json_encode(['status' => true, 'page' => $accion]);
 		}
 	} else {
-		echo 'false';
+		echo json_encode(['status' => false, 'msg' => 'Incorrecto']);
 	}
 	$stmt->close();
 } else {
-	echo 'false-servidor';
+	echo json_encode(['status' => false, 'msg' => 'Error de conexión']);
 }
