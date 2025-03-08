@@ -1,59 +1,35 @@
 <?php
-    include('../../configuracion/conexionMysqli.php');
-       
-    $comuna = $_POST['comuna'];
+include('../../configuracion/conexionMysqli.php');
+include('../../class/count.php');
 
-    $query = "SELECT * FROM local_comunidades WHERE id_comuna='$comuna'";
-    $search = $conexion->query($query);
-    if ($search->num_rows > 0) {
+$comuna = $_POST['comuna'];
+$data = [];
 
-        echo '	
-        
-        <div class="table-responsive p-0  animated fadeInUp" style="overflow-x: auto !important;">
-        <table class="table align-items-center mb-0">
-          <thead>
-            <tr>
-              <th class="text-uppercase text-secondary text-xxs">Comunidad</th>
-              <th class="text-uppercase text-secondary text-xxs">Estatus</th>
-              <th class="text-uppercase text-secondary text-xxs">Ultima Actualizaci贸n</th>
-            </tr>
-          </thead>
-          <tbody>
+$stmt = mysqli_prepare($conexion, "SELECT * FROM local_comunidades WHERE id_comuna= ?");
+$stmt->bind_param('s', $comuna);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($result->num_rows > 0) {
+  while ($row = $result->fetch_assoc()) {
+    $viviendas = contar('inf_casas', $row['id_consejo'], 'id_c_comunal');
+    $personas = contar('inf_habitantes', $row['id_consejo'], 'id_c_comunal');
+    $fase = 0;
 
-        ';
+    if ($viviendas > 0) {
+      $fase = 1;
+    }
+    if ($personas > 0) {
+      $fase = 2;
+    }
 
+    $data[$row['id_consejo']] = [
+      'comunidad' => $row['nombre_c_comunal'],
+      'viviendas' => $viviendas,
+      'personas' => $personas,
+      'fase' => $fase
+    ];
+  }
+}
+$stmt->close();
 
-        while ($row = $search->fetch_assoc()) {
-            
-
-            echo "<tr><td>".$row['nombre_c_comunal']."</td>";
-                
-                if($row['status'] == 1){
-                    
-                    echo '<td><i class="fa fa-check"></i></td>';
-                }else if($row['status'] == 2){
-                    
-                          echo '<td>Fase 1</td>';
-                }else{
-                          echo '<td>Pendiente</td>';
-                }
-                
-                
-                
-                
-            echo "
-                <td>".$row['ultimocambio']."</td>
-            </tr>";
-        }
-      
-      
-        echo '   </tbody>
-        </table>
-      </div>';
-
-
-
-        }
-    
-    ?>
- 
+echo json_encode($data);

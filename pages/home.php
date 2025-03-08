@@ -251,65 +251,37 @@ if ($_SESSION['nivel'] == 1) {
                     <tbody>
                       <?php
 
-                      function avanceXcomuna1($comuna)
+
+                      function avance($comuna)
                       {
+                        $data = [];
+                        global $conexion;
+                        $comunidades_f1 = 0;
+                        $comunidades_f2 = 0;
 
 
-                        $total = contar2('local_comunidades', "id_comuna='$comuna'");
-
-                        $primera =  contar2('local_comunidades', "id_comuna='$comuna' AND status='2' OR id_comuna='$comuna' AND status='1'");
+                        $comunidades = contar('local_comunidades', $comuna, 'id_comuna');
 
 
-                        if ($primera != 0) {
-                          $avance1 = $primera * 100 / $total;
-                          if ($avance1 != 100) {
-                            $avance1 = number_format($avance1, '1', '.', '.');
-                          }
-                        } else {
-                          $avance1 = 0;
-                        }
+                        $stmt = $conexion->prepare("SELECT COUNT(DISTINCT id_c_comunal) FROM inf_casas WHERE id_comuna = ?");
+                        $stmt->bind_param('s', $comuna);
+                        $stmt->execute();
+                        $stmt->bind_result($comunidades_f1);
+                        $stmt->fetch();
+                        $stmt->close();
 
 
-                        return '
-                    <div class="progress-wrapper w-75 mx-auto">
-                      <div class="progress-info">
-                        <div class="progress-percentage">
-                          <span class="text-xs font-weight-bold" style="white-space: nowrap;">' .  $avance1 . '%</span>
-                        </div>
-                      </div>
-                    </div>';
+                        $stmt = $conexion->prepare("SELECT COUNT(DISTINCT id_c_comunal) FROM inf_habitantes WHERE id_comuna = ?");
+                        $stmt->bind_param('s', $comuna);
+                        $stmt->execute();
+                        $stmt->bind_result($comunidades_f2);
+                        $stmt->fetch();
+                        $stmt->close();
+
+
+
+                        return [$comunidades, $comunidades_f1, $comunidades_f2];
                       }
-
-
-                      function avanceXcomuna($comuna)
-                      {
-
-
-                        $total = contar2('local_comunidades', "id_comuna='$comuna'");
-
-
-                        $censadas =  contar2('local_comunidades', "id_comuna='$comuna' AND status='1'");
-
-
-                        if ($censadas != 0) {
-                          $avance = $censadas * 100 / $total;
-                          if ($avance != 100) {
-                            $avance = number_format($avance, '1', '.', '.');
-                          }
-                        } else {
-                          $avance = 0;
-                        }
-
-                        return '
-                    <div class="progress-wrapper w-75 mx-auto">
-                      <div class="progress-info">
-                        <div class="progress-percentage">
-                          <span class="text-xs font-weight-bold" style="white-space: nowrap;">' .  $avance . '%</span>
-                        </div>
-                      </div>
-                    </div>';
-                      }
-
 
 
 
@@ -319,10 +291,11 @@ if ($_SESSION['nivel'] == 1) {
                       $result = mysqli_query($conexion, $sql);
                       if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
+                          $avances = avance($row['id_Comuna']);
                           echo '<tr>
                               <td> <i style="cursor: pointer; font-size: 12px" class="fa fa-info-circle" onclick="viewAvanceComuna(\'' . $row['id_Comuna'] . '\')"></i> &nbsp;&nbsp;&nbsp;  ' . $row['nombre_comuna'] . '</td>
-                              <td class="align-middle">' . avanceXcomuna1($row['id_Comuna']) . '</td>
-                              <td class="align-middle">' . avanceXcomuna($row['id_Comuna']) . '</td>
+                              <td class="align-middle">' . $avances[1] . '/ ' . $avances[0] . '</td>
+                              <td class="align-middle">' . $avances[2] . '/ ' . $avances[0] . '</td>
                              </tr>';
                         }
                       }
@@ -404,11 +377,25 @@ if ($_SESSION['nivel'] == 1) {
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Avance de la comunidad</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body" id="staticBackdropContenido">
-                ...
+              <div class="modal-body">
+                <div class="table-responsive p-0  animated fadeInUp" style="overflow-x: auto !important;">
+                  <table class="table align-items-center mb-0">
+                    <thead>
+                      <tr>
+                        <th class="text-uppercase text-secondary text-xxs">Comunidad</th>
+                        <th class="text-uppercase text-secondary text-xxs text-center">Fase</th>
+                        <th class="text-uppercase text-secondary text-xxs">Viviendas</th>
+                        <th class="text-uppercase text-secondary text-xxs">Habitantes</th>
+                      </tr>
+                    </thead>
+                    <tbody id="staticBackdropContenido">
+
+                    </tbody>
+                  </table>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -520,6 +507,7 @@ if ($_SESSION['nivel'] == 1) {
       map.addLayer(layer_comunidades_0);
       setBounds();
       var i = 0;
+      var totalMarkers = 0
       layer_comunidades_0.eachLayer(function(layer) {
         var context = {
           feature: layer.feature,
@@ -527,7 +515,6 @@ if ($_SESSION['nivel'] == 1) {
         };
         totalMarkers += 1;
         layer.added = true;
-        addLabel(layer, i);
         i++;
       });
     </script>
@@ -544,14 +531,34 @@ if ($_SESSION['nivel'] == 1) {
             },
           })
           .done(function(rePol) {
-            $('#staticBackdropLabel').html('Avance por comunidad')
-            $('#staticBackdropContenido').html(rePol.trim())
+            let respuesta = JSON.parse(rePol)
             $('#staticBackdrop').modal('toggle')
+
+
+            $('#staticBackdropContenido').html('')
+
+
+            for (const key in respuesta) {
+              if (respuesta.hasOwnProperty(key)) {
+                $('#staticBackdropContenido').append(`
+                  <tr>
+                    <td>${respuesta[key].comunidad}</td>
+                    <td class="text-center"><b>${(respuesta[key].fase == 0 ? '<span class="text-info">PENDIENTE</span>' : 'Fase ' + respuesta[key].fase)}</b></td>
+                    <td>${respuesta[key].viviendas}</td>
+                    <td>${respuesta[key].personas}</td>
+                  </tr>
+                `)
+
+              }
+            }
+
+
           })
       }
 
 
 
+      //<i class="fa fa-check"></i>
       /* graficos */
       function graficoAvance() {
         // Create root element
@@ -741,7 +748,6 @@ if ($_SESSION['nivel'] == 1) {
           });
 
 
-          series3.data.setAll(data);
 
           // Add bullets
           series3.bullets.push(function() {
@@ -753,6 +759,7 @@ if ($_SESSION['nivel'] == 1) {
               })
             });
           });
+          series3.data.setAll(data);
 
           // Add legend
           var legend = chart.children.push(am5.Legend.new(root, {
@@ -769,9 +776,7 @@ if ($_SESSION['nivel'] == 1) {
           chart.appear(1000, 100);
 
         }); // end am5.ready()
-
       }
-      graficoAvanceComuna()
     </script>
 
 
