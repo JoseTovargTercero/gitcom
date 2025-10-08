@@ -67,9 +67,9 @@
 
     if ($formato == '1') { // xls
 
-      //  header("Content-type: application/vnd.ms-excel; charset=UTF-8");
-      //  header("Content-Disposition: attachment; filename=" . $nombreArchivo . date('Y-m-d H_s_i a') . ".xls");
-      //  echo pack("CCC", 0xef, 0xbb, 0xbf);
+      header("Content-type: application/vnd.ms-excel; charset=UTF-8");
+      header("Content-Disposition: attachment; filename=" . $nombreArchivo . date('Y-m-d H_s_i a') . ".xls");
+      echo pack("CCC", 0xef, 0xbb, 0xbf);
     }
     echo info();
 
