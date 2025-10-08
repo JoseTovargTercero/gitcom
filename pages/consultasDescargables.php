@@ -5,6 +5,13 @@ include('../class/count.php');
 if ($_SESSION['nivel'] == 1) {
   unset($_SESSION['proyecto']);
 
+
+  $query = $conexion->query("select * from local_municipio");
+  $countries = array();
+  while ($r = $query->fetch_object()) {
+    $countries[] = $r;
+  }
+
   $codigo = $_GET["codigo"];
 ?>
 
@@ -62,7 +69,7 @@ if ($_SESSION['nivel'] == 1) {
   <style>
     .camposMostrar {
       padding: 10px 15px;
-      height: 285px;
+      height: 375px;
       overflow-y: auto;
       background: #f5f5f5b5;
       border-radius: 10px;
@@ -187,6 +194,51 @@ if ($_SESSION['nivel'] == 1) {
 
 
 
+
+
+
+                      <div class="row mt-3">
+
+                        <div class="col-lg-6">
+                          <div class="form-group label-floating is-empty">
+                            <label style="font-weight: 100;" class="control-label">Municipio</label>
+                            <select style="padding-left: 10px;" class="form-control" id="mcp">
+                              <option value=""> -- No aplicar ningun filtro --</option>
+                              <?php foreach ($countries as $c) : ?>
+                                <option value="<?php echo $c->id_municipio; ?>">&nbsp;<?php echo $c->nombre_municipio; ?></option>
+                              <?php endforeach; ?>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                          <div class="form-group label-floating is-empty">
+                            <label style="font-weight: 100;" class="control-label">Parroquia </label>
+                            <select style="padding-left: 10px;" class="form-control" id="paq">
+                              <option value=""> -- No aplicar ningun filtro --</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group label-floating is-empty">
+                            <label style="font-weight: 100;" class="control-label">Comuna </label>
+                            <select style="padding-left: 10px;" class="form-control" id="cma">
+                              <option value=""> -- No aplicar ningun filtro --</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group label-floating is-empty">
+                            <label style="font-weight: 100;" class="control-label">Comunidad </label>
+                            <select style="padding-left: 10px;" class="form-control" id="cmia">
+                              <option value=""> -- No aplicar ningun filtro --</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+
+
                     </div>
 
 
@@ -264,8 +316,12 @@ if ($_SESSION['nivel'] == 1) {
     <script>
       function descargar() {
         let consulta = $('#consulta').val()
+        let mcp = $('#mcp').val()
+        let paq = $('#paq').val()
+        let cma = $('#cma').val()
+        let cmia = $('#cmia').val()
 
-        window.location.href = "reportes/reporteXlsx.php?consulta=" + consulta + "&camposMostrar=" + camposMostrar;
+        window.location.href = `reportes/reporteXlsx.php?consulta=${consulta}&camposMostrar=${camposMostrar}mcp=${mcp}&paq=${paq}&cma=${cma}&cmia${cmia}`;
 
       }
 
@@ -412,6 +468,10 @@ if ($_SESSION['nivel'] == 1) {
         });
 
 
+        let mcp = $('#mcp').val()
+        let paq = $('#paq').val()
+        let cma = $('#cma').val()
+        let cmia = $('#cmia').val()
 
         consulta = consulta.replaceAll('"', '*');
 
@@ -426,7 +486,12 @@ if ($_SESSION['nivel'] == 1) {
               formato: formato,
               nombreArchivo: nombreArchivo,
               tabla: tabla,
-              proyecto: '<?php echo $codigo ?>'
+              proyecto: '<?php echo $codigo ?>',
+              mcp: mcp,
+              paq: paq,
+              cma: cma,
+              cmia: cmia
+
             },
           })
           .done(function(resultado) {
@@ -599,6 +664,26 @@ if ($_SESSION['nivel'] == 1) {
 
 
 
+
+      $(document).ready(function() {
+        $("#mcp").change(function() {
+          $.get("consultasAjax/selec_continente.php", "municipio_id=" + $("#mcp").val(), function(data) {
+            $("#paq").html(data);
+          });
+        });
+
+        $("#paq").change(function() {
+          $.get("consultasAjax/selec_paises.php", "continente_id=" + $("#paq").val(), function(data) {
+            $("#cma").html(data);
+          });
+        });
+
+        $("#cma").change(function() {
+          $.get("consultasAjax/selec_ciudades.php", "pais_id=" + $("#cma").val(), function(data) {
+            $("#cmia").html(data);
+          });
+        });
+      });
 
 
 
