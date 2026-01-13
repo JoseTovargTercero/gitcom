@@ -13,15 +13,15 @@ include("../../configuracion/conexionMysqli.php");
 
 	$stmt = $conexion->prepare("INSERT INTO proyectos (user, nombre, tipo, ultimoCambio, reporte) VALUES (?, ?, ?, ?, ?)");
 	$stmt->bind_param("sssss", $user, $nombreArchivo, $tipoEstatusX, $ultimoCambio, $reporte); 
-	$stmt->execute();
-	$id = $conexion->insert_id;
-	$stmt -> close();
 
 
-	if (!$stmt) {
-		echo 'error';
+
+	if ($stmt->execute()) {
+		$id = $conexion->insert_id;
+		$stmt -> close();
+		echo json_encode(['status' => 'success', 'id' => $id]);
 	}else {
-		echo $id;
+		echo json_encode(['status' => 'Error: ' . $stmt->error]);
 	}
 
 

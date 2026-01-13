@@ -472,8 +472,11 @@ if ($_SESSION['nivel'] != '') {
             tipoEstatusX: tipoEstatusX
           },
         }).done(function(response) {
-          if (response != 'error') {
-            window.open("consultasDescargables.php?codigo=" + response.trim(), "_self");
+        const result = JSON.parse(response);
+          if (result.status == 'success') {
+            window.open("consultasDescargables.php?codigo=" + result.id, "_self");
+          }else {
+            toast('error', result.status);
           }
         })
 
