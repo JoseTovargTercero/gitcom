@@ -132,7 +132,8 @@ if ($_SESSION['nivel'] != '') {
         <div class="row">
           <div class="col-md-8">
             <div class="card">
-              <div class="ventana-header pb-0 px-3">
+              
+              <div class="ventana-header pb-0 px-3 d-flex justify-content-between">
 
                 <div class="card-title flex-column">
                   <h5 class="fw-bold mb-1" style="font-size: 17.5px;">Tus proyectos</h5>
@@ -141,6 +142,9 @@ if ($_SESSION['nivel'] != '') {
                     PRIV: <?php echo number_format(contar2('proyectos', 'user=' . $idUser . ' AND tipo=1'), '0', '.', '.') ?> -
                     PÚBL: <?php echo number_format(contar2('proyectos', 'user=' . $idUser . ' AND tipo=2'), '0', '.', '.') ?>
                   </div>
+                </div>
+                <div class="">
+                  <a href="mapa/mapa_mcp.php" class="btn btn-info"> Consulta Especial Municipios </a>
                 </div>
 
               </div>
