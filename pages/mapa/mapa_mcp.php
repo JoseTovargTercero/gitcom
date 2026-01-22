@@ -75,6 +75,9 @@ $mapa = 'Cartografia GITCOM';
             border: none;
 
         }
+        .hide{
+            display: none;
+        }
         .top-right-filters-container {
                 position: fixed;
                 z-index: 1052;
@@ -257,12 +260,77 @@ $mapa = 'Cartografia GITCOM';
                     <option value="2">Comercios</option>
                     <option value="3">Instituciones</option>
                 </select>
+
+
+                <div class="hide" id="inputResponsableDiv" style="max-width: 400px; margin: 10px auto; font-family: sans-serif;">
+
+    <div style="
+        display:flex;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        overflow:hidden;
+        background-color:#fff;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    ">
+        <!-- Icono de lupa -->
+        <span style="
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding: 0 10px;
+            background-color:#f5f5f5;
+            color:#555;
+            font-size:16px;
+        ">
+            🔍
+        </span>
+
+        <!-- Input -->
+        <input type="text" id="inputResponsable"  placeholder="Ingrese cedula del responsable"
+            style="
+                flex:1;
+                border:none;
+                outline:none;
+                padding: 6px 8px;
+                font-size:14px;
+            "
+        />
+
+        <!-- Botón -->
+        <button onclick="buscarResponsable(document.getElementById('inputResponsable').value)"
+            style="
+                border:none;
+                background-color:#4CAF50;
+                color:#fff;
+                font-weight:600;
+                cursor:pointer;
+                padding: 6px 12px;
+                transition: background 0.2s;
+            "
+            onmouseover="this.style.backgroundColor='#45a049'"
+            onmouseout="this.style.backgroundColor='#4CAF50'"
+            
+        >
+            Buscar
+        </button>
+    </div>
+</div>
+
+
+
+
             </div>
 
             <div class="bottom-right-download-container d-flex flex-column">
+               <div class="input-group">
                 <button class="btn btn-sm btn-success"  id="btn-download-representaciones">
                     <i class="fa fa-file-excel-o"></i> Descargar representaciones
                 </button>
+
+                <button class="btn btn-sm btn-success" style="border-left: 1px solid #fff;"  id="btn-download-representaciones-setting">
+                    <i class="fa fa-wrench"></i>
+                </button>
+            </div>
             </div>
 
 
@@ -372,7 +440,7 @@ $mapa = 'Cartografia GITCOM';
                     <i class="fa fa-search"></i>
                 </div>
 
-                <div class="herramientas" title="Consulta" onclick="mostrarOcultarVentanaModal('#consultaPersonalDiv')">
+                <div class="herramientas" title="Consulta" onclick="$('#inputResponsableDiv').toggleClass('hide')">
                     <i class="fa fa-search-plus"></i>
                 </div>
 
@@ -1256,6 +1324,24 @@ $mapa = 'Cartografia GITCOM';
         </div>
     </div>
 </div>
+<div id="modalConfiguracionDescarga" class="modal-detalle oculto">
+    <div class="modal-detalle-backdrop"></div>
+
+    <div class="modal-detalle-content">
+        <div class="modal-detalle-header">
+            <span>Configuración de representaciones</span>
+            <button onclick="$('.modal-detalle').addClass('oculto')">✖</button>
+        </div>
+
+        <div class="modal-detalle-body" id="modalConfiguracionDescargaBody">
+            <!-- contenido dinámico -->
+        </div>
+        <div class="modal-detalle-footer d-flex justify-content-between p-3">
+            <button class="btn btn-secondary" onclick="$('.modal-detalle').addClass('oculto')">Cancelar</button>
+            <button class="btn btn-primary" onclick="exportarMarkersVisiblesExcelConfig()">Exportar</button>
+        </div>
+    </div>
+</div>
 
 
 <style>
@@ -1299,8 +1385,6 @@ $mapa = 'Cartografia GITCOM';
 }
 
 .modal-detalle-header{
-    background: #1f4ed8;
-    color: #fff;
     padding: 10px 14px;
     font-weight: bold;
     display: flex;
@@ -3239,7 +3323,7 @@ $mapa = 'Cartografia GITCOM';
                     featureGroup,
                     `<span class="admLayers">
                         <img width="15px" src="../../assets/img/capaGitcom.png"/> ${nombreCapa}
-                    </span> (${resp.cantidad})`
+                    </span> (${resp.total})`
                 );
 
                // toast("success", "Se agregó una nueva capa");
@@ -3432,11 +3516,6 @@ function obtenerMarkersCapasActivas() {
     return datos;
 }
 
-$(document).ready(function(){
-    const lista = obtenerMarkersCapasActivas();
-    console.log(lista)
-})
-
 function exportarMarkersVisiblesExcel(keys = null) {
     // Obtiene todos los markers visibles
     const lista = obtenerMarkersCapasActivas();
@@ -3467,7 +3546,6 @@ function exportarMarkersVisiblesExcel(keys = null) {
 
 
 // adevenlister btn-download-representaciones
-
 document.getElementById('btn-download-representaciones').addEventListener('click', function() {
     exportarMarkersVisiblesExcel([
         'id_vivienda', 
@@ -3480,7 +3558,74 @@ document.getElementById('btn-download-representaciones').addEventListener('click
 
 });
 
+// mostra modal con configuracion de representaciones
+document.getElementById('btn-download-representaciones-setting').addEventListener('click', function() {
+    document.getElementById('modalConfiguracionDescarga').classList.remove('oculto');
+});
 
+function renderizarCamposDescarga(){
+    const body = document.getElementById('modalConfiguracionDescargaBody');
+
+    // Botón seleccionar/deseleccionar todo
+    let html = `
+        <div style="margin-bottom:10px; text-align:right;">
+            <button type="button" class="btn btn-sm btn-primary" id="btnSeleccionarTodo" style="padding:4px 8px; font-size:12px; cursor:pointer;">Seleccionar Todo</button>
+            <button type="button" class="btn btn-sm btn-primary" id="btnDeseleccionarTodo" style="padding:4px 8px; font-size:12px; cursor:pointer;">Deseleccionar Todo</button>
+        </div>
+        <div class="checkbox-grid" style="
+            display:grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap:8px;
+            max-height:400px;
+            overflow-y:auto;
+            padding:4px;
+            border:1px solid #ddd;
+            border-radius:6px;
+        ">
+    `;
+
+    Object.keys(etiquetasFicha).forEach(key => {
+        html += `
+            <label style="display:flex; align-items:center; cursor:pointer; padding:2px 4px; border-radius:4px; transition: background 0.2s;">
+                <input type="checkbox" name="campos" value="${key}" style="margin-right:6px;">
+                ${etiquetasFicha[key]}
+            </label>
+        `;
+    });
+
+    html += `</div>`;
+
+    body.innerHTML = html;
+
+    // Funciones de seleccionar/deseleccionar todo
+    document.getElementById('btnSeleccionarTodo').addEventListener('click', () => {
+        body.querySelectorAll('input[name="campos"]').forEach(chk => chk.checked = true);
+    });
+
+    document.getElementById('btnDeseleccionarTodo').addEventListener('click', () => {
+        body.querySelectorAll('input[name="campos"]').forEach(chk => chk.checked = false);
+    });
+
+    // Hover efecto para los labels
+    body.querySelectorAll('.checkbox-grid label').forEach(label => {
+        label.addEventListener('mouseenter', () => label.style.background = '#f0f0f0');
+        label.addEventListener('mouseleave', () => label.style.background = 'transparent');
+    });
+}
+
+renderizarCamposDescarga()
+function exportarMarkersVisiblesExcelConfig() {
+    const checkboxes = document.querySelectorAll('#modalConfiguracionDescargaBody input[name="campos"]:checked');
+    const keys = Array.from(checkboxes).map(chk => chk.value);
+
+    if(keys.length === 0){
+        alert("Debes seleccionar al menos un campo");
+        return;
+    }
+
+    exportarMarkersVisiblesExcel(keys);
+    document.getElementById('modalConfiguracionDescarga').classList.add('oculto');
+}
 
 
 function abrirModalDetalle(html){
@@ -3495,10 +3640,61 @@ function cerrarModalDetalle(){
     document.getElementById('modalDetalle').classList.add('oculto');
 }
 
+
+
+
+function buscarResponsable(valorBusqueda) {
+    if(!valorBusqueda) return;
+
+    // Limpiar valor de búsqueda: solo números y trim
+    const valorLimpio = valorBusqueda.replace(/\D/g, '').trim();
+
+    const markers = obtenerMarkersCapasActivas();
+    let encontrado = false;
+
+    markers.forEach(data => {
+        if(!data.responsable) return;
+
+        const responsableLimpio = data.responsable.replace(/\D/g, '').trim();
+
+        if(responsableLimpio.includes(valorLimpio)) {
+            encontrado = true;
+
+            // Buscar el marker correspondiente en el mapa
+            map.eachLayer(layer => {
+                if(layer instanceof L.CircleMarker && layer.feature?.data?.id === data.id){
+                    // Hacer zoom al marker
+                    map.setView(layer.getLatLng(), 18, { animate: true });
+
+                    // Abrir popup si tiene
+                    if(layer.getPopup()) {
+                        layer.openPopup();
+                    }
+                }
+
+                // Manejar FeatureGroup anidado
+                else if(layer._layers){
+                    for(const key in layer._layers){
+                        const inner = layer._layers[key];
+                        if(inner.feature?.data?.id === data.id){
+                            map.setView(inner.getLatLng(), 18, { animate: true });
+                            if(inner.getPopup()) inner.openPopup();
+                        }
+                    }
+                }
+            });
+        }
+    });
+
+    if(!encontrado) alert("No se encontraron coincidencias para el responsable.");
+}
+
+
+
+
+
 document.querySelector('.modal-detalle-backdrop')
     .addEventListener('click', cerrarModalDetalle);
-
-
 
         function cargarRepresentaciones(service = null, type = null) {
 
