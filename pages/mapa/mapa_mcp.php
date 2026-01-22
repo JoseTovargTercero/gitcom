@@ -3170,43 +3170,37 @@ $mapa = 'Cartografia GITCOM';
     const consultasAlmacenadas = {
             'suministro_agua' : {
                     'pozo': {
-                        'nombreCapa' : '(Agua) de agua por pozo',
+                        'nombreCapa' : 'Agua por pozo',
                         'consultas' : 'agua_potable="Pozo"',
                         'tipo' : 'casas',
                         'icono' : '4/'+hexaColors[0]+'/#ffffff/solid/2'
                     },
                     'tuberia': {
-                        'nombreCapa' : '(Agua) de agua por tuberia',
+                        'nombreCapa' : 'Agua por tuberia',
                         'consultas' : 'agua_potable="Tuberia"',
                         'tipo' : 'casas',
                         'icono' : '4/'+hexaColors[1]+'/#ffffff/solid/2'
                     },
                     'pozo_y_tuberia': {
-                        'nombreCapa' : '(Agua) de agua por pozo y tuberia',
+                        'nombreCapa' : 'Agua por pozo y tuberia',
                         'consultas' : 'agua_potable="Pozo y Tuberia"',
                         'tipo' : 'casas',
                         'icono' : '4/'+hexaColors[2]+'/#ffffff/solid/2'
                     },
                     'algibe': {
-                        'nombreCapa' : '(Agua) de agua por algibe',
+                        'nombreCapa' : 'Agua por algibe',
                         'consultas' : 'agua_potable="Algibe"',
                         'tipo' : 'casas',
                         'icono' : '4/'+hexaColors[3]+'/#ffffff/solid/2'
                     },
                     'camion_cisterna': {
-                        'nombreCapa' : '(Agua) de agua por camion cisterna',
+                        'nombreCapa' : 'Agua por camion cisterna',
                         'consultas' : 'agua_potable="Camion Cisterna"',
                         'tipo' : 'casas',
                         'icono' : '4/'+hexaColors[4]+'/#ffffff/solid/2'
                         },
-                        'fuente_agua': {
-                            'nombreCapa' : '(Agua) de agua por fuente de agua',
-                            'consultas' : 'agua_potable="Fuente de Agua"',
-                            'tipo' : 'casas',
-                            'icono' : '4/'+hexaColors[5]+'/#ffffff/solid/2'
-                        },
                         'rio': {
-                            'nombreCapa' : '(Agua) de agua por rio',
+                            'nombreCapa' : 'Agua por rio',
                             'consultas' : 'agua_potable="Del Rio"',
                             'tipo' : 'casas',
                             'icono' : '4/'+hexaColors[6]+'/#ffffff/solid/2'
@@ -3332,7 +3326,7 @@ $mapa = 'Cartografia GITCOM';
                 const htmlExistente = $('#elementosGrafico').html();
                 const nuevoHtml = `<li>
                     <a style="cursor:pointer;color:#d34f57"
-                    onclick="addDataChart('${nombreCapa}','${resp.cantidad}')">
+                    onclick="addDataChart('${nombreCapa}','${resp.total}')">
                     Agregar: ${nombreCapa}
                     </a>
                 </li>`;
@@ -3345,7 +3339,7 @@ $mapa = 'Cartografia GITCOM';
                 let cleanSearch = consulta.replace(/["']/g, '*');
 
                 agregarElemento(
-                    `${nombreCapa} - ${resp.cantidad}`,
+                    `${nombreCapa} - ${resp.total}`,
                     perso,
                     `ondblclick="propiedades('${nombreCapa}','${cleanSearch}','${tipoC}')"`
                 );
@@ -3711,7 +3705,8 @@ document.querySelector('.modal-detalle-backdrop')
 
                 // recorrer capas del servicio
                 $.each(capas, function (keyCapa, value2) {
-
+                    $("#listLeyendaImpresion").html('')
+                    $("#listLeyenda").html('')
                     obtener_puntos_almacenados(
                         value2.consultas,
                         value2.nombreCapa,
