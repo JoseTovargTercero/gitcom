@@ -3551,8 +3551,7 @@ document.getElementById('btn-download-representaciones').addEventListener('click
         'id_vivienda', 
         'tipo', 
         'material_construccion', 
-        'agua_potable', 
-        'electricidad',
+        'responsable',
         'nombreResponsable'
     ]);
 
