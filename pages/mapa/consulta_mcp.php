@@ -12,7 +12,10 @@ if (!empty($filtro_unidad)) {
 
 $consulta = str_replace('"', "'", $consultaRaw);
 
-$query = "SELECT * FROM inf_casas_f_mcp WHERE $consulta $where_unidad";
+$query = "SELECT c.*, LCU.nombre_comuna, LC.comunidad FROM inf_casas_f_mcp AS c
+LEFT JOIN local_comunidad_mcp AS LC ON LC.comunidad__id_comunidad  = c.id_c_comunal
+LEFT JOIN local_comunas AS LCU ON LCU.id_Comuna = c.id_comuna
+ WHERE $consulta $where_unidad";
 $search = $conexion->query($query);
 
 $features = [];

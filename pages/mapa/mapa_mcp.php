@@ -3367,8 +3367,8 @@ $mapa = 'Cartografia GITCOM';
             // ===== UBICACIÓN =====
             id_municipio: "Municipio",
             id_parroquia: "Parroquia",
-            id_comuna: "Comuna",
-            id_c_comunal: "Consejo Comunal",
+            nombre_comuna: "Comuna",
+            comunidad: "Consejo Comunal",
             coordenada_este: "Longitud",
             coordenada_norte: "Latitud",
 
@@ -3421,7 +3421,7 @@ $mapa = 'Cartografia GITCOM';
                 "id_vivienda", "nombreResponsable","responsable","telefono"
             ],
             "Ubicación": [
-                "id_municipio","id_parroquia","id_comuna","id_c_comunal",
+                "id_municipio","id_parroquia","nombre_comuna","comunidad",
                 "coordenada_este","coordenada_norte"
             ],
             "Datos de la Vivienda": [
@@ -3542,6 +3542,8 @@ function exportarMarkersVisiblesExcel(keys = null) {
 // adevenlister btn-download-representaciones
 document.getElementById('btn-download-representaciones').addEventListener('click', function() {
     exportarMarkersVisiblesExcel([
+        'nombre_comuna',
+        'comunidad',
         'id_vivienda', 
         'tipo', 
         'material_construccion', 
