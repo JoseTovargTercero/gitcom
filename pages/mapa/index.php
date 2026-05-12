@@ -19,7 +19,7 @@ while ($r = $query->fetch_object()) {
 
 $id_usuario = $_SESSION['id'];
 
-$instancia =  '0x';
+$instancia = '0x';
 $instancia_def = '0x';
 $instancia_def_name = '0x';
 
@@ -117,6 +117,12 @@ if (isset($_GET['codigo'])) {
     <link rel="stylesheet" href="js/ui/jquery-ui.min.css">
     <script src="../../assets/js/sweetalert2.all.min.js"></script>
 
+    <!-- amCharts 5 -->
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
 
     <style>
         .css_COMUNAS_AYACUCHOcopiar_1 {
@@ -135,7 +141,7 @@ if (isset($_GET['codigo'])) {
             availableTags.push(element)
         });
 
-        $(function() {
+        $(function () {
 
             $("#consultaPersInput").autocomplete({
                 minLength: 3,
@@ -155,9 +161,9 @@ if (isset($_GET['codigo'])) {
             return idPersona;
         }
 
-        $(function() {
+        $(function () {
             $("#graficoMapa").draggable({
-                handle: "p"
+                handle: "div"
             });
             $("#leyendaMapa").draggable({
                 handle: "p"
@@ -202,7 +208,8 @@ if (isset($_GET['codigo'])) {
         <div class="box ">
             <div class="container-2 containerCsv ">
                 <div class="card5 " style="align-items: center; align-content: center;">
-                    <span class=" spinIcon " style="background-color: #ffffff00; "><i class="fa fa-spinner fa-spin"></i></span>
+                    <span class=" spinIcon " style="background-color: #ffffff00; "><i
+                            class="fa fa-spinner fa-spin"></i></span>
                 </div>
             </div>
         </div>
@@ -223,7 +230,8 @@ if (isset($_GET['codigo'])) {
             <img src="../../assets/img/gobierno.PNG" height="50px" class="imgGob">
             <img src="../../assets/img/emp_pub.png" height="60px" class="imgGit">
             <span>
-                <textarea name="" id="" rows="1" cols="95" style="text-align:center; border: none; font-size: 19px;" rows="10">
+                <textarea name="" id="" rows="1" cols="95" style="text-align:center; border: none; font-size: 19px;"
+                    rows="10">
                 <?php echo $mapa ?>
                 </textarea>
                 <p style="font-size: 19px;">Gestion de Informacion Territorial Comunal</p>
@@ -235,7 +243,8 @@ if (isset($_GET['codigo'])) {
                 <div style="height: 60%;">
                     <img src="../../assets/img/banda.jpg" width="95%">
                     <p style="font-size: 19px; margin-left: 10px">Elementos del mapa</p>
-                    <ul class="list2 leyendaMapaText leyImp" style="font-size: 19px;  margin-left: 0 !important" id="listLeyendaImpresion">
+                    <ul class="list2 leyendaMapaText leyImp" style="font-size: 19px;  margin-left: 0 !important"
+                        id="listLeyendaImpresion">
                     </ul>
                 </div>
                 <img src="../../assets/img/banda.jpg" width="95%">
@@ -265,7 +274,7 @@ if (isset($_GET['codigo'])) {
 
             if ($creador_p == $id_usuario && $tipo == '1') {
 
-        ?>
+                ?>
 
 
                 <div class="myModal" style="<?php echo $displayC ?>" id="modal-confirmarUsers">
@@ -310,18 +319,18 @@ if (isset($_GET['codigo'])) {
                         </div>
                         <?php
                         if ($statusUsuarios == '0') {
-                        ?>
+                            ?>
                             <div class="myFooterModal">
                                 <button class="btn btn-primary" onclick="validarConfigPermisos()">No volver a mostrar</button>
                             </div>
 
-                        <?php
+                            <?php
                         }
                         ?>
                         <script>
                             function validarConfigPermisos() {
                                 let p = "<?php echo $codigoProyecto ?>"
-                                $.get("../../back/mapa_validarpermisos.php", "p=" + p, function(data) {
+                                $.get("../../back/mapa_validarpermisos.php", "p=" + p, function (data) {
                                     $('.myModal').hide()
                                 });
                             }
@@ -336,14 +345,14 @@ if (isset($_GET['codigo'])) {
                                     status = 0;
                                 }
 
-                                $.get("../../back/mapa_permisos.php", "u=" + id + "&s=" + status + "&p=" + p, function(data) {
+                                $.get("../../back/mapa_permisos.php", "u=" + id + "&s=" + status + "&p=" + p, function (data) {
                                     toast("success", "Se actualizo la configuracion correctamente" + data.trim());
                                 });
                             }
                         </script>
                     </div>
                 </div>
-        <?php
+                <?php
             }
         }
 
@@ -374,17 +383,22 @@ if (isset($_GET['codigo'])) {
                         </li>
                     </ul>
                 </nav>
-                <img src="../../assets/img/user-pictures/<?php echo $_SESSION['id'] ?>.png" onerror="this.onerror=null; this.src='../../assets/img/user-pictures/default.jpg'" alt="user-picture" class="cursor-pointer avatar">
+                <img src="../../assets/img/user-pictures/<?php echo $_SESSION['id'] ?>.png"
+                    onerror="this.onerror=null; this.src='../../assets/img/user-pictures/default.jpg'"
+                    alt="user-picture" class="cursor-pointer avatar">
             </div>
 
             <div class="menuLateral">
 
                 <div class="navbar-brand m-0" style="display: flex;  width: 100%;">
-                    <img src="../../assets/img/logo-white.png" class="navbar-brand-img h-100" alt="main_logo" width="38px;">
+                    <img src="../../assets/img/logo-white.png" class="navbar-brand-img h-100" alt="main_logo"
+                        width="38px;">
 
                     <div style="margin-left: 10px;margin-top: -1px; display: grid;">
-                        <span style="margin-left: 10px;" class="ms-1  text-white"><?php echo $_SESSION['nombre'] ?></span>
-                        <span style="margin-left: 10px;    font-size: 11px;opacity: 0.4;     margin-top: -3px;" class="ms-1  text-white">Usuario GITCOM</span>
+                        <span style="margin-left: 10px;"
+                            class="ms-1  text-white"><?php echo $_SESSION['nombre'] ?></span>
+                        <span style="margin-left: 10px;    font-size: 11px;opacity: 0.4;     margin-top: -3px;"
+                            class="ms-1  text-white">Usuario GITCOM</span>
                     </div>
                     <span class="cerrarMenu" onclick="vermenulateral()">
                         <i class="fa fa-arrow-left"></i>
@@ -473,7 +487,8 @@ if (isset($_GET['codigo'])) {
 
                 <hr class="herramientas-divisor oculto">
 
-                <div class="herramientas oculto" title="Atajos" onclick="mostrarOcultarVentanaModal('#consultaPersonalDiv')">
+                <div class="herramientas oculto" title="Atajos"
+                    onclick="mostrarOcultarVentanaModal('#consultaPersonalDiv')">
                     <i class="fa fa-keyboard-o"></i>
                 </div>
 
@@ -489,12 +504,13 @@ if (isset($_GET['codigo'])) {
                             <i class="fa fa-users"></i>
                         </div>
 
-                <?php }
+                    <?php }
                 } ?>
 
 
                 <?php if (@$_SESSION['proyecto']) { ?>
-                    <div class="herramientas" title="A�0�9adir capa vectorial" id="cargarCapas" onclick="mostrarOcultarVentanaModal('#nuevaCapaCampos')">
+                    <div class="herramientas" title="A�0�9adir capa vectorial" id="cargarCapas"
+                        onclick="mostrarOcultarVentanaModal('#nuevaCapaCampos')">
                         <i class="fa fa-file-archive-o"></i>
                     </div>
                 <?php } ?>
@@ -507,7 +523,8 @@ if (isset($_GET['codigo'])) {
 
             <div class="control-baseLayers animated fadeInUp" id="control-baseLayers">
                 <h5>Mapas base
-                    <i style="float: right; margin-right: 5px;" class="fa fa-close" onclick="$('#control-baseLayers').hide()"></i>
+                    <i style="float: right; margin-right: 5px;" class="fa fa-close"
+                        onclick="$('#control-baseLayers').hide()"></i>
                 </h5>
                 <span>Seleccione el proveedor que desee</span>
             </div>
@@ -525,7 +542,7 @@ if (isset($_GET['codigo'])) {
                 Elaborado el: <?php echo date('d-m-Y') ?>
                 <br>
                 <?php echo $_SESSION['nombre']
-                ?>
+                    ?>
             </p>
 
             <p style="width: 50%; text-align: center; margin-top: 10px">
@@ -556,12 +573,14 @@ if (isset($_GET['codigo'])) {
                             <div class="col-lg-12">
                                 <div class="form-group label-floating is-empty">
                                     <label style="font-weight: 100;" class="control-label">Etiqueta </label>
-                                    <input type="text" class="borde form-control" required name="etiquetaLeyenda" id="etiquetaLeyenda">
+                                    <input type="text" class="borde form-control" required name="etiquetaLeyenda"
+                                        id="etiquetaLeyenda">
                                 </div>
                             </div>
                             <div class="col-lg-12">
 
-                                <label style="margin: 13px 0 0 0; font-weight: 100;" class="control-label">Simbologia</label>
+                                <label style="margin: 13px 0 0 0; font-weight: 100;"
+                                    class="control-label">Simbologia</label>
 
                                 <div class="contenedor row" id="iconosEstandar">
 
@@ -591,7 +610,8 @@ if (isset($_GET['codigo'])) {
                                     ?>
 
 
-                                    <a style="color: #808080;  cursor: pointer; text-decoration: none" class="center22" onclick="mostrarIconosPersonalizados()">
+                                    <a style="color: #808080;  cursor: pointer; text-decoration: none" class="center22"
+                                        onclick="mostrarIconosPersonalizados()">
                                         <label class="contentRaster" style=" cursor: pointer;">
                                             <i style="cursor: pointer;font-size: 29px;" class="fa fa-edit"></i>
                                         </label>
@@ -621,9 +641,11 @@ if (isset($_GET['codigo'])) {
 
 
 
-                                        <a style="color: #808080;  cursor: pointer; text-decoration: none" class="center22" onclick="cerrarIconosPersonalizados()">
+                                        <a style="color: #808080;  cursor: pointer; text-decoration: none"
+                                            class="center22" onclick="cerrarIconosPersonalizados()">
                                             <label class="contentRaster" style=" cursor: pointer;">
-                                                <i style="cursor: pointer;font-size: 29px;" class="fa fa-dot-circle-o"></i>
+                                                <i style="cursor: pointer;font-size: 29px;"
+                                                    class="fa fa-dot-circle-o"></i>
                                             </label>
                                             <p class="textRaster" style=" cursor: pointer;">
                                                 Estandar
@@ -633,8 +655,10 @@ if (isset($_GET['codigo'])) {
 
                                     <div class="col-lg-12">
                                         <div class="form-group label-floating is-empty">
-                                            <label style="font-weight: 100;" class="control-label" for="colorEspecial">Color de icono </label>
-                                            <input placeholder="coolore" type="color" class="borde form-control" required name="colorEspecial" id="colorEspecial">
+                                            <label style="font-weight: 100;" class="control-label"
+                                                for="colorEspecial">Color de icono </label>
+                                            <input placeholder="coolore" type="color" class="borde form-control"
+                                                required name="colorEspecial" id="colorEspecial">
                                         </div>
                                     </div>
 
@@ -644,7 +668,8 @@ if (isset($_GET['codigo'])) {
                     </div>
                 </section>
                 <footer class="modal-footer">
-                    <button class="close-modal btn btn-danger btn-raised btn-sm" onclick="nuevoElementoDeLeyenda()"> Agregar</button>
+                    <button class="close-modal btn btn-danger btn-raised btn-sm" onclick="nuevoElementoDeLeyenda()">
+                        Agregar</button>
                 </footer>
             </div>
             <div id="propiedadesCapa" style="display: none; padding-top: 0;">
@@ -673,8 +698,10 @@ if (isset($_GET['codigo'])) {
                     </span>
 
 
-                    <button class="close-modal btn btn-info btn-raised btn-sm" aria-label="close modal" onclick="cerrarModal()" data-close> Cancelar</button>
-                    <button class="close-modal btn btn-danger btn-raised btn-sm" onclick="actualizarPropiedades()"> Actualizar</button>
+                    <button class="close-modal btn btn-info btn-raised btn-sm" aria-label="close modal"
+                        onclick="cerrarModal()" data-close> Cancelar</button>
+                    <button class="close-modal btn btn-danger btn-raised btn-sm" onclick="actualizarPropiedades()">
+                        Actualizar</button>
                 </footer>
             </div>
             <div id="nuevaCanchaDiv" style="display: none; padding-top: 0;">
@@ -729,8 +756,10 @@ if (isset($_GET['codigo'])) {
 
                 </section>
                 <footer class="modal-footer">
-                    <button class="close-modal btn btn-info btn-raised btn-sm" aria-label="close modal" onclick="cerrarModal()" data-close> Cancelar</button>
-                    <button class="close-modal btn btn-danger btn-raised btn-sm" onclick="guardarCancha()"> Guardar</button>
+                    <button class="close-modal btn btn-info btn-raised btn-sm" aria-label="close modal"
+                        onclick="cerrarModal()" data-close> Cancelar</button>
+                    <button class="close-modal btn btn-danger btn-raised btn-sm" onclick="guardarCancha()">
+                        Guardar</button>
                 </footer>
             </div>
             <div id="consultaRapida" style="display: none; padding-top: 0;">
@@ -739,7 +768,8 @@ if (isset($_GET['codigo'])) {
                 </header>
 
                 <div class="form-group" style="    display: flex">
-                    <input type="text" id="consultaSearch" autocomplete="off" name="consultaSearch" class="form-control borde" placeholder="Consulta rapida..." style="height: 34px;">
+                    <input type="text" id="consultaSearch" autocomplete="off" name="consultaSearch"
+                        class="form-control borde" placeholder="Consulta rapida..." style="height: 34px;">
 
 
                 </div>
@@ -784,7 +814,8 @@ if (isset($_GET['codigo'])) {
                         </select>
                     </div>
                     <div class="form-group label-floating is-empty">
-                        <label style="background-color: white; width:100%" class="control-label">Cantidad de pisos </label>
+                        <label style="background-color: white; width:100%" class="control-label">Cantidad de pisos
+                        </label>
                         <input required="" class="form-control" type="number" value="1" id="cantidadPisos">
                     </div>
 
@@ -792,7 +823,8 @@ if (isset($_GET['codigo'])) {
 
                 </section>
                 <footer class="modal-footer">
-                    <button class="close-modal btn btn-info btn-raised btn-sm" aria-label="close modal" onclick="cerrarModal()" data-close> Cancelar</button>
+                    <button class="close-modal btn btn-info btn-raised btn-sm" aria-label="close modal"
+                        onclick="cerrarModal()" data-close> Cancelar</button>
                     <button class="close-modal btn btn-danger btn-raised btn-sm" id="guardarPoligono"> Guardar</button>
                 </footer>
             </div>
@@ -803,11 +835,13 @@ if (isset($_GET['codigo'])) {
                 </header>
 
 
-                <form action='mapsWrech/cargarCapaVectorial.php' method='post' enctype="multipart/form-data" style="margin: 0 25px;">
+                <form action='mapsWrech/cargarCapaVectorial.php' method='post' enctype="multipart/form-data"
+                    style="margin: 0 25px;">
 
                     <div class="form-group label-floating is-empty">
                         <label class="control-label">Tipo de archivo </label>
-                        <select style="padding-left: 10px;" required class="form-control" required id="tipoCapaVectorial" name="tipoCapaVectorial">
+                        <select style="padding-left: 10px;" required class="form-control" required
+                            id="tipoCapaVectorial" name="tipoCapaVectorial">
 
                             <option value="shp">Archivos shape de ESRI (*.shp *.SHP)</option>
                             <option value="geojson">GeoJSON (*.geojson *.GEOJSON)</option>
@@ -817,15 +851,18 @@ if (isset($_GET['codigo'])) {
 
                     <div class="form-group label-floating is-empty">
                         <label class="control-label">Nombre de la capa </label>
-                        <input type="text" class="form-control" required name="nameCapaVectorial" id="nameCapaVectorial">
+                        <input type="text" class="form-control" required name="nameCapaVectorial"
+                            id="nameCapaVectorial">
                     </div>
 
 
                     <div class="form-group label-floating is-empty">
                         <label class="control-label">Conjunto de datos Vectoriales </label>
                         <div style="display: flex;">
-                            <input type="file" required class="arreglo" id="archivo[]" name="archivo[]" multiple='' accept=".dbf, .prj, .shp, .shx" style="display: none;" style="width: 93% !important">
-                            <input type="text" readonly class="form-control" name="campoNameCapaVectorial" id="campoNameCapaVectorial" style="width: 95%; display: inline-flex;">
+                            <input type="file" required class="arreglo" id="archivo[]" name="archivo[]" multiple=''
+                                accept=".dbf, .prj, .shp, .shx" style="display: none;" style="width: 93% !important">
+                            <input type="text" readonly class="form-control" name="campoNameCapaVectorial"
+                                id="campoNameCapaVectorial" style="width: 95%; display: inline-flex;">
                             <label for="archivo[]" class="botomSuspensive" style="margin: 13px 0 0 5px;">...</label>
                         </div>
 
@@ -841,7 +878,8 @@ if (isset($_GET['codigo'])) {
                         <div class="col-lg-6">
                             <div class="form-group label-floating is-empty">
                                 <label class="control-label">Color del borde de la capa </label>
-                                <input type="color" class="form-control" required name="colorBordeCapa" id="colorBordeCapa">
+                                <input type="color" class="form-control" required name="colorBordeCapa"
+                                    id="colorBordeCapa">
                             </div>
                         </div>
                     </div>
@@ -849,7 +887,8 @@ if (isset($_GET['codigo'])) {
 
 
                     <footer class="modal-footer">
-                        <input type="submit" class="btn btn-danger btn-raised btn-sm" id="guardarCapaVectorial" class="Guardar">
+                        <input type="submit" class="btn btn-danger btn-raised btn-sm" id="guardarCapaVectorial"
+                            class="Guardar">
                     </footer>
                 </form>
             </div>
@@ -865,8 +904,10 @@ if (isset($_GET['codigo'])) {
 
                         <div class="form-group">
                             <label>
-                                <input type="radio" class="radioProjection" name="projection" id="projectionU" value="utm"> &nbsp;&nbsp;
-                                <label style="font-weight: 100;" for="projectionU" class="control-label">Proyeccion global (UTM - metros) </label>
+                                <input type="radio" class="radioProjection" name="projection" id="projectionU"
+                                    value="utm"> &nbsp;&nbsp;
+                                <label style="font-weight: 100;" for="projectionU" class="control-label">Proyeccion
+                                    global (UTM - metros) </label>
 
                             </label>
                         </div>
@@ -874,13 +915,15 @@ if (isset($_GET['codigo'])) {
 
                             <div class="form-group label-floating is-empty">
                                 <label style="font-weight: 100;" class="control-label">Coordenada X </label>
-                                <input disabled type="text" class="borde form-control" required name="coordenadaX" id="coordenadaX">
+                                <input disabled type="text" class="borde form-control" required name="coordenadaX"
+                                    id="coordenadaX">
                             </div>
                         </div>
                         <div class="col-lg-5">
                             <div class="form-group label-floating is-empty">
                                 <label style="font-weight: 100;" class="control-label">Coordenada Y </label>
-                                <input disabled type="text" class="borde form-control" required name="coordenadaY" id="coordenadaY">
+                                <input disabled type="text" class="borde form-control" required name="coordenadaY"
+                                    id="coordenadaY">
                             </div>
                         </div>
                         <div class="col-lg-2">
@@ -892,8 +935,10 @@ if (isset($_GET['codigo'])) {
 
                         <div class="form-group">
                             <label>
-                                <input type="radio" class="radioProjection" checked name="projection" id="projectionG" value="latlon"> &nbsp;&nbsp;
-                                <label style="margin-top: 24px; font-weight: 100;" for="projectionG" class="control-label">Coordenadas geograficas (Latitud - Longitud) </label>
+                                <input type="radio" class="radioProjection" checked name="projection" id="projectionG"
+                                    value="latlon"> &nbsp;&nbsp;
+                                <label style="margin-top: 24px; font-weight: 100;" for="projectionG"
+                                    class="control-label">Coordenadas geograficas (Latitud - Longitud) </label>
                             </label>
                         </div>
                         <div class="col-lg-6">
@@ -914,13 +959,16 @@ if (isset($_GET['codigo'])) {
                 <footer class="modal-footer" style="padding: 19px 20px 0px;">
                     <div class="form-group">
                         <label>
-                            <input type="checkbox" style="height: 12px !important;width: 12px !important;margin-right: 13px;" name="centrarMapa" id="centrarMapa"> &nbsp;&nbsp;
+                            <input type="checkbox"
+                                style="height: 12px !important;width: 12px !important;margin-right: 13px;"
+                                name="centrarMapa" id="centrarMapa"> &nbsp;&nbsp;
                             <label class="control-label" for="centrarMapa">Centrar vista en el marcador </label>
 
                         </label>
                     </div>
 
-                    <input type="submit" value="Crear" class="btn btn-danger btn-raised btn-sm" class="Guardar" onclick="crearPuntoPorCoordenada()">
+                    <input type="submit" value="Crear" class="btn btn-danger btn-raised btn-sm" class="Guardar"
+                        onclick="crearPuntoPorCoordenada()">
                 </footer>
             </div>
             <div id="consultaPersonalDiv" style="padding-top: 0; display: none;">
@@ -938,7 +986,8 @@ if (isset($_GET['codigo'])) {
                             <div class="col-lg-6">
                                 <div class="form-group label-floating is-empty">
                                     <label style="font-weight: 100;" class="control-label">Nombre de la capa *</label>
-                                    <input type="text" class="borde form-control" required name="nombreCapaLeyenda" id="nombreCapaLeyenda">
+                                    <input type="text" class="borde form-control" required name="nombreCapaLeyenda"
+                                        id="nombreCapaLeyenda">
                                 </div>
                             </div>
 
@@ -946,7 +995,8 @@ if (isset($_GET['codigo'])) {
                             <div class="col-lg-6">
                                 <div class="form-group label-floating is-empty">
                                     <label style="font-weight: 100;" class="control-label">Consulta *</label>
-                                    <input type="text" class="borde form-control" required name="consultaPersInput" id="consultaPersInput">
+                                    <input type="text" class="borde form-control" required name="consultaPersInput"
+                                        id="consultaPersInput">
                                 </div>
                             </div>
                         </div>
@@ -979,8 +1029,9 @@ if (isset($_GET['codigo'])) {
                                     <label style="font-weight: 100;" class="control-label">Municipio</label>
                                     <select style="padding-left: 10px;" class="form-control" id="mcp">
                                         <option value=""> -- No aplicar ningun filtro --</option>
-                                        <?php foreach ($countries as $c) : ?>
-                                            <option value="<?php echo $c->id_municipio; ?>">&nbsp;<?php echo $c->nombre_municipio; ?></option>
+                                        <?php foreach ($countries as $c): ?>
+                                            <option value="<?php echo $c->id_municipio; ?>">
+                                                &nbsp;<?php echo $c->nombre_municipio; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -1029,12 +1080,15 @@ if (isset($_GET['codigo'])) {
 
                             <div style="display: flex; cursor: pointer" onclick="toggleCusmtomMarker()">
 
-                                <i id="chevronRight" class="fa fa-chevron-right" style="font-size: 12px;margin: 5px 0;"></i>
-                                <i id="chevronDown" class="fa fa-chevron-down" style="font-size: 12px;margin: 5px 0; display: none"></i>
+                                <i id="chevronRight" class="fa fa-chevron-right"
+                                    style="font-size: 12px;margin: 5px 0;"></i>
+                                <i id="chevronDown" class="fa fa-chevron-down"
+                                    style="font-size: 12px;margin: 5px 0; display: none"></i>
 
 
 
-                                <div id="marcadorContent2" class="marcadorContent" style="width: 15px;height: 15px; margin: 3px;box-shadow: none"></div>
+                                <div id="marcadorContent2" class="marcadorContent"
+                                    style="width: 15px;height: 15px; margin: 3px;box-shadow: none"></div>
                                 <span>Marcador</span>
                             </div>
 
@@ -1043,7 +1097,9 @@ if (isset($_GET['codigo'])) {
 
                                 <a style="display: flex; color: #f66f77; cursor: pointer; text-decoration: none">
 
-                                    <div id="marcadorContent3" class="marcadorContent" style="width: 15px;height: 15px; margin: 3px 3px 3px 28px;box-shadow: none"></div>
+                                    <div id="marcadorContent3" class="marcadorContent"
+                                        style="width: 15px;height: 15px; margin: 3px 3px 3px 28px;box-shadow: none">
+                                    </div>
                                     <span>Marcador personalizado</span>
                                 </a>
                             </div>
@@ -1126,8 +1182,10 @@ if (isset($_GET['codigo'])) {
                         <div class="col-lg-12">
                             <div class="form-group label-floating is-empty">
                                 <label style="font-weight: 100;" class="control-label" onchange="">Tamaño </label>
-                                <input type="number" class="form-control" id="ciTamano" value="4" onchange="iconoPersonalizadoCi()">
-                                <span style="position: absolute;right: 0;margin: -33px 24px 0 0;font-size: 12px;color: #b8b8b8;">px</span>
+                                <input type="number" class="form-control" id="ciTamano" value="4"
+                                    onchange="iconoPersonalizadoCi()">
+                                <span
+                                    style="position: absolute;right: 0;margin: -33px 24px 0 0;font-size: 12px;color: #b8b8b8;">px</span>
 
                             </div>
                         </div>
@@ -1136,7 +1194,8 @@ if (isset($_GET['codigo'])) {
                         <div class="col-lg-6">
                             <div class="form-group label-floating is-empty">
                                 <label style="font-weight: 100;" class="control-label">Color del relleno </label>
-                                <input type="color" class="form-control" id="ciRellenoColor" value="#e03f48" onchange="iconoPersonalizadoCi()">
+                                <input type="color" class="form-control" id="ciRellenoColor" value="#e03f48"
+                                    onchange="iconoPersonalizadoCi()">
                             </div>
                         </div>
 
@@ -1144,14 +1203,16 @@ if (isset($_GET['codigo'])) {
                         <div class="col-lg-6">
                             <div class="form-group label-floating is-empty">
                                 <label style="font-weight: 100;" class="control-label">Color del borde </label>
-                                <input type="color" class="form-control" value="#ffffff" id="ciLineaColor" onchange="iconoPersonalizadoCi()">
+                                <input type="color" class="form-control" value="#ffffff" id="ciLineaColor"
+                                    onchange="iconoPersonalizadoCi()">
                             </div>
                         </div>
 
                         <div class="col-lg-6">
                             <div class="form-group label-floating is-empty">
                                 <label style="font-weight: 100;" class="control-label">Estilo del borde </label>
-                                <select style="padding-left: 10px;" class="form-control" id="ciEstiloLinea" onchange="iconoPersonalizadoCi()">
+                                <select style="padding-left: 10px;" class="form-control" id="ciEstiloLinea"
+                                    onchange="iconoPersonalizadoCi()">
 
                                     <option value="solid">Linea solida</option>
                                     <option value="none">Sin linea</option>
@@ -1167,8 +1228,10 @@ if (isset($_GET['codigo'])) {
 
                                 <label style="font-weight: 100;" class="control-label">Ancho del borde </label>
 
-                                <input value="2" type="number" class="form-control" id="ciAnchoLinea" onchange="iconoPersonalizadoCi()">
-                                <span style="position: absolute;right: 0;margin: -33px 24px 0 0;font-size: 12px;color: #b8b8b8;">px</span>
+                                <input value="2" type="number" class="form-control" id="ciAnchoLinea"
+                                    onchange="iconoPersonalizadoCi()">
+                                <span
+                                    style="position: absolute;right: 0;margin: -33px 24px 0 0;font-size: 12px;color: #b8b8b8;">px</span>
 
                             </div>
                         </div>
@@ -1188,13 +1251,23 @@ if (isset($_GET['codigo'])) {
 
                     ?>
 
-                    <p style="display: flex; float: left; margin-left: 25px; <?php echo $condition ?>"><input type="checkbox" style="height: 12px !important; width: 12px !important; margin-right: 13px" id="saveConsulta" name="saveConsulta" class="form-control" style="width: 18px; margin-right: 10px; "> <label style="cursor: pointer; margin-top: 5px;" for="saveConsulta"> Almacenar consulta</label></p>
+                    <p style="display: flex; float: left; margin-left: 25px; <?php echo $condition ?>">
+                        <input type="checkbox" checked
+                            style="height: 12px !important; width: 12px !important; margin-right: 13px"
+                            id="saveConsulta" name="saveConsulta" class="form-control"
+                            style="width: 18px; margin-right: 10px; "> <label style="cursor: pointer; margin-top: 5px;"
+                            for="saveConsulta"> Almacenar consulta</label>
+                    </p>
 
-                    <input type="submit" value="Siguiente" class="btn btn-danger btn-raised btn-sm  bg-gradient-primary" class="Guardar" id="siguienteForCapaGitcom" onclick="pantallaMarcadores()">
+                    <input type="submit" value="Siguiente" class="btn btn-danger btn-raised btn-sm  bg-gradient-primary"
+                        class="Guardar" id="siguienteForCapaGitcom" onclick="pantallaMarcadores()">
 
-                    <input style="display: none;" type="submit" value="Cancelar" class="btn btn-secondary btn-raised btn-sm" class="Guardar" id="cancelarVista" onclick="pantallaMarcadores('omite')">
+                    <input style="display: none;" type="submit" value="Cancelar"
+                        class="btn btn-secondary btn-raised btn-sm" class="Guardar" id="cancelarVista"
+                        onclick="pantallaMarcadores('omite')">
 
-                    <input style="display: none;" type="submit" value="Finalizar" class="btn btn-danger btn-raised btn-sm" class="Guardar" id="btnConsultaPerso">
+                    <input style="display: none;" type="submit" value="Finalizar"
+                        class="btn btn-danger btn-raised btn-sm" class="Guardar" id="btnConsultaPerso">
 
                 </footer>
 
@@ -1314,12 +1387,19 @@ if (isset($_GET['codigo'])) {
             <input type="text" hidden id="nombreAreaInput">
             <input type="text" hidden id="idArray" value="0">
 
-            <p id="nameArea" style="margin-bottom: 0;margin-right: 15px;width: 251px;overflow: hidden;padding-top: 4px;height: 25px;white-space: nowrap;">Nombre del area de interes</p>
-            <button style="height: 28px;" onclick="beforRegistroAerasInteres('resta')" class="btn btn-secondary" id="areaAnterior"><i class="line icon-arrow-left"></i></button>
-            <button style="height: 28px;" onclick="beforRegistroAerasInteres('suma')" class="btn btn-secondary" id="areaSiguiente"><i class="line icon-arrow-right"></i></button>
+            <p id="nameArea"
+                style="margin-bottom: 0;margin-right: 15px;width: 251px;overflow: hidden;padding-top: 4px;height: 25px;white-space: nowrap;">
+                Nombre del area de interes</p>
+            <button style="height: 28px;" onclick="beforRegistroAerasInteres('resta')" class="btn btn-secondary"
+                id="areaAnterior"><i class="line icon-arrow-left"></i></button>
+            <button style="height: 28px;" onclick="beforRegistroAerasInteres('suma')" class="btn btn-secondary"
+                id="areaSiguiente"><i class="line icon-arrow-right"></i></button>
 
 
-            <button style="background-color: #ff000000 !important;height: 28px;margin-top: -13px;font-size: 18px;padding: 15px;outline: none !important;color: #818181; display: none;" onclick="guardarMarker('guardarAreaInteres')" class="btn btn-secondary" id="guardarArea"><i class="fa fa-save"></i></button>
+            <button
+                style="background-color: #ff000000 !important;height: 28px;margin-top: -13px;font-size: 18px;padding: 15px;outline: none !important;color: #818181; display: none;"
+                onclick="guardarMarker('guardarAreaInteres')" class="btn btn-secondary" id="guardarArea"><i
+                    class="fa fa-save"></i></button>
 
         </div>
 
@@ -1330,7 +1410,8 @@ if (isset($_GET['codigo'])) {
         <div class="headerLeyenda">
             <p class="headerText">Elementos del mapa
                 <span class="leyendaHerramientas">
-                    <i class="botonesLeyenda fa fa-plus" onclick="mostrarOcultarVentanaModal('#nuevoElementoLeyenda')"></i> &nbsp;&nbsp;
+                    <i class="botonesLeyenda fa fa-plus"
+                        onclick="mostrarOcultarVentanaModal('#nuevoElementoLeyenda')"></i> &nbsp;&nbsp;
                     <i class="botonesLeyenda fa fa-close" onclick="mostrarOcultarLeyenda()"></i>
                 </span>
             </p>
@@ -1338,11 +1419,41 @@ if (isset($_GET['codigo'])) {
         <ul class="list2 leyendaMapaText" id="listLeyenda"></ul>
     </div>
 
+    <div class="leyendaMapa animated fadeInUp" style="display: block;" id="graficoMapa">
+        <div class="headerLeyenda">
+            <p class="headerText">Gráfico de capas
+                <span class="leyendaHerramientas">
+                    <i class="botonesLeyenda fa fa-close" onclick="mostrarOcultarGraficos()"></i>
+                </span>
+            </p>
+        </div>
+        <!-- Selector de tipo de gráfico -->
+        <div id="chart_type_toggle" style="display:flex;gap:6px;padding:6px 10px;align-items:center;">
+            <button id="btnChartBar" onclick="switchChartType('bar')"
+                style="flex:1;padding:4px 0;border:none;border-radius:5px;background:#d34f57;color:#fff;font-size:12px;font-weight:600;cursor:pointer;">
+                <i class="fa fa-bar-chart"></i> Barras
+            </button>
+            <button id="btnChartPie" onclick="switchChartType('pie')"
+                style="flex:1;padding:4px 0;border:none;border-radius:5px;background:#555;color:#fff;font-size:12px;font-weight:600;cursor:pointer;">
+                <i class="fa fa-pie-chart"></i> Torta
+            </button>
+        </div>
+        <div id="chart_div" style="width:100%;height:320px; min-width: 320px;"></div>
+    </div>
+
+
+
+
+
+
+
 
     <div class="botonImpresion" id="botonImpresion">
         <div style="display: flex;">
-            <button class="btn btn-primary printEnd" id="CancelprintMapButtom" onclick=" printMapEnd()"> Cancelar</button>
-            <button style="margin-left: 15px;" class="btn btn-danger printEnd" id="printMapButtom" onclick="printEnd()"><i class="fa fa-print"></i> Imprimir</button>
+            <button class="btn btn-primary printEnd" id="CancelprintMapButtom" onclick=" printMapEnd()">
+                Cancelar</button>
+            <button style="margin-left: 15px;" class="btn btn-danger printEnd" id="printMapButtom"
+                onclick="printEnd()"><i class="fa fa-print"></i> Imprimir</button>
         </div>
     </div>
 
@@ -1420,6 +1531,15 @@ if (isset($_GET['codigo'])) {
 
 
     <script>
+        // array que contiene los elementos que se encuentran en el mapa
+        const elementos_del_mapa = [];
+
+
+
+
+
+
+
         function minimizarZona(div, che) {
 
 
@@ -1437,6 +1557,13 @@ if (isset($_GET['codigo'])) {
 
 
         }
+
+
+        function mostrarOcultarGraficos() {
+            $('#graficoMapa').toggle()
+
+        }
+
 
 
         function mostrarOcultarGrilla() {
@@ -1514,27 +1641,32 @@ if (isset($_GET['codigo'])) {
             maxZoom: 28, // se establece un rango de zoom
             contextmenu: true,
             contextmenuWidth: 300,
-            contextmenuItems: [{
-                text: 'Mostrar/Ocultar grilla',
-                callback: mostrarOcultarGrilla
-            }, {
-                text: 'Mostrar/Ocultar elementos del mapa',
-                callback: mostrarOcultarLeyenda
-            }, {
-                text: 'Nueva composicion de impresion',
-                callback: printMap
-            }, {
-                text: 'Cambiar mapa base',
-                callback: mapasBaseDisponibles
-            }, '-', {
-                text: 'Acercar',
-                icon: '../../assets/img/zoom-in.png',
-                callback: zoomIn
-            }, {
-                text: 'Alejar',
-                icon: '../../assets/img/zoom-out.png',
-                callback: zoomOut
-            }]
+            contextmenuItems: [
+                {
+                    text: 'Mostrar/Ocultar Graficos comparativos',
+                    callback: mostrarOcultarGraficos
+                },
+                {
+                    text: 'Mostrar/Ocultar grilla',
+                    callback: mostrarOcultarGrilla
+                }, {
+                    text: 'Mostrar/Ocultar elementos del mapa',
+                    callback: mostrarOcultarLeyenda
+                }, {
+                    text: 'Nueva composicion de impresion',
+                    callback: printMap
+                }, {
+                    text: 'Cambiar mapa base',
+                    callback: mapasBaseDisponibles
+                }, '-', {
+                    text: 'Acercar',
+                    icon: '../../assets/img/zoom-in.png',
+                    callback: zoomIn
+                }, {
+                    text: 'Alejar',
+                    icon: '../../assets/img/zoom-out.png',
+                    callback: zoomOut
+                }]
         }).setView([5.6450, -67.5950], 17, false);
 
 
@@ -1546,9 +1678,9 @@ if (isset($_GET['codigo'])) {
 
 
         var polligono_comunidades = new L.Shapefile('capasCargadas/comunidades.zip', {
-            onEachFeature: function(feature, layer) {
+            onEachFeature: function (feature, layer) {
                 if (feature.properties) {
-                    layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+                    layer.bindPopup(Object.keys(feature.properties).map(function (k) {
                         let comprobacion = false;
 
                         if (instancia == 1) {
@@ -1579,7 +1711,7 @@ if (isset($_GET['codigo'])) {
                     });
                 }
             },
-            style: function(feature) {
+            style: function (feature) {
                 return {
                     color: "#ffffff",
                     fillColor: "#ffffff",
@@ -1596,18 +1728,18 @@ if (isset($_GET['codigo'])) {
             var geometrias = 0;
 
             var capa = new L.Shapefile("capasCargadas/" + src + ".zip", {
-                onEachFeature: function(feature, layer) {
+                onEachFeature: function (feature, layer) {
                     if (feature.properties) {
                         layer.bindPopup(
                             Object.keys(feature.properties)
-                            .map(function(k) {
-                                if (feature.properties[k] != '') {
-                                    return k + ": " + feature.properties[k] + '<br>';
-                                }
-                            })
-                            .join(""), {
-                                maxHeight: 200,
-                            }
+                                .map(function (k) {
+                                    if (feature.properties[k] != '') {
+                                        return k + ": " + feature.properties[k] + '<br>';
+                                    }
+                                })
+                                .join(""), {
+                            maxHeight: 200,
+                        }
                         );
                     }
 
@@ -1635,7 +1767,7 @@ if (isset($_GET['codigo'])) {
 
                     $("#cantidadGeometrias").val(geometrias);
                 },
-                style: function(feature) {
+                style: function (feature) {
                     return {
                         color: strokeColor,
                         fillColor: fillColor,
@@ -1649,7 +1781,7 @@ if (isset($_GET['codigo'])) {
                 capa.addTo(map);
             }
 
-            capa.once("data:loaded", function() {
+            capa.once("data:loaded", function () {
 
                 capa.bringToBack()
                 controlP.addOverlay(
@@ -1700,7 +1832,7 @@ if (isset($_GET['codigo'])) {
             if (tempDiv.querySelector('td img')) {
                 popup._contentNode.classList.add('media');
                 // Delay to force the redraw
-                setTimeout(function() {
+                setTimeout(function () {
                     popup.update();
                 }, 10);
             } else {
@@ -1719,7 +1851,7 @@ if (isset($_GET['codigo'])) {
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-            layer.on('popupopen', function(e) {
+            layer.on('popupopen', function (e) {
                 addClassToPopupIfMedia(content, e.popup);
             });
             layer.bindPopup(content, {
@@ -1754,7 +1886,7 @@ if (isset($_GET['codigo'])) {
         });
         map.addLayer(layer_COMUNAS_AYACUCHOcopiar_1);
         var i = 0;
-        layer_COMUNAS_AYACUCHOcopiar_1.eachLayer(function(layer) {
+        layer_COMUNAS_AYACUCHOcopiar_1.eachLayer(function (layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
@@ -1790,7 +1922,7 @@ if (isset($_GET['codigo'])) {
 
         function ajax(url, callback) {
             var req = new XMLHttpRequest();
-            req.onreadystatechange = function() {
+            req.onreadystatechange = function () {
                 if (req.readyState !== 4) {
                     return;
                 }
@@ -2003,7 +2135,7 @@ if (isset($_GET['codigo'])) {
         ===================================================*/
 
         var tiles = new L.GridLayer();
-        tiles.createTile = function(coords) {
+        tiles.createTile = function (coords) {
             var tile = L.DomUtil.create('canvas', 'leaflet-tile ');
             var ctx = tile.getContext('2d');
             var size = this.getTileSize()
@@ -2079,7 +2211,7 @@ if (isset($_GET['codigo'])) {
         function setMapaBaseDefecto(m) {
             if ("<?php echo $tipo ?>" == '1') {
                 let p = "<?php echo @$codigoProyecto ?>"
-                $.get("../../back/mapa_setLayer.php", "p=" + p + "&m=" + m, function(data) {});
+                $.get("../../back/mapa_setLayer.php", "p=" + p + "&m=" + m, function (data) { });
             }
         }
 
@@ -2428,7 +2560,7 @@ if (isset($_GET['codigo'])) {
                     ';
                 }
             }
-        ?>
+            ?>
 
 
             function iconoPoste(img) {
@@ -2488,15 +2620,15 @@ if (isset($_GET['codigo'])) {
                 }
 
                 $.ajax({
-                        url: 'mapsWrech/actualizarAnguloPoste.php',
-                        type: 'POST',
-                        dataType: 'html',
-                        data: {
-                            poste: poste,
-                            radiImg: radiImg
-                        },
-                    })
-                    .done(function(rePol) {
+                    url: 'mapsWrech/actualizarAnguloPoste.php',
+                    type: 'POST',
+                    dataType: 'html',
+                    data: {
+                        poste: poste,
+                        radiImg: radiImg
+                    },
+                })
+                    .done(function (rePol) {
 
                         var result = rePol.trim().split('*')
 
@@ -2505,7 +2637,7 @@ if (isset($_GET['codigo'])) {
                         var lng = result[2];
                         var capa = result[3];
 
-                        map.eachLayer(function(marker) {
+                        map.eachLayer(function (marker) {
                             var markerId = marker.options.id;
 
                             if (marker.options) {
@@ -2529,7 +2661,7 @@ if (isset($_GET['codigo'])) {
 
 
 
-        <?php
+            <?php
             $aka = $_GET['idProblema'];
             $query2E = "SELECT * FROM postes WHERE aca='$aka' ";
             $search2E = $conexion->query($query2E);
@@ -2580,21 +2712,21 @@ if (isset($_GET['codigo'])) {
 
         var i = 0;
 
-        $(document).ready(function() {
-            $("#mcp").change(function() {
-                $.get("../consultasAjax/selec_continente.php", "municipio_id=" + $("#mcp").val(), function(data) {
+        $(document).ready(function () {
+            $("#mcp").change(function () {
+                $.get("../consultasAjax/selec_continente.php", "municipio_id=" + $("#mcp").val(), function (data) {
                     $("#paq").html(data);
                 });
             });
 
-            $("#paq").change(function() {
-                $.get("../consultasAjax/selec_paises.php", "continente_id=" + $("#paq").val(), function(data) {
+            $("#paq").change(function () {
+                $.get("../consultasAjax/selec_paises.php", "continente_id=" + $("#paq").val(), function (data) {
                     $("#cma").html(data);
                 });
             });
 
-            $("#cma").change(function() {
-                $.get("../consultasAjax/selec_ciudades.php", "pais_id=" + $("#cma").val(), function(data) {
+            $("#cma").change(function () {
+                $.get("../consultasAjax/selec_ciudades.php", "pais_id=" + $("#cma").val(), function (data) {
                     $("#cmia").html(data);
                 });
             });
@@ -2811,7 +2943,7 @@ if (isset($_GET['codigo'])) {
                     data: data,
                     referencia: referencia
                 },
-            }).done(function(resultado) {
+            }).done(function (resultado) {
                 $("#tabla_resultado").html(resultado);
 
                 var norte = $("#norte").val();
@@ -2874,21 +3006,21 @@ if (isset($_GET['codigo'])) {
 
 
             $.ajax({
-                    url: 'guardarAreasDeInteres.php',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        data: data,
-                        referencia: referencia,
-                        piso: piso,
-                        pintura: pintura,
-                        iluminada: iluminada,
-                        techo: techo
-                    },
-                })
+                url: 'guardarAreasDeInteres.php',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    data: data,
+                    referencia: referencia,
+                    piso: piso,
+                    pintura: pintura,
+                    iluminada: iluminada,
+                    techo: techo
+                },
+            })
 
 
-                .done(function(rePol) {
+                .done(function (rePol) {
                     document.querySelector(".modal.is-visible").classList.remove('is-visible');
 
 
@@ -2915,14 +3047,14 @@ if (isset($_GET['codigo'])) {
 
         function deleteRegistros(idStorage) {
             $.ajax({
-                    url: '../../configuracion/eliminarCasa.php',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        id: idStorage
-                    },
-                })
-                .done(function(resultadoEliminar) {
+                url: '../../configuracion/eliminarCasa.php',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    id: idStorage
+                },
+            })
+                .done(function (resultadoEliminar) {
                     $("#editando").hide(500, "swing");
                     $("#tabla_resultado").html(resultadoEliminar);
 
@@ -2949,7 +3081,6 @@ if (isset($_GET['codigo'])) {
         }
 
         function obtener_puntos(consulta, nombreCapa, tipo, perso) {
-            console.log(perso)
             var resultado = consulta;
             var final = '';
             var prefijo;
@@ -3012,7 +3143,6 @@ if (isset($_GET['codigo'])) {
             }
 
             consulta = final;
-            console.log(consulta)
 
 
             var explode = perso.split('/');
@@ -3034,17 +3164,17 @@ if (isset($_GET['codigo'])) {
 
 
             $.ajax({
-                    url: 'consulta.php',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        consulta: consulta,
-                        tipo: tipo,
-                    },
-                })
+                url: 'consulta.php',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    consulta: consulta,
+                    tipo: tipo,
+                },
+            })
 
 
-                .done(function(rePolAt) {
+                .done(function (rePolAt) {
                     $("#cargandoConsulta").addClass('oculto')
                     // Ejemplo de uso
 
@@ -3061,7 +3191,6 @@ if (isset($_GET['codigo'])) {
 
                         const geoJsonPreEnd = '{"type": "FeatureCollection","name": "example","crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::32619" } },"features": [' + polygono + ']}';
 
-                        console.log(polygono)
 
                         const myObjStr1 = JSON.parse(geoJsonPreEnd);
 
@@ -3070,8 +3199,8 @@ if (isset($_GET['codigo'])) {
                         featureGroup.clearLayers();
 
                         myLayer = L.geoJSON(geoJSON, {
-                            pointToLayer: function(feature, latlng) {
-                                return L.circleMarker(latlng, {}, ).bindPopup("Tipo: " + feature.properties.tipo + "<br>Consulta: " + nombreCapa + "<br>Codigo: " + feature.properties.codigo + "<hr>" + feature.properties.personas + "<br><a class=\"aVerDetallesPopup\" target=\"_blank\" href='../detallesNuevoMapa.php?id=" + feature.properties.codigo + "'><i class='fa fa-home'></i> Ver informacion de la vivienda<a>");
+                            pointToLayer: function (feature, latlng) {
+                                return L.circleMarker(latlng, {},).bindPopup("Tipo: " + feature.properties.tipo + "<br>Consulta: " + nombreCapa + "<br>Codigo: " + feature.properties.codigo + "<hr>" + feature.properties.personas + "<br><a class=\"aVerDetallesPopup\" target=\"_blank\" href='../detallesNuevoMapa.php?id=" + feature.properties.codigo + "'><i class='fa fa-home'></i> Ver informacion de la vivienda<a>");
                             },
                             style: iconPersonalizado,
 
@@ -3171,25 +3300,6 @@ if (isset($_GET['codigo'])) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // aquiiii
         function obtener_puntos_almacenados(consulta, nombreCapa, tipo, perso) {
             var resultado = consulta;
@@ -3205,15 +3315,15 @@ if (isset($_GET['codigo'])) {
             var iconPersonalizado = iconPersonalizadoFunction(ciRellenoColor, '1', ciAnchoLinea, ciLineaColor, ciEstiloLinea, ciTamano);
 
             $.ajax({
-                    url: 'consulta.php',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        consulta: consulta,
-                        tipo: tipo,
-                    },
-                })
-                .done(function(rePolAt) {
+                url: 'consulta.php',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    consulta: consulta,
+                    tipo: tipo,
+                },
+            })
+                .done(function (rePolAt) {
 
                     $("#cargandoConsulta").addClass('oculto')
 
@@ -3239,8 +3349,8 @@ if (isset($_GET['codigo'])) {
                         featureGroup.clearLayers();
 
                         myLayer = L.geoJSON(geoJSON, {
-                            pointToLayer: function(feature, latlng) {
-                                return L.circleMarker(latlng, {}, ).bindPopup("Tipo: " + feature.properties.tipo + "<br>Consulta: " + nombreCapa + "<br>Codigo: " + feature.properties.codigo + "<hr>" + feature.properties.personas + "<br><a class=\"aVerDetallesPopup\" target=\"_blank\" href='../detallesNuevoMapa.php?id=" + feature.properties.codigo + "'><i class='fa fa-home'></i> Ver informacion de la vivienda<a>");
+                            pointToLayer: function (feature, latlng) {
+                                return L.circleMarker(latlng, {},).bindPopup("Tipo: " + feature.properties.tipo + "<br>Consulta: " + nombreCapa + "<br>Codigo: " + feature.properties.codigo + "<hr>" + feature.properties.personas + "<br><a class=\"aVerDetallesPopup\" target=\"_blank\" href='../detallesNuevoMapa.php?id=" + feature.properties.codigo + "'><i class='fa fa-home'></i> Ver informacion de la vivienda<a>");
                             },
                             style: iconPersonalizado,
 
@@ -3259,6 +3369,17 @@ if (isset($_GET['codigo'])) {
 
 
                         controlP.addOverlay(featureGroup, '<span class="admLayers"><img width="15px" src="../../assets/img/capaGitcom.png"/>  ' + nombreCapa + " </span>(" + newPoligono[1] + ")");
+
+                        elementos_del_mapa.push({
+                            nombre: nombreCapa,
+                            cantidad: newPoligono[1],
+                            color: ciRellenoColor,
+                            tipo: tipo,
+                            consulta: consulta,
+                            perso: perso
+                        });
+
+
 
                         toast("success", "Se agrego una nueva capa");
 
@@ -3299,10 +3420,238 @@ if (isset($_GET['codigo'])) {
                                 $('.marcaGitcom').removeClass('blur')
                                 $('#loaderCounter').hide()
                             }
+
+                            cargarGraficos('bar')
                         }
                     }
                 })
         }
+
+
+
+
+        // HERE
+        // Tipo activo de gráfico: 'bar' | 'pie'
+        var _chartType = 'bar';
+        var _chartRoot = null;
+
+        function switchChartType(type) {
+            _chartType = type;
+            // Resaltar botón activo
+            document.getElementById('btnChartBar').style.background = (type === 'bar') ? '#d34f57' : '#555';
+            document.getElementById('btnChartPie').style.background = (type === 'pie') ? '#d34f57' : '#555';
+            cargarGraficos(type);
+        }
+
+        function cargarGraficos(type) {
+            if (type) { _chartType = type; }
+
+            // Destruir instancia anterior
+            if (_chartRoot) {
+                _chartRoot.dispose();
+                _chartRoot = null;
+            }
+
+            // Si no hay datos, salir
+            if (!elementos_del_mapa || elementos_del_mapa.length === 0) { return; }
+
+            // Preparar datos desde elementos_del_mapa
+            var datos = elementos_del_mapa.map(function (el) {
+                return {
+                    nombre: el.nombre,
+                    cantidad: parseInt(el.cantidad) || 0,
+                    color: el.color
+                };
+            });
+
+            // Crear raíz amCharts 5
+            var root = am5.Root.new('chart_div');
+            _chartRoot = root;
+            root.setThemes([am5themes_Animated.new(root)]);
+
+            if (_chartType === 'pie') {
+                /* ——— GRÁFICO DE TORTA ——— */
+                var chart = root.container.children.push(
+                    am5percent.PieChart.new(root, {
+                        layout: root.verticalLayout,
+                        innerRadius: am5.percent(40)
+                    })
+                );
+
+                var series = chart.series.push(
+                    am5percent.PieSeries.new(root, {
+                        valueField: 'cantidad',
+                        categoryField: 'nombre',
+                        alignLabels: false
+                    })
+                );
+
+                series.labels.template.setAll({
+                    fontSize: 11,
+                    text: '{category}: {value}',
+                    maxWidth: 120,
+                    oversizedBehavior: 'wrap'
+                });
+
+                series.slices.template.adapters.add('fill', function (fill, target) {
+                    var dataItem = target.dataItem;
+                    if (dataItem) {
+                        var hex = dataItem.dataContext.color;
+                        if (hex) { return am5.color(hex); }
+                    }
+                    return fill;
+                });
+
+                series.slices.template.adapters.add('stroke', function (stroke, target) {
+                    var dataItem = target.dataItem;
+                    if (dataItem) {
+                        var hex = dataItem.dataContext.color;
+                        if (hex) { return am5.color(hex); }
+                    }
+                    return stroke;
+                });
+
+                series.data.setAll(datos);
+                series.appear(1000, 100);
+
+                // Leyenda interactiva — toggle por click
+                var legend = chart.children.push(am5.Legend.new(root, {
+                    centerX: am5.p50,
+                    x: am5.p50,
+                    marginTop: 8,
+                    layout: root.gridLayout
+                }));
+
+                legend.labels.template.setAll({ fontSize: 11, fill: am5.color(0xffffff) });
+                legend.valueLabels.template.set('forceHidden', true);
+
+                // Conectar a los dataItems de la serie para que el toggle funcione
+                legend.data.setAll(series.dataItems);
+
+
+            } else {
+                /* ——— GRÁFICO DE BARRAS ——— */
+                var chart = root.container.children.push(
+                    am5xy.XYChart.new(root, {
+                        panX: false,
+                        panY: false,
+                        wheelX: 'none',
+                        wheelY: 'none'
+                    })
+                );
+
+                var xRenderer = am5xy.AxisRendererX.new(root, { minGridDistance: 30 });
+                xRenderer.labels.template.setAll({
+                    rotation: -35,
+                    centerY: am5.p50,
+                    centerX: am5.p100,
+                    fontSize: 11,
+                    maxWidth: 80,
+                    oversizedBehavior: 'truncate'
+                });
+
+                var xAxis = chart.xAxes.push(
+                    am5xy.CategoryAxis.new(root, {
+                        maxDeviation: 0,
+                        categoryField: 'nombre',
+                        renderer: xRenderer,
+                        tooltip: am5.Tooltip.new(root, {})
+                    })
+                );
+
+                var yAxis = chart.yAxes.push(
+                    am5xy.ValueAxis.new(root, {
+                        renderer: am5xy.AxisRendererY.new(root, {})
+                    })
+                );
+
+                var series = chart.series.push(
+                    am5xy.ColumnSeries.new(root, {
+                        xAxis: xAxis,
+                        yAxis: yAxis,
+                        valueYField: 'cantidad',
+                        categoryXField: 'nombre',
+                        tooltip: am5.Tooltip.new(root, {
+                            labelText: '[bold]{categoryX}[/]\nCantidad: [bold]{valueY}[/]',
+                            getFillFromSprite: false,
+                            background: am5.Rectangle.new(root, {
+                                fill: am5.color(0x1e1e2e),
+                                fillOpacity: 0.92,
+                                stroke: am5.color(0xd34f57),
+                                strokeWidth: 1.5,
+                                cornerRadiusBL: 6,
+                                cornerRadiusBR: 6,
+                                cornerRadiusTL: 6,
+                                cornerRadiusTR: 6
+                            })
+                        })
+                    })
+                );
+
+                // Etiqueta encima de cada barra
+                series.bullets.push(function () {
+                    return am5.Bullet.new(root, {
+                        locationY: 1,
+                        sprite: am5.Label.new(root, {
+                            text: '{valueY}',
+                            fill: am5.color(0xffffff),
+                            fontSize: 11,
+                            fontWeight: '600',
+                            centerX: am5.p50,
+                            centerY: am5.percent(110),
+                            populateText: true
+                        })
+                    });
+                });
+
+                series.columns.template.adapters.add('fill', function (fill, target) {
+                    var dataItem = target.dataItem;
+                    if (dataItem) {
+                        var hex = dataItem.dataContext.color;
+                        if (hex) { return am5.color(hex); }
+                    }
+                    return fill;
+                });
+
+                series.columns.template.adapters.add('stroke', function (stroke, target) {
+                    var dataItem = target.dataItem;
+                    if (dataItem) {
+                        var hex = dataItem.dataContext.color;
+                        if (hex) { return am5.color(hex); }
+                    }
+                    return stroke;
+                });
+
+                series.columns.template.setAll({ cornerRadiusTL: 4, cornerRadiusTR: 4 });
+
+                xAxis.data.setAll(datos);
+                series.data.setAll(datos);
+                series.appear(1000);
+                chart.appear(1000, 100);
+
+                // Leyenda interactiva para barras — toggle de DataItems individuales
+                var legend = chart.children.push(am5.Legend.new(root, {
+                    centerX: am5.p50,
+                    x: am5.p50,
+                    marginTop: 6,
+                    layout: root.gridLayout
+                }));
+
+                legend.labels.template.setAll({ fontSize: 11, fill: am5.color(0xffffff) });
+                legend.valueLabels.template.set('forceHidden', true);
+
+                // Esperar a que los dataItems estén listos
+                series.events.on('datavalidated', function () {
+                    legend.data.setAll(series.dataItems);
+                });
+
+            }
+        }
+
+
+
+
+
 
 
         function printEnd() {
@@ -3339,7 +3688,7 @@ if (isset($_GET['codigo'])) {
 
         function ocultarNotificacion() {
             $('#notificacionBox').addClass('fadeOutRight')
-            setTimeout(function() {
+            setTimeout(function () {
                 $('#notificacionBox').hide()
                 $('#notificacionBox').removeClass('fadeOutRight')
             }, 1200);
@@ -3457,17 +3806,17 @@ if (isset($_GET['codigo'])) {
 
         function actualizarRegistros(drawJson, id_vivienda, lastOrigen, lastData, lastId) {
             $.ajax({
-                    url: '../../configuracion/moverCasa.php',
-                    type: 'POST',
-                    dataType: 'html',
-                    data: {
-                        drawJson: drawJson,
-                        id_vivienda: id_vivienda,
-                        lastOrigen: lastOrigen,
-                        lastData: lastData
-                    },
-                })
-                .done(function(resultadoEdit) {
+                url: '../../configuracion/moverCasa.php',
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    drawJson: drawJson,
+                    id_vivienda: id_vivienda,
+                    lastOrigen: lastOrigen,
+                    lastData: lastData
+                },
+            })
+                .done(function (resultadoEdit) {
 
                     $("#editando").hide(500, "swing");
                     $("#resultadoEdit").html(resultadoEdit);
@@ -3523,7 +3872,7 @@ if (isset($_GET['codigo'])) {
 
 </html>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         function actualizarLink() {
             var valor = $("#referencia").val()
             if (valor != "") {
@@ -3537,7 +3886,7 @@ if (isset($_GET['codigo'])) {
 
     });
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         function realizarConsultaPersonalizada() {
 
@@ -3558,7 +3907,7 @@ if (isset($_GET['codigo'])) {
         $('#btnConsultaPerso').click(realizarConsultaPersonalizada);
     });
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         function cambioColor() {
 
@@ -3584,14 +3933,14 @@ if (isset($_GET['codigo'])) {
 
     function buscarCedula(cedula) {
         $.ajax({
-                url: 'buscarCedula.php',
-                type: 'POST',
-                dataType: 'html',
-                data: {
-                    cedula: cedula,
-                },
-            })
-            .done(function(resultado) {
+            url: 'buscarCedula.php',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                cedula: cedula,
+            },
+        })
+            .done(function (resultado) {
                 var resultadoConsulta = resultado.trim();
                 if (resultadoConsulta == 'NE') {
                     toast("error", "No existe");
@@ -3637,7 +3986,7 @@ if (isset($_GET['codigo'])) {
 
     }
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         function displayAvenza() {
             var valorBuscado = $("#search").val()
             $("#casasAvenza").hide(500, "swing");
@@ -3645,7 +3994,7 @@ if (isset($_GET['codigo'])) {
         $("#botonAvenza").click(displayAvenza);
     });
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         function capaVactorialName() {
             $("#campoNameCapaVectorial").val('Archivos cargados exitosamente')
 
@@ -3709,7 +4058,7 @@ if (isset($_GET['codigo'])) {
         }
     }
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         function deactivarOtraProjection() {
             if (document.getElementById('projectionU').checked) {
                 document.getElementById('latitud').disabled = true;
@@ -3736,7 +4085,7 @@ if (isset($_GET['codigo'])) {
     });
 
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         function visibilidad() {
 
             if ($("#tresDe").val() == "Si") {
@@ -3875,7 +4224,7 @@ if (isset($_GET['codigo'])) {
         }
 
 
-        map.eachLayer(function(marker) {
+        map.eachLayer(function (marker) {
             if (marker.options) {
                 var markerId = marker.options.id;
                 if (markerId == id) {
@@ -3908,11 +4257,11 @@ if (isset($_GET['codigo'])) {
 
     function delay(callback, ms) {
         var timer = 0;
-        return function() {
+        return function () {
             var context = this,
                 args = arguments;
             clearTimeout(timer);
-            timer = setTimeout(function() {
+            timer = setTimeout(function () {
                 callback.apply(context, args);
             }, ms || 0);
         };
@@ -3920,7 +4269,7 @@ if (isset($_GET['codigo'])) {
 
 
 
-    $('#search').keyup(delay(function(e) {
+    $('#search').keyup(delay(function (e) {
         if (this.value != '') {
             buscarCedula(this.value);
         }
@@ -3999,9 +4348,9 @@ if (isset($_GET['codigo'])) {
     function almacenarConsulta(resultado, nombreCapa, perso, tipo) {
         var idProyecto = <?php echo $codigoProyecto ?>;
         $.ajax({
-            url: '../../back/manejadorConsulta.php',
+            url: '../../back/mapa_manejadorConsulta.php',
             type: 'POST',
-            dataType: 'html',
+            dataType: 'json',
             data: {
                 proyecto: idProyecto,
                 nombreCapa: nombreCapa,
@@ -4010,9 +4359,13 @@ if (isset($_GET['codigo'])) {
                 perso: perso,
                 accion: 'add'
             },
-        }).done(function(rePol) {
-            toast("success", "la consulta se almaceno correctamente");
-
+        }).done(function (data) {
+            console.log(data)
+            if (data.status === 'success') {
+                toast("success", data.message);
+            } else {
+                toast("error", data.message);
+            }
         })
     }
 
@@ -4027,14 +4380,14 @@ if (isset($_GET['codigo'])) {
         var id = <?php echo $codigoProyecto ?>;
 
         $.ajax({
-                url: '../consultasAjax/mapa_consultas_almacenadas.php',
-                type: 'POST',
-                dataType: 'html',
-                data: {
-                    id: id
-                },
-            })
-            .done(function(rePol) {
+            url: '../consultasAjax/mapa_consultas_almacenadas.php',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                id: id
+            },
+        })
+            .done(function (rePol) {
                 $('.myBodyModal').html(rePol)
             })
 
@@ -4056,16 +4409,18 @@ if (isset($_GET['codigo'])) {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '../../back/manejadorConsulta.php',
+                    url: '../../back/mapa_manejadorConsulta.php',
                     type: 'POST',
-                    dataType: 'html',
+                    dataType: 'json',
                     data: {
                         id: id,
                         accion: 'del'
                     },
-                }).done(function(rePol) {
-                    if (rePol.trim() == 'ok') {
-                        toast("success", "La consulta fue eliminada correctamente (recargue la pagina para ver los cambios)");
+                }).done(function (data) {
+                    if (data.status === 'success') {
+                        toast("success", data.message + " (recargue la pagina para ver los cambios)");
+                    } else {
+                        toast("error", data.message);
                     }
                 })
 
