@@ -3206,6 +3206,17 @@ if (isset($_GET['codigo'])) {
 
                         });
 
+
+                        elementos_del_mapa.push({
+                            nombre: nombreCapa,
+                            cantidad: newPoligono[1],
+                            color: ciRellenoColor,
+                            tipo: tipo,
+                            consulta: consulta,
+                            perso: perso
+                        });
+
+
                         featureGroup.addLayer(myLayer);
 
                         var cleanSearch = consulta;
@@ -3250,6 +3261,8 @@ if (isset($_GET['codigo'])) {
                         }
 
                         agregarElemento(nombreCapa + ' - ' + newPoligono[1], perso, 'ondblclick="propiedades(\'' + nombreCapa + '\', \'' + newConsulta + '\', \'' + tipoC + '\')"');
+
+                        cargarGraficos()
                     }
 
                     $("#consultaSearch").val('');
@@ -3331,8 +3344,20 @@ if (isset($_GET['codigo'])) {
 
 
                     if (newPoligono[1] == '0') {
-                        toast("error", "No se encontraron coincidecias");
+                        if (counterText != 0) {
+                            var counterText = parseInt($('#loaderCounterValue').val());
+                            var newValue = counterText - 1;
+                            $('#loaderCounterValue').val(newValue)
+                            $('#loaderCounterText').html(newValue)
 
+                            if (newValue == 0 || newValue < 0) {
+                                $('#map').removeClass('blur')
+                                $('.classresumen').removeClass('blur')
+                                $('.marcaGitcom').removeClass('blur')
+                                $('#loaderCounter').hide()
+                            }
+
+                        }
                     } else {
 
 
@@ -3421,9 +3446,9 @@ if (isset($_GET['codigo'])) {
                                 $('#loaderCounter').hide()
                             }
 
-                            cargarGraficos('bar')
                         }
                     }
+                    cargarGraficos('bar')
                 })
         }
 
