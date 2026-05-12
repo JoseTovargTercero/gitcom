@@ -28,13 +28,13 @@ if ($_SESSION['nivel'] == 1) {
   function calculaedad($fechanacimiento)
   {
     list($ano, $mes, $dia) = explode("-", $fechanacimiento);
-    $ano_diferencia  = date("Y") - $ano;
+    $ano_diferencia = date("Y") - $ano;
     $mes_diferencia = date("m") - $mes;
-    $dia_diferencia   = date("d") - $dia;
+    $dia_diferencia = date("d") - $dia;
     if ($dia_diferencia < 0 || $mes_diferencia < 0) {
       $ano_diferencia--;
     }
-    return  $ano_diferencia;
+    return $ano_diferencia;
   }
 
   class MiBD extends SQLite3
@@ -117,6 +117,7 @@ if ($_SESSION['nivel'] == 1) {
 
 
 
+      $proteccion_social = $filaAlumnos33['proteccion_social'];
       $cedula = $filaAlumnos33['cedula'];
       $rolFamiliar = $filaAlumnos33['rol_familiar'];
       $idFamilia = $filaAlumnos33['id_familia'];
@@ -246,7 +247,7 @@ if ($_SESSION['nivel'] == 1) {
   }
 
 
-?>
+  ?>
 
   <!DOCTYPE html>
   <html lang="es">
@@ -269,7 +270,8 @@ if ($_SESSION['nivel'] == 1) {
     <?php include('includes/menu.php'); ?>
     <div class="main-content position-relative max-height-vh-100 h-100">
       <!-- Navbar -->
-      <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+      <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+        navbar-scroll="true">
         <div class="container-fluid py-1 px-3">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -282,14 +284,16 @@ if ($_SESSION['nivel'] == 1) {
       </nav>
       <!-- End Navbar -->
       <div class="container-fluid px-2 px-md-4">
-        <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('../assets/img/bg-profile.PNG');">
+        <div class="page-header min-height-300 border-radius-xl mt-4"
+          style="background-image: url('../assets/img/bg-profile.PNG');">
           <span class="mask  bg-gradient-primary  opacity-6"></span>
         </div>
         <div class="card card-body mx-3 mx-md-4 mt-n6">
           <div class="row gx-4 mb-2">
             <div class="col-auto">
               <div class="avatar avatar-xl position-relative">
-                <img style="opacity: .7;width: 65px !important;" src="../assets/img/1-SF-SH.png" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                <img style="opacity: .7;width: 65px !important;" src="../assets/img/1-SF-SH.png" alt="profile_image"
+                  class="w-100 border-radius-lg shadow-sm">
               </div>
             </div>
             <div class="col-auto my-auto">
@@ -306,12 +310,14 @@ if ($_SESSION['nivel'] == 1) {
               <div class="nav-wrapper position-relative end-0">
                 <ul class="nav nav-pills nav-fill p-1" role="tablist">
                   <li class="nav-item">
-                    <a id="pestanaUno" class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">
+                    <a id="pestanaUno" class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab" href="javascript:;"
+                      role="tab" aria-selected="true">
                       <i class="material-icons text-sm position-relative">Primera pestaña</i>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a id="pestanaDos" class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
+                    <a id="pestanaDos" class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;"
+                      role="tab" aria-selected="false">
                       <i class="material-icons text-sm position-relative">segunda pestaña</i>
                     </a>
                   </li>
@@ -329,25 +335,35 @@ if ($_SESSION['nivel'] == 1) {
                   <div class="card-body p-3">
 
                     <ul class="list-group">
-                      <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nombre:</strong> <?php echo $nombre ?></li>
+                      <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nombre:</strong>
+                        <?php echo $nombre ?></li>
 
-                      <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Telefono:</strong> <?php echo $telefono ?></li>
+                      <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Telefono:</strong>
+                        <?php echo $telefono ?></li>
                       <?php
                       if ($nacionalidad == 'E') {
                         echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">País de origen: </strong>' . $paisOrigen . '</li>';
                       }
                       ?>
-                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Fecha de nacimiento:</strong> <?php echo $fecha_de_nacimiento . ' (' . $edad . ' años)' ?></li>
-                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Sexo:</strong> <?php echo $sexo ?></li>
-                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Pueblo indigena:</strong> <?php echo $pueblo_indigena ?></li>
-                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Identidad Religiosa: </strong> <?php echo $creencia_reliosa ?></li>
-                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Dirección:</strong> <?php echo $states[$comunidad] . ' - ' . $calle ?></li>
-                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Tiempo de residencia:</strong> <?php if ($tiempo_reside_sector > 0) {
-                                                                                                                                    echo $tiempo_reside_sector . ' Años';
-                                                                                                                                  } else {
-                                                                                                                                    echo 'Menos de un año';
-                                                                                                                                  } ?></li>
-                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Coordenadas:</strong> W°<?php echo substr($longitud, 0, 8) . '/N°' . substr($latitud, 0, 8) ?></li>
+                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Fecha de
+                          nacimiento:</strong> <?php echo $fecha_de_nacimiento . ' (' . $edad . ' años)' ?></li>
+                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Sexo:</strong>
+                        <?php echo $sexo ?></li>
+                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Pueblo
+                          indigena:</strong> <?php echo $pueblo_indigena ?></li>
+                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Identidad Religiosa:
+                        </strong> <?php echo $creencia_reliosa ?></li>
+                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Dirección:</strong>
+                        <?php echo $states[$comunidad] . ' - ' . $calle ?></li>
+                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Tiempo de
+                          residencia:</strong>
+                        <?php if ($tiempo_reside_sector > 0) {
+                          echo $tiempo_reside_sector . ' Años';
+                        } else {
+                          echo 'Menos de un año';
+                        } ?></li>
+                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Coordenadas:</strong>
+                        W°<?php echo substr($longitud, 0, 8) . '/N°' . substr($latitud, 0, 8) ?></li>
                     </ul>
                   </div>
                 </div>
@@ -361,15 +377,16 @@ if ($_SESSION['nivel'] == 1) {
                         <div class="row">
                           <div class="col-md-8 d-flex align-items-center">
                             <h6 class="mb-0"><i class="fa fa-info-circle"></i> Educación<?php
-                                                                                        if ($edad > 15) {
-                                                                                          echo ' y trabajo';
-                                                                                        }
-                                                                                        ?>
+                            if ($edad > 15) {
+                              echo ' y trabajo';
+                            }
+                            ?>
                             </h6>
                           </div>
                           <div class="col-md-4 text-end">
                             <a href="javascript:;">
-                              <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                              <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Edit Profile"></i>
                             </a>
                           </div>
                         </div>
@@ -377,14 +394,18 @@ if ($_SESSION['nivel'] == 1) {
                       <div class="p-3">
                         <ul class="list-group">
 
-                          <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nivel educativo:</strong> <?php echo $educacion ?></li>
+                          <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nivel
+                              educativo:</strong> <?php echo $educacion ?></li>
 
                           <?php if ($edad > 15) { ?>
-                            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Profesión:</strong> <?php echo $profesion ?></li>
-                            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Ocupación:</strong> <?php echo $ocupacion ?></li>
+                            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong
+                                class="text-dark">Profesión:</strong> <?php echo $profesion ?></li>
+                            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong
+                                class="text-dark">Ocupación:</strong> <?php echo $ocupacion ?></li>
 
                             <?php if ($ocupacion != 'Desempleado') { ?>
-                              <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Instancia laboral:</strong> <?php echo $instancia_laboral ?></li>
+                              <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Instancia
+                                  laboral:</strong> <?php echo $instancia_laboral ?></li>
                             <?php } ?>
 
                           <?php } ?>
@@ -406,7 +427,8 @@ if ($_SESSION['nivel'] == 1) {
                           </div>
                           <div class="col-md-4 text-end">
                             <a href="javascript:;">
-                              <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                              <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Edit Profile"></i>
                             </a>
                           </div>
                         </div>
@@ -452,12 +474,16 @@ if ($_SESSION['nivel'] == 1) {
                   <div class="col-12 col-xl-6">
                     <div class="card card-plain h-100">
                       <div class="card-header pb-0 p-3">
-                        <h6 class="mb-0"> <i class="fa fa-info-circle"></i> Proteción social</h6>
+                        <h6 class="mb-0"> <i class="fa fa-info-circle"></i> Protección social</h6>
                       </div>
                       <div class="p-3">
                         <ul class="list-group">
 
                           <?php
+                          if ($proteccion_social != '') {
+                            echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">1x10:</strong> ' . $proteccion_social . '</li>';
+                          }
+
 
 
                           if ($edad >= 65 && $sexo == 'Masculino') {
@@ -485,7 +511,7 @@ if ($_SESSION['nivel'] == 1) {
                           echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Discapacidad:</strong> ' . $discapacidad . '</li>';
 
                           if (trim(comprobarVariable($discapacidad, 'Discapacidad', $discapacidad, 'NO')) != '') {
-                            echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Carnet CONAPDIS:</strong> ' .  $carnet_discapacidad . '</li>';
+                            echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Carnet CONAPDIS:</strong> ' . $carnet_discapacidad . '</li>';
 
                             echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Ayuda técnica:</strong> ' . $requiere_ayuda . '</li>';
 
@@ -553,7 +579,8 @@ if ($_SESSION['nivel'] == 1) {
                           </div>
                           <div class="col-md-4 text-end">
                             <a href="javascript:;">
-                              <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                              <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Edit Profile"></i>
                             </a>
                           </div>
                         </div>
@@ -561,8 +588,10 @@ if ($_SESSION['nivel'] == 1) {
                       <div class="p-3">
                         <ul class="list-group">
 
-                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Actividad productiva:</strong> <?php echo $actividad_productiva ?></li>
-                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Actividad agricola:</strong> <?php echo $actividad_agricola ?></li>
+                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Actividad
+                              productiva:</strong> <?php echo $actividad_productiva ?></li>
+                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Actividad
+                              agricola:</strong> <?php echo $actividad_agricola ?></li>
 
                           <?php if ($actividad_agricola != 'NO' && $actividad_agricola != 'NO APLICA') {
 
@@ -591,7 +620,8 @@ if ($_SESSION['nivel'] == 1) {
                           </div>
                           <div class="col-md-4 text-end">
                             <a href="javascript:;">
-                              <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                              <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Edit Profile"></i>
                             </a>
                           </div>
                         </div>
@@ -599,16 +629,19 @@ if ($_SESSION['nivel'] == 1) {
                       <div class="p-3">
                         <ul class="list-group">
 
-                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Bombonas pequeñas:</strong> <?php echo $bombona_pequena ?></li>
+                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Bombonas
+                              pequeñas:</strong> <?php echo $bombona_pequena ?></li>
 
-                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Bombonas medianas:</strong> <?php echo $bombona_mediana ?></li>
+                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Bombonas
+                              medianas:</strong> <?php echo $bombona_mediana ?></li>
 
                           <?php
                           if ($bombona_mediana > 0) {
                             echo '<li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Código:</strong> ' . $codigo_mediana . '</li>';
                           }
                           ?>
-                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Bombonas grandes:</strong> <?php echo $bombona_grande ?></li>
+                          <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Bombonas
+                              grandes:</strong> <?php echo $bombona_grande ?></li>
 
                           <?php
                           if ($bombona_grande > 0) {
@@ -672,7 +705,8 @@ if ($_SESSION['nivel'] == 1) {
                           </div>
                           <div class="col-md-4 text-end">
                             <a href="javascript:;">
-                              <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                              <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Edit Profile"></i>
                             </a>
                           </div>
                         </div>
@@ -714,11 +748,11 @@ if ($_SESSION['nivel'] == 1) {
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
       // crear funcion que mande un alert si se da click en a con id pestanaUno
-      $(document).ready(function() {
-        $("#pestanaUno").click(function() {
+      $(document).ready(function () {
+        $("#pestanaUno").click(function () {
           setPestana(1)
         });
-        $("#pestanaDos").click(function() {
+        $("#pestanaDos").click(function () {
           setPestana(2)
         });
       });
@@ -755,7 +789,7 @@ if ($_SESSION['nivel'] == 1) {
   </html>
 
 
-<?php
+  <?php
 } else {
 
   define('PAGINA_INICIO', '../index.php');

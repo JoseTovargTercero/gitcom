@@ -49,16 +49,16 @@ miArray["tierras del inti"] = ['tenencia_tierra="Nacional (INTI)"', "casas"];
 miArray["tierra nacional"] = ['tenencia_tierra="Nacional (INTI)"', "casas"];
 miArray["tierras nacional"] = ['tenencia_tierra="Nacional (INTI)"', "casas"];
 miArray["terreno que pertenece al inti"] = [
-  'tenencia_tierra="Nacional (INTI)"',
-  "casas",
+    'tenencia_tierra="Nacional (INTI)"',
+    "casas",
 ];
 miArray["terrenos que pertenece al inti"] = [
-  'tenencia_tierra="Nacional (INTI)"',
-  "casas",
+    'tenencia_tierra="Nacional (INTI)"',
+    "casas",
 ];
 miArray["terrenos que pertenece al inti"] = [
-  'tenencia_tierra="Nacional (INTI)"',
-  "casas",
+    'tenencia_tierra="Nacional (INTI)"',
+    "casas",
 ];
 miArray["tierra regional"] = ['tenencia_tierra="Regional (INTU"', "casas"];
 miArray["terreno regional"] = ['tenencia_tierra="Regional (INTU"', "casas"];
@@ -67,71 +67,71 @@ miArray["terrenos del intu"] = ['tenencia_tierra="Regional (INTU"', "casas"];
 miArray["tierra del intu"] = ['tenencia_tierra="Regional (INTU"', "casas"];
 miArray["tierras del intu"] = ['tenencia_tierra="Regional (INTU"', "casas"];
 miArray["terreno que pertenece al intu"] = [
-  'tenencia_tierra="Regional (INTU"',
-  "casas",
+    'tenencia_tierra="Regional (INTU"',
+    "casas",
 ];
 miArray["terrenos que pertenece al intu"] = [
-  'tenencia_tierra="Regional (INTU"',
-  "casas",
+    'tenencia_tierra="Regional (INTU"',
+    "casas",
 ];
 miArray["terreno que pertenece a ejido"] = [
-  'tenencia_tierra="Municipal (EJIDO)"',
-  "casas",
+    'tenencia_tierra="Municipal (EJIDO)"',
+    "casas",
 ];
 miArray["terrenos que pertenecen a ejido"] = [
-  'tenencia_tierra="Municipal (EJIDO)"',
-  "casas",
+    'tenencia_tierra="Municipal (EJIDO)"',
+    "casas",
 ];
 miArray["terreno ejido"] = ['tenencia_tierra="Municipal (EJIDO)"', "casas"];
 miArray["terrenos ejido"] = ['tenencia_tierra="Municipal (EJIDO)"', "casas"];
 miArray["tierras de ejido"] = ['tenencia_tierra="Municipal (EJIDO)"', "casas"];
 miArray["terrenos de ejido"] = ['tenencia_tierra="Municipal (EJIDO)"', "casas"];
 miArray["terrenos municipales"] = [
-  'tenencia_tierra="Municipal (EJIDO)"',
-  "casas",
+    'tenencia_tierra="Municipal (EJIDO)"',
+    "casas",
 ];
 miArray["tierras municipales"] = [
-  'tenencia_tierra="Municipal (EJIDO)"',
-  "casas",
+    'tenencia_tierra="Municipal (EJIDO)"',
+    "casas",
 ];
 //Tenencia de la tierra
 
 miArray["vivienda venezuela"] = ['vivienda_venezuela="Si"', "casas"];
 miArray["beneficiarios de vivienda venezuela"] = [
-  'vivienda_venezuela="Si"',
-  "casas",
+    'vivienda_venezuela="Si"',
+    "casas",
 ];
 miArray["beneficiarios de vv"] = ['vivienda_venezuela="Si"', "casas"];
 miArray["beneficiarios de la mision_vivienda_venezuela"] = [
-  'vivienda_venezuela="Si"',
-  "casas",
+    'vivienda_venezuela="Si"',
+    "casas",
 ];
 miArray["beneficiarios de gmvv"] = ['vivienda_venezuela="Si"', "casas"];
 miArray["sin beneficios de vivienda venezuela"] = [
-  'vivienda_venezuela="No"',
-  "casas",
+    'vivienda_venezuela="No"',
+    "casas",
 ];
 miArray["sin beneficios de vv"] = ['vivienda_venezuela="No"', "casas"];
 miArray["sin beneficios de la mision_vivienda_venezuela"] = [
-  'vivienda_venezuela="No"',
-  "casas",
+    'vivienda_venezuela="No"',
+    "casas",
 ];
 miArray["sin beneficios de gmvv"] = ['vivienda_venezuela="No"', "casas"];
 //vivienda venezuela
 
 miArray["barrio nuevo barrio tricolor"] = ['bnbt="Si"', "casas"];
 miArray["beneficiarios de barrio nuevo barrio tricolor"] = [
-  'bnbt="Si"',
-  "casas",
+    'bnbt="Si"',
+    "casas",
 ];
 miArray["beneficiarios de bnbt"] = ['bnbt="Si"', "casas"];
 miArray["beneficiarios de barrio nuevo barrio tricolor"] = [
-  'bnbt="Si"',
-  "casas",
+    'bnbt="Si"',
+    "casas",
 ];
 miArray["sin beneficios de barrio nuevo barrio tricolor"] = [
-  'bnbt="No"',
-  "casas",
+    'bnbt="No"',
+    "casas",
 ];
 miArray["sin barrio nuevo barrio tricolor"] = ['bnbt="No"', "casas"];
 miArray["sin beneficios de bnbt"] = ['bnbt="No"', "casas"];
@@ -158,29 +158,29 @@ miArray["tuberia"] = ['agua_potable="Tuberia"', "casas"];
 miArray["tuberias"] = ['agua_potable="Tuberia"', "casas"];
 miArray["agua por pozo y tuberia"] = ['agua_potable="Pozo y Tuberia"', "casas"];
 miArray["agua por pozo y tuberias"] = [
-  'agua_potable="Pozo y Tuberia"',
-  "casas",
+    'agua_potable="Pozo y Tuberia"',
+    "casas",
 ];
 miArray["casas con pozo y tuberia"] = [
-  'agua_potable="Pozo y Tuberia"',
-  "casas",
+    'agua_potable="Pozo y Tuberia"',
+    "casas",
 ];
 miArray["casas con pozo y tuberias"] = [
-  'agua_potable="Pozo y Tuberia"',
-  "casas",
+    'agua_potable="Pozo y Tuberia"',
+    "casas",
 ];
 miArray["casa con pozo y tuberia"] = ['agua_potable="Pozo y Tuberia"', "casas"];
 miArray["casa con pozo y tuberias"] = [
-  'agua_potable="Pozo y Tuberia"',
-  "casas",
+    'agua_potable="Pozo y Tuberia"',
+    "casas",
 ];
 miArray["casas con agua por pozo y tuberias"] = [
-  'agua_potable="Pozo y Tuberia"',
-  "casas",
+    'agua_potable="Pozo y Tuberia"',
+    "casas",
 ];
 miArray["casas con agua por pozo y tuberia"] = [
-  'agua_potable="Pozo y Tuberia"',
-  "casas",
+    'agua_potable="Pozo y Tuberia"',
+    "casas",
 ];
 miArray["pozo y tuberias"] = ['agua_potable="Pozo y Tuberia"', "casas"];
 miArray["pozo y tuberia"] = ['agua_potable="Pozo y Tuberia"', "casas"];
@@ -201,56 +201,56 @@ miArray["vecino"] = ['agua_potable="Del Vecino"', "casas"];
 miArray["lluvia"] = ['agua_potable="De la lluvia"', "casas"];
 miArray["rio"] = ['agua_potable="Del Rio"', "casas"];
 miArray["casas sin agua directa"] = [
-  'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
-  "casas",
+    'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
+    "casas",
 ];
 miArray["casas sin acceso al agua de forma directa"] = [
-  'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
-  "casas",
+    'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
+    "casas",
 ];
 miArray["casas sin agua de forma directa"] = [
-  'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
-  "casas",
+    'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
+    "casas",
 ];
 miArray["casas sin agua"] = [
-  'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
-  "casas",
+    'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
+    "casas",
 ];
 miArray["casas sin acceso al agua"] = [
-  'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
-  "casas",
+    'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
+    "casas",
 ];
 miArray["viviendas sin agua directa"] = [
-  'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
-  "casas",
+    'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
+    "casas",
 ];
 miArray["viviendas sin acceso al agua de forma directa"] = [
-  'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
-  "casas",
+    'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
+    "casas",
 ];
 miArray["viviendas sin agua de forma directa"] = [
-  'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
-  "casas",
+    'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
+    "casas",
 ];
 miArray["viviendas sin agua"] = [
-  'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
-  "casas",
+    'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
+    "casas",
 ];
 miArray["viviendas sin acceso al agua"] = [
-  'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
-  "casas",
+    'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
+    "casas",
 ];
 miArray["personas sin acceso al agua"] = [
-  'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
-  "casas",
+    'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
+    "casas",
 ];
 miArray["familias sin acceso al agua"] = [
-  'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
-  "casas",
+    'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
+    "casas",
 ];
 miArray["familias sin agua"] = [
-  'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
-  "casas",
+    'agua_potable="De la lluvia" OR agua_potable="Del Vecino" OR agua_potable="Del Rio"',
+    "casas",
 ];
 //Agua potable
 
@@ -268,74 +268,74 @@ miArray["sin internet"] = ['internet="Sin Servicio"', "casas"];
 
 miArray["aseo"] = ['disposicion_basura="Servicio de Recoleccion"', "casas"];
 miArray["saneamiento ambiental"] = [
-  'disposicion_basura="Servicio de Recoleccion"',
-  "casas",
+    'disposicion_basura="Servicio de Recoleccion"',
+    "casas",
 ];
 miArray["aseo urbano"] = [
-  'disposicion_basura="Servicio de Recoleccion"',
-  "casas",
+    'disposicion_basura="Servicio de Recoleccion"',
+    "casas",
 ];
 miArray["entierro"] = ['disposicion_basura="Entierro"', "casas"];
 miArray["por entierro"] = ['disposicion_basura="Entierro"', "casas"];
 miArray["entierran la basura"] = ['disposicion_basura="Entierro"', "casas"];
 miArray["lugares donde entierran la basura"] = [
-  'disposicion_basura="Entierro"',
-  "casas",
+    'disposicion_basura="Entierro"',
+    "casas",
 ];
 miArray["casas donde entierran la basura"] = [
-  'disposicion_basura="Entierro"',
-  "casas",
+    'disposicion_basura="Entierro"',
+    "casas",
 ];
 miArray["casas que entierran la basura"] = [
-  'disposicion_basura="Entierro"',
-  "casas",
+    'disposicion_basura="Entierro"',
+    "casas",
 ];
 miArray["personas que entierran la basura"] = [
-  'disposicion_basura="Entierro"',
-  "casas",
+    'disposicion_basura="Entierro"',
+    "casas",
 ];
 miArray["personas que queman la basura"] = [
-  'disposicion_basura="Quema"',
-  "casas",
+    'disposicion_basura="Quema"',
+    "casas",
 ];
 miArray["personas que queman"] = ['disposicion_basura="Quema"', "casas"];
 miArray["casas que queman la basura"] = ['disposicion_basura="Quema"', "casas"];
 miArray["casas que queman"] = ['disposicion_basura="Quema"', "casas"];
 miArray["casas donde queman"] = ['disposicion_basura="Quema"', "casas"];
 miArray["casas donde queman la basura"] = [
-  'disposicion_basura="Quema"',
-  "casas",
+    'disposicion_basura="Quema"',
+    "casas",
 ];
 miArray["casas donde queman"] = ['disposicion_basura="Quema"', "casas"];
 miArray["casas en donde queman la basura"] = [
-  'disposicion_basura="Quema"',
-  "casas",
+    'disposicion_basura="Quema"',
+    "casas",
 ];
 miArray["casas en donde queman"] = ['disposicion_basura="Quema"', "casas"];
 miArray["quema"] = ['disposicion_basura="Quema"', "casas"];
 miArray["basura al aire libre"] = [
-  'disposicion_basura="Al Aire Libre"',
-  "casas",
+    'disposicion_basura="Al Aire Libre"',
+    "casas",
 ];
 miArray["casas donde dejan la basura al aire libre"] = [
-  'disposicion_basura="Al Aire Libre"',
-  "casas",
+    'disposicion_basura="Al Aire Libre"',
+    "casas",
 ];
 miArray["casas en donde dejan la basura al aire libre"] = [
-  'disposicion_basura="Al Aire Libre"',
-  "casas",
+    'disposicion_basura="Al Aire Libre"',
+    "casas",
 ];
 miArray["casas en donde dejan la basura en las calles"] = [
-  'disposicion_basura="Al Aire Libre"',
-  "casas",
+    'disposicion_basura="Al Aire Libre"',
+    "casas",
 ];
 miArray["personas que dejan la basura en las calles"] = [
-  'disposicion_basura="Al Aire Libre"',
-  "casas",
+    'disposicion_basura="Al Aire Libre"',
+    "casas",
 ];
 miArray["personas que dejan la basura al aire libre"] = [
-  'disposicion_basura="Al Aire Libre"',
-  "casas",
+    'disposicion_basura="Al Aire Libre"',
+    "casas",
 ];
 //Disposicion de la basura
 
@@ -355,30 +355,30 @@ miArray["aguas servidas por cloaca"] = ['agua_servidas="Cloacas"', "casas"];
 miArray["aguas servidas por cloacas"] = ['agua_servidas="Cloacas"', "casas"];
 
 miArray["aguas servidas al aire libre"] = [
-  'agua_servidas="Al Aire Libre"',
-  "casas",
+    'agua_servidas="Al Aire Libre"',
+    "casas",
 ];
 miArray["casas con aguas servidas al aire libre"] = [
-  'agua_servidas="Al Aire Libre"',
-  "casas",
+    'agua_servidas="Al Aire Libre"',
+    "casas",
 ];
 miArray["casas que dejan las aguas servidas al aire libre"] = [
-  'agua_servidas="Al Aire Libre"',
-  "casas",
+    'agua_servidas="Al Aire Libre"',
+    "casas",
 ];
 miArray["casas que dejan aguas servidas al aire libre"] = [
-  'agua_servidas="Al Aire Libre"',
-  "casas",
+    'agua_servidas="Al Aire Libre"',
+    "casas",
 ];
 miArray["casas donde se derraman las aguas servidas"] = [
-  'agua_servidas="Al Aire Libre"',
-  "casas",
+    'agua_servidas="Al Aire Libre"',
+    "casas",
 ];
 //aguas servidas al aire libre
 
 miArray["casas con contrato electrico"] = [
-  'electricidad="Con Contrato"',
-  "casas",
+    'electricidad="Con Contrato"',
+    "casas",
 ];
 miArray["contrato electrico"] = ['electricidad="Con Contrato"', "casas"];
 miArray["casas con contrato"] = ['electricidad="Con Contrato"', "casas"];
@@ -386,57 +386,57 @@ miArray["contrato"] = ['electricidad="Con Contrato"', "casas"];
 miArray["casas sin contrato"] = ['electricidad="Sin Contrato"', "casas"];
 miArray["sin contrato"] = ['electricidad="Sin Contrato"', "casas"];
 miArray["casas sin contrato electrico"] = [
-  'electricidad="Sin Contrato"',
-  "casas",
+    'electricidad="Sin Contrato"',
+    "casas",
 ];
 miArray["sin contrato electrico"] = ['electricidad="Sin Contrato"', "casas"];
 miArray["casas sin electricidad"] = [
-  'electricidad="Sin Electricidad"',
-  "casas",
+    'electricidad="Sin Electricidad"',
+    "casas",
 ];
 miArray["casas con electricidad"] = [
-  'electricidad="Con Contrato" OR electricidad="Sin Contrato"',
-  "casas",
+    'electricidad="Con Contrato" OR electricidad="Sin Contrato"',
+    "casas",
 ];
 //electricidad
 
 miArray["medidor electrico en funcionamiento"] = [
-  'medidor_electricidad="En Funcionamiento"',
-  "casas",
+    'medidor_electricidad="En Funcionamiento"',
+    "casas",
 ];
 miArray["casas con medidor electrico en funcionamiento"] = [
-  'medidor_electricidad="En Funcionamiento"',
-  "casas",
+    'medidor_electricidad="En Funcionamiento"',
+    "casas",
 ];
 miArray["casas con medidor en funcionamiente"] = [
-  'medidor_electricidad="En Funcionamiento"',
-  "casas",
+    'medidor_electricidad="En Funcionamiento"',
+    "casas",
 ];
 miArray["casas con medidor electrico dañado"] = [
-  'medidor_electricidad="Danado"',
-  "casas",
+    'medidor_electricidad="Danado"',
+    "casas",
 ];
 miArray["medidor electrico"] = [
-  'medidor_electricidad="Danado" OR medidor_electricidad="En Funcionamiento"',
-  "casas",
+    'medidor_electricidad="Danado" OR medidor_electricidad="En Funcionamiento"',
+    "casas",
 ];
 miArray["casas con medidor electrico"] = [
-  'medidor_electricidad="Danado" OR medidor_electricidad="En Funcionamiento"',
-  "casas",
+    'medidor_electricidad="Danado" OR medidor_electricidad="En Funcionamiento"',
+    "casas",
 ];
 miArray["medidor electrico"] = [
-  'medidor_electricidad="Danado" OR medidor_electricidad="En Funcionamiento"',
-  "casas",
+    'medidor_electricidad="Danado" OR medidor_electricidad="En Funcionamiento"',
+    "casas",
 ];
 miArray["casas sin medidor electrico"] = [
-  'medidor_electricidad="No Posee"',
-  "casas",
+    'medidor_electricidad="No Posee"',
+    "casas",
 ];
 //medidor
 
 miArray["telefonia fuera de servicio"] = [
-  'telofonia="Telefonia Fija (Fuera de Servicio)"',
-  "casas",
+    'telofonia="Telefonia Fija (Fuera de Servicio)"',
+    "casas",
 ];
 
 /*===================================================
@@ -448,16 +448,16 @@ miArray["telefonia fuera de servicio"] = [
 //miArray['sin bombonas'] = ['bombona_pequena!="0" AND bombona_mediana!="0" AND bombona_grande!="0"', 'casas']
 
 miArray["bombonas pequeñas"] = [
-  'bombona_pequena!="0"/bombona_pequena',
-  "personas",
+    'bombona_pequena!="0"/bombona_pequena',
+    "personas",
 ];
 miArray["bombonas medianas"] = [
-  'bombona_mediana!="0"/bombona_mediana',
-  "personas",
+    'bombona_mediana!="0"/bombona_mediana',
+    "personas",
 ];
 miArray["bombonas grandes"] = [
-  'bombona_grande!="0"/bombona_grande',
-  "personas",
+    'bombona_grande!="0"/bombona_grande',
+    "personas",
 ];
 
 miArray["una bombona pequeña"] = ['bombona_pequena="1"', "personas"];
@@ -491,27 +491,27 @@ miArray["intelectual"] = ['discapacidad="Intelectual"', "personas"];
 miArray["mental"] = ['discapacidad="Mental"', "personas"];
 miArray["autismo"] = ['discapacidad="Autismo o Asperger"', "personas"];
 miArray["enfermos"] = [
-  'diabetico="SI" OR enf_cardiaca="SI" OR artritis="SI" OR epilepsia="SI"',
-  "personas",
+    'diabetico="SI" OR enf_cardiaca="SI" OR artritis="SI" OR epilepsia="SI"',
+    "personas",
 ];
 
 miArray["parto humanizado"] = ['parto_humanizado="SI"', "personas"];
 miArray["embarazadas"] = ['embarazada="SI"', "personas"];
 miArray["embarazadas de alto riesgo"] = [
-  'embarazada_alto_riesgo="SI"',
-  "personas",
+    'embarazada_alto_riesgo="SI"',
+    "personas",
 ];
 miArray["no pensionados"] = ['pension="NO"', "personas"];
 miArray["pensionados"] = ['pension="SI"', "personas"];
 
 miArray["patrios productivos"] = [
-  'actividad_agricola="Patio Productivo"',
-  "personas",
+    'actividad_agricola="Patio Productivo"',
+    "personas",
 ];
 miArray["conucos"] = ['actividad_agricola="conuco"', "personas"];
 miArray["cria de animales de consumo"] = [
-  'actividad_agricola="Cria de Animales de Consumo"',
-  "personas",
+    'actividad_agricola="Cria de Animales de Consumo"',
+    "personas",
 ];
 
 miArray["Pesca"] = ['actividad_agricola="Pesca"', "personas"];
@@ -527,18 +527,18 @@ miArray["acuicultura"] = ['actividad_agricola="acuicultura"', "personas"];
 		*/
 miArray["jefes de familia"] = ['rol_familiar="JEFE DE FAMILIA"', "personas"];
 miArray["jefes de familia mujeres"] = [
-  'sexo="Femenino" AND rol_familiar="JEFE DE FAMILIA"',
-  "personas",
+    'sexo="Femenino" AND rol_familiar="JEFE DE FAMILIA"',
+    "personas",
 ];
 miArray["jefes de familia hombres"] = [
-  'sexo="Masculino" AND rol_familiar="JEFE DE FAMILIA"',
-  "personas",
+    'sexo="Masculino" AND rol_familiar="JEFE DE FAMILIA"',
+    "personas",
 ];
 
 /** ojo */
 miArray["personas con discapacidad"] = [
-  'discapacidad="Fisica" OR discapacidad="Auditiva" OR discapacidad="Visual" OR discapacidad="Vohabla" OR discapacidad="Intelectual" OR discapacidad="Mental" OR discapacidad="Autismo o Asperger" ',
-  "personas",
+    'discapacidad="Fisica" OR discapacidad="Auditiva" OR discapacidad="Visual" OR discapacidad="Vohabla" OR discapacidad="Intelectual" OR discapacidad="Mental" OR discapacidad="Autismo o Asperger" ',
+    "personas",
 ];
 
 miArray["mujeres"] = ['sexo="Femenino"', "personas"];
@@ -554,12 +554,12 @@ miArray["sexo masculinos"] = ['sexo="Masculino"', "personas"];
 
 miArray["clap"] = ['combo_alimenticio_clap="SI"', "personas"];
 miArray["habitantes atentidos por el clap"] = [
-  'combo_alimenticio_clap="SI"',
-  "personas",
+    'combo_alimenticio_clap="SI"',
+    "personas",
 ];
 miArray["personas atentidas por el clap"] = [
-  'combo_alimenticio_clap="SI"',
-  "personas",
+    'combo_alimenticio_clap="SI"',
+    "personas",
 ];
 miArray["combo clap"] = ['combo_alimenticio_clap="SI"', "personas"];
 miArray["bolsa clap"] = ['combo_alimenticio_clap="SI"', "personas"];
@@ -567,82 +567,82 @@ miArray["bolsa"] = ['combo_alimenticio_clap="SI"', "personas"];
 miArray["alimentos"] = ['combo_alimenticio_clap="SI"', "personas"];
 miArray["alimentos clap"] = ['combo_alimenticio_clap="SI"', "personas"];
 miArray["personas que reciben bolsa clap"] = [
-  'combo_alimenticio_clap="SI"',
-  "personas",
+    'combo_alimenticio_clap="SI"',
+    "personas",
 ];
 miArray["habitantes que reciben bolsa clap"] = [
-  'combo_alimenticio_clap="SI"',
-  "personas",
+    'combo_alimenticio_clap="SI"',
+    "personas",
 ];
 miArray["habitantes que reciben la bolsa clap"] = [
-  'combo_alimenticio_clap="SI"',
-  "personas",
+    'combo_alimenticio_clap="SI"',
+    "personas",
 ];
 miArray["personas que reciben la bolsa clap"] = [
-  'combo_alimenticio_clap="SI"',
-  "personas",
+    'combo_alimenticio_clap="SI"',
+    "personas",
 ];
 miArray["habitantes que reciben el combo clap"] = [
-  'combo_alimenticio_clap="SI"',
-  "personas",
+    'combo_alimenticio_clap="SI"',
+    "personas",
 ];
 miArray["personas que reciben el combo clap"] = [
-  'combo_alimenticio_clap="SI"',
-  "personas",
+    'combo_alimenticio_clap="SI"',
+    "personas",
 ];
 miArray["habitantes que reciben el combo alimenticio clap"] = [
-  'combo_alimenticio_clap="SI"',
-  "personas",
+    'combo_alimenticio_clap="SI"',
+    "personas",
 ];
 miArray["personas que reciben el combo alimenticio clap"] = [
-  'combo_alimenticio_clap="SI"',
-  "personas",
+    'combo_alimenticio_clap="SI"',
+    "personas",
 ];
 
 /** Combo clap */
 
 miArray["hombres que reciben el combo alimenticio clap"] = [
-  'combo_alimenticio_clap="SI" AND sexo="Masculino"',
-  "personas",
+    'combo_alimenticio_clap="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que reciben el combo clap"] = [
-  'combo_alimenticio_clap="SI" AND sexo="Masculino"',
-  "personas",
+    'combo_alimenticio_clap="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres atentidos por el clap"] = [
-  'combo_alimenticio_clap="SI" AND sexo="Masculino"',
-  "personas",
+    'combo_alimenticio_clap="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que reciben bolsa clap"] = [
-  'combo_alimenticio_clap="SI" AND sexo="Masculino"',
-  "personas",
+    'combo_alimenticio_clap="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que reciben la bolsa clap"] = [
-  'combo_alimenticio_clap="SI" AND sexo="Masculino"',
-  "personas",
+    'combo_alimenticio_clap="SI" AND sexo="Masculino"',
+    "personas",
 ];
 
 /** Combo clap por sexo masculino*/
 
 miArray["mujeres que reciben el combo alimenticio clap"] = [
-  'combo_alimenticio_clap="SI" AND sexo="Femenino"',
-  "personas",
+    'combo_alimenticio_clap="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que reciben el combo clap"] = [
-  'combo_alimenticio_clap="SI" AND sexo="Femenino"',
-  "personas",
+    'combo_alimenticio_clap="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres atentidos por el clap"] = [
-  'combo_alimenticio_clap="SI" AND sexo="Femenino"',
-  "personas",
+    'combo_alimenticio_clap="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que reciben bolsa clap"] = [
-  'combo_alimenticio_clap="SI" AND sexo="Femenino"',
-  "personas",
+    'combo_alimenticio_clap="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que reciben la bolsa clap"] = [
-  'combo_alimenticio_clap="SI" AND sexo="Femenino"',
-  "personas",
+    'combo_alimenticio_clap="SI" AND sexo="Femenino"',
+    "personas",
 ];
 
 /** Combo clap por sexo femenino*/
@@ -653,54 +653,54 @@ miArray["covid-19"] = ['padecio_covid="SI"', "personas"];
 miArray["personas que padecieron covid"] = ['padecio_covid="SI"', "personas"];
 miArray["personas que padecieron covid19"] = ['padecio_covid="SI"', "personas"];
 miArray["personas que padecieron covid-19"] = [
-  'padecio_covid="SI"',
-  "personas",
+    'padecio_covid="SI"',
+    "personas",
 ];
 miArray["mujeres que padecieron covid"] = [
-  'padecio_covid="SI" AND sexo="Masculino"',
-  "personas",
+    'padecio_covid="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["mujeres que padecieron covid19"] = [
-  'padecio_covid="SI" AND sexo="Masculino"',
-  "personas",
+    'padecio_covid="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["mujeres que padecieron covid-19"] = [
-  'padecio_covid="SI" AND sexo="Masculino"',
-  "personas",
+    'padecio_covid="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que padecieron covid"] = [
-  'padecio_covid="SI" AND sexo="Femenino"',
-  "personas",
+    'padecio_covid="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["hombres que padecieron covid19"] = [
-  'padecio_covid="SI" AND sexo="Femenino"',
-  "personas",
+    'padecio_covid="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["hombres que padecieron covid-19"] = [
-  'padecio_covid="SI" AND sexo="Femenino"',
-  "personas",
+    'padecio_covid="SI" AND sexo="Femenino"',
+    "personas",
 ];
 /** Covid por sexo*/
 
 miArray["hombres diabeticos"] = [
-  'diabetico="SI" AND sexo="Masculino"',
-  "personas",
+    'diabetico="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres con diabetes"] = [
-  'diabetico="SI" AND sexo="Masculino"',
-  "personas",
+    'diabetico="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombre diabetico"] = [
-  'diabetico="SI" AND sexo="Masculino"',
-  "personas",
+    'diabetico="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["mujeres con diabetes"] = [
-  'diabetico="SI" AND sexo="Femenino"',
-  "personas",
+    'diabetico="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres diabeticas"] = [
-  'diabetico="SI" AND sexo="Femenino"',
-  "personas",
+    'diabetico="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujer diabetica"] = ['diabetico="SI" AND sexo="Femenino"', "personas"];
 miArray["diabeticos"] = ['diabetico="SI"', "personas"];
@@ -716,66 +716,66 @@ miArray["diabetes"] = ['diabetico="SI"', "personas"];
 
 miArray["personas hipertensas"] = ['hipertenso="SI"', "personas"];
 miArray["personas que padecen de hipertension"] = [
-  'hipertenso="SI"',
-  "personas",
+    'hipertenso="SI"',
+    "personas",
 ];
 miArray["personas que padecen hipertension"] = ['hipertenso="SI"', "personas"];
 miArray["personas que sufren de hipertension"] = [
-  'hipertenso="SI"',
-  "personas",
+    'hipertenso="SI"',
+    "personas",
 ];
 miArray["personas que sufren hipertension"] = ['hipertenso="SI"', "personas"];
 miArray["hipertensos"] = ['hipertenso="SI"', "personas"];
 miArray["hipertension"] = ['hipertenso="SI"', "personas"];
 
 miArray["hombres hipertensos"] = [
-  'hipertenso="SI" AND sexo="Masculino"',
-  "personas",
+    'hipertenso="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres con hipertension"] = [
-  'hipertenso="SI" AND sexo="Masculino"',
-  "personas",
+    'hipertenso="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que padecen hipertension"] = [
-  'hipertenso="SI" AND sexo="Masculino"',
-  "personas",
+    'hipertenso="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que padecen de hipertension"] = [
-  'hipertenso="SI" AND sexo="Masculino"',
-  "personas",
+    'hipertenso="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que sufren hipertension"] = [
-  'hipertenso="SI" AND sexo="Masculino"',
-  "personas",
+    'hipertenso="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que sufren de hipertension"] = [
-  'hipertenso="SI" AND sexo="Masculino"',
-  "personas",
+    'hipertenso="SI" AND sexo="Masculino"',
+    "personas",
 ];
 
 miArray["mujeres hipertensas"] = [
-  'hipertenso="SI" AND sexo="Femenino"',
-  "personas",
+    'hipertenso="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres con hipertension"] = [
-  'hipertenso="SI" AND sexo="Femenino"',
-  "personas",
+    'hipertenso="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que padecen hipertension"] = [
-  'hipertenso="SI" AND sexo="Femenino"',
-  "personas",
+    'hipertenso="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que padecen de hipertension"] = [
-  'hipertenso="SI" AND sexo="Femenino"',
-  "personas",
+    'hipertenso="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que sufren de hipertension"] = [
-  'hipertenso="SI" AND sexo="Femenino"',
-  "personas",
+    'hipertenso="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que sufren hipertension"] = [
-  'hipertenso="SI" AND sexo="Femenino"',
-  "personas",
+    'hipertenso="SI" AND sexo="Femenino"',
+    "personas",
 ];
 
 /* Hipertension */
@@ -788,119 +788,119 @@ miArray["personas que sufren artritis"] = ['artritis="SI"', "personas"];
 miArray["personas que sufren de artritis"] = ['artritis="SI"', "personas"];
 
 miArray["hombres con artritis"] = [
-  'artritis="SI" AND sexo="Masculino"',
-  "personas",
+    'artritis="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que padecen artritis"] = [
-  'artritis="SI" AND sexo="Masculino"',
-  "personas",
+    'artritis="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que padecen de artritis"] = [
-  'artritis="SI" AND sexo="Masculino"',
-  "personas",
+    'artritis="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que sufren artritis"] = [
-  'artritis="SI" AND sexo="Masculino"',
-  "personas",
+    'artritis="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que sufren de artritis"] = [
-  'artritis="SI" AND sexo="Masculino"',
-  "personas",
+    'artritis="SI" AND sexo="Masculino"',
+    "personas",
 ];
 
 miArray["mujeres con artritis"] = [
-  'artritis="SI" AND sexo="Femenino"',
-  "personas",
+    'artritis="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que padecen artritis"] = [
-  'artritis="SI" AND sexo="Femenino"',
-  "personas",
+    'artritis="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que padecen de artritis"] = [
-  'artritis="SI" AND sexo="Femenino"',
-  "personas",
+    'artritis="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que sufren artritis"] = [
-  'artritis="SI" AND sexo="Femenino"',
-  "personas",
+    'artritis="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que sufren de artritis"] = [
-  'artritis="SI" AND sexo="Femenino"',
-  "personas",
+    'artritis="SI" AND sexo="Femenino"',
+    "personas",
 ];
 /* artritis */
 
 miArray["enfermedad cardiaca"] = ['enf_cardiaca="SI"', "personas"];
 miArray["personas con enfermedad cardiaca"] = ['enf_cardiaca="SI"', "personas"];
 miArray["personas que tienen enfermedad cardiaca"] = [
-  'enf_cardiaca="SI"',
-  "personas",
+    'enf_cardiaca="SI"',
+    "personas",
 ];
 miArray["personas que padecen enfermedad cardiaca"] = [
-  'enf_cardiaca="SI"',
-  "personas",
+    'enf_cardiaca="SI"',
+    "personas",
 ];
 miArray["personas que sufren enfermedad cardiaca"] = [
-  'enf_cardiaca="SI"',
-  "personas",
+    'enf_cardiaca="SI"',
+    "personas",
 ];
 miArray["personas que padecen de enfermedad cardiaca"] = [
-  'enf_cardiaca="SI"',
-  "personas",
+    'enf_cardiaca="SI"',
+    "personas",
 ];
 miArray["personas que sufren de enfermedad cardiaca"] = [
-  'enf_cardiaca="SI"',
-  "personas",
+    'enf_cardiaca="SI"',
+    "personas",
 ];
 
 miArray["hombres con enfermedad cardiaca"] = [
-  'enf_cardiaca="SI" AND sexo="Masculino"',
-  "personas",
+    'enf_cardiaca="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que tienen enfermedad cardiaca"] = [
-  'enf_cardiaca="SI" AND sexo="Masculino"',
-  "personas",
+    'enf_cardiaca="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que padecen enfermedad cardiaca"] = [
-  'enf_cardiaca="SI" AND sexo="Masculino"',
-  "personas",
+    'enf_cardiaca="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que sufren enfermedad cardiaca"] = [
-  'enf_cardiaca="SI" AND sexo="Masculino"',
-  "personas",
+    'enf_cardiaca="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que padecen de enfermedad cardiaca"] = [
-  'enf_cardiaca="SI" AND sexo="Masculino"',
-  "personas",
+    'enf_cardiaca="SI" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres que sufren de enfermedad cardiaca"] = [
-  'enf_cardiaca="SI" AND sexo="Masculino"',
-  "personas",
+    'enf_cardiaca="SI" AND sexo="Masculino"',
+    "personas",
 ];
 
 miArray["mujeres con enfermedad cardiaca"] = [
-  'enf_cardiaca="SI" AND sexo="Femenino"',
-  "personas",
+    'enf_cardiaca="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que tienen enfermedad cardiaca"] = [
-  'enf_cardiaca="SI" AND sexo="Femenino"',
-  "personas",
+    'enf_cardiaca="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que padecen enfermedad cardiaca"] = [
-  'enf_cardiaca="SI" AND sexo="Femenino"',
-  "personas",
+    'enf_cardiaca="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que sufren enfermedad cardiaca"] = [
-  'enf_cardiaca="SI" AND sexo="Femenino"',
-  "personas",
+    'enf_cardiaca="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que padecen de enfermedad cardiaca"] = [
-  'enf_cardiaca="SI" AND sexo="Femenino"',
-  "personas",
+    'enf_cardiaca="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres que sufren de enfermedad cardiaca"] = [
-  'enf_cardiaca="SI" AND sexo="Femenino"',
-  "personas",
+    'enf_cardiaca="SI" AND sexo="Femenino"',
+    "personas",
 ];
 
 /* enfermedad cardiaca */
@@ -908,16 +908,16 @@ miArray["mujeres que sufren de enfermedad cardiaca"] = [
 miArray["ets"] = ['ETS="SI"', "personas"];
 miArray["efermedades de tansmision sexual"] = ['ETS="SI"', "personas"];
 miArray["personas con enfermedades de transmision sexual"] = [
-  'ETS="SI"',
-  "personas",
+    'ETS="SI"',
+    "personas",
 ];
 miArray["personas que tengan enfermedades de transmision sexual"] = [
-  'ETS="SI"',
-  "personas",
+    'ETS="SI"',
+    "personas",
 ];
 miArray["personas que tengan alguna enfermeda de transmision sexual"] = [
-  'ETS="SI"',
-  "personas",
+    'ETS="SI"',
+    "personas",
 ];
 miArray["personas que tengan alguna ets"] = ['ETS="SI"', "personas"];
 
@@ -925,115 +925,115 @@ miArray["personas que tengan alguna ets"] = ['ETS="SI"', "personas"];
 
 miArray["cancer de cabeza y cuello"] = ['cancer="Cabeza y Cuello"', "personas"];
 miArray["personas con cancer de cabeza y cuello"] = [
-  'cancer="Cabeza y Cuello"',
-  "personas",
+    'cancer="Cabeza y Cuello"',
+    "personas",
 ];
 miArray["mujeres con cancer de cabeza y cuello"] = [
-  'cancer="Cabeza y Cuello" AND sexo="Femenino"',
-  "personas",
+    'cancer="Cabeza y Cuello" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["hombres con cancer de cabeza y cuello"] = [
-  'cancer="Cabeza y Cuello" AND sexo="Masculino"',
-  "personas",
+    'cancer="Cabeza y Cuello" AND sexo="Masculino"',
+    "personas",
 ];
 
 miArray["cancer de cerebro"] = ['cancer="Cerebro"', "personas"];
 miArray["personas con cancer de cerebro"] = ['cancer="Cerebro"', "personas"];
 miArray["mujeres con cancer de cerebro"] = [
-  'cancer="Cerebro" AND sexo="Femenino"',
-  "personas",
+    'cancer="Cerebro" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["hombres con cancer de cerebro"] = [
-  'cancer="Cerebro" AND sexo="Masculino"',
-  "personas",
+    'cancer="Cerebro" AND sexo="Masculino"',
+    "personas",
 ];
 
 miArray["cancer de colorectal"] = ['cancer="Colorectal"', "personas"];
 miArray["personas con cancer de colorectal"] = [
-  'cancer="Colorectal"',
-  "personas",
+    'cancer="Colorectal"',
+    "personas",
 ];
 miArray["mujeres con cancer de colorectal"] = [
-  'cancer="Colorectal" AND sexo="Femenino"',
-  "personas",
+    'cancer="Colorectal" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["hombres con cancer de colorectal"] = [
-  'cancer="Colorectal" AND sexo="Masculino"',
-  "personas",
+    'cancer="Colorectal" AND sexo="Masculino"',
+    "personas",
 ];
 
 miArray["cancer de cuello uterino"] = ['cancer="Cuello Uterino"', "personas"];
 miArray["personas con cancer de cuello uterino"] = [
-  'cancer="Cuello Uterino"',
-  "personas",
+    'cancer="Cuello Uterino"',
+    "personas",
 ];
 miArray["mujeres con cancer de cuello uterino"] = [
-  'cancer="Cuello Uterino" AND sexo="Femenino"',
-  "personas",
+    'cancer="Cuello Uterino" AND sexo="Femenino"',
+    "personas",
 ];
 
 miArray["cancer endometrio"] = ['cancer="Endometrio"', "personas"];
 miArray["personas con cancer de endometrio"] = [
-  'cancer="Endometrio"',
-  "personas",
+    'cancer="Endometrio"',
+    "personas",
 ];
 miArray["personas con cancer endometrio"] = ['cancer="Endometrio"', "personas"];
 miArray["mujeres con cancer de endometrio"] = [
-  'cancer="Endometrio" AND sexo="Femenino"',
-  "personas",
+    'cancer="Endometrio" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres con cancer endometrio"] = [
-  'cancer="Endometrio" AND sexo="Femenino"',
-  "personas",
+    'cancer="Endometrio" AND sexo="Femenino"',
+    "personas",
 ];
 
 miArray["cancer de estomago"] = ['cancer="Estomago"', "personas"];
 miArray["personas con cancer de estomago"] = ['cancer="Estomago"', "personas"];
 miArray["mujeres con cancer de estomago"] = [
-  'cancer="Estomago" AND sexo="Femenino"',
-  "personas",
+    'cancer="Estomago" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["hombres con cancer de estomago"] = [
-  'cancer="Estomago" AND sexo="Masculino"',
-  "personas",
+    'cancer="Estomago" AND sexo="Masculino"',
+    "personas",
 ];
 
 miArray["cancer hepatico"] = ['cancer="Hepatico"', "personas"];
 miArray["personas con cancer de hepatico"] = ['cancer="Hepatico"', "personas"];
 miArray["mujeres con cancer de hepatico"] = [
-  'cancer="Hepatico" AND sexo="Femenino"',
-  "personas",
+    'cancer="Hepatico" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres con cancer hepatico"] = [
-  'cancer="Hepatico" AND sexo="Femenino"',
-  "personas",
+    'cancer="Hepatico" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["hombres con cancer de hepatico"] = [
-  'cancer="Hepatico" AND sexo="Masculino"',
-  "personas",
+    'cancer="Hepatico" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres con cancer hepatico"] = [
-  'cancer="Hepatico" AND sexo="Masculino"',
-  "personas",
+    'cancer="Hepatico" AND sexo="Masculino"',
+    "personas",
 ];
 
 miArray["cancer de higado"] = ['cancer="Higado"', "personas"];
 miArray["personas con cancer de higado"] = ['cancer="Higado"', "personas"];
 miArray["mujeres con cancer de higado"] = [
-  'cancer="Higado" AND sexo="Femenino"',
-  "personas",
+    'cancer="Higado" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres con cancer en el higado"] = [
-  'cancer="Higado" AND sexo="Femenino"',
-  "personas",
+    'cancer="Higado" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["hombres con cancer de higado"] = [
-  'cancer="Higado" AND sexo="Masculino"',
-  "personas",
+    'cancer="Higado" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres con cancer en el higado"] = [
-  'cancer="Higado" AND sexo="Masculino"',
-  "personas",
+    'cancer="Higado" AND sexo="Masculino"',
+    "personas",
 ];
 
 miArray["cancer de huesos"] = ['cancer="Huesos"', "personas"];
@@ -1041,52 +1041,52 @@ miArray["cancer en los huesos"] = ['cancer="Huesos"', "personas"];
 miArray["personas con cancer de huesos"] = ['cancer="Huesos"', "personas"];
 miArray["personas con cancer en los huesos"] = ['cancer="Huesos"', "personas"];
 miArray["mujeres con cancer de huesos"] = [
-  'cancer="Huesos" AND sexo="Femenino"',
-  "personas",
+    'cancer="Huesos" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["mujeres con cancer en los huesos"] = [
-  'cancer="Huesos" AND sexo="Femenino"',
-  "personas",
+    'cancer="Huesos" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["hombres con cancer de huesos"] = [
-  'cancer="Huesos" AND sexo="Masculino"',
-  "personas",
+    'cancer="Huesos" AND sexo="Masculino"',
+    "personas",
 ];
 miArray["hombres con cancer en los huesos"] = [
-  'cancer="Huesos" AND sexo="Masculino"',
-  "personas",
+    'cancer="Huesos" AND sexo="Masculino"',
+    "personas",
 ];
 
 miArray["leucemia"] = ['cancer="Leucemia"', "personas"];
 miArray["personas con leucemia"] = ['cancer="Leucemia"', "personas"];
 miArray["mujeres con leucemia"] = [
-  'cancer="Leucemia" AND sexo="Femenino"',
-  "personas",
+    'cancer="Leucemia" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["hombres con leucemia"] = [
-  'cancer="Leucemia" AND sexo="Masculino"',
-  "personas",
+    'cancer="Leucemia" AND sexo="Masculino"',
+    "personas",
 ];
 
 miArray["cancer de mama"] = ['cancer="Mama" AND sexo="Femenino"', "personas"];
 miArray["mujeres con cancer de mama"] = [
-  'cancer="Mama" AND sexo="Femenino"',
-  "personas",
+    'cancer="Mama" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["personas con cancer de mama"] = [
-  'cancer="Mama" AND sexo="Femenino"',
-  "personas",
+    'cancer="Mama" AND sexo="Femenino"',
+    "personas",
 ];
 
 miArray["melanoma"] = ['cancer="Melnoma"', "personas"];
 miArray["personas con melanoma"] = ['cancer="Melnoma"', "personas"];
 miArray["mujeres con melanoma"] = [
-  'cancer="Melnoma" AND sexo="Femenino"',
-  "personas",
+    'cancer="Melnoma" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["hombres con melanoma"] = [
-  'cancer="Melnoma" AND sexo="Masculino"',
-  "personas",
+    'cancer="Melnoma" AND sexo="Masculino"',
+    "personas",
 ];
 
 /* cancer */
@@ -1113,12 +1113,12 @@ miArray["personas con epilepsia"] = ['epilepsia="SI"', "personas"];
 miArray["personas que sufren de epilepsia"] = ['epilepsia="SI"', "personas"];
 
 miArray["mujeres con epilepsia"] = [
-  'epilepsia="SI" AND sexo="Femenino"',
-  "personas",
+    'epilepsia="SI" AND sexo="Femenino"',
+    "personas",
 ];
 miArray["hombres con epilepsia"] = [
-  'epilepsia="SI" AND sexo="Masculino"',
-  "personas",
+    'epilepsia="SI" AND sexo="Masculino"',
+    "personas",
 ];
 /* Epilepsia */
 
@@ -1126,64 +1126,64 @@ miArray["hombres con epilepsia"] = [
 
 miArray["enf_renal"] = ['enf_renal="SI"', "personas"];
 miArray["discapacidad"] = [
-  'discapacidad!="" AND discapacidad!="NO"',
-  "personas",
+    'discapacidad!="" AND discapacidad!="NO"',
+    "personas",
 ];
 miArray["paralisis"] = ['paralisis="SI"', "personas"];
 
 //por edad pendiente y escolarizados
 
 miArray["escolarizados"] = [
-  'educacion="Media General" AND edad<=17 OR educacion="Media General" AND edad<=16 OR educacion="Inicial" AND edad<=7 OR educacion="Basica" AND edad>=6 AND edad<=13',
-  "personas",
+    'educacion="Media General" AND edad<=17 OR educacion="Media General" AND edad<=16 OR educacion="Inicial" AND edad<=7 OR educacion="Basica" AND edad>=6 AND edad<=13',
+    "personas",
 ];
 
 miArray["media general"] = [
-  'educacion="Media General" AND edad<=17',
-  "personas",
+    'educacion="Media General" AND edad<=17',
+    "personas",
 ];
 
 miArray["media general incompleto"] = [
-  'educacion="educacion="Media General" AND edad<=16',
-  "personas",
+    'educacion="educacion="Media General" AND edad<=16',
+    "personas",
 ];
 
 miArray["educacion inicial"] = ['educacion="Inicial" AND edad<=7', "personas"];
 miArray["educacion basica"] = [
-  'educacion="Basica" AND edad>=6 AND edad<=13',
-  "personas",
+    'educacion="Basica" AND edad>=6 AND edad<=13',
+    "personas",
 ];
 
 miArray["niños no escolarizados"] = [
-  'educacion="Sin estudio" AND edad>=0 AND edad<=2 OR educacion="No Escolarizado Inicial a Media General" AND edad>=0 AND edad<=2',
-  "personas",
+    'educacion="Sin estudio" AND edad>=0 AND edad<=2 OR educacion="No Escolarizado Inicial a Media General" AND edad>=0 AND edad<=2',
+    "personas",
 ];
 
 miArray["jovenes no escolarizados"] = [
-  'educacion="Sin estudio" AND edad>=6 AND edad<=16 OR educacion="No Escolarizado Inicial a Media General" AND edad>=6 AND edad<=16',
-  "personas",
+    'educacion="Sin estudio" AND edad>=6 AND edad<=16 OR educacion="No Escolarizado Inicial a Media General" AND edad>=6 AND edad<=16',
+    "personas",
 ];
 miArray["no escolarizados"] = [
-  'educacion="Sin estudio" AND edad>=6 AND edad<=16 OR educacion="No Escolarizado Inicial a Media General" AND edad>=6 AND edad<=16',
-  "personas",
+    'educacion="Sin estudio" AND edad>=6 AND edad<=16 OR educacion="No Escolarizado Inicial a Media General" AND edad>=6 AND edad<=16',
+    "personas",
 ];
 
 /*  parte de educacion */
 
 miArray["personas con discapacidad"] = ['discapacidad!=""', "personas"];
 miArray["personas que requieren ayuda tecnica"] = [
-  'requiere_ayuda!=""',
-  "personas",
+    'requiere_ayuda!=""',
+    "personas",
 ];
 
 miArray["jose gregorio hernandez"] = ['recibe_bono_jose_g!=""', "personas"];
 miArray["bono jose gregorio hernandez"] = [
-  'recibe_bono_jose_g!=""',
-  "personas",
+    'recibe_bono_jose_g!=""',
+    "personas",
 ];
 miArray["atendidos con el bono jose gregorio hernandez"] = [
-  'recibe_bono_jose_g!=""',
-  "personas",
+    'recibe_bono_jose_g!=""',
+    "personas",
 ];
 
 /*  personas con discapacidad */
@@ -1195,16 +1195,16 @@ miArray["bono de lactancia materna"] = ['bono_lactancia="SI"', "personas"];
 /* madres lacantes */
 
 miArray["bonos"] = [
-  'conf_ingreso_mensual="Bonos" OR conf_ingreso_mensual="Emprendimiento Personal Más Bonos" OR conf_ingreso_mensual="Salario en Bolivares más Bonos" OR conf_ingreso_mensual="Salario en Divisas más Bonos" OR conf_ingreso_mensual="Trabajo Particular más Bonos" OR conf_ingreso_mensual="Salario, más Bonos, más emprendimiento Personal"',
-  "personas",
+    'conf_ingreso_mensual="Bonos" OR conf_ingreso_mensual="Emprendimiento Personal Más Bonos" OR conf_ingreso_mensual="Salario en Bolivares más Bonos" OR conf_ingreso_mensual="Salario en Divisas más Bonos" OR conf_ingreso_mensual="Trabajo Particular más Bonos" OR conf_ingreso_mensual="Salario, más Bonos, más emprendimiento Personal"',
+    "personas",
 ];
 miArray["personas atendidas con bonos"] = [
-  'conf_ingreso_mensual="Bonos" OR conf_ingreso_mensual="Emprendimiento Personal Más Bonos" OR conf_ingreso_mensual="Salario en Bolivares más Bonos" OR conf_ingreso_mensual="Salario en Divisas más Bonos" OR conf_ingreso_mensual="Trabajo Particular más Bonos" OR conf_ingreso_mensual="Salario, más Bonos, más emprendimiento Personal"',
-  "personas",
+    'conf_ingreso_mensual="Bonos" OR conf_ingreso_mensual="Emprendimiento Personal Más Bonos" OR conf_ingreso_mensual="Salario en Bolivares más Bonos" OR conf_ingreso_mensual="Salario en Divisas más Bonos" OR conf_ingreso_mensual="Trabajo Particular más Bonos" OR conf_ingreso_mensual="Salario, más Bonos, más emprendimiento Personal"',
+    "personas",
 ];
 miArray["personas atendidas mediante el sistema patria"] = [
-  'conf_ingreso_mensual="Bonos" OR conf_ingreso_mensual="Emprendimiento Personal Más Bonos" OR conf_ingreso_mensual="Salario en Bolivares más Bonos" OR conf_ingreso_mensual="Salario en Divisas más Bonos" OR conf_ingreso_mensual="Trabajo Particular más Bonos" OR conf_ingreso_mensual="Salario, más Bonos, más emprendimiento Personal"',
-  "personas",
+    'conf_ingreso_mensual="Bonos" OR conf_ingreso_mensual="Emprendimiento Personal Más Bonos" OR conf_ingreso_mensual="Salario en Bolivares más Bonos" OR conf_ingreso_mensual="Salario en Divisas más Bonos" OR conf_ingreso_mensual="Trabajo Particular más Bonos" OR conf_ingreso_mensual="Salario, más Bonos, más emprendimiento Personal"',
+    "personas",
 ];
 
 /* bonos */
@@ -1217,15 +1217,15 @@ miArray["somos venezuela"] = ['msv="SI"', "personas"];
 /* somos venezuela */
 
 miArray["planificacion familiar"] = [
-  'planificacio_familiar="Es Participante"',
-  "personas",
+    'planificacio_familiar="Es Participante"',
+    "personas",
 ];
 /* Planificación familia */
 
 miArray["deficit nutricional"] = ['deficit_nutricional="SI"', "personas"];
 miArray["personas con deficit nutricional"] = [
-  'deficit_nutricional="SI"',
-  "personas",
+    'deficit_nutricional="SI"',
+    "personas",
 ];
 /* Deficit nutricional */
 
@@ -1234,12 +1234,12 @@ miArray["atendidos por el inn"] = ['combo_inn="SI"', "personas"];
 
 miArray["hogares de la patria"] = ['hogares_de_la_patria="SI"', "personas"];
 miArray["atendidos por hogares de la patria"] = [
-  'hogares_de_la_patria="SI"',
-  "personas",
+    'hogares_de_la_patria="SI"',
+    "personas",
 ];
 miArray["protegidos con hogares de la patria"] = [
-  'hogares_de_la_patria="SI"',
-  "personas",
+    'hogares_de_la_patria="SI"',
+    "personas",
 ];
 /* Hogares de la patria */
 
@@ -1254,8 +1254,8 @@ miArray["puebo indigena cubeo"] = ['pueblo_indigena="Cubeo"', "personas"];
 miArray["etnia cubeo"] = ['pueblo_indigena="Cubeo"', "personas"];
 miArray["curripaco"] = ['pueblo_indigena="Curripaco"', "personas"];
 miArray["puebo indigena curripaco"] = [
-  'pueblo_indigena="Curripaco"',
-  "personas",
+    'pueblo_indigena="Curripaco"',
+    "personas",
 ];
 miArray["etnia curripaco"] = ['pueblo_indigena="Curripaco"', "personas"];
 miArray["eñapa"] = ['pueblo_indigena="Eñapa"', "personas"];
@@ -1290,8 +1290,8 @@ miArray["puebo indigena sanema"] = ['pueblo_indigena="Sanema"', "personas"];
 miArray["etnia sanema"] = ['pueblo_indigena="Sanema"', "personas"];
 miArray["warequena"] = ['pueblo_indigena="Warequena"', "personas"];
 miArray["puebo indigena warequena"] = [
-  'pueblo_indigena="Warequena"',
-  "personas",
+    'pueblo_indigena="Warequena"',
+    "personas",
 ];
 miArray["etnia warequena"] = ['pueblo_indigena="Warequena"', "personas"];
 miArray["yabarana"] = ['pueblo_indigena="Yabarana"', "personas"];
@@ -1318,25 +1318,25 @@ miArray["basica"] = ['educacion="Basica"', "personas"];
 miArray["sin estudio"] = ['educacion="Sin estudio"', "personas"];
 miArray["especialización"] = ['educacion="Especialización"', "personas"];
 miArray["media general incompleto"] = [
-  'educacion="Media General Incompleto"',
-  "personas",
+    'educacion="Media General Incompleto"',
+    "personas",
 ];
 miArray["misión ribas"] = ['educacion="Misión Ribas"', "personas"];
 miArray["misión robinson"] = ['educacion="Misión Robinson"', "personas"];
 miArray["misión sucre"] = ['educacion="Misión Sucre"', "personas"];
 miArray["no escolarizado inicial a media general"] = [
-  'educacion="No Escolarizado Inicial a Media General"',
-  "personas",
+    'educacion="No Escolarizado Inicial a Media General"',
+    "personas",
 ];
 miArray["postgrados"] = ['educacion="Postgrados"', "personas"];
 miArray["postgrado incompleto"] = [
-  'educacion="Postgrado Incompleto"',
-  "personas",
+    'educacion="Postgrado Incompleto"',
+    "personas",
 ];
 miArray["universitario"] = ['educacion="Universitario"', "personas"];
 miArray["universitario incompleto"] = [
-  'educacion="Universitario Incompleto"',
-  "personas",
+    'educacion="Universitario Incompleto"',
+    "personas",
 ];
 /* educacion */
 
@@ -1359,87 +1359,87 @@ miArray["estudiante"] = ['ocupacion="Estudiante"', "personas"];
 miArray["obrero"] = ['ocupacion="Obrero"', "personas"];
 miArray["oficios del hogar"] = ['ocupacion="Oficios del Hogar"', "personas"];
 miArray["trabajador por cuenta propia (formal)"] = [
-  'ocupacion="Trabajador por Cuenta Propia (Formal)"',
-  "personas",
+    'ocupacion="Trabajador por Cuenta Propia (Formal)"',
+    "personas",
 ];
 miArray["trabajador por cuenta propia (informal)"] = [
-  'ocupacion="Trabajador por Cuenta Propia (Informal)"',
-  "personas",
+    'ocupacion="Trabajador por Cuenta Propia (Informal)"',
+    "personas",
 ];
 /* ocupacion */
 
 miArray["publico municipal"] = [
-  'instancia_laboral="Publico Municipal"',
-  "personas",
+    'instancia_laboral="Publico Municipal"',
+    "personas",
 ];
 miArray["publico regional"] = [
-  'instancia_laboral="Publico Regional"',
-  "personas",
+    'instancia_laboral="Publico Regional"',
+    "personas",
 ];
 miArray["publico nacional"] = [
-  'instancia_laboral="Publico Nacional"',
-  "personas",
+    'instancia_laboral="Publico Nacional"',
+    "personas",
 ];
 /* instancia laboral */
 
 miArray["bomberos"] = [
-  'pertenece_cuerpo_seguridad_gestion_riesgo="Bomberos"',
-  "personas",
+    'pertenece_cuerpo_seguridad_gestion_riesgo="Bomberos"',
+    "personas",
 ];
 miArray["cicpc"] = [
-  'pertenece_cuerpo_seguridad_gestion_riesgo="CICPC"',
-  "personas",
+    'pertenece_cuerpo_seguridad_gestion_riesgo="CICPC"',
+    "personas",
 ];
 miArray["armada"] = [
-  'pertenece_cuerpo_seguridad_gestion_riesgo="Armada"',
-  "personas",
+    'pertenece_cuerpo_seguridad_gestion_riesgo="Armada"',
+    "personas",
 ];
 miArray["aviación"] = [
-  'pertenece_cuerpo_seguridad_gestion_riesgo="Aviación"',
-  "personas",
+    'pertenece_cuerpo_seguridad_gestion_riesgo="Aviación"',
+    "personas",
 ];
 miArray["ejercito"] = [
-  'pertenece_cuerpo_seguridad_gestion_riesgo="Ejercito"',
-  "personas",
+    'pertenece_cuerpo_seguridad_gestion_riesgo="Ejercito"',
+    "personas",
 ];
 miArray["guardia nacional"] = [
-  'pertenece_cuerpo_seguridad_gestion_riesgo="Guardia Nacional"',
-  "personas",
+    'pertenece_cuerpo_seguridad_gestion_riesgo="Guardia Nacional"',
+    "personas",
 ];
 miArray["milicia"] = [
-  'pertenece_cuerpo_seguridad_gestion_riesgo="Milicia"',
-  "personas",
+    'pertenece_cuerpo_seguridad_gestion_riesgo="Milicia"',
+    "personas",
 ];
 miArray["policia estadal"] = [
-  'pertenece_cuerpo_seguridad_gestion_riesgo="Policia Estadal"',
-  "personas",
+    'pertenece_cuerpo_seguridad_gestion_riesgo="Policia Estadal"',
+    "personas",
 ];
 miArray["policia municipa"] = [
-  'pertenece_cuerpo_seguridad_gestion_riesgo="Policia Municipa"',
-  "personas",
+    'pertenece_cuerpo_seguridad_gestion_riesgo="Policia Municipa"',
+    "personas",
 ];
 miArray["policia nacional"] = [
-  'pertenece_cuerpo_seguridad_gestion_riesgo="Policia Nacional"',
-  "personas",
+    'pertenece_cuerpo_seguridad_gestion_riesgo="Policia Nacional"',
+    "personas",
 ];
 miArray["protección civil"] = [
-  'pertenece_cuerpo_seguridad_gestion_riesgo="Protección Civil"',
-  "personas",
+    'pertenece_cuerpo_seguridad_gestion_riesgo="Protección Civil"',
+    "personas",
 ];
 miArray["sebin"] = [
-  'pertenece_cuerpo_seguridad_gestion_riesgo="SEBIN"',
-  "personas",
+    'pertenece_cuerpo_seguridad_gestion_riesgo="SEBIN"',
+    "personas",
 ];
 /* cuerpos de seguridad */
 
 miArray["artes plasticas"] = [
-  'realiza_actividad_cultural="Artes Plasticas"',
-  "personas",
+    'realiza_actividad_cultural="Artes Plasticas"',
+    "personas",
 ];
 miArray["baile"] = ['realiza_actividad_cultural="Baile"', "personas"];
 miArray["cuenta cuentos"] = [
-  'realiza_actividad_cultural="Cuenta Cuentos"',
-  "personas",
+    'realiza_actividad_cultural="Cuenta Cuentos"',
+    "personas",
 ];
 miArray["danza"] = ['realiza_actividad_cultural="Danza"', "personas"];
 miArray["musica"] = ['realiza_actividad_cultural="Musica"', "personas"];
@@ -1448,8 +1448,8 @@ miArray["teatro"] = ['realiza_actividad_cultural="Teatro"', "personas"];
 /* cultural */
 
 miArray["creyente sin religion"] = [
-  'creencia_reliosa="Creyente Sin Religion"',
-  "personas",
+    'creencia_reliosa="Creyente Sin Religion"',
+    "personas",
 ];
 miArray["adventista"] = ['creencia_reliosa="Adventista"', "personas"];
 miArray["bahai"] = ['creencia_reliosa="Bahai"', "personas"];
@@ -1464,16 +1464,16 @@ miArray["mason"] = ['creencia_reliosa="Mason"', "personas"];
 miArray["palero"] = ['creencia_reliosa="Palero"', "personas"];
 miArray["santero"] = ['creencia_reliosa="Santero"', "personas"];
 miArray["testigo de jehova"] = [
-  'creencia_reliosa="Testigo de Jehova"',
-  "personas",
+    'creencia_reliosa="Testigo de Jehova"',
+    "personas",
 ];
 miArray["ninguna religion (agnostico)"] = [
-  'creencia_reliosa="Ninguna (Agnostico)"',
-  "personas",
+    'creencia_reliosa="Ninguna (Agnostico)"',
+    "personas",
 ];
 miArray["ninguna religion (ateo)"] = [
-  'creencia_reliosa="Ninguna (Ateo)"',
-  "personas",
+    'creencia_reliosa="Ninguna (Ateo)"',
+    "personas",
 ];
 /* religion */
 
@@ -1483,8 +1483,8 @@ miArray["loros"] = ['animales_domesticos="Loros"', "personas"];
 miArray["conejos"] = ['animales_domesticos="Conejos"', "personas"];
 
 miArray["integrantes del consejo comunal"] = [
-  'concejo_comunal!=""',
-  "personas",
+    'concejo_comunal!=""',
+    "personas",
 ];
 miArray["integrantes de la raas"] = ['raas!=""', "personas"];
 miArray["integrantes del clap"] = ['clap!=""', "personas"];
@@ -1492,8 +1492,8 @@ miArray["integrantes de la ubch"] = ['ubch!=""', "personas"];
 
 miArray["milicianos"] = ['milicia!=""', "personas"];
 miArray["promotores comunitarios"] = [
-  'promotores_comunitarios!=""',
-  "personas",
+    'promotores_comunitarios!=""',
+    "personas",
 ];
 miArray["integrante del frente francisco de miranda"] = ['ffm!=""', "personas"];
 miArray["frente francisco de miranda"] = ['ffm!=""', "personas"];
@@ -1501,11 +1501,134 @@ miArray["movimiento somos venezuela"] = ['msv!=""', "personas"];
 miArray["brigadista  somos venezuela"] = ['msv!=""', "personas"];
 
 miArray["mesa tecnica de telecomunicaciones"] = [
-  'mesa_tecnica_telecomunicaciones="SI"',
-  "personas",
+    'mesa_tecnica_telecomunicaciones="SI"',
+    "personas",
 ];
 miArray["mesa tecnica de agua"] = ['mesa_tecnica_agua="SI"', "personas"];
 miArray["sala de barrio nuevo barrio tricolor"] = [
-  'sala_bnbt="SI"',
-  "personas",
+    'sala_bnbt="SI"',
+    "personas",
+];
+
+// Proteccion Social del 1*10
+miArray["1x10 servicios"] = ['proteccion_social="SERVICIOS"', "personas"];
+miArray["1x10 desastres naturales"] = [
+    'proteccion_social="DESASTRES NATURALES"',
+    "personas",
+];
+miArray["1x10 social"] = ['proteccion_social="SOCIAL"', "personas"];
+miArray["1x10 caso salud individual"] = [
+    'proteccion_social="CASO SALUD INDIVIDUAL"',
+    "personas",
+];
+miArray["1x10 falta de insumos"] = [
+    'proteccion_social="FALTA DE INSUMOS"',
+    "personas",
+];
+miArray["1x10 traslado asistencial"] = [
+    'proteccion_social="TRASLADO ASISTENCIAL"',
+    "personas",
+];
+miArray["1x10 laboratorio"] = ['proteccion_social="LABORATORIO"', "personas"];
+miArray["1x10 oftalmologia"] = ['proteccion_social="OFTALMOLOGIA"', "personas"];
+miArray["1x10 pica y poda"] = ['proteccion_social="PICA Y PODA"', "personas"];
+miArray["1x10 infraestructura"] = [
+    'proteccion_social="INFRAESTRUCTURA"',
+    "personas",
+];
+miArray["1x10 rayos x"] = ['proteccion_social="RAYOS X"', "personas"];
+miArray["1x10 resonancia magnetica"] = [
+    'proteccion_social="RESONANCIA MAGNETICA"',
+    "personas",
+];
+miArray["1x10 luminaria(s) apagada(s)"] = [
+    'proteccion_social="LUMINARIA(S) APAGADA(S)"',
+    "personas",
+];
+miArray["1x10 asfaltado"] = ['proteccion_social="Asfaltado"', "personas"];
+miArray["1x10 atención inmediata de aguas servidas"] = [
+    'proteccion_social="ATENCIÓN INMEDIATA DE AGUAS SERVIDAS"',
+    "personas",
+];
+miArray["1x10 poste(s) dañado(s) o corroido(s)"] = [
+    'proteccion_social="POSTE(S) DAÑADO(S) O CORROIDO(S)"',
+    "personas",
+];
+miArray["1x10 hurto de equipo o elemento"] = [
+    'proteccion_social="HURTO DE EQUIPO O ELEMENTO"',
+    "personas",
+];
+miArray["1x10 proyectos mayores"] = [
+    'proteccion_social="PROYECTOS MAYORES"',
+    "personas",
+];
+miArray["1x10 otros"] = ['proteccion_social="OTROS"', "personas"];
+miArray["1x10 atenciones de instalaciones y equipos"] = [
+    'proteccion_social="ATENCIONES DE INSTALACIONES Y EQUIPOS"',
+    "personas",
+];
+miArray["1x10 ramas o arbol sobre la linea"] = [
+    'proteccion_social="RAMAS O ARBOL SOBRE LA LINEA"',
+    "personas",
+];
+miArray["1x10 requiere poda en tendido electrico"] = [
+    'proteccion_social="REQUIERE PODA EN TENDIDO ELECTRICO"',
+    "personas",
+];
+miArray["1x10 requiere poda en alumbrado publico"] = [
+    'proteccion_social="REQUIERE PODA EN ALUMBRADO PUBLICO"',
+    "personas",
+];
+miArray["1x10 afectación de vialidad"] = [
+    'proteccion_social="AFECTACIÓN DE VIALIDAD"',
+    "personas",
+];
+miArray["1x10 luz con intermitencia"] = [
+    'proteccion_social="LUZ CON INTERMITENCIA"',
+    "personas",
+];
+miArray["1x10 atención inmediata de agua potable"] = [
+    'proteccion_social="ATENCIÓN INMEDIATA DE AGUA POTABLE"',
+    "personas",
+];
+miArray["1x10 salud"] = ['proteccion_social="SALUD"', "personas"];
+miArray["1x10 centro de salud cerrado"] = [
+    'proteccion_social="CENTRO DE SALUD CERRADO"',
+    "personas",
+];
+miArray["1x10 cobro ilegal y sustracción de insumos"] = [
+    'proteccion_social="COBRO ILEGAL Y SUSTRACCIÓN DE INSUMOS"',
+    "personas",
+];
+miArray["1x10 incumplimiento de rutas"] = [
+    'proteccion_social="Incumplimiento de rutas"',
+    "personas",
+];
+miArray["1x10 agua"] = ['proteccion_social="AGUA"', "personas"];
+miArray["1x10 falla de servicio electrico"] = [
+    'proteccion_social="FALLA DE SERVICIO ELECTRICO"',
+    "personas",
+];
+miArray["1x10 asignación de cilindros (extraviados, hurtos, por no tener)"] = [
+    'proteccion_social="ASIGNACIÓN DE CILINDROS (EXTRAVIADOS, HURTOS, POR NO TENER)"',
+    "personas",
+];
+miArray["1x10 sector sin corriente"] = [
+    'proteccion_social="SECTOR SIN CORRIENTE"',
+    "personas",
+];
+miArray["1x10 puentes"] = ['proteccion_social="Puentes"', "personas"];
+miArray["1x10 arbol caido sobre tendido electrico"] = [
+    'proteccion_social="ARBOL CAIDO SOBRE TENDIDO ELECTRICO"',
+    "personas",
+];
+miArray["1x10 electricidad"] = ['proteccion_social="ELECTRICIDAD"', "personas"];
+miArray["1x10 ramas o arbol sobre el transformador"] = [
+    'proteccion_social="RAMAS O ARBOL SOBRE EL TRANSFORMADOR"',
+    "personas",
+];
+
+miArray["todos los casos atendidos por el 1x10"] = [
+    'proteccion_social!=""',
+    "personas",
 ];
