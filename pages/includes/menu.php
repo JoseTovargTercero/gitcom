@@ -46,6 +46,17 @@ if ($_SESSION['nivel'] == '1') {
 
 
         <li class="nav-item">
+          <a id="1x10" class="nav-link text-white" href="1x10">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-gears"></i>
+            </div>
+            <span class="nav-link-text ms-1">Atencion 1*10</span>
+          </a>
+        </li>
+
+
+
+        <li class="nav-item">
           <a id="solicitud" class="nav-link" href="adm_solicitud">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fa fa-user"></i>
