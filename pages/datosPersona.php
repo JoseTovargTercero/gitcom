@@ -482,6 +482,19 @@ if ($_SESSION['nivel'] == 1) {
                           <?php
                           if ($proteccion_social != '') {
                             echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">1x10:</strong> ' . $proteccion_social . '</li>';
+
+
+                              $query1x10 = "SELECT * FROM atencion_social WHERE CEDULA='$cedula'";
+                                $result = $conexion->query($query1x10);
+                                if ($result->num_rows > 0) {
+                                  while ($row = $result->fetch_assoc()) {
+                                    echo '<span><small>'.$row['REQUERIMIENTO'].' - '.$row['DESCRIP'].'</small></span>';
+                                  }
+                                }
+
+
+
+
                           }
 
 
