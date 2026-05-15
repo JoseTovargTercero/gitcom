@@ -458,17 +458,8 @@ if ($_SESSION['nivel'] == 1) {
                           }
 
                           ?>
-
-
                         </ul>
-
-
                       </div>
-
-
-
-
-
                     </div>
                   </div>
                   <div class="col-12 col-xl-6">
@@ -478,7 +469,6 @@ if ($_SESSION['nivel'] == 1) {
                       </div>
                       <div class="p-3">
                         <ul class="list-group">
-
                           <?php
                           if ($proteccion_social != '') {
                             echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">1x10:</strong> ' . $proteccion_social . '</li>';
@@ -491,13 +481,7 @@ if ($_SESSION['nivel'] == 1) {
                                     echo '<span><small>'.$row['REQUERIMIENTO'].' - '.$row['DESCRIP'].'</small></span>';
                                   }
                                 }
-
-
-
-
                           }
-
-
 
                           if ($edad >= 65 && $sexo == 'Masculino') {
                             echo '<li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Pensión:</strong> ' . $pension . '</li>';

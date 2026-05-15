@@ -3313,7 +3313,6 @@ if (isset($_GET['codigo'])) {
 
 
 
-        // aquiiii
         function obtener_puntos_almacenados(consulta, nombreCapa, tipo, perso) {
             var resultado = consulta;
             var consulta = resultado;
@@ -4457,7 +4456,7 @@ if (isset($_GET['codigo'])) {
 
 
     <?php
-    if ($tipo = '1') {
+    if ($tipo == '1') {
         $query66 = "SELECT * FROM consultas_almacenadas WHERE proyecto='$codigoProyecto'";
         $buscar66 = $conexion->query($query66);
         if ($buscar66->num_rows > 0) {
